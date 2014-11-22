@@ -1,0 +1,329 @@
+ <!DOCTYPE html>
+ <html>
+    
+    <head>
+        <title>Class Documentation: BasicMath</title>
+        <link type="text/css" rel="stylesheet" href="MainCSS.css" />
+    </head>
+
+    <body>
+
+        <h1>BasicMath.h</h1>
+
+        <p>This class contains basic math operations, defined as static functions in the class "BasicMath".</p>
+
+        <h2>Metadata</h2>
+        <p>Part of the <a>Lower Math</a> system.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Sub-types</h2>
+        <ul class="DeclarationList">
+            <li>
+                <code>struct ClampIntervalResult</code>
+                <ul>
+                    <li>
+                        Fields:
+                        <ul>
+                            <li><code>int zero</code></li>
+                            <li><code>int one</code></li>
+                        </ul>
+                    </li>
+                    <li>Represents data returned by the function <a href="#ClampToIntervalBounds"><code>ClampToIntervalBounds()</code></a>.</li>
+                    <li>Specifies the two values of <code>n</code> that the given value lies between.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Constants</h2>
+        <ul class="DeclarationList">
+            <li>
+                <code>float NaN</code>
+                <ul>
+                    <li>Represents an invalid floating-point value.</li>
+                    <li>Use <a href="#IsNaN"><code>IsNaN()</code></a> to test whether a given float is NaN."</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Static Fields</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Member Fields</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Static Functions</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="IsNaN" />
+                <code>public float IsNaN(float testF)</code>
+                <ul>
+                    <li>Gets whether the given value is NaN.</li>
+                </ul>
+            </li>
+            <li>
+                <code>public float FastInvSqrt1(float f)</code>
+                <ul>
+                    <li>Quickly computes 1.0 / sqrt(f).</li>
+                    <li>Slightly faster than "FastInvSqrt2()".</li>
+                    <li>Uses the <a href="http://en.wikipedia.org/wiki/Fast_inverse_square_root">Fast Inverse Square Root approximation</a> to compute it.</li>
+                </ul>
+            </li>
+            <li>
+                <code>public float FastInvSqrt2(float f)</code>
+                <ul>
+                    <li>Quickly computes 1.0 / sqrt(f).</li>
+                    <li>More precise than "FastInvSqrt1()".</li>
+                    <li>Uses the <a href="http://en.wikipedia.org/wiki/Fast_inverse_square_root">Fast Inverse Square Root approximation</a> to compute it.</li>
+                </ul>
+            </li>
+            <li>
+                <code>public long IntPow(int base, int exponent)</code>
+                <ul>
+                    <li>Raises an integer to the power of another integer.</li>
+                    <li>Uses <a href="http://stackoverflow.com/questions/101439/the-most-efficient-way-to-implement-an-integer-based-power-function-powint-int">Exponentiation by Squaring</a></li>
+                </ul>
+            </li>
+            <li>
+                <code>public int Sign&lt;T&gt;(T val)</code>
+                <ul>
+                    <li>Computes the sign (-1, 0, or 1) of the given value without any branching.</li>
+                    <li>
+                        The type "T" must satisfy the following constraints:
+                        <ul>
+                            <li>Can be constructed with a given initial value of 0: <code>T(0)</code> (primitive number types satisfy this constraint).</li>
+                            <li>Defines the operators <code>&lt;</code> and <code>-</code>.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>public unsigned int Abs(int i)</code>
+                <ul>
+                    <li>Computes the absolute value of the given integer.</li>
+                </ul>
+            </li>
+            <li>
+                <code>public float Abs(float f)</code>
+                <ul>
+                    <li>Computes the absolute value of the given float.</li>
+                </ul>
+            </li>
+            <li>
+                <code>public float Round(float v, int decimals)</code>
+                <ul>
+                    <li>Rounds the given float to the given number of decimals.</li>
+                </ul>
+            </li>
+            <li>
+                <code>public int RoundToInt(float v)</code>
+                <ul>
+                    <li>Rounds the given float to the nearest integer.</li>
+                </ul>
+            </li>
+            <li>
+                <code>public int RoundToInt(double d)</code>
+                <ul>
+                    <li>Rounds the given double to the nearest integer.</li>
+                </ul>
+            </li>
+            <li>
+                <code>public unsigned int RoundToUInt(float v)</code>
+                <ul>
+                    <li>Rounds the given float to the nearest integer.</li>
+                    <li class="Warning">Assumes the given value is greater than or equal to 0.</li>
+                </ul>
+            </li>
+            <li>
+                <code>public unsigned int RoundToUInt(double v)</code>
+                <ul>
+                    <li>Rounds the given double to the nearest integer.</li>
+                    <li class="Warning">Assumes the given value is greater than or equal to 0.</li>
+                </ul>
+            </li>
+            <li>
+                <code>public float RadToDeg(float radians)</code>
+                <ul>
+                    <li>Converts the given amount from radians to degrees.</li>
+                </ul>
+            </li>
+            <li>
+                <code>public float DegToRad(float degrees)</code>
+                <ul>
+                    <li>Converts the given amount from degrees to radians.</li>
+                </ul>
+            </li>
+            <li>
+                <code>public float Log(float value)</code>
+                <ul>
+                    <li>Computes the logarithm base-<code>e</code> of the given value.</li>
+                </ul>
+            </li>
+            <li>
+                <code>public float Log(float value, float base)</code>
+                <ul>
+                    <li>Computes the logarithm of the given value with the given base.</li>
+                </ul>
+            </li>
+            <li>
+                <code>public float Root(float value, float root)</code>
+                <ul>
+                    <li>Computes the given root of the given value.</li>
+                </ul>
+            </li>
+            <li>
+                <code>public T Clamp&lt;T&gt;(T val, T min, T max)</code>
+                <ul>
+                    <li>Clamps the given value between the given min and the given max.</li>
+                    <li>
+                        The type "T" must satisfy the following constraints:
+                        <ul>
+                            <li>Defines the operators <code>&lt;</code> and <code>&gt;</code>.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>public T Max&lt;T&gt;(T one, T two)</code>
+                <ul>
+                    <li>Finds the max of the two given values.</li>
+                    <li>
+                        The type "T" must satisfy the following constraints:
+                        <ul>
+                            <li>Defines the operator <code>&lt;</code>.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>public T Max&lt;T&gt;(T one, T two, T three)</code>
+                <ul>
+                    <li>Finds the max of the three given values.</li>
+                    <li>
+                        The type "T" must satisfy the following constraints:
+                        <ul>
+                            <li>Defines the operator <code>&lt;</code>.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>public T Min&lt;T&gt;(T one, T two)</code>
+                <ul>
+                    <li>Finds the min of the two given values.</li>
+                    <li>
+                        The type "T" must satisfy the following constraints:
+                        <ul>
+                            <li>Defines the operator <code>&gt;</code>.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>public T Min&lt;T&gt;(T one, T two, T three)</code>
+                <ul>
+                    <li>Finds the min of the three given values.</li>
+                    <li>
+                        The type "T" must satisfy the following constraints:
+                        <ul>
+                            <li>Defines the operator <code>&gt;</code>.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>public float ClampToInterval(float intervalStart, float intervalSize, float value)</code>
+                <ul>
+                    <li>Snaps the given value to the nearest value of <code>x</code> that satisfies <code>x == (intervalStart + (intervalSize * n))</code> for some integer <code>n</code>.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ClampToIntervalBounds" />
+                <code>ClampIntervalResult ClampToIntervalBounds(float intervalStart, float intervalSize, float value)</code>
+                <ul>
+                    <li>Computes the same thing as <a href="#ClampToIntervalBounds"><code>ClampToIntervalBounds()</code></a>, but instead of returning the snapped value, this function returns the two values of <code>n</code> that the given value falls between.</li>
+                    <li>
+                        <div class="CodeSample">
+                            <code>
+                                //In this sample, the interval starts at 0 and is spaced out every 1 unit. <br />
+                                ClampIntervalResult res = BasicMath::ClampToIntervalBounds(0.0f, 1.0f, 0.5f); <br />
+                                std::cout << res.zero << "\n"; // Outputs 0. <br />
+                                std::cout << res.one << "\n"; // Outputs 1. <br />
+                                <br />
+                                //In this sample, the interval starts at 2 and is spaced out every 1 unit. <br />
+                                res = BasicMath::ClampToIntervalBounds(2.0f, 1.0f, 0.5f) <br />
+                                std::cout << res.zero << "\n"; // Outputs -2. <br />
+                                std::cout << res.one << "\n"; // Outputs -1.
+                            </code>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <code>public bool IsFactor(int n, int factor)</code>
+                <ul>
+                    <li>Gets whether "factor" is a factor of "n".</li>
+                </ul>
+            </li>
+            <li>
+                <code>public float Lerp(float start, float end, float lerp)</code>
+                <ul>
+                    <li>Linearly interpolates from <code>start</code> to <code>end</code>, using <code>lerp</code> as the interpolant.</li>
+                </ul>
+            </li>
+            <li>
+                <code>public float LerpComponent(float start, float end, float value)</code>
+                <ul>
+                    <li>Gets the value <code>t</code> that satisfies the condition <code>lerp(start, end, t) == value</code>.</li>
+                </ul>
+            </li>
+            <li>
+                <code>public float Remap(float startSource, float endSource, float startDest, float endDest, float sourceValue)</code>
+                <ul>
+                    <li>Remapsthe <code>sourceValue</code> from the range [<code>startSource, endSource</code>] to the range [<code>startDest, endDest</code>].</li>
+                    <li>
+                        <div class="CodeSample">
+                            <code>
+                                //The following remaps the value 0.5 from the range [0, 1] to the range [0, 10]. <br />
+                                std::cout << BasicMath::Remap(0.0f, 1.0f, 0.0f, 10.0f, 0.5f) << "\n"; // Outputs 5.
+                            </code>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a name="Smooth" />
+                <code>public float Smooth(float value)</code>
+                <ul>
+                    <li>Performs "smoothstep", which pushes a value (assumed to be between 0 and 1) away from 0.5 and towards 0 or 1.</li>
+                </ul>
+            </li>
+            <li>
+                <code>public float SuperSmooth(float value)</code>
+                <ul>
+                    <li>Performs "supersmoothstep", or "smootherstep", which is the same as <a href="#Smooth">smoothstep</a> but more dramatic.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Member Functions</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Usage</h2>
+        <p>This class is very straightforward; it just contains basic float, double, and int/unsigned int math. It also defines NaN for floats.</p>
+
+    </body>
+
+ </html>

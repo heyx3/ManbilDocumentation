@@ -1,0 +1,39 @@
+body {
+    background-color: #dedede;
+    color: black;
+}
+
+p {
+    font-family: Times New Roman, serif;
+    font-size: 1.0em;
+}
+
+code {
+    font-size: 0.9em;
+    font-family: Consolas, monospace;
+}
+
+.Warning {
+    font-weight: bold;
+}
+
+.CodeSample {
+
+    background-color: #aeaeae;
+    color: #000000;
+
+    font-size: 0.8em;
+
+    border: 3px solid #333333;
+    
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    display: inline-block;
+}
+
+.sectionDivider {
+    margin-bottom: 50px;
+}
