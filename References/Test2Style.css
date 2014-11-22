@@ -1,0 +1,70 @@
+p {
+    /*1.0em is the default font size of the browser.*/
+    font-size: 1.5em;
+    font-family: Times New Roman, serif;
+}
+body p:first-child {
+    font-size:1.5em;
+    font-family: Arial, sans-serif;
+}
+
+body > a {
+    /*20px is a font whose characters are 20 pixels in size.*/
+    font-size: 20px;
+    font-family: Comic Sans, sans-serif;
+    text-decoration: none;
+    color: #22AA33;
+}
+body > a:hover {
+    color: red;
+    font-size: 5em;
+}
+body > a:visited {
+    color: #119922;
+    font-size: 0.35em;
+}
+
+body > table {
+    border-top: 10px solid black;
+}
+table {
+    font-size: 20px;
+    /*"cursive" is the back-up font if the first font doesn't exist in the browser.*/
+    font-family: ThisFontDoesntExist, cursive;
+}
+table a {
+    color: black;
+    font-size: 1.0em;
+}
+table a:hover {
+    color: grey;
+    font-size: 0.75em;
+}
+table a:visited {
+    color: yellow;
+    font-size: 4.0em;
+}
+
+div {
+    background-color: #cc0000;
+    width: 500px;
+    height: 300px;
+    border: 3px solid black;
+    border-top: 5px dashed black;
+}
+div > p {
+    color: white;
+    font-size: 1.0em;
+}
+
+
+.code {
+    background-color: #BBBBBB;
+    border: 3px solid #222222;
+    width: 500px;
+    
+    padding: 10px;
+    
+    font-family: monospace;
+    font-size: 0.85em;
+}
