@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+ <html>
+    
+    <head>
+        <title>Class Documentation: Vector3b</title>
+        <link type="text/css" rel="stylesheet" href="../MainCSS.css" />
+    </head>
+
+    <body>
+
+        <h1>Vector3b</h1>
+        <p>This class represents a 3-dimensional vector made of unsigned bytes. Because byte vectors are generally only useful for representing color, all operators will clamp to 0-255 instead of overflowing/wrapping around.</p>
+
+        <h2>Metadata</h2>
+        <p>Found in Math/Lower Math/Vectors.h. Has a .cpp file in the same location. Part of the <a>Lower Math</a> system.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Declaration</h2>
+        <code class="CodeDecl">class Vector3b</code>
+        <p />
+
+        <br class="SectionDivider" />
+
+        <h2>Sub-types</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Constants</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Static Fields</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Member Fields</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="x" />
+                <code class="CodeDecl">public unsigned char x</code>
+                <ul>
+                    <li>The X component of the vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="y" />
+                <code class="CodeDecl">public unsigned char y</code>
+                <ul>
+                    <li>The Y component of the vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="z" />
+                <code class="CodeDecl">public unsigned char z</code>
+                <ul>
+                    <li>The Z component of the vector.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Operations</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="+=" />
+                <code class="CodeDecl">public Vector3b&amp; operator+=(const Vector3b&amp; other)</code>
+                <ul>
+                    <li>Adds the given vector to this one. Clamps the values between 0 and 255 instead of overflowing/wrapping around.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="-=" />
+                <code class="CodeDecl">public Vector3b&amp; operator-=(const Vector3b&amp; other)</code>
+                <ul>
+                    <li>Subtracts the given vector from this one. Clamps the values between 0 and 255 instead of overflowing/wrapping around.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Static Functions</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Constructors</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="DefaultConstructor" />
+                <code class="CodeDecl">public Vector3b(void)</code>
+                <ul>
+                    <li>Default constructor. Initializes all values to 0.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ByteConstructor" />
+                <code class="CodeDecl">public Vector3b(unsigned char x, unsigned char y, unsigned char z)</code>
+                <ul>
+                    <li>Initializes the components to the given values.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="FloatConstructor" />
+                <code class="CodeDecl">public Vector3b(float x, float y, float z)</code>
+                <ul>
+                    <li>Takes in values from 0 to 1 for each component and converts them to unsigned bytes in the range 0-255.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Member Functions</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Usage</h2>
+        <p>This class represents an RGB color with 8 bits of precision for each component.</p>
+
+    </body>
+
+ </html>
