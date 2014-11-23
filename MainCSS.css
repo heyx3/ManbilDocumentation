@@ -12,6 +12,9 @@ code {
     font-size: 0.9em;
     font-family: Consolas, monospace;
 }
+.CodeDecl {
+    font-weight: bold;
+}
 
 .Warning {
     font-weight: bold;
@@ -19,7 +22,7 @@ code {
 
 .CodeSample {
 
-    background-color: #aeaeae;
+    background-color: #cccccc;
     color: #000000;
 
     font-size: 0.8em;
@@ -34,6 +37,21 @@ code {
     display: inline-block;
 }
 
-.sectionDivider {
+.SectionDivider {
     margin-bottom: 50px;
+}
+
+.DeclarationList {
+    border: 3px solid black;
+    list-style-type: none;
+}
+.DeclarationList > li {
+
+    border: 1px solid black;
+
+    margin-left: -20px;
+    margin-right: 5px;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
