@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+ <html>
+    
+    <head>
+        <title>Class Documentation: Vector2f</title>
+        <link type="text/css" rel="stylesheet" href="../MainCSS.css" />
+    </head>
+
+    <body>
+
+        <h1>Vector2f</h1>
+        <p>This class represents a 2-dimensional vector made of floats.</p>
+
+        <h2>Metadata</h2>
+        <p>Found in Math/Lower Math/Vectors.h. Has a .cpp file in the same location. Part of the <a>Lower Math</a> system.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Declaration</h2>
+        <code class="CodeDecl">class Vector2f</code>
+        <p />
+
+        <br class="SectionDivider" />
+
+        <h2>Sub-types</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Constants</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Static Fields</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Member Fields</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="x" />
+                <code class="CodeDecl">public float x</code>
+                <ul>
+                    <li>The X component of the vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="y" />
+                <code class="CodeDecl">public float y</code>
+                <ul>
+                    <li>The Y component of the vector.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Operations</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="()" />
+                <code>unsigned int operator()(const Vector2f&amp; v) const</code>
+                <ul>
+                    <li>Gets a hash code. Allows this vector to be used for std collections that uses hashes.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="[]Const" />
+                <code class="CodeDecl">public const float&amp; operator[](int index) const</code>
+                <ul>
+                    <li>Accesses the X or Y component using 0 or 1, respectively.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="[]" />
+                <code class="CodeDecl">public float&amp; operator[](int index)</code>
+                <ul>
+                    <li>Accesses the X or Y component using 0 or 1, respectively.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="+=" />
+                <code class="CodeDecl">public Vector2f&amp; operator+=(const Vector2f&amp; other)</code>
+                <ul>
+                    <li>Adds the given vector to this one.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="-=" />
+                <code class="CodeDecl">public Vector2f&amp; operator-=(const Vector2f&amp; other)</code>
+                <ul>
+                    <li>Subtracts the given vector from this one.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="*=" />
+                <code class="CodeDecl">public Vector2f&amp; operator*=(float f)</code>
+                <ul>
+                    <li>Multiplies each component by the given float.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="/=" />
+                <code class="CodeDecl">public Vector2f&amp; operator/=(float f)</code>
+                <ul>
+                    <li>Divides each component by the given float.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="+" />
+                <code class="CodeDecl">public Vector2f operator+(const Vector2f&amp; other) const</code>
+                <ul>
+                    <li>Adds this vector and the given one together.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="-" />
+                <code class="CodeDecl">public Vector2f operator-(const Vector2f&amp; other) const</code>
+                <ul>
+                    <li>Subtracts the given vector from this one.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="*" />
+                <code class="CodeDecl">public Vector2f operator*(float f) const</code>
+                <ul>
+                    <li>Multiplies each component by the given float.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="/" />
+                <code class="CodeDecl">public Vector2f operator/(float f) const</code>
+                <ul>
+                    <li>Divides each component by the given float.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Negate" />
+                <code class="CodeDecl">public Vector2f operator-(void) const</code>
+                <ul>
+                    <li>Gets the inverse of this vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="==" />
+                <code class="CodeDecl">public bool operator==(const Vector2f&amp; other) const</code>
+                <ul>
+                    <li>Gets whether this vector is identical to the given one.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="!=" />
+                <code class="CodeDecl">public bool operator!=(const Vector2f&amp; other) const</code>
+                <ul>
+                    <li>Gets whether this vector is NOT identical to the given one.</li>
+                </ul>
+            </li>
+
+            <li>
+                <a name="=" />
+                <code class="CodeDecl">public Vector2f&amp; operator=(Vector2f v)</code>
+                <ul>
+                    <li>Sets this vector to be equal to the given vector.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Static Functions</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Constructors</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="DefaultConstructor" />
+                <code class="CodeDecl">public Vector2f(void)</code>
+                <ul>
+                    <li>Default constructor. Initializes all values to 0.0f.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="FloatConstructor" />
+                <code class="CodeDecl">public Vector2f(float x, float y)</code>
+                <ul>
+                    <li>Takes in the value of each component.</li>
+                </ul>
+            </li>
+
+            <li>
+                <a name="CopyConstructor" />
+                <code class="CodeDecl">Vector2f(const Vector2f&amp; copy)</code>
+                <ul>
+                    <li>Initializes this vector with the given vector's components.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Member Functions</h2>
+        <ul>
+            <li>
+                <a name="FlipX" />
+                <code class="CodeDecl">public Vector2f FlipX(void) const</code>
+                <ul>
+                    <li>Gets this vector but with the negative of the X component.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="FlipY" />
+                <code class="CodeDecl">public Vector2f FlipY(void) const</code>
+                <ul>
+                    <li>Gets this vector but with the negative of the Y component.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="MultiplyComponents" />
+                <code class="CodeDecl">public void MultiplyComponents(Vector2f scale)</code>
+                <ul>
+                    <li>Multiplies this vector's individual components by the given vector's individual components.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ComponentProduct" />
+                <code class="CodeDecl">public Vector2f ComponentProduct(Vector2f scale) const</code>
+                <ul>
+                    <li>Multiplie thsi vector's individual components by the given vector's individual components.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ClampF" />
+                <code class="CodeDecl">public Vector2f Clamp(float min, float max) const</code>
+                <ul>
+                    <li>Clamps each component to be inside the specified range.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ClampV" />
+                <code class="CodeDecl">public Vector2f Clamp(Vector2f min, Vector2f max) const</code>
+                <ul>
+                    <li>Clamps each component to be inside the specified range.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Ceil" />
+                <code class="CodeDecl">public Vector2i Ceil(void) const</code>
+                <ul>
+                    <li>'Ceil's this vector's components (rounds towards positive infinity).</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Floored" />
+                <code class="CodeDecl">public Vector2i Floored(void) const</code>
+                <ul>
+                    <li>'Floor's this vector's components (rounds towards negative infinity).</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Abs" />
+                <code class="CodeDecl">public Vector2f Abs(void) const</code>
+                <ul>
+                    <li>Gets the absolute value of all components.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Rotate" />
+                <code class="CodeDecl">public void Rotate(float radians)</code>
+                <ul>
+                    <li>Rotates this vector by the given amount of radians.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Rotated" />
+                <code class="CodeDecl">public Vector2f Rotated(float radians) const</code>
+                <ul>
+                    <li>Gets this vector rotated by the given amount of radians.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Normalize" />
+                <code class="CodeDecl">public void Normalize(void)</code>
+                <ul>
+                    <li>Normalizes this vector (preserves its direction but changes its magnitude to 1.0).</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Normalized" />
+                <code class="CodeDecl">public Vector2f Normalized(void) const</code>
+                <ul>
+                    <li>Gets the normalized form of this vector (preserves its direction but changes its magnitude to 1.0).</li>
+                </ul>
+            </li>
+            <li>
+                <a name="FastNormalize" />
+                <code class="CodeDecl">public void FastNormalize(void)</code>
+                <ul>
+                    <li>Normalizes this vector (preserves its direction but changes its magnitude to 1.0). Performs the normalization using a fast approximation.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="FastNormalized" />
+                <code class="CodeDecl">public Vector2f FastNormalized(void) const</code>
+                <ul>
+                    <li>Gets the normalized form of this vector (preserves its direction but changes its magnitude to 1.0). Performs the normalization using a fast approximation.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Dot" />
+                <code class="CodeDecl">public float Dot(Vector2f v) const</code>
+                <ul>
+                    <li>Gets the dot product of this vector and the given one.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="AngleBetween" />
+                <code class="CodeDecl">public float AngleBetween(Vector2f v) const</code>
+                <ul>
+                    <li>Gets the angle between this vector and the given one.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="FastInvLength" />
+                <code class="CodeDecl">public float FastInvLength(void) const</code>
+                <ul>
+                    <li>Using a good and fast approximation, finds 1.0 / this->Length().</li>
+                </ul>
+            </li>
+            <li>
+                <a name="LengthSquared" />
+                <code class="CodeDecl">public float LengthSquared(void) const</code>
+                <ul>
+                    <li>Gets the square of the length of this vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Length" />
+                <code class="CodeDecl">public float Length(void) const</code>
+                <ul>
+                    <li>Gets the length of this vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Distance" />
+                <code class="CodeDecl">public float Distance(Vector2f other) const</code>
+                <ul>
+                    <li>Gets the distance from this vector to the given vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="DistanceSquared" />
+                <code class="CodeDecl">public float DistanceSquared(Vector2f other) const</code>
+                <ul>
+                    <li>Gets the square of the distance from this vector to the given vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ManhattanDistance" />
+                <code class="CodeDecl">public float ManhattanDistance(Vector2f other) const</code>
+                <ul>
+                    <li>Gets the Manhattan Distance (the sum of the distance along each individual component).</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetHashCode" />
+                <code class="CodeDecl">public int GetHashCode(void) const</code>
+                <ul>
+                    <li>Gets a hash code for this vector.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Usage</h2>
+        <p>Made for representing a direction or position in 2D space.</p>
+
+    </body>
+
+ </html>
