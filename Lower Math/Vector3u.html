@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+ <html>
+    
+    <head>
+        <title>Class: Vector3u</title>
+        <link type="text/css" rel="stylesheet" href="../MainCSS.css" />
+    </head>
+
+    <body>
+
+        <h1>Vector3u</h1>
+        <p>This class represents a 3-dimensional vector made of unsigned integers.</p>
+
+        <h2>Metadata</h2>
+        <p>Found in Math/Lower Math/Vectors.h. Has a .cpp file in the same 0location. Part of the <a>Lower Math</a> system.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Declaration</h2>
+        <code class="CodeDecl">class Vector3u</code>
+        <p />
+
+        <br class="SectionDivider" />
+
+        <h2>Sub-types</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Constants</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Static Fields</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Member Fields</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="x" />
+                <code class="CodeDecl">public unsigned int x</code>
+                <ul>
+                    <li>The X component of the vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="y" />
+                <code class="CodeDecl">public unsigned int y</code>
+                <ul>
+                    <li>The Y component of the vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="z" />
+                <code class="CodeDecl">public unsigned int z</code>
+                <ul>
+                    <li>The Z component of the vector.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Operations</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="()" />
+                <code class="CodeDecl">unsigned int operator()(const Vector3u&amp; v) const</code>
+                <ul>
+                    <li>Gets a hash code. Allows this vector to be used for std collections that uses hashes.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="[]Const" />
+                <code class="CodeDecl">public const unsigned int&amp; operator[](unsigned int index) const</code>
+                <ul>
+                    <li>Accesses the X, Y, or Z component using 0, 1, or 2, respectively.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="[]" />
+                <code class="CodeDecl">public unsigned int&amp; operator[](unsigned int index)</code>
+                <ul>
+                    <li>Accesses the X, Y, or Z component using 0, 1, or 2, respectively.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="+=" />
+                <code class="CodeDecl">public Vector3u&amp; operator+=(const Vector3u&amp; other)</code>
+                <ul>
+                    <li>Adds the given vector to this one.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="-=" />
+                <code class="CodeDecl">public Vector3u&amp; operator-=(const Vector3u&amp; other)</code>
+                <ul>
+                    <li>Subtracts the given vector from this one.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="*=" />
+                <code class="CodeDecl">public Vector3u&amp; operator*=(unsigned int i)</code>
+                <ul>
+                    <li>Multiplies each component by the given unsigned int.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="/=" />
+                <code class="CodeDecl">public Vector3u&amp; operator/=(unsigned int i)</code>
+                <ul>
+                    <li>Divides each component by the given unsigned int.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="+" />
+                <code class="CodeDecl">public Vector3u operator+(const Vector3u&amp; other) const</code>
+                <ul>
+                    <li>Adds this vector and the given one together.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="-" />
+                <code class="CodeDecl">public Vector3u operator-(const Vector3u&amp; other) const</code>
+                <ul>
+                    <li>Subtracts the given vector from this one.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="*" />
+                <code class="CodeDecl">public Vector3u operator*(unsigned int i) const</code>
+                <ul>
+                    <li>Multiplies each component by the given unsigned int.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="/" />
+                <code class="CodeDecl">public Vector3u operator/(unsigned int i) const</code>
+                <ul>
+                    <li>Divides each component by the given unsigned int.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Negate" />
+                <code class="CodeDecl">public Vector3u operator-(void) const</code>
+                <ul>
+                    <li>Gets the inverse of this vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="==" />
+                <code class="CodeDecl">public bool operator==(const Vector3u&amp; other) const</code>
+                <ul>
+                    <li>Gets whether this vector is identical to the given one.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="!=" />
+                <code class="CodeDecl">public bool operator!=(const Vector3u&amp; other) const</code>
+                <ul>
+                    <li>Gets whether this vector is NOT identical to the given one.</li>
+                </ul>
+            </li>
+
+            <li>
+                <a name="=" />
+                <code class="CodeDecl">public Vector3u&amp; operator=(Vector3u v)</code>
+                <ul>
+                    <li>Sets this vector to be equal to the given vector.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Static Functions</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Constructors</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="DefaultConstructor" />
+                <code class="CodeDecl">public Vector3u(void)</code>
+                <ul>
+                    <li>Default constructor. Initializes all values to 0.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="unsigned intConstructor" />
+                <code class="CodeDecl">public Vector3u(unsigned int x, unsigned int y)</code>
+                <ul>
+                    <li>Takes in the value of each component.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="CopyConstructor" />
+                <code class="CodeDecl">Vector3u(const Vector3u&amp; copy)</code>
+                <ul>
+                    <li>Initializes this vector with the given vector's components.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Vector2iConstructor" />
+                <code class="CodeDecl">Vector3u(Vector2u xy, unsigned int z)</code>
+                <ul>
+                    <li>Initializes this vector using the given X and Y values and the given Z value.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Member Functions</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="LessX" />
+                <code class="CodeDecl">public Vector3u LessX(void) const</code>
+                <ul>
+                    <li>Gets this vector but with the X component decremented by 1.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="MoreX" />
+                <code class="CodeDecl">public Vector3u MoreX(void) const</code>
+                <ul>
+                    <li>Gets this vector but with the X component incremented by 1.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="LessY" />
+                <code class="CodeDecl">public Vector3u LessY(void) const</code>
+                <ul>
+                    <li>Gets this vector but with the Y component decremented by 1.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="MoreY" />
+                <code class="CodeDecl">public Vector3u MoreY(void) const</code>
+                <ul>
+                    <li>Gets this vector but with the Y component incremented by 1.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="LessZ" />
+                <code class="CodeDecl">public Vector3u LessZ(void) const</code>
+                <ul>
+                    <li>Gets this vector but with the Z component decremented by 1.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="MoreZ" />
+                <code class="CodeDecl">public Vector3u MoreZ(void) const</code>
+                <ul>
+                    <li>Gets this vector but with the Z component incremented by 1.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="XY" />
+                <code class="CodeDecl">public Vector2u XY(void) const</code>
+                <ul>
+                    <li>Gets a 2D vector with this vector's X and Y components, in that order.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="XZ" />
+                <code class="CodeDecl">public Vector2u XZ(void) const</code>
+                <ul>
+                    <li>Gets a 2D vector with this vector's X and Z components, in that order.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="YZ" />
+                <code class="CodeDecl">public Vector2u YZ(void) const</code>
+                <ul>
+                    <li>Gets a 2D vector with this vector's Y and Z components, in that order.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="MultiplyComponents" />
+                <code class="CodeDecl">public void MultiplyComponents(Vector3u scale)</code>
+                <ul>
+                    <li>Multiplies this vector's individual components by the given vector's individual components.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ComponentProduct" />
+                <code class="CodeDecl">public Vector3u ComponentProduct(Vector3u scale) const</code>
+                <ul>
+                    <li>Multiplie thsi vector's individual components by the given vector's individual components.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ClampI" />
+                <code class="CodeDecl">public Vector3u Clamp(unsigned int min, unsigned int max) const</code>
+                <ul>
+                    <li>Clamps each component to be inside the specified range.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ClampV" />
+                <code class="CodeDecl">public Vector3u Clamp(Vector3u min, Vector3u max) const</code>
+                <ul>
+                    <li>Clamps each component to be inside the specified range.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Dot" />
+                <code class="CodeDecl">public unsigned int Dot(Vector3u other) const</code>
+                <ul>
+                    <li>Gets the dot product of this vector and the given one.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="LengthSquared" />
+                <code class="CodeDecl">public unsigned int LengthSquared(void) const</code>
+                <ul>
+                    <li>Gets the square of the length of this vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Length" />
+                <code class="CodeDecl">public float Length(void) const</code>
+                <ul>
+                    <li>Gets the length of this vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Distance" />
+                <code class="CodeDecl">public float Distance(Vector3u other) const</code>
+                <ul>
+                    <li>Gets the distance from this vector to the given vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="DistanceSquared" />
+                <code class="CodeDecl">public unsigned int DistanceSquared(Vector3u other) const</code>
+                <ul>
+                    <li>Gets the square of the distance from this vector to the given vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ManhattanDistance" />
+                <code class="CodeDecl">public unsigned int ManhattanDistance(Vector3u other) const</code>
+                <ul>
+                    <li>Gets the Manhattan Distance (the sum of the distance along each individual component).</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetHashCode" />
+                <code class="CodeDecl">public unsigned int GetHashCode(void) const</code>
+                <ul>
+                    <li>Gets a hash code for this vector.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Usage</h2>
+        <p>Made for representing a position in 3D unsigned integer space.</p>
+
+    </body>
+
+ </html>
