@@ -1,0 +1,167 @@
+ <!DOCTYPE html>
+ <html>
+    
+    <head>
+        <title>Class: Interval</title>
+        <link type="text/css" rel="stylesheet" href="../MainCSS.css" />
+    </head>
+
+    <body>
+
+        <h1>Interval</h1>
+
+        <p>A range of values with an inclusive start and end.</p>
+
+        <h2>Metadata</h2>
+        <p>Located in "Math/Lower Math/Interval.h". Has a .cpp file in the same location. Part of the <a>Lower Math</a> system.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Declaration</h2>
+        <code class="CodeDecl">class Interval</code>
+
+        <br class="SectionDivider" />
+
+        <h2>Sub-types</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Constants</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Static Fields</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Static Functions</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="GetZeroToOne" />
+                <code class="CodeDecl">public Interval GetZeroToOne(void)</code>
+                <ul>
+                    <li>Gets an interval from 0.0f to 1.0f.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetByteInterval" />
+                <code class="CodeDecl">public Interval GetByteInterval(void)</code>
+                <ul>
+                    <li>Gets an interval from 0.0f to 255.0f.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetInvalidInterval" />
+                <code class="CodeDecl">public Interval GetInvalidInterval(void)</code>
+                <ul>
+                    <li>Gets an interval from 0.0f to 0.0f.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Union" />
+                <code class="CodeDecl">public Interval Union(Interval one, Interval two)</code>
+                <ul>
+                    <li>Gets the smallest-possible interval that covers the given two intervals.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Intersection" />
+                <code class="CodeDecl">public Interval Intersection(Interval one, Interval two)</code>
+                <ul>
+                    <li>Gets an interval spanning the intersection of the given two intervals.</li>
+                    <li>Returns an invalid interval if the two intervals don't intersect.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Member Fields</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="center" />
+                <code class="CodeDecl">private float center</code>
+                <ul>
+                    <li>The center of this interval.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="range" />
+                <code class="CodeDecl">private float range</code>
+                <ul>
+                    <li>The range of this interval.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="halfRange" />
+                <code class="CodeDecl">private float halfRange</code>
+                <ul>
+                    <li>Half of the range of this interval. This value is stored for quicker computation later.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Operators</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="operator==" />
+                <code class="CodeDecl">public bool operator==(const Interval&amp; other) const</code>
+                <ul>
+                    <li>Gets whether this interval is exactly equal to the given one.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="operator!=" />
+                <code class="CodeDecl">public bool operator!=(const Interval&amp; other) const</code>
+                <ul>
+                    <li>Gets whether this interval is NOT exactly equal to the given one.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>Constructors</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="DefaultConstructor" />
+                <code class="CodeDecl">public Interval(void)</code>
+                <ul>
+                    <li>Creates an interval from 0.0f to 1.0f.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="CenterRangeConstructor" />
+                <code class="CodeDecl">public Interval(float center, float range)</code>
+                <ul>
+                    <li>Creates an interval with the given center and range.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="StartEndConstructor" />
+                <code class="CodeDecl">public Interval(float start, float end, float epsilon, bool startInclusive, bool endInclusive)</code>
+                <ul>
+                    <li>Creates an interval with the given start and end.</li>
+                    <li>The user of the class specifies whether each end is inclusive, as well as the margin of error for exclusive ends.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Member Functions</h2>
+        <ul class="DeclarationList">
+            //TODO: Start here next time.
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Usage</h2>
+        <p>[EXPLANATION OF HOW TO USE THIS CLASS HERE]</p>
+
+    </body>
+
+ </html>
