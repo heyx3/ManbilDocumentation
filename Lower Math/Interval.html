@@ -285,6 +285,7 @@
                             //The following code prints out the value '1.5'. <br />
                             Interval oneToFive(1.0f, 5.0f, 0.0f, true, true); <br />
                             std::cout << oneToFive.WrapValueAroundInterval(5.5f); <br />
+                            <br />
                             //The following code prints out the value '1.0001'. <br />
                             oneToFive = Interval(1.0f, 5.0f, 0.0001f, true, false); <br />
                             std::cout << oneToFive.WrapValueAroundInterval(5.0f);
@@ -384,16 +385,18 @@
             <code>
                 Interval oneToThree(1.0f, 3.0f, 0.0f, true, true); <br />
                 std::cout << "The start of the interval is " << oneToThree.GetStart() << // 1.0 <br />
-                             "\nThe end of the interval is " << oneToThree.GetEnd() <<   // 3.0 <br />
-                             "\nThe range of the interval is " << oneToThree.GetRange(); // 2.0 <br />
-                float third = oneToThree.Lerp(0.333333f);
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  "\nThe end of the interval is " << oneToThree.GetEnd() <<   // 3.0 <br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  "\nThe range of the interval is " << oneToThree.GetRange(); // 2.0 <br />
+                <br />
+                float third = oneToThree.Lerp(0.333333f); <br />
                 std::cout << "A third of the way through the interval is the value " << third << "\n"; // 1.666666 <br />
+                <br />
                 Interval zeroToFour = oneToThree.Widen(2.0f), // Add 2.0 to the range of the interval. <br />
-                         tenToFourteen = zeroToFour.Translate(10.0f), // Move the interval over by 10.0. <br />
-                         eightToSixteen = tenToFourteen.Inflate(2.0f), // Double the interval's range. <br />
-                         zeroToSixteen = Interval::Union(zeroToFour, eightToSixteen), // Gets the union of the two. <br />
-                         negOneToSixteen = Interval::Union(zeroToSixteen, zeroToFour.Translate(-1.0f)), // Another union. <br />
-                         invalidInterval = Interval::Intersection(zeroToFour, tenToFourteen); // An Interval that doesn't span any space.
+&emsp; &emsp; &emsp; &emsp;   tenToFourteen = zeroToFour.Translate(10.0f), // Move the interval over by 10.0. <br />
+&emsp; &emsp; &emsp; &emsp;   eightToSixteen = tenToFourteen.Inflate(2.0f), // Double the interval's range. <br />
+&emsp; &emsp; &emsp; &emsp;   zeroToSixteen = Interval::Union(zeroToFour, eightToSixteen), // Gets the union of the two. <br />
+&emsp; &emsp; &emsp; &emsp;   negOneToSixteen = Interval::Union(zeroToSixteen, zeroToFour.Translate(-1.0f)), // Another union. <br />
+&emsp; &emsp; &emsp; &emsp;   invalidInterval = Interval::Intersection(zeroToFour, tenToFourteen); // An Interval that doesn't span any space.
             </code>
         </div>
 
