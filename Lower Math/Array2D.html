@@ -224,17 +224,17 @@
                 </ul>
             </li>
             <li>
-                <a name="GetNumbElements" />
-                <code class="CodeDecl">public unsigned int GetNumbElements(void) const</code>
-                <ul>
-                    <li>Gets the total number of elements contained by this array.</li>
-                </ul>
-            </li>
-            <li>
                 <a name="HasSameDimensions" />
                 <code class="CodeDecl">public bool HasSameDimensions(const Array2D&lt;ArrayType&gt;&amp; other) const</code>
                 <ul>
                     <li>Gets whether this array has the same dimensions as the given one.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetNumbElements" />
+                <code class="CodeDecl">public unsigned int GetNumbElements(void) const</code>
+                <ul>
+                    <li>Gets the total number of elements contained by this array.</li>
                 </ul>
             </li>
             <li>
@@ -245,7 +245,7 @@
                 </ul>
             </li>
             <li>
-                <a name="FillCopy" />
+                <a name="FillCopyOffset" />
                 <code class="CodeDecl">public void Fill(const Array2D&lt;ArrayType&gt;&amp; toCopy, Vector2i copyOffset = Vector2i(0, 0))</code>
                 <ul>
                     <li>Copies the given array's contents into this one.</li>
