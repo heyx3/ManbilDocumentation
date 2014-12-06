@@ -12,6 +12,8 @@
 
         <p>A range of values with an inclusive start and end.</p>
 
+        <br class="SectionDivider" />
+
         <h2>Metadata</h2>
         <p>Located in "Math/Lower Math/Interval.h". Has a .cpp file in the same location. Part of the <a>Lower Math</a> system.</p>
 
@@ -154,13 +156,246 @@
 
         <h2>Member Functions</h2>
         <ul class="DeclarationList">
-            //TODO: Start here next time.
+            <li>
+                <a name="IsValid" />
+                <code class="CodeDecl">public bool IsValid(void) const</code>
+                <ul>
+                    <li>Gets whether this interval is valid (i.e. its range is greater than 0.0f).</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetStart" />
+                <code class="CodeDecl">public float GetStart(void) const</code>
+                <ul>
+                    <li>Gets the value at the start of this interval (inclusive).</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetEnd" />
+                <code class="CodeDecl">public float GetEnd(void) const</code>
+                <ul>
+                    <li>Gets the value at the end of this interval (inclusive).</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetCenter" />
+                <code class="CodeDecl">public float GetCenter(void) const</code>
+                <ul>
+                    <li>Gets the value at the exact center of this interval.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetRange" />
+                <code class="CodeDecl">public float GetRange(void) const</code>
+                <ul>
+                    <li>Gets the range this interval spans.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetHalfRange" />
+                <code class="CodeDecl">public float GetHalfRange(void) const</code>
+                <ul>
+                    <li>Gets half the value of the range this interval spans.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetQuarterRange" />
+                <code class="CodeDecl">public float GetQuarterRange(void) const</code>
+                <ul>
+                    <li>Gets a quarter the value of the range this interval spans.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetFirstHalf" />
+                <code class="CodeDecl">public Interval GetFirstHalf(void) const</code>
+                <ul>
+                    <li>Gets an interval that spans the first half of this interval's range.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetSecondHalf" />
+                <code class="CodeDecl">public Interval GetSecondHalf(void) const</code>
+                <ul>
+                    <li>Gets an interval that spans the second half of this interval's range.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetFirstQuarter" />
+                <code class="CodeDecl">public Interval GetFirstQuarter(void) const</code>
+                <ul>
+                    <li>Gets an interval that spans the first quarter of this interval's range.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetSecondQuarter" />
+                <code class="CodeDecl">public Interval GetSecondQuarter(void) const</code>
+                <ul>
+                    <li>Gets an interval that spans the second quarter of this interval's range.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetThirdQuarter" />
+                <code class="CodeDecl">public Interval GetThirdQuarter(void) const</code>
+                <ul>
+                    <li>Gets an interval that spans the third quarter of this interval's range.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetFourthQuarter" />
+                <code class="CodeDecl">public Interval GetFourthQuarter(void) const</code>
+                <ul>
+                    <li>Gets an interval that spans the fourth quarter of this interval's range.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Inflate" />
+                <code class="CodeDecl">public Interval Inflate(float rangeScale) const</code>
+                <ul>
+                    <li>Scales up this interval's range by the given value.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Widen" />
+                <code class="CodeDecl">public Interval Widen(float deltaRange) const</code>
+                <ul>
+                    <li>Increases this interval's range by the given amount.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Translate" />
+                <code class="CodeDecl">public Interval Translate(float deltaCenter) const</code>
+                <ul>
+                    <li>Shifts this interval's center by the given amount.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Clamp" />
+                <code class="CodeDecl">public float Clamp(float value) const</code>
+                <ul>
+                    <li>Clamps the given value to stay inside this interval.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="WrapValueAroundInterval" />
+                <code class="CodeDecl">public float WrapValueAroundInterval(float value) const</code>
+                <ul>
+                    <li>Wraps the given value around the edges of this interval.</li>
+                    <li><div class="CodeSample">
+                        <code>
+                            //The following code prints out the value '1.5'. <br />
+                            Interval oneToFive(1.0f, 5.0f, 0.0f, true, true); <br />
+                            std::cout << oneToFive.WrapValueAroundInterval(5.5f); <br />
+                            //The following code prints out the value '1.0001'. <br />
+                            oneToFive = Interval(1.0f, 5.0f, 0.0001f, true, false); <br />
+                            std::cout << oneToFive.WrapValueAroundInterval(5.0f);
+                        </code>
+                    </div></li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetLerpComponent" />
+                <code class="CodeDecl">public float GetLerpComponent(float value) const</code>
+                <ul>
+                    <li>Gets the value <code>t</code> such that <code>lerp(intervalStart, intervalEnd, t) == value</code>.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Lerp" />
+                <code class="CodeDecl">public float Lerp(float t) const</code>
+                <ul>
+                    <li>Interpolates from the start of the interval to the end.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="MapValue" />
+                <code class="CodeDecl">public float MapValue(Interval destination, float value) const</code>
+                <ul>
+                    <li>Remaps the given value from this interval to the given interval.</li>
+                    <li><div class="CodeSample">
+                        <code>
+                            //The following code prints out the value '3.0'. <br />
+                            Interval oneToFive(1.0f, 5.0f, 0.0f, true, true); <br />
+                            Interval twoToSix(2.0f, 6.0f, 0.0f, true, true); <br />
+                            std::cout << oneToFive.MapValue(twoToSix, 2.0f);
+                        </code>
+                    </div></li>
+                </ul>
+            </li>
+            <li>
+                <a name="Reflect" />
+                <code class="CodeDecl">public float Reflect(float val) const</code>
+                <ul>
+                    <li>Reflects the given value around the center of this interval.</li>
+                    <li><div class="CodeSample">
+                        <code>
+                            //The following code prints out the value '7.5'. <br />
+                            Interval zeroToTen(5.0f, 5.0f); <br />
+                            std::cout << zeroToTen.Reflect(2.5f);
+                        </code>
+                     </div></li>
+                </ul>
+            </li>
+            <li>
+                <a name="FloatIsInside" />
+                <code class="CodeDecl">public bool IsInside(float value) const</code>
+                <ul>
+                    <li>Gets whether the given value is inside this interval.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="IntervalIsInside" />
+                <code class="CodeDecl">public bool IsInside(Interval outer) const</code>
+                <ul>
+                    <li>Gets whether this interval is inside the given one.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="Touches" />
+                <code class="CodeDecl">public bool Touches(Interval other) const</code>
+                <ul>
+                    <li>Gets whether the given Interval intersects this interval at all.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="RandomInsideRange" />
+                <code class="CodeDecl">public float RandomInsideRange(<a href="FastRand.html">FastRand</a>&amp; fr) const</code>
+                <ul>
+                    <li>Gets a random value inside this interval's range using the given PRNG.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetHashCode" />
+                <code class="CodeDecl">public int GetHashCode(void) const</code>
+                <ul>
+                    <li>Hashes this interval to create a hash code.</li>
+                </ul>
+            </li>
         </ul>
 
         <br class="SectionDivider" />
 
         <h2>Usage</h2>
-        <p>[EXPLANATION OF HOW TO USE THIS CLASS HERE]</p>
+        <p>This class can be used to represent spans across a scalar space. It is immutable; there are no public fields or non-const functions.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Samples</h2>
+        <div class="CodeSample">
+            <code>
+                Interval oneToThree(1.0f, 3.0f, 0.0f, true, true); <br />
+                std::cout << "The start of the interval is " << oneToThree.GetStart() << // 1.0 <br />
+                             "\nThe end of the interval is " << oneToThree.GetEnd() <<   // 3.0 <br />
+                             "\nThe range of the interval is " << oneToThree.GetRange(); // 2.0 <br />
+                float third = oneToThree.Lerp(0.333333f);
+                std::cout << "A third of the way through the interval is the value " << third << "\n"; // 1.666666 <br />
+                Interval zeroToFour = oneToThree.Widen(2.0f), // Add 2.0 to the range of the interval. <br />
+                         tenToFourteen = zeroToFour.Translate(10.0f), // Move the interval over by 10.0. <br />
+                         eightToSixteen = tenToFourteen.Inflate(2.0f), // Double the interval's range. <br />
+                         zeroToSixteen = Interval::Union(zeroToFour, eightToSixteen), // Gets the union of the two. <br />
+                         negOneToSixteen = Interval::Union(zeroToSixteen, zeroToFour.Translate(-1.0f)), // Another union. <br />
+                         invalidInterval = Interval::Intersection(zeroToFour, tenToFourteen); // An Interval that doesn't span any space.
+            </code>
+        </div>
 
     </body>
 
