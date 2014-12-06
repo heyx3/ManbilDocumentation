@@ -1,0 +1,403 @@
+ <!DOCTYPE html>
+ <html>
+    
+    <head>
+        <title>Class: Array2D<></title>
+        <link type="text/css" rel="stylesheet" href="../MainCSS.css" />
+    </head>
+
+    <body>
+
+        <h1>Array2D&lt;ArrayType&gt;</h1>
+
+        <p>A templated 2D array that is stored in one contiguous heap-allocated memory block. The copy/default constructors and assignment operator are disabled for this class.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Metadata</h2>
+        <p>Located in "Math/Lower Math/Array2D.h". Has a .cpp file in the same location. Part of the <a>Lower Math</a> system.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Declaration</h2>
+        <code class="CodeDecl">
+            template&lt;class ArrayType&gt; <br />
+            class Array2D;
+        </code>
+
+        <br class="SectionDivider" />
+
+        <h2>Sub-types</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="ArrayType" />
+                <code class="CodeDecl">template&lt;class ArrayType&gt;</code>
+                <ul>
+                    <li>The type of item this array contains. Should generally be trivially-copiable/assignable.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Constants</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Static Fields</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Static Functions</h2>
+        <p>None.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Member Fields</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="width" />
+                <code class="CodeDecl">private unsigned int width</code>
+                <ul>
+                    <li>The size of this array along the X.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="height" />
+                <code class="CodeDecl">private unsigned int height</code>
+                <ul>
+                    <li>The size of this array along the Y.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="arrayVals" />
+                <code class="CodeDecl">private ArrayType* arrayVals</code>
+                <ul>
+                    <li>The heap-allocated array data. It has <code>width * height</code> elements.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Operators</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="operator[]" />
+                <code class="CodeDecl">public ArrayType&amp; operator[](Vector2u location)</code>
+                <ul>
+                    <li>Gets the value at the given X/Y position in this array.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="operator[]Const" />
+                <code class="CodeDecl">public const ArrayType&amp; operator[](Vector2u location) const</code>
+                <ul>
+                    <li>Gets the value at the given X/Y position in this array.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>Constructors</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="ConstructorNoValue" />
+                <code class="CodeDecl">public Array2D(unsigned int width, unsigned int height)</code>
+                <ul>
+                    <li>Creates a new array with the given size.</li>
+                    <li>All values are uninitialized.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ConstructorValue" />
+                <code class="CodeDecl">public Array2D(unsigned int width, unsigned int height, const ArrayType&amp; defaultValue)</code>
+                <ul>
+                    <li>Creates a new array with the given size.</li>
+                    <li>All values are initialized to the given value.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Member Functions</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="GetWidth" />
+                <code class="CodeDecl">public unsigned int GetWidth(void) const</code>
+                <ul>
+                    <li>Gets the X size of this array.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetHeight" />
+                <code class="CodeDecl">public unsigned int GetHeight(void) const</code>
+                <ul>
+                    <li>Gets the Y size of this array.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetDimensions" />
+                <code class="CodeDecl">public Vector2u GetDimensions(void) const</code>
+                <ul>
+                    <li>Gets the size of this array along each axis.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ResetNoValue" />
+                <code class="CodeDecl">public void Reset(unsigned int newWidth, unsigned int newHeight) const</code>
+                <ul>
+                    <li>Resets this array to the given size and leaves its elements uninitialized.</li>
+                    <li>If the total number of elements doesn't change, then nothing is allocated or un-allocated, and the elements keep their values.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ResetValue" />
+                <code class="CodeDecl">public void Reset(unsigned int newWidth, unsigned int newHeight, const ArrayType&amp; defaultValue) const</code>
+                <ul>
+                    <li>Resets this array to the given size and initializes all elements to the given value.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetIndex" />
+                <code class="CodeDecl">public unsigned int GetIndex(unsigned int x, unsigned int y) const</code>
+                <ul>
+                    <li>Gets the index of the underlying array that corresponds to the given coordinates.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetLocation" />
+                <code class="CodeDecl">public Vector2u GetLocation(unsigned int index) const</code>
+                <ul>
+                    <li>Gets the coordinates of the element that sits at the given array index.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ClampI" />
+                <code class="CodeDecl">public Vector2i Clamp(Vector2i in) const</code>
+                <ul>
+                    <li>Clamps the given coordinate to be inside the range of allowable coordinates for this array.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ClampU" />
+                <code class="CodeDecl">public Vector2u Clamp(Vector2u in) const</code>
+                <ul>
+                    <li>Clamps the given coordinate to be inside the range of allowable coordinates for this array.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ClampF" />
+                <code class="CodeDecl">public Vector2f Clamp(Vector2f in) const</code>
+                <ul>
+                    <li>Clamps the given coordinate to be inside the range of allowable coordinates for this array.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="WrapI" />
+                <code class="CodeDecl">public Vector2i Wrap(Vector2i in) const</code>
+                <ul>
+                    <li>Wraps the given coordinate around the range of allowable coordinates for this array.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="WrapU" />
+                <code class="CodeDecl">public Vector2u Wrap(Vector2u in) const</code>
+                <ul>
+                    <li>Wraps the given coordinate around the range of allowable coordinates for this array.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="WrapF" />
+                <code class="CodeDecl">public Vector2f Wrap(Vector2f in) const</code>
+                <ul>
+                    <li>Wraps the given coordinate around the range of allowable coordinates for this array.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="IsSquare" />
+                <code class="CodeDecl">public bool IsSquare(void) const</code>
+                <ul>
+                    <li>Gets whether this array's width and height are the same size.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetNumbElements" />
+                <code class="CodeDecl">public unsigned int GetNumbElements(void) const</code>
+                <ul>
+                    <li>Gets the total number of elements contained by this array.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="HasSameDimensions" />
+                <code class="CodeDecl">public bool HasSameDimensions(const Array2D&lt;ArrayType&gt;&amp; other) const</code>
+                <ul>
+                    <li>Gets whether this array has the same dimensions as the given one.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="FillValue" />
+                <code class="CodeDecl">public void Fill(const ArrayType&amp; value)</code>
+                <ul>
+                    <li>Fills every array element with the given value.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="FillCopy" />
+                <code class="CodeDecl">public void Fill(const Array2D&lt;ArrayType&gt;&amp; toCopy, Vector2i copyOffset = Vector2i(0, 0))</code>
+                <ul>
+                    <li>Copies the given array's contents into this one.</li>
+                    <li>Can optionally specify an offset for the copy array.</li>
+                    <li><div class="CodeSample">
+                        <code>
+                            Array2D&lt;float&gt; zeroes(5, 5, 0.0f); <br />
+                            Array2D&lt;float&gt; ones(3, 3, 1.0f); <br />
+                            zeroes.Fill(ones, Vector2i(1, 1)); <br />
+                            /* The value of 'zeroes' now looks like this: <br />
+                            &emsp; &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f <br />
+                            &emsp; &emsp; 0.0f &emsp; 1.0f &emsp; 1.0f &emsp; 1.0f &emsp; 0.0f <br />
+                            &emsp; &emsp; 0.0f &emsp; 1.0f &emsp; 1.0f &emsp; 1.0f &emsp; 0.0f <br />
+                            &emsp; &emsp; 0.0f &emsp; 1.0f &emsp; 1.0f &emsp; 1.0f &emsp; 0.0f <br />
+                            &emsp; &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f <br />
+                            */
+                        </code>
+                    </div></li>
+                </ul>
+            </li>
+            <li>
+                <a name="FillCopy" />
+                <code class="CodeDecl">public void Fill(const ArrayType* values, bool useMemcpy)</code>
+                <ul>
+                    <li>Copies the given array into this one.</li>
+                    <li>Assumes that the size of this array matches the given one.</li>
+                    <li>If "useMemcpy" is true, this array will have its exact binary data copied quickly using memcpy.</li>
+                    <li>If "useMemcpy" is false, each individual element will be set using its assignment operator.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="FillFunc" />
+                <code class="CodeDecl">
+                    template&lt;typename Func&gt; <br />
+                    public void FillFunc(Func getValue)
+                </code>
+                <ul>
+                    <li>Fills every element of this array with the return value of the given function.</li>
+                    <li>The function must have the signature <code>void GetValue(Vector2u index, ArrayType* outNewValue)</code></li>
+                    <li><div class="CodeSample">
+                        <code>
+                            Array2D&lt;float&gt; floats(4, 4); <br />
+                            floats.FillFunc([](Vector2u index, float* outVal) <br />
+                            { <br />
+                            &emsp; &emsp; *outVal = (float)(index.x * index.y); <br />
+                            }); <br />
+                            /* <br />
+                            &emsp; The array 'floats' now looks like this: <br />
+                            &emsp; &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f <br />
+                            &emsp; &emsp; 0.0f &emsp; 1.0f &emsp; 2.0f &emsp; 3.0f <br />
+                            &emsp; &emsp; 0.0f &emsp; 2.0f &emsp; 4.0f &emsp; 6.0f <br />
+                            &emsp; &emsp; 0.0f &emsp; 3.0f &emsp; 6.0f &emsp; 9.0f <br />
+                            */
+                        </code>
+                    </div></li>
+                </ul>
+            </li>
+            <li>
+                <a name="RotateInto" />
+                <code class="CodeDecl">public void RotateInto(int clockwiseRots, Array2D&lt;ArrayType&gt;&amp; outArray, bool useMemcpy) const</code>
+                <ul>
+                    <li>Sets the given array to be a rotated version of this array.</li>
+                    <li>The number of 90-degree rotations is specified by "clockwiseRots".</li>
+                    <li>"useMemcpy" determines whether to use memcpy on the whole array (faster) or the assignment operator on each element (slower).</li>
+                    <li>The given array will be automatically resized to match this one's size if needed.</li>
+                    <li><div class="CodeSample">
+                        <code>
+                            Array2D&lt;int&gt; ints(3, 3); <br />
+                            ints.FillFunc([](Vector2u index, float* outVal)) <br />
+                            { <br />
+                            &emsp; &emsp; *outVal = index.x + (3 * index.y); <br />
+                            }); <br />
+                            /* <br />
+                            &emsp; The array 'ints' now looks like this: <br />
+                            &emsp; &emsp; 0 &emsp; 1 &emsp; 2 <br />
+                            &emsp; &emsp; 3 &emsp; 4 &emsp; 5 <br />
+                            &emsp; &emsp; 6 &emsp; 7 &emsp; 8 <br />
+                            */ <br />
+                            Array2D&lt;int&gt; ints2(3, 3); <br />
+                            ints.RotateInto(1, ints2, true); <br />
+                            /* <br />
+                            &emsp; The array 'ints2' now looks like this: <br />
+                            &emsp; &emsp; 6 &emsp; 3 &emsp; 0 <br />
+                            &emsp; &emsp; 7 &emsp; 4 &emsp; 1 <br />
+                            &emsp; &emsp; 8 &emsp; 5 &emsp; 2 <br />
+                            */
+                        </code>
+                    </div></li>
+                </ul>
+            </li>
+            <li>
+                <a name="Resize" />
+                <code class="CodeDecl">public void Resize(unsigned int newWidth, unsigned int newHeight, const ArrayType&amp; defaultVal)</code>
+                <ul>
+                    <li>Resizes this array to the given size without modifying its current elements (although some elements will of course be lost if the array gets shortened).</li>
+                    <li>If the array is being expanded, new elements will be set to the given value.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetArrayConst" />
+                <code class="CodeDecl">public const ArrayType* GetArray(void) const</code>
+                <ul>
+                    <li>Gets a raw pointer to the first element in this array.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetArray" />
+                <code class="CodeDecl">public ArrayType* GetArray(void)</code>
+                <ul>
+                    <li>Gets a raw pointer to this first element in this array.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="CopyInto" />
+                <code class="CodeDecl">public void CopyInto(ArrayType* outValues) const</code>
+                <ul>
+                    <li>Copies this array into the given raw array.</li>
+                    <li>Assumes the raw array has the same number of elements as this one.</li>
+                </ul>
+            </li>
+        </ul>
+
+        <br class="SectionDivider" />
+
+        <h2>Usage</h2>
+        <p>This class can be used to represent 2D arrays and easily perform high-level computations/modifications to them.
+           It is important to note that for best cache usage, array iteration should be done through the Y axis in the outer loop
+               and the X axis in the inner loop.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Samples</h2>
+        <div class="CodeSample">
+            <code>
+                typedef Array2D&lt;int&gt; IntArray2D; <br />
+                IntArray2D ints1(3, 3, 3.0f), <br />
+                           ints2(5, 5, 5.0f); <br />
+                std::cout << ints1[Vector2u(0, 0)] << ", " << ints2[Vector2u(3, 3)] << "\n"; // Outputs "3.0, 5.0". <br />
+                <br />
+                Vector2i testPos1(4, -1); <br />
+                Vector2i testPos2; <br />
+                testPos2 = ints1.Clamp(testPos1); <br />
+                std::cout << testPos2.x << ", " << testPos2.y << "\n"; // Outputs "2, 0". <br />
+                testPos2 = ints1.Wrap(testPos1); <br />
+                std::cout << testPos2.x << ", " << testPos2.y << "\n"; // Outputs "1, 2". <br />
+                testPos2 = ints2.Clamp(testPos1); <br />
+                std::cout << testPos2.x << ", " << testPos2.y << "\n"; // Outputs "4, 0". <br />
+                testPos2 = ints2.Wrap(testPos1); <br />
+                std::cout << testPos2.x << ", " << testPos2.y << "\n"; // Outputs "4, 4".<br />
+            </code>
+        </div>
+
+    </body>
+
+ </html>
