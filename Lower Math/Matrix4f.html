@@ -291,6 +291,11 @@
         <br class="SectionDivider" />
 
         <h2>Usage</h2>
+        <p>Matrices are the fundamental math behind triangle-rendering. Meshes are specified in "object-space"
+           (un-rotated, un-scaled, centered at the origin), and matrix transforms are done on the GPU to convert them to "world space"
+           (rotated, scaled, and translated to its world coordinates), then "camera/view space" (translated and rotated so that the camera
+           is at the origin and pointing down the positive Z axis), then finally "screen space" (everything visible is inside a
+           unit cube from -1 to 1 centered at the origin).</p>
         <div class="CodeSample">
             <code>
                 //Define the player's camera data. <br />
@@ -346,7 +351,10 @@
                 std::cout << screenSpaceVertex.x << ", " << screenSpaceVertex.y << ", " << screenSpaceVertex.z << "\n"; //Prints '0.0, 0.0, 0.998463'.<br />
                 Vector3f objectSpaceVertex2 = wvpM.GetInverse().Apply(screenSpaceVertex); <br />
                 std::cout << objectSpaceVertex2.x << ", " << objectSpaceVertex2.y << ", " << objectSpaceVertex2.z << "\n"; //Prints '0, 0, 0' within float error. <br />
-                std::cout << "Is vertex in viewport?: " << (screenSpaceVertex.z <= 1.0f && screenSpaceVertex.z >= 0.0f) << "\n"; //Prints 'true'.
+                bool isInViewport = (screenSpaceVertex.x >= -1.0f && screenSpaceVertex.x <= 1.0f && <br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; screenSpaceVertex.y >= -1.0f && screenSpaceVertex.y <= 1.0f && <br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; screenSpaceVertex.z >= -1.0f && screenSpaceVertex.z <= 1.0f); <br />
+                std::cout << "Is vertex in viewport?: " << isInViewport << "\n"; //Prints 'true'.
             </code>
         </div>
 
