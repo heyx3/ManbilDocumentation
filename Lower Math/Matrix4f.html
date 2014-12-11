@@ -15,7 +15,7 @@
            <code>"Vector" * "Matrix"</code> (which would be "post-multiplied").</p>
 
         <h2>Metadata</h2>
-        <p>Located in "Math/Lower Math/Matrix4f.h". Has a .cpp file in the same location. Part of the <a>Lower Math</a> system.</p>
+        <p>Located in "Math/Lower Math/Matrix4f.h". Has a .cpp file in the same location. Part of the <a href="../Lower Math.html">Lower Math</a> system.</p>
 
         <br class="SectionDivider" />
 
@@ -86,13 +86,6 @@
         <h2>Operators</h2>
         <ul class="DeclarationList">
             <li>
-                <a name="operator=" />
-                <code class="CodeDecl">public Matrix4f&amp; operator=(const Matrix4f&amp; cpy)</code>
-                <ul>
-                    <li>Sets this matrix to be exactly equal to the given one.</li>
-                </ul>
-            </li>
-            <li>
                 <a name="operator[]" />
                 <code class="CodeDecl">public float&amp; operator[](Vector2u loc)</code>
                 <ul>
@@ -106,11 +99,20 @@
                     <li>Gets the matrix element with the given column (X) and row (Y).</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="operator==" />
                 <code class="CodeDecl">public bool operator==(const Matrix4f&amp; other) const</code>
                 <ul>
                     <li>Determines whether this matrix is exactly equal to the given one.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="operator=" />
+                <code class="CodeDecl">public Matrix4f&amp; operator=(const Matrix4f&amp; cpy)</code>
+                <ul>
+                    <li>Sets this matrix to be exactly equal to the given one.</li>
                 </ul>
             </li>
         </ul>
@@ -175,6 +177,8 @@
                     </div></li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="GetDeterminant" />
                 <code class="CodeDecl">public float GetDeterminant(void) const</code>
@@ -198,6 +202,8 @@
                     <li>If this matrix can't be inverted, returns a matrix with all elements set to <code>BasicMath::NaN</code>.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="Apply" />
                 <code class="CodeDecl">public Vector3f Apply(Vector3f v) const</code>
@@ -205,6 +211,8 @@
                     <li>Applies this matrix's transformation to the given Vector3.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="SetAsIdentity" />
                 <code class="CodeDecl">public void SetAsIdentity(void)</code>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+ <html>
+    
+    <head>
+        <title>File: Vectors.h</title>
+        <link type="text/css" rel="stylesheet" href="../MainCSS.css" />
+    </head>
+
+    <body>
+
+        <h1>Vectors.h</h1>
+        <p>This file contains the various vector classes:</p>
+        <ul>
+            <li><a href="Vector2b.html">Vector2b</a></li>
+            <li><a href="Vector3b.html">Vector3b</a></li>
+            <li><a href="Vector4b.html">Vector4b</a></li>
+        </ul>
+        <ul>
+            <li><a href="Vector2u.html">Vector2u</a></li>
+            <li><a href="Vector3u.html">Vector3u</a></li>
+            <li><a href="Vector4u.html">Vector4u</a></li>
+        </ul>
+        <ul>
+            <li><a href="Vector2i.html">Vector2i</a></li>
+            <li><a href="Vector3i.html">Vector3i</a></li>
+            <li><a href="Vector4i.html">Vector4i</a></li>
+        </ul>
+        <ul>
+            <li><a href="Vector2f.html">Vector2f</a></li>
+            <li><a href="Vector3f.html">Vector3f</a></li>
+            <li><a href="Vector4f.html">Vector4f</a></li>
+        </ul>
+        <p>These classes are defined inside the namespace "ManbilVectors" so that they can be differentiated from other libraries' vector classes.</p>
+
+        <h2>Metadata</h2>
+        <p>Has a .cpp file in the same location. Part of the <a href="../Lower Math.html">Lower Math</a> system.</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Global Functions</h2>
+        <p>Several functions are defined to cast different vector types to other vector types.</p>
+        <ul class="DeclarationList">
+            <li>
+                <a name="ToV2uInt" />
+                <code class="CodeDecl">Vector2u ToV2u(Vector2i inV)</code>
+                <ul>
+                    <li>Casts the given integer vector to an unsigned integer vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ToV3uInt" />
+                <code class="CodeDecl">Vector3u ToV3u(Vector3i inV)</code>
+                <ul>
+                    <li>Casts the given integer vector to an unsigned integer vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ToV4uInt" />
+                <code class="CodeDecl">Vector4u ToV4u(Vector4i inV)</code>
+                <ul>
+                    <li>Casts the given integer vector to an unsigned integer vector.</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="DeclarationList">
+            <li>
+                <a name="ToV2uFloat" />
+                <code class="CodeDecl">Vector2u ToV2u(Vector2f inV)</code>
+                <ul>
+                    <li>Casts the given float vector to an unsigned integer vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ToV3uFloat" />
+                <code class="CodeDecl">Vector3u ToV3u(Vector3f inV)</code>
+                <ul>
+                    <li>Casts the given float vector to an unsigned integer vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ToV4uFloat" />
+                <code class="CodeDecl">Vector4u ToV4u(Vector4f inV)</code>
+                <ul>
+                    <li>Casts the given float vector to an unsigned integer vector.</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="DeclarationList">
+            <li>
+                <a name="ToV2iUint" />
+                <code class="CodeDecl">Vector2i ToV2i(Vector2u inV)</code>
+                <ul>
+                    <li>Casts the given unsigned integer vector to a signed integer vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ToV3iUint" />
+                <code class="CodeDecl">Vector3i ToV3i(Vector3u inV)</code>
+                <ul>
+                    <li>Casts the given unsigned integer vector to a signed integer vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ToV4iUint" />
+                <code class="CodeDecl">Vector4i ToV4i(Vector4u inV)</code>
+                <ul>
+                    <li>Casts the given unsigned integer vector to a signed integer vector.</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="DeclarationList">
+            <li>
+                <a name="ToV2iFloat" />
+                <code class="CodeDecl">Vector2i ToV2i(Vector2f inV)</code>
+                <ul>
+                    <li>Casts the given float vector to a signed integer vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ToV3iFloat" />
+                <code class="CodeDecl">Vector3i ToV3i(Vector3f inV)</code>
+                <ul>
+                    <li>Casts the given float vector to a signed integer vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ToV4iFloat" />
+                <code class="CodeDecl">Vector4i ToV4i(Vector4f inV)</code>
+                <ul>
+                    <li>Casts the given float vector to a signed integer vector.</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="DeclarationList">
+            <li>
+                <a name="ToV2fInt" />
+                <code class="CodeDecl">Vector2f ToV2f(Vector2i inV)</code>
+                <ul>
+                    <li>Casts the given signed integer vector to a float vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ToV3fInt" />
+                <code class="CodeDecl">Vector3f ToV3f(Vector3i inV)</code>
+                <ul>
+                    <li>Casts the given signed integer vector to a float vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ToV4fInt" />
+                <code class="CodeDecl">Vector4f ToV4f(Vector4i inV)</code>
+                <ul>
+                    <li>Casts the given signed integer vector to a float vector.</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="DeclarationList">
+            <li>
+                <a name="ToV2fUint" />
+                <code class="CodeDecl">Vector2f ToV2f(Vector2u inV)</code>
+                <ul>
+                    <li>Casts the given unsigned integer vector to a float vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ToV3fUint" />
+                <code class="CodeDecl">Vector3f ToV3f(Vector3u inV)</code>
+                <ul>
+                    <li>Casts the given unsigned integer vector to a float vector.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ToV4fUint" />
+                <code class="CodeDecl">Vector4f ToV4f(Vector4u inV)</code>
+                <ul>
+                    <li>Casts the given unsigned integer vector to a float vector.</li>
+                </ul>
+            </li>
+        </ul>
+
+    </body>
+
+ </html>

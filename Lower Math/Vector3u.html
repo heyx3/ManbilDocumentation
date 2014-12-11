@@ -12,7 +12,7 @@
         <p>This class represents a 3-dimensional vector made of unsigned integers.</p>
 
         <h2>Metadata</h2>
-        <p>Found in Math/Lower Math/Vectors.h. Has a .cpp file in the same 0location. Part of the <a>Lower Math</a> system.</p>
+        <p>Found in <a href="Vectors.h.html">Math/Lower Math/Vectors.h</a>. Has a .cpp file in the same 0location. Part of the <a href="../Lower Math.html">Lower Math</a> system.</p>
 
         <br class="SectionDivider" />
 
@@ -73,6 +73,8 @@
                     <li>Gets a hash code. Allows this vector to be used for std collections that uses hashes.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="[]Const" />
                 <code class="CodeDecl">public const unsigned int&amp; operator[](unsigned int index) const</code>
@@ -87,6 +89,8 @@
                     <li>Accesses the X, Y, or Z component using 0, 1, or 2, respectively.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="+=" />
                 <code class="CodeDecl">public Vector3u&amp; operator+=(const Vector3u&amp; other)</code>
@@ -150,6 +154,8 @@
                     <li>Gets the inverse of this vector.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="==" />
                 <code class="CodeDecl">public bool operator==(const Vector3u&amp; other) const</code>
@@ -280,6 +286,8 @@
                     <li>Gets a 2D vector with this vector's Y and Z components, in that order.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="MultiplyComponents" />
                 <code class="CodeDecl">public void MultiplyComponents(Vector3u scale)</code>
@@ -294,6 +302,8 @@
                     <li>Multiplie thsi vector's individual components by the given vector's individual components.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="ClampI" />
                 <code class="CodeDecl">public Vector3u Clamp(unsigned int min, unsigned int max) const</code>
@@ -308,6 +318,8 @@
                     <li>Clamps each component to be inside the specified range.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="Dot" />
                 <code class="CodeDecl">public unsigned int Dot(Vector3u other) const</code>
@@ -350,6 +362,8 @@
                     <li>Gets the Manhattan Distance (the sum of the distance along each individual component).</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="GetHashCode" />
                 <code class="CodeDecl">public unsigned int GetHashCode(void) const</code>

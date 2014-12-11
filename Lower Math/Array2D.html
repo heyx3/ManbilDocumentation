@@ -15,7 +15,7 @@
         <br class="SectionDivider" />
 
         <h2>Metadata</h2>
-        <p>Located in "Math/Lower Math/Array2D.h". Has a .cpp file in the same location. Part of the <a>Lower Math</a> system.</p>
+        <p>Located in "Math/Lower Math/Array2D.h". Has a .cpp file in the same location. Part of the <a href="../Lower Math.html">Lower Math</a> system.</p>
 
         <br class="SectionDivider" />
 
@@ -145,6 +145,8 @@
                     <li>Gets the size of this array along each axis.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="ResetNoValue" />
                 <code class="CodeDecl">public void Reset(unsigned int newWidth, unsigned int newHeight) const</code>
@@ -160,6 +162,8 @@
                     <li>Resets this array to the given size and initializes all elements to the given value.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="GetIndex" />
                 <code class="CodeDecl">public unsigned int GetIndex(unsigned int x, unsigned int y) const</code>
@@ -216,6 +220,8 @@
                     <li>Wraps the given coordinate around the range of allowable coordinates for this array.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="IsSquare" />
                 <code class="CodeDecl">public bool IsSquare(void) const</code>
@@ -237,6 +243,8 @@
                     <li>Gets the total number of elements contained by this array.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="FillValue" />
                 <code class="CodeDecl">public void Fill(const ArrayType&amp; value)</code>
@@ -250,20 +258,22 @@
                 <ul>
                     <li>Copies the given array's contents into this one.</li>
                     <li>Can optionally specify an offset for the copy array.</li>
-                    <li><div class="CodeSample">
-                        <code>
-                            Array2D&lt;float&gt; zeroes(5, 5, 0.0f); <br />
-                            Array2D&lt;float&gt; ones(3, 3, 1.0f); <br />
-                            zeroes.Fill(ones, Vector2i(1, 1)); <br />
-                            /* The value of 'zeroes' now looks like this: <br />
-                            &emsp; &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f <br />
-                            &emsp; &emsp; 0.0f &emsp; 1.0f &emsp; 1.0f &emsp; 1.0f &emsp; 0.0f <br />
-                            &emsp; &emsp; 0.0f &emsp; 1.0f &emsp; 1.0f &emsp; 1.0f &emsp; 0.0f <br />
-                            &emsp; &emsp; 0.0f &emsp; 1.0f &emsp; 1.0f &emsp; 1.0f &emsp; 0.0f <br />
-                            &emsp; &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f <br />
-                            */
-                        </code>
-                    </div></li>
+                    <li>
+                        <div class="CodeSample">
+                            <code>
+                                Array2D&lt;float&gt; zeroes(5, 5, 0.0f); <br />
+                                Array2D&lt;float&gt; ones(3, 3, 1.0f); <br />
+                                zeroes.Fill(ones, Vector2i(1, 1)); <br />
+                                /* The value of 'zeroes' now looks like this: <br />
+                                &emsp; &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f <br />
+                                &emsp; &emsp; 0.0f &emsp; 1.0f &emsp; 1.0f &emsp; 1.0f &emsp; 0.0f <br />
+                                &emsp; &emsp; 0.0f &emsp; 1.0f &emsp; 1.0f &emsp; 1.0f &emsp; 0.0f <br />
+                                &emsp; &emsp; 0.0f &emsp; 1.0f &emsp; 1.0f &emsp; 1.0f &emsp; 0.0f <br />
+                                &emsp; &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f <br />
+                                */
+                            </code>
+                        </div>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -285,24 +295,28 @@
                 <ul>
                     <li>Fills every element of this array with the return value of the given function.</li>
                     <li>The function must have the signature <code>void GetValue(Vector2u index, ArrayType* outNewValue)</code></li>
-                    <li><div class="CodeSample">
-                        <code>
-                            Array2D&lt;float&gt; floats(4, 4); <br />
-                            floats.FillFunc([](Vector2u index, float* outVal) <br />
-                            { <br />
-                            &emsp; &emsp; *outVal = (float)(index.x * index.y); <br />
-                            }); <br />
-                            /* <br />
-                            &emsp; The array 'floats' now looks like this: <br />
-                            &emsp; &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f <br />
-                            &emsp; &emsp; 0.0f &emsp; 1.0f &emsp; 2.0f &emsp; 3.0f <br />
-                            &emsp; &emsp; 0.0f &emsp; 2.0f &emsp; 4.0f &emsp; 6.0f <br />
-                            &emsp; &emsp; 0.0f &emsp; 3.0f &emsp; 6.0f &emsp; 9.0f <br />
-                            */
-                        </code>
-                    </div></li>
+                    <li>
+                        <div class="CodeSample">
+                            <code>
+                                Array2D&lt;float&gt; floats(4, 4); <br />
+                                floats.FillFunc([](Vector2u index, float* outVal) <br />
+                                { <br />
+                                &emsp; &emsp; *outVal = (float)(index.x * index.y); <br />
+                                }); <br />
+                                /* <br />
+                                &emsp; The array 'floats' now looks like this: <br />
+                                &emsp; &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f &emsp; 0.0f <br />
+                                &emsp; &emsp; 0.0f &emsp; 1.0f &emsp; 2.0f &emsp; 3.0f <br />
+                                &emsp; &emsp; 0.0f &emsp; 2.0f &emsp; 4.0f &emsp; 6.0f <br />
+                                &emsp; &emsp; 0.0f &emsp; 3.0f &emsp; 6.0f &emsp; 9.0f <br />
+                                */
+                            </code>
+                        </div>
+                    </li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="RotateInto" />
                 <code class="CodeDecl">public void RotateInto(int clockwiseRots, Array2D&lt;ArrayType&gt;&amp; outArray, bool useMemcpy) const</code>
@@ -311,29 +325,31 @@
                     <li>The number of 90-degree rotations is specified by "clockwiseRots".</li>
                     <li>"useMemcpy" determines whether to use memcpy on the whole array (faster) or the assignment operator on each element (slower).</li>
                     <li>The given array will be automatically resized to match this one's size if needed.</li>
-                    <li><div class="CodeSample">
-                        <code>
-                            Array2D&lt;int&gt; ints(3, 3); <br />
-                            ints.FillFunc([](Vector2u index, float* outVal)) <br />
-                            { <br />
-                            &emsp; &emsp; *outVal = index.x + (3 * index.y); <br />
-                            }); <br />
-                            /* <br />
-                            &emsp; The array 'ints' now looks like this: <br />
-                            &emsp; &emsp; 0 &emsp; 1 &emsp; 2 <br />
-                            &emsp; &emsp; 3 &emsp; 4 &emsp; 5 <br />
-                            &emsp; &emsp; 6 &emsp; 7 &emsp; 8 <br />
-                            */ <br />
-                            Array2D&lt;int&gt; ints2(3, 3); <br />
-                            ints.RotateInto(1, ints2, true); <br />
-                            /* <br />
-                            &emsp; The array 'ints2' now looks like this: <br />
-                            &emsp; &emsp; 6 &emsp; 3 &emsp; 0 <br />
-                            &emsp; &emsp; 7 &emsp; 4 &emsp; 1 <br />
-                            &emsp; &emsp; 8 &emsp; 5 &emsp; 2 <br />
-                            */
-                        </code>
-                    </div></li>
+                    <li>
+                        <div class="CodeSample">
+                            <code>
+                                Array2D&lt;int&gt; ints(3, 3); <br />
+                                ints.FillFunc([](Vector2u index, float* outVal)) <br />
+                                { <br />
+                                &emsp; &emsp; *outVal = index.x + (3 * index.y); <br />
+                                }); <br />
+                                /* <br />
+                                &emsp; The array 'ints' now looks like this: <br />
+                                &emsp; &emsp; 0 &emsp; 1 &emsp; 2 <br />
+                                &emsp; &emsp; 3 &emsp; 4 &emsp; 5 <br />
+                                &emsp; &emsp; 6 &emsp; 7 &emsp; 8 <br />
+                                */ <br />
+                                Array2D&lt;int&gt; ints2(3, 3); <br />
+                                ints.RotateInto(1, ints2, true); <br />
+                                /* <br />
+                                &emsp; The array 'ints2' now looks like this: <br />
+                                &emsp; &emsp; 6 &emsp; 3 &emsp; 0 <br />
+                                &emsp; &emsp; 7 &emsp; 4 &emsp; 1 <br />
+                                &emsp; &emsp; 8 &emsp; 5 &emsp; 2 <br />
+                                */
+                            </code>
+                        </div>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -344,6 +360,8 @@
                     <li>If the array is being expanded, new elements will be set to the given value.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="GetArrayConst" />
                 <code class="CodeDecl">public const ArrayType* GetArray(void) const</code>
@@ -358,6 +376,8 @@
                     <li>Gets a raw pointer to this first element in this array.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="CopyInto" />
                 <code class="CodeDecl">public void CopyInto(ArrayType* outValues) const</code>

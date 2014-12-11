@@ -13,7 +13,7 @@
         <p>This class contains basic math operations, defined as static functions in the class "BasicMath".</p>
 
         <h2>Metadata</h2>
-        <p>Located in "Math/Lower Math/BasicMath.h". Has a .cpp file in the same location. Part of the <a>Lower Math</a> system.</p>
+        <p>Located in "Math/Lower Math/BasicMath.h". Has a .cpp file in the same location. Part of the <a href="../Lower Math.html">Lower Math</a> system.</p>
 
         <br class="SectionDivider" />
 
@@ -31,8 +31,8 @@
                     <li>
                         Fields:
                         <ul>
-                            <li><code>int zero</code></li>
-                            <li><code>int one</code></li>
+                            <li><code>public int zero;</code></li>
+                            <li><code>public int one;</code></li>
                         </ul>
                     </li>
                     <li>Represents data returned by the function <a href="#ClampToIntervalBounds"><code>ClampToIntervalBounds()</code></a>.</li>
@@ -71,6 +71,8 @@
                     <li>Gets whether the given value is NaN.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="FastInvSqrt1" />
                 <code class="CodeDecl">public float FastInvSqrt1(float f)</code>
@@ -89,6 +91,8 @@
                     <li>Uses the <a href="http://en.wikipedia.org/wiki/Fast_inverse_square_root">Fast Inverse Square Root approximation</a> to compute it.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="IntPow" />
                 <code class="CodeDecl">public long IntPow(int base, int exponent)</code>
@@ -162,6 +166,8 @@
                     <li class="Warning">Assumes the given value is greater than or equal to 0.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="RadToDeg" />
                 <code class="CodeDecl">public float RadToDeg(float radians)</code>
@@ -197,6 +203,8 @@
                     <li>Computes the given root of the given value.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="Clamp" />
                 <code class="CodeDecl">public T Clamp&lt;T&gt;(T val, T min, T max)</code>
@@ -291,6 +299,8 @@
                     </li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="IsFactor" />
                 <code class="CodeDecl">public bool IsFactor(int n, int factor)</code>
@@ -298,6 +308,8 @@
                     <li>Gets whether "factor" is a factor of "n".</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="Lerp" />
                 <code class="CodeDecl">public float Lerp(float start, float end, float lerp)</code>

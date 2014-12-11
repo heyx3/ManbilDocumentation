@@ -15,7 +15,7 @@
         <br class="SectionDivider" />
 
         <h2>Metadata</h2>
-        <p>Located in "Math/Lower Math/Interval.h". Has a .cpp file in the same location. Part of the <a>Lower Math</a> system.</p>
+        <p>Located in "Math/Lower Math/Interval.h". Has a .cpp file in the same location. Part of the <a href="../Lower Math.html">Lower Math</a> system.</p>
 
         <br class="SectionDivider" />
 
@@ -62,6 +62,8 @@
                     <li>Gets an interval from 0.0f to 0.0f.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="Union" />
                 <code class="CodeDecl">public Interval Union(Interval one, Interval two)</code>
@@ -163,6 +165,8 @@
                     <li>Gets whether this interval is valid (i.e. its range is greater than 0.0f).</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="GetStart" />
                 <code class="CodeDecl">public float GetStart(void) const</code>
@@ -205,6 +209,8 @@
                     <li>Gets a quarter the value of the range this interval spans.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="GetFirstHalf" />
                 <code class="CodeDecl">public Interval GetFirstHalf(void) const</code>
@@ -247,6 +253,8 @@
                     <li>Gets an interval that spans the fourth quarter of this interval's range.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="Inflate" />
                 <code class="CodeDecl">public Interval Inflate(float rangeScale) const</code>
@@ -268,6 +276,8 @@
                     <li>Shifts this interval's center by the given amount.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="Clamp" />
                 <code class="CodeDecl">public float Clamp(float value) const</code>
@@ -280,17 +290,19 @@
                 <code class="CodeDecl">public float WrapValueAroundInterval(float value) const</code>
                 <ul>
                     <li>Wraps the given value around the edges of this interval.</li>
-                    <li><div class="CodeSample">
-                        <code>
-                            //The following code prints out the value '1.5'. <br />
-                            Interval oneToFive(1.0f, 5.0f, 0.0f, true, true); <br />
-                            std::cout << oneToFive.WrapValueAroundInterval(5.5f); <br />
-                            <br />
-                            //The following code prints out the value '1.0001'. <br />
-                            oneToFive = Interval(1.0f, 5.0f, 0.0001f, true, false); <br />
-                            std::cout << oneToFive.WrapValueAroundInterval(5.0f);
-                        </code>
-                    </div></li>
+                    <li>
+                        <div class="CodeSample">
+                            <code>
+                                //The following code prints out the value '1.5'. <br />
+                                Interval oneToFive(1.0f, 5.0f, 0.0f, true, true); <br />
+                                std::cout << oneToFive.WrapValueAroundInterval(5.5f); <br />
+                                <br />
+                                //The following code prints out the value '1.0001'. <br />
+                                oneToFive = Interval(1.0f, 5.0f, 0.0001f, true, false); <br />
+                                std::cout << oneToFive.WrapValueAroundInterval(5.0f);
+                            </code>
+                        </div>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -312,14 +324,16 @@
                 <code class="CodeDecl">public float MapValue(Interval destination, float value) const</code>
                 <ul>
                     <li>Remaps the given value from this interval to the given interval.</li>
-                    <li><div class="CodeSample">
-                        <code>
-                            //The following code prints out the value '3.0'. <br />
-                            Interval oneToFive(1.0f, 5.0f, 0.0f, true, true); <br />
-                            Interval twoToSix(2.0f, 6.0f, 0.0f, true, true); <br />
-                            std::cout << oneToFive.MapValue(twoToSix, 2.0f);
-                        </code>
-                    </div></li>
+                    <li>
+                        <div class="CodeSample">
+                            <code>
+                                //The following code prints out the value '3.0'. <br />
+                                Interval oneToFive(1.0f, 5.0f, 0.0f, true, true); <br />
+                                Interval twoToSix(2.0f, 6.0f, 0.0f, true, true); <br />
+                                std::cout << oneToFive.MapValue(twoToSix, 2.0f);
+                            </code>
+                        </div>
+                    </li>
                 </ul>
             </li>
             <li>
@@ -327,15 +341,19 @@
                 <code class="CodeDecl">public float Reflect(float val) const</code>
                 <ul>
                     <li>Reflects the given value around the center of this interval.</li>
-                    <li><div class="CodeSample">
-                        <code>
-                            //The following code prints out the value '7.5'. <br />
-                            Interval zeroToTen(5.0f, 5.0f); <br />
-                            std::cout << zeroToTen.Reflect(2.5f);
-                        </code>
-                     </div></li>
+                    <li>
+                        <div class="CodeSample">
+                            <code>
+                                //The following code prints out the value '7.5'. <br />
+                                Interval zeroToTen(5.0f, 5.0f); <br />
+                                std::cout << zeroToTen.Reflect(2.5f);
+                            </code>
+                        </div>
+                    </li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="FloatIsInside" />
                 <code class="CodeDecl">public bool IsInside(float value) const</code>
@@ -357,6 +375,8 @@
                     <li>Gets whether the given Interval intersects this interval at all.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="RandomInsideRange" />
                 <code class="CodeDecl">public float RandomInsideRange(<a href="FastRand.html">FastRand</a>&amp; fr) const</code>
@@ -364,6 +384,8 @@
                     <li>Gets a random value inside this interval's range using the given PRNG.</li>
                 </ul>
             </li>
+        </ul>
+        <ul class="DeclarationList">
             <li>
                 <a name="GetHashCode" />
                 <code class="CodeDecl">public int GetHashCode(void) const</code>
