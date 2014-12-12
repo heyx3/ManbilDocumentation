@@ -19,6 +19,7 @@
 
         <h2>Declaration</h2>
         <code class="CodeDecl">class Quaternion;</code>
+        <p />
 
         <br class="SectionDivider" />
 
@@ -289,11 +290,11 @@
             <code>
                 Quaternion rot90AroundZ(Vector3f(0.0f, 0.0f, 1.0f), BasicMath::DegToRad(90.0f)); <br />
                 Vector3f point(1.0f, 0.0f, 0.0f), <br />
-    &emsp; &emsp; &emsp; rotatedPoint = rot90AroundZ.Rotated(point); <br />
+&emsp; &emsp; &emsp; &emsp; &emsp;rotatedPoint = rot90AroundZ.Rotated(point); <br />
                 std::cout << rotatedPoint.x << ", " << rotatedPoint.y << ", " << rotatedPoint.z << "\n"; //Prints '0.0f, 1.0f, 0.0f'. <br />
                 <br />
                 Quaternion posToNeg(Vector3f(1.0f, 1.0f, 1.0f).Normalized(), <br />
-&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;Vector3f(-1.0f, -1.0f, -1.0f).Normalized()); <br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; Vector3f(-1.0f, -1.0f, -1.0f).Normalized()); <br />
                 point = posToNeg.Rotated(Vector3f(1.0f, 1.0f, 1.0f)); <br />
                 std::cout << point.x << ", " << point.y << ", " << point.z << "\n"; //Prints '-1, -1, -1'. <br />
                 point = posToNeg.Rotated(Vector3f(-1.0f, -1.0f, -1.0f)); <br />
@@ -303,8 +304,8 @@
                 point = rot90AroundZThenPosToNeg.Rotated(Vector3f(1.0f, 1.0f, 1.0f)); <br />
                 //The above line did the following transformations: <br />
                 // -Starting with { 1, 1, 1 }. <br />
-                // -Rotated 90 degrees around the X to get { -1, 1, 1 }. <br />
-                // -Rotated with the second quaternion to get { 1, -1, -1 }. <br />
+                // -Rotated 90 degrees around the Z to get { -1, 1, 1 }. <br />
+                // -Rotated with the "posToNeg" quaternion to get { 1, -1, -1 }. <br />
                 std::cout << point.x << ", " << point.y << ", " << point.z << "\n"; //Prints '1, -1, -1'. <br />
             </code>
         </div>

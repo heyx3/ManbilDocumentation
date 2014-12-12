@@ -33,7 +33,7 @@
                 <a name="ArrayType" />
                 <code class="CodeDecl">template&lt;class ArrayType&gt;</code>
                 <ul>
-                    <li>The type of item this array contains. Should generally be trivially-copiable/assignable.</li>
+                    <li>The type of item this array contains.</li>
                 </ul>
             </li>
         </ul>
@@ -294,7 +294,7 @@
                 </code>
                 <ul>
                     <li>Fills every element of this array with the return value of the given function.</li>
-                    <li>The function must have the signature <code>void GetValue(Vector2u index, ArrayType* outNewValue)</code></li>
+                    <li>The function must have the signature <code>void StoreValue(Vector2u arrayIndex, ArrayType* outNewValue)</code></li>
                     <li>
                         <div class="CodeSample">
                             <code>
@@ -392,7 +392,7 @@
 
         <h2>Usage</h2>
         <p>This class can be used to represent 2D arrays and easily perform high-level computations/modifications to them.
-           It is important to note that for best cache usage, array iteration should be done through the Y axis in the outer loop
+           For best cache usage, array iteration should be done through the Y axis in the outer loop
                and the X axis in the inner loop.</p>
 
         <br class="SectionDivider" />
@@ -401,9 +401,9 @@
         <div class="CodeSample">
             <code>
                 typedef Array2D&lt;int&gt; IntArray2D; <br />
-                IntArray2D ints1(3, 3, 3.0f), <br />
-                           ints2(5, 5, 5.0f); <br />
-                std::cout << ints1[Vector2u(0, 0)] << ", " << ints2[Vector2u(3, 3)] << "\n"; // Outputs "3.0, 5.0". <br />
+                IntArray2D ints1(3, 3, 42), //Fills this array with 42. <br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp;ints2(5, 5, 43); //Fills this array with 43. <br />
+                std::cout << ints1[Vector2u(0, 0)] << ", " << ints2[Vector2u(3, 3)] << "\n"; // Outputs "42, 43". <br />
                 <br />
                 Vector2i testPos1(4, -1); <br />
                 Vector2i testPos2; <br />
