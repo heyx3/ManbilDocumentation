@@ -279,6 +279,47 @@
                     <li>Takes in whether this quaterion needs to be normalized first.</li>
                 </ul>
             </li>
+            <li>
+                <a name="GetAxisAngle" />
+                <code class="CodeDecl">public Vector4f GetAxisAngle(void) const</code>
+                <ul>
+                    <li>Gets the axis this quaternion rotates points around and the angle it rotates them by.</li>
+                    <li>Returns the results as a <a href="Vector4f.html">Vector4f</a>: the XYZ components are the angle and the W component is the axis.</li>
+                    <li><div class="CodeSample">
+                        <code>
+                            //The following code prints "0, 0, 1, 89.9995". <br />
+                            Quaternion quat(Vector3f(0.0f, 0.0f, 1.0f), BasicMath::DegToRad(90.0f)); <br />
+                            Vector4f result = quat.GetAxisAngle(); <br />
+                            std::cout << result.x << ", " << result.y << ", " << result.z << ", " << <br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;BasicMath::RadToDeg(result.w) << "\n"; <br />
+                            <br />
+                            //The following code prints "0, 0, -1, 89.9995". <br />
+                            quat = Quaternion(Vector3f(0.0f, 0.0f, 1.0f), BasicMath::DegToRad(-90.0f)); <br />
+                            result = quat.GetAxisAngle(); <br />
+                            std::cout << result.x << ", " << result.y << ", " << result.z << ", " << <br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;BasicMath::RadToDeg(result.w) << "\n";
+                        </code>
+                    </div></li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetEulerAngles" />
+                <code class="CodeDecl">public Vector4f GetEulerAngles(void) const</code>
+                <ul>
+                    <li>Gets the euler angles of the rotation this quaternion represents.</li>
+                    <li><div class="CodeSample">
+                        <code>
+                            //The following code prints '1.045, -1.23, 0.001' within floating-point error. <br />
+                            Quaterion rotX(Vector3f(1.0f, 0.0f, 0.0f), 1.045f), <br />
+&emsp; &emsp; &emsp; &emsp; &emsp; rotY(Vector3f(0.0f, 1.0f, 0.0f), -1.23f), <br />
+&emsp; &emsp; &emsp; &emsp; &emsp; rotZ(Vector3f(0.0f, 0.0f, 1.0f), 0.001f)); <br />
+                            Quaternion finalRot(rotX, Quaternion(rotY, rotZ)); <br />
+                            Vector3f euler = finalRot.GetEulerAngles(); <br />
+                            std::cout << euler.x << ", " << euler.y << ", " << euler.z << "\n";
+                        </code>
+                    </div></li>
+                </ul>
+            </li>
         </ul>
 
         <br class="SectionDivider" />
