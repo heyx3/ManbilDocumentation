@@ -185,7 +185,6 @@
 		#endregion
 
 		protected System.Windows.Forms.Label memberDefinitionEndLabel;
-		protected System.Windows.Forms.TextBox AhrefName;
 		protected System.Windows.Forms.Label templateStartLabel;
 		protected System.Windows.Forms.Label templateEndLabel;
 		protected System.Windows.Forms.CheckBox isBreakBox;
@@ -196,6 +195,7 @@
 		protected System.Windows.Forms.ComboBox AccessModifierDropdown;
 		protected System.Windows.Forms.TextBox TemplateArgsText;
 		protected System.Windows.Forms.CheckBox IsTemplatedBox;
+		public System.Windows.Forms.TextBox AhrefName;
 
 	}
 }

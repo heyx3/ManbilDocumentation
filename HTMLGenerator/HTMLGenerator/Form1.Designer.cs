@@ -29,6 +29,14 @@
 		private void InitializeComponent()
 		{
 			this.definitionsPanel = new System.Windows.Forms.Panel();
+			this.addSubtypeButton = new System.Windows.Forms.Button();
+			this.addConstantButton = new System.Windows.Forms.Button();
+			this.addStaticFunctionButton = new System.Windows.Forms.Button();
+			this.addStaticFieldButton = new System.Windows.Forms.Button();
+			this.addConstructorButton = new System.Windows.Forms.Button();
+			this.addOperatorButton = new System.Windows.Forms.Button();
+			this.addMemberFunctionButton = new System.Windows.Forms.Button();
+			this.addMemberFieldButton = new System.Windows.Forms.Button();
 			this.subtypesLabel = new System.Windows.Forms.Label();
 			this.subtypesList = new System.Windows.Forms.ListView();
 			this.constantsLabel = new System.Windows.Forms.Label();
@@ -63,14 +71,6 @@
 			this.codeSampleText = new System.Windows.Forms.RichTextBox();
 			this.classSummaryLabel = new System.Windows.Forms.Label();
 			this.textBox2 = new System.Windows.Forms.TextBox();
-			this.addMemberFieldButton = new System.Windows.Forms.Button();
-			this.addMemberFunctionButton = new System.Windows.Forms.Button();
-			this.addConstructorButton = new System.Windows.Forms.Button();
-			this.addOperatorButton = new System.Windows.Forms.Button();
-			this.addSubtypeButton = new System.Windows.Forms.Button();
-			this.addConstantButton = new System.Windows.Forms.Button();
-			this.addStaticFunctionButton = new System.Windows.Forms.Button();
-			this.addStaticFieldButton = new System.Windows.Forms.Button();
 			this.definitionsPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -106,6 +106,94 @@
 			this.definitionsPanel.Size = new System.Drawing.Size(828, 563);
 			this.definitionsPanel.TabIndex = 5;
 			// 
+			// addSubtypeButton
+			// 
+			this.addSubtypeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.addSubtypeButton.Location = new System.Drawing.Point(331, 416);
+			this.addSubtypeButton.Name = "addSubtypeButton";
+			this.addSubtypeButton.Size = new System.Drawing.Size(31, 24);
+			this.addSubtypeButton.TabIndex = 26;
+			this.addSubtypeButton.Text = "+";
+			this.addSubtypeButton.UseVisualStyleBackColor = true;
+			this.addSubtypeButton.Click += new System.EventHandler(this.addSubtypeButton_Click);
+			// 
+			// addConstantButton
+			// 
+			this.addConstantButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.addConstantButton.Location = new System.Drawing.Point(331, 275);
+			this.addConstantButton.Name = "addConstantButton";
+			this.addConstantButton.Size = new System.Drawing.Size(31, 24);
+			this.addConstantButton.TabIndex = 25;
+			this.addConstantButton.Text = "+";
+			this.addConstantButton.UseVisualStyleBackColor = true;
+			this.addConstantButton.Click += new System.EventHandler(this.addConstantButton_Click);
+			// 
+			// addStaticFunctionButton
+			// 
+			this.addStaticFunctionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.addStaticFunctionButton.Location = new System.Drawing.Point(331, 132);
+			this.addStaticFunctionButton.Name = "addStaticFunctionButton";
+			this.addStaticFunctionButton.Size = new System.Drawing.Size(31, 24);
+			this.addStaticFunctionButton.TabIndex = 24;
+			this.addStaticFunctionButton.Text = "+";
+			this.addStaticFunctionButton.UseVisualStyleBackColor = true;
+			this.addStaticFunctionButton.Click += new System.EventHandler(this.addStaticFunctionButton_Click);
+			// 
+			// addStaticFieldButton
+			// 
+			this.addStaticFieldButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.addStaticFieldButton.Location = new System.Drawing.Point(331, 3);
+			this.addStaticFieldButton.Name = "addStaticFieldButton";
+			this.addStaticFieldButton.Size = new System.Drawing.Size(31, 24);
+			this.addStaticFieldButton.TabIndex = 23;
+			this.addStaticFieldButton.Text = "+";
+			this.addStaticFieldButton.UseVisualStyleBackColor = true;
+			this.addStaticFieldButton.Click += new System.EventHandler(this.addStaticFieldButton_Click);
+			// 
+			// addConstructorButton
+			// 
+			this.addConstructorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.addConstructorButton.Location = new System.Drawing.Point(143, 417);
+			this.addConstructorButton.Name = "addConstructorButton";
+			this.addConstructorButton.Size = new System.Drawing.Size(31, 24);
+			this.addConstructorButton.TabIndex = 22;
+			this.addConstructorButton.Text = "+";
+			this.addConstructorButton.UseVisualStyleBackColor = true;
+			this.addConstructorButton.Click += new System.EventHandler(this.addConstructorButton_Click);
+			// 
+			// addOperatorButton
+			// 
+			this.addOperatorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.addOperatorButton.Location = new System.Drawing.Point(143, 276);
+			this.addOperatorButton.Name = "addOperatorButton";
+			this.addOperatorButton.Size = new System.Drawing.Size(31, 24);
+			this.addOperatorButton.TabIndex = 21;
+			this.addOperatorButton.Text = "+";
+			this.addOperatorButton.UseVisualStyleBackColor = true;
+			this.addOperatorButton.Click += new System.EventHandler(this.addOperatorButton_Click);
+			// 
+			// addMemberFunctionButton
+			// 
+			this.addMemberFunctionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.addMemberFunctionButton.Location = new System.Drawing.Point(143, 133);
+			this.addMemberFunctionButton.Name = "addMemberFunctionButton";
+			this.addMemberFunctionButton.Size = new System.Drawing.Size(31, 24);
+			this.addMemberFunctionButton.TabIndex = 20;
+			this.addMemberFunctionButton.Text = "+";
+			this.addMemberFunctionButton.UseVisualStyleBackColor = true;
+			this.addMemberFunctionButton.Click += new System.EventHandler(this.addMemberFunctionButton_Click);
+			// 
+			// addMemberFieldButton
+			// 
+			this.addMemberFieldButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.addMemberFieldButton.Location = new System.Drawing.Point(143, 4);
+			this.addMemberFieldButton.Name = "addMemberFieldButton";
+			this.addMemberFieldButton.Size = new System.Drawing.Size(31, 24);
+			this.addMemberFieldButton.TabIndex = 19;
+			this.addMemberFieldButton.Text = "+";
+			this.addMemberFieldButton.UseVisualStyleBackColor = true;
+			this.addMemberFieldButton.Click += new System.EventHandler(this.addMemberFieldButton_Click);
+			// 
 			// subtypesLabel
 			// 
 			this.subtypesLabel.AutoSize = true;
@@ -122,6 +210,7 @@
 			this.subtypesList.Size = new System.Drawing.Size(170, 110);
 			this.subtypesList.TabIndex = 16;
 			this.subtypesList.UseCompatibleStateImageBehavior = false;
+			this.subtypesList.SelectedIndexChanged += new System.EventHandler(this.subtypesList_SelectedIndexChanged);
 			// 
 			// constantsLabel
 			// 
@@ -139,6 +228,7 @@
 			this.constantsList.Size = new System.Drawing.Size(170, 110);
 			this.constantsList.TabIndex = 14;
 			this.constantsList.UseCompatibleStateImageBehavior = false;
+			this.constantsList.SelectedIndexChanged += new System.EventHandler(this.constantsList_SelectedIndexChanged);
 			// 
 			// staticFunctionsLabel
 			// 
@@ -156,6 +246,7 @@
 			this.staticFunctionsList.Size = new System.Drawing.Size(170, 110);
 			this.staticFunctionsList.TabIndex = 12;
 			this.staticFunctionsList.UseCompatibleStateImageBehavior = false;
+			this.staticFunctionsList.SelectedIndexChanged += new System.EventHandler(this.staticFunctionsList_SelectedIndexChanged);
 			// 
 			// staticFieldsLabel
 			// 
@@ -173,6 +264,7 @@
 			this.staticFieldsList.Size = new System.Drawing.Size(170, 102);
 			this.staticFieldsList.TabIndex = 10;
 			this.staticFieldsList.UseCompatibleStateImageBehavior = false;
+			this.staticFieldsList.SelectedIndexChanged += new System.EventHandler(this.staticFieldsList_SelectedIndexChanged);
 			// 
 			// constructorsLabel
 			// 
@@ -190,6 +282,7 @@
 			this.constructorsList.Size = new System.Drawing.Size(170, 110);
 			this.constructorsList.TabIndex = 8;
 			this.constructorsList.UseCompatibleStateImageBehavior = false;
+			this.constructorsList.SelectedIndexChanged += new System.EventHandler(this.constructorsList_SelectedIndexChanged);
 			// 
 			// operatorsLabel
 			// 
@@ -207,6 +300,7 @@
 			this.operatorsList.Size = new System.Drawing.Size(170, 110);
 			this.operatorsList.TabIndex = 6;
 			this.operatorsList.UseCompatibleStateImageBehavior = false;
+			this.operatorsList.SelectedIndexChanged += new System.EventHandler(this.operatorsList_SelectedIndexChanged);
 			// 
 			// memberFunctionsLabel
 			// 
@@ -224,6 +318,7 @@
 			this.memberFunctionsList.Size = new System.Drawing.Size(170, 110);
 			this.memberFunctionsList.TabIndex = 4;
 			this.memberFunctionsList.UseCompatibleStateImageBehavior = false;
+			this.memberFunctionsList.SelectedIndexChanged += new System.EventHandler(this.memberFunctionsList_SelectedIndexChanged);
 			// 
 			// memberFieldsLabel
 			// 
@@ -278,7 +373,7 @@
 			this.genHTMLButton.TabIndex = 6;
 			this.genHTMLButton.Text = "Generate File";
 			this.genHTMLButton.UseVisualStyleBackColor = true;
-			this.genHTMLButton.Click += new System.EventHandler(this.button1_Click);
+			this.genHTMLButton.Click += new System.EventHandler(this.genHTMLButton_Click);
 			// 
 			// htmlFileLocationText
 			// 
@@ -404,86 +499,6 @@
 			this.textBox2.Name = "textBox2";
 			this.textBox2.Size = new System.Drawing.Size(236, 20);
 			this.textBox2.TabIndex = 22;
-			// 
-			// addMemberFieldButton
-			// 
-			this.addMemberFieldButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.addMemberFieldButton.Location = new System.Drawing.Point(143, 4);
-			this.addMemberFieldButton.Name = "addMemberFieldButton";
-			this.addMemberFieldButton.Size = new System.Drawing.Size(31, 24);
-			this.addMemberFieldButton.TabIndex = 19;
-			this.addMemberFieldButton.Text = "+";
-			this.addMemberFieldButton.UseVisualStyleBackColor = true;
-			// 
-			// addMemberFunctionButton
-			// 
-			this.addMemberFunctionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.addMemberFunctionButton.Location = new System.Drawing.Point(143, 133);
-			this.addMemberFunctionButton.Name = "addMemberFunctionButton";
-			this.addMemberFunctionButton.Size = new System.Drawing.Size(31, 24);
-			this.addMemberFunctionButton.TabIndex = 20;
-			this.addMemberFunctionButton.Text = "+";
-			this.addMemberFunctionButton.UseVisualStyleBackColor = true;
-			// 
-			// addConstructorButton
-			// 
-			this.addConstructorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.addConstructorButton.Location = new System.Drawing.Point(143, 417);
-			this.addConstructorButton.Name = "addConstructorButton";
-			this.addConstructorButton.Size = new System.Drawing.Size(31, 24);
-			this.addConstructorButton.TabIndex = 22;
-			this.addConstructorButton.Text = "+";
-			this.addConstructorButton.UseVisualStyleBackColor = true;
-			// 
-			// addOperatorButton
-			// 
-			this.addOperatorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.addOperatorButton.Location = new System.Drawing.Point(143, 276);
-			this.addOperatorButton.Name = "addOperatorButton";
-			this.addOperatorButton.Size = new System.Drawing.Size(31, 24);
-			this.addOperatorButton.TabIndex = 21;
-			this.addOperatorButton.Text = "+";
-			this.addOperatorButton.UseVisualStyleBackColor = true;
-			// 
-			// addSubtypeButton
-			// 
-			this.addSubtypeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.addSubtypeButton.Location = new System.Drawing.Point(331, 416);
-			this.addSubtypeButton.Name = "addSubtypeButton";
-			this.addSubtypeButton.Size = new System.Drawing.Size(31, 24);
-			this.addSubtypeButton.TabIndex = 26;
-			this.addSubtypeButton.Text = "+";
-			this.addSubtypeButton.UseVisualStyleBackColor = true;
-			// 
-			// addConstantButton
-			// 
-			this.addConstantButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.addConstantButton.Location = new System.Drawing.Point(331, 275);
-			this.addConstantButton.Name = "addConstantButton";
-			this.addConstantButton.Size = new System.Drawing.Size(31, 24);
-			this.addConstantButton.TabIndex = 25;
-			this.addConstantButton.Text = "+";
-			this.addConstantButton.UseVisualStyleBackColor = true;
-			// 
-			// addStaticFunctionButton
-			// 
-			this.addStaticFunctionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.addStaticFunctionButton.Location = new System.Drawing.Point(331, 132);
-			this.addStaticFunctionButton.Name = "addStaticFunctionButton";
-			this.addStaticFunctionButton.Size = new System.Drawing.Size(31, 24);
-			this.addStaticFunctionButton.TabIndex = 24;
-			this.addStaticFunctionButton.Text = "+";
-			this.addStaticFunctionButton.UseVisualStyleBackColor = true;
-			// 
-			// addStaticFieldButton
-			// 
-			this.addStaticFieldButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.addStaticFieldButton.Location = new System.Drawing.Point(331, 3);
-			this.addStaticFieldButton.Name = "addStaticFieldButton";
-			this.addStaticFieldButton.Size = new System.Drawing.Size(31, 24);
-			this.addStaticFieldButton.TabIndex = 23;
-			this.addStaticFieldButton.Text = "+";
-			this.addStaticFieldButton.UseVisualStyleBackColor = true;
 			// 
 			// MainForm
 			// 

@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace HTMLGenerator
 {
+	/// <summary>
+	/// TODO: Rename to "DataDefinition".
+	/// </summary>
 	public partial class MemberFieldDefinition : ItemHTMLDefinition
 	{
 		public MemberFieldDefinition()
 		{
 			InitializeComponent();
+		}
+		public MemberFieldDefinition(ItemHTMLData data)
+			: this()
+		{
+			SetData(data);
 		}
 
 		protected override void AddDefinition(StringBuilder sbOut)
