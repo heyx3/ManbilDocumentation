@@ -29,8 +29,8 @@
 		private void InitializeComponent()
 		{
 			this.definitionsPanel = new System.Windows.Forms.Panel();
-			this.label1 = new System.Windows.Forms.Label();
-			this.listView1 = new System.Windows.Forms.ListView();
+			this.subtypesLabel = new System.Windows.Forms.Label();
+			this.subtypesList = new System.Windows.Forms.ListView();
 			this.constantsLabel = new System.Windows.Forms.Label();
 			this.constantsList = new System.Windows.Forms.ListView();
 			this.staticFunctionsLabel = new System.Windows.Forms.Label();
@@ -63,13 +63,29 @@
 			this.codeSampleText = new System.Windows.Forms.RichTextBox();
 			this.classSummaryLabel = new System.Windows.Forms.Label();
 			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.addMemberFieldButton = new System.Windows.Forms.Button();
+			this.addMemberFunctionButton = new System.Windows.Forms.Button();
+			this.addConstructorButton = new System.Windows.Forms.Button();
+			this.addOperatorButton = new System.Windows.Forms.Button();
+			this.addSubtypeButton = new System.Windows.Forms.Button();
+			this.addConstantButton = new System.Windows.Forms.Button();
+			this.addStaticFunctionButton = new System.Windows.Forms.Button();
+			this.addStaticFieldButton = new System.Windows.Forms.Button();
 			this.definitionsPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// definitionsPanel
 			// 
-			this.definitionsPanel.Controls.Add(this.label1);
-			this.definitionsPanel.Controls.Add(this.listView1);
+			this.definitionsPanel.Controls.Add(this.addSubtypeButton);
+			this.definitionsPanel.Controls.Add(this.addConstantButton);
+			this.definitionsPanel.Controls.Add(this.addStaticFunctionButton);
+			this.definitionsPanel.Controls.Add(this.addStaticFieldButton);
+			this.definitionsPanel.Controls.Add(this.addConstructorButton);
+			this.definitionsPanel.Controls.Add(this.addOperatorButton);
+			this.definitionsPanel.Controls.Add(this.addMemberFunctionButton);
+			this.definitionsPanel.Controls.Add(this.addMemberFieldButton);
+			this.definitionsPanel.Controls.Add(this.subtypesLabel);
+			this.definitionsPanel.Controls.Add(this.subtypesList);
 			this.definitionsPanel.Controls.Add(this.constantsLabel);
 			this.definitionsPanel.Controls.Add(this.constantsList);
 			this.definitionsPanel.Controls.Add(this.staticFunctionsLabel);
@@ -90,22 +106,22 @@
 			this.definitionsPanel.Size = new System.Drawing.Size(828, 563);
 			this.definitionsPanel.TabIndex = 5;
 			// 
-			// label1
+			// subtypesLabel
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(198, 419);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(66, 13);
-			this.label1.TabIndex = 17;
-			this.label1.Text = "Constructors";
+			this.subtypesLabel.AutoSize = true;
+			this.subtypesLabel.Location = new System.Drawing.Point(198, 428);
+			this.subtypesLabel.Name = "subtypesLabel";
+			this.subtypesLabel.Size = new System.Drawing.Size(51, 13);
+			this.subtypesLabel.TabIndex = 17;
+			this.subtypesLabel.Text = "Subtypes";
 			// 
-			// listView1
+			// subtypesList
 			// 
-			this.listView1.Location = new System.Drawing.Point(195, 437);
-			this.listView1.Name = "listView1";
-			this.listView1.Size = new System.Drawing.Size(170, 110);
-			this.listView1.TabIndex = 16;
-			this.listView1.UseCompatibleStateImageBehavior = false;
+			this.subtypesList.Location = new System.Drawing.Point(195, 446);
+			this.subtypesList.Name = "subtypesList";
+			this.subtypesList.Size = new System.Drawing.Size(170, 110);
+			this.subtypesList.TabIndex = 16;
+			this.subtypesList.UseCompatibleStateImageBehavior = false;
 			// 
 			// constantsLabel
 			// 
@@ -152,7 +168,7 @@
 			// 
 			// staticFieldsList
 			// 
-			this.staticFieldsList.Location = new System.Drawing.Point(195, 26);
+			this.staticFieldsList.Location = new System.Drawing.Point(195, 29);
 			this.staticFieldsList.Name = "staticFieldsList";
 			this.staticFieldsList.Size = new System.Drawing.Size(170, 102);
 			this.staticFieldsList.TabIndex = 10;
@@ -161,7 +177,7 @@
 			// constructorsLabel
 			// 
 			this.constructorsLabel.AutoSize = true;
-			this.constructorsLabel.Location = new System.Drawing.Point(7, 419);
+			this.constructorsLabel.Location = new System.Drawing.Point(7, 428);
 			this.constructorsLabel.Name = "constructorsLabel";
 			this.constructorsLabel.Size = new System.Drawing.Size(66, 13);
 			this.constructorsLabel.TabIndex = 9;
@@ -169,7 +185,7 @@
 			// 
 			// constructorsList
 			// 
-			this.constructorsList.Location = new System.Drawing.Point(4, 437);
+			this.constructorsList.Location = new System.Drawing.Point(4, 446);
 			this.constructorsList.Name = "constructorsList";
 			this.constructorsList.Size = new System.Drawing.Size(170, 110);
 			this.constructorsList.TabIndex = 8;
@@ -220,7 +236,7 @@
 			// 
 			// memberFieldsList
 			// 
-			this.memberFieldsList.Location = new System.Drawing.Point(4, 26);
+			this.memberFieldsList.Location = new System.Drawing.Point(4, 29);
 			this.memberFieldsList.Name = "memberFieldsList";
 			this.memberFieldsList.Size = new System.Drawing.Size(170, 102);
 			this.memberFieldsList.TabIndex = 0;
@@ -376,7 +392,7 @@
 			// classSummaryLabel
 			// 
 			this.classSummaryLabel.AutoSize = true;
-			this.classSummaryLabel.Location = new System.Drawing.Point(360, 59);
+			this.classSummaryLabel.Location = new System.Drawing.Point(361, 56);
 			this.classSummaryLabel.Name = "classSummaryLabel";
 			this.classSummaryLabel.Size = new System.Drawing.Size(109, 13);
 			this.classSummaryLabel.TabIndex = 21;
@@ -384,10 +400,90 @@
 			// 
 			// textBox2
 			// 
-			this.textBox2.Location = new System.Drawing.Point(475, 56);
+			this.textBox2.Location = new System.Drawing.Point(475, 53);
 			this.textBox2.Name = "textBox2";
 			this.textBox2.Size = new System.Drawing.Size(236, 20);
 			this.textBox2.TabIndex = 22;
+			// 
+			// addMemberFieldButton
+			// 
+			this.addMemberFieldButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.addMemberFieldButton.Location = new System.Drawing.Point(143, 4);
+			this.addMemberFieldButton.Name = "addMemberFieldButton";
+			this.addMemberFieldButton.Size = new System.Drawing.Size(31, 24);
+			this.addMemberFieldButton.TabIndex = 19;
+			this.addMemberFieldButton.Text = "+";
+			this.addMemberFieldButton.UseVisualStyleBackColor = true;
+			// 
+			// addMemberFunctionButton
+			// 
+			this.addMemberFunctionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.addMemberFunctionButton.Location = new System.Drawing.Point(143, 133);
+			this.addMemberFunctionButton.Name = "addMemberFunctionButton";
+			this.addMemberFunctionButton.Size = new System.Drawing.Size(31, 24);
+			this.addMemberFunctionButton.TabIndex = 20;
+			this.addMemberFunctionButton.Text = "+";
+			this.addMemberFunctionButton.UseVisualStyleBackColor = true;
+			// 
+			// addConstructorButton
+			// 
+			this.addConstructorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.addConstructorButton.Location = new System.Drawing.Point(143, 417);
+			this.addConstructorButton.Name = "addConstructorButton";
+			this.addConstructorButton.Size = new System.Drawing.Size(31, 24);
+			this.addConstructorButton.TabIndex = 22;
+			this.addConstructorButton.Text = "+";
+			this.addConstructorButton.UseVisualStyleBackColor = true;
+			// 
+			// addOperatorButton
+			// 
+			this.addOperatorButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.addOperatorButton.Location = new System.Drawing.Point(143, 276);
+			this.addOperatorButton.Name = "addOperatorButton";
+			this.addOperatorButton.Size = new System.Drawing.Size(31, 24);
+			this.addOperatorButton.TabIndex = 21;
+			this.addOperatorButton.Text = "+";
+			this.addOperatorButton.UseVisualStyleBackColor = true;
+			// 
+			// addSubtypeButton
+			// 
+			this.addSubtypeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.addSubtypeButton.Location = new System.Drawing.Point(331, 416);
+			this.addSubtypeButton.Name = "addSubtypeButton";
+			this.addSubtypeButton.Size = new System.Drawing.Size(31, 24);
+			this.addSubtypeButton.TabIndex = 26;
+			this.addSubtypeButton.Text = "+";
+			this.addSubtypeButton.UseVisualStyleBackColor = true;
+			// 
+			// addConstantButton
+			// 
+			this.addConstantButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.addConstantButton.Location = new System.Drawing.Point(331, 275);
+			this.addConstantButton.Name = "addConstantButton";
+			this.addConstantButton.Size = new System.Drawing.Size(31, 24);
+			this.addConstantButton.TabIndex = 25;
+			this.addConstantButton.Text = "+";
+			this.addConstantButton.UseVisualStyleBackColor = true;
+			// 
+			// addStaticFunctionButton
+			// 
+			this.addStaticFunctionButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.addStaticFunctionButton.Location = new System.Drawing.Point(331, 132);
+			this.addStaticFunctionButton.Name = "addStaticFunctionButton";
+			this.addStaticFunctionButton.Size = new System.Drawing.Size(31, 24);
+			this.addStaticFunctionButton.TabIndex = 24;
+			this.addStaticFunctionButton.Text = "+";
+			this.addStaticFunctionButton.UseVisualStyleBackColor = true;
+			// 
+			// addStaticFieldButton
+			// 
+			this.addStaticFieldButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.addStaticFieldButton.Location = new System.Drawing.Point(331, 3);
+			this.addStaticFieldButton.Name = "addStaticFieldButton";
+			this.addStaticFieldButton.Size = new System.Drawing.Size(31, 24);
+			this.addStaticFieldButton.TabIndex = 23;
+			this.addStaticFieldButton.Text = "+";
+			this.addStaticFieldButton.UseVisualStyleBackColor = true;
 			// 
 			// MainForm
 			// 
@@ -436,8 +532,8 @@
 		private System.Windows.Forms.ListView operatorsList;
 		private System.Windows.Forms.Label constructorsLabel;
 		private System.Windows.Forms.ListView constructorsList;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.ListView listView1;
+		private System.Windows.Forms.Label subtypesLabel;
+		private System.Windows.Forms.ListView subtypesList;
 		private System.Windows.Forms.Label constantsLabel;
 		private System.Windows.Forms.ListView constantsList;
 		private System.Windows.Forms.Label staticFunctionsLabel;
@@ -458,6 +554,14 @@
 		protected System.Windows.Forms.RichTextBox codeSampleText;
 		private System.Windows.Forms.Label classSummaryLabel;
 		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.Button addMemberFieldButton;
+		private System.Windows.Forms.Button addConstructorButton;
+		private System.Windows.Forms.Button addOperatorButton;
+		private System.Windows.Forms.Button addMemberFunctionButton;
+		private System.Windows.Forms.Button addSubtypeButton;
+		private System.Windows.Forms.Button addConstantButton;
+		private System.Windows.Forms.Button addStaticFunctionButton;
+		private System.Windows.Forms.Button addStaticFieldButton;
 	}
 }
 
