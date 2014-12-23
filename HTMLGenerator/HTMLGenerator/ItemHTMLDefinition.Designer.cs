@@ -113,7 +113,7 @@
 			// TemplateArgsText
 			// 
 			this.TemplateArgsText.Enabled = false;
-			this.TemplateArgsText.ForeColor = System.Drawing.SystemColors.ControlDark;
+			this.TemplateArgsText.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.TemplateArgsText.Location = new System.Drawing.Point(178, 46);
 			this.TemplateArgsText.Name = "TemplateArgsText";
 			this.TemplateArgsText.Size = new System.Drawing.Size(248, 20);

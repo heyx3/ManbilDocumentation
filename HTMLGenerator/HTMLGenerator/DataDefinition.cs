@@ -10,22 +10,19 @@ using System.Windows.Forms;
 
 namespace HTMLGenerator
 {
-	/// <summary>
-	/// TODO: Rename to "DataDefinition".
-	/// </summary>
-	public partial class MemberFieldDefinition : ItemHTMLDefinition
+	public partial class DataDefinition : ItemHTMLDefinition
 	{
-		public MemberFieldDefinition()
+		public DataDefinition()
 		{
 			InitializeComponent();
 		}
-		public MemberFieldDefinition(ItemHTMLData data)
+		public DataDefinition(ItemHTMLData data)
 			: this()
 		{
 			SetData(data);
 		}
 
-		protected override void AddDefinition(StringBuilder sbOut)
+		protected override void AddDefinition(string className, StringBuilder sbOut)
 		{
 			sbOut.Append(AccessModifierDropdown.SelectedItem.ToString());
 			sbOut.Append(" ");

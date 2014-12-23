@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 //Data definitions are indexed by their anchor link, which should always be unique.
-using MemberDefDict = System.Collections.Generic.Dictionary<string, HTMLGenerator.ItemHTMLData>;
+using DefinitionDict = System.Collections.Generic.Dictionary<string, HTMLGenerator.ItemHTMLData>;
 
 
 namespace HTMLGenerator
@@ -17,10 +17,14 @@ namespace HTMLGenerator
 	public partial class MainForm : Form
 	{
 		//Data definitions are indexed by their anchor link, which should always be unique.
-		public MemberDefDict memberFieldData = new MemberDefDict(),
-							 staticFieldData = new MemberDefDict(),
-							 constantData = new MemberDefDict(),
-							 subtypeData = new MemberDefDict();
+		public DefinitionDict memberFieldData = new DefinitionDict(),
+							 staticFieldData = new DefinitionDict(),
+							 constantData = new DefinitionDict(),
+							 subtypeData = new DefinitionDict(),
+							 constructorData = new DefinitionDict(),
+							 memberFunctionData = new DefinitionDict(),
+						     staticFunctionData = new DefinitionDict(),
+						     operatorData = new DefinitionDict();
 
 		private enum DefinitionTypes
 		{
@@ -50,174 +54,271 @@ namespace HTMLGenerator
 		{
 			if (currentSelection != null)
 			{
+				DefinitionDict toWrite = null;
+				ItemHTMLDefinition defSetup = null;
+				ListView itemlist = null;
 				switch (currentSelectedType)
 				{
 					case DefinitionTypes.MemberFields:
-						if (currentSelection == definitionSetup.AhrefName.Text)
-						{
-							memberFieldData[currentSelection] = definitionSetup.GetData();
-						}
-						else
-						{
-							memberFieldData.Remove(currentSelection);
-							memberFieldData.Add(definitionSetup.AhrefName.Text, definitionSetup.GetData());
-						}
+						toWrite = memberFieldData;
+						defSetup = dataDefSetup;
+						itemlist = memberFieldsList;
 						break;
 					case DefinitionTypes.StaticFields:
-						if (currentSelection == definitionSetup.AhrefName.Text)
-						{
-							staticFieldData[currentSelection] = definitionSetup.GetData();
-						}
-						else
-						{
-							staticFieldData.Remove(currentSelection);
-							staticFieldData.Add(definitionSetup.AhrefName.Text, definitionSetup.GetData());
-						}
+						toWrite = staticFieldData;
+						defSetup = dataDefSetup;
+						itemlist = staticFieldsList;
 						break;
 					case DefinitionTypes.MemberFunctions:
-
+						toWrite = memberFunctionData;
+						defSetup = functionDefSetup;
+						itemlist = memberFunctionsList;
 						break;
 					case DefinitionTypes.StaticFunctions:
-
+						toWrite = staticFunctionData;
+						defSetup = functionDefSetup;
+						itemlist = staticFunctionsList;
 						break;
 					case DefinitionTypes.Operators:
-
+						toWrite = operatorData;
+						defSetup = functionDefSetup;
+						itemlist = operatorsList;
 						break;
 					case DefinitionTypes.Constants:
-						if (currentSelection == definitionSetup.AhrefName.Text)
-						{
-							constantData[currentSelection] = definitionSetup.GetData();
-						}
-						else
-						{
-							constantData.Remove(currentSelection);
-							constantData.Add(definitionSetup.AhrefName.Text, definitionSetup.GetData());
-						}
+						toWrite = constantData;
+						defSetup = dataDefSetup;
+						itemlist = constantsList;
 						break;
 					case DefinitionTypes.Constructors:
-
+						toWrite = constructorData;
+						defSetup = constructorDefSetup;
+						itemlist = constructorsList;
 						break;
 					case DefinitionTypes.Subtypes:
-						if (currentSelection == definitionSetup.AhrefName.Text)
-						{
-							subtypeData[currentSelection] = definitionSetup.GetData();
-						}
-						else
-						{
-							subtypeData.Remove(currentSelection);
-							subtypeData.Add(definitionSetup.AhrefName.Text, definitionSetup.GetData());
-						}
+						toWrite = subtypeData;
+						defSetup = dataDefSetup;
+						itemlist = subtypesList;
 						break;
 				}
+
+				if (currentSelection == defSetup.AhrefName.Text)
+				{
+					toWrite[currentSelection] = defSetup.GetData();
+				}
+				else
+				{
+					itemlist.FindItemWithText(currentSelection).Text = defSetup.AhrefName.Text;
+					toWrite.Remove(currentSelection);
+					toWrite.Add(defSetup.AhrefName.Text, defSetup.GetData());
+				}
+			}
+		}
+		private void SwitchTo(DefinitionTypes newType)
+		{
+			currentSelectedType = newType;
+			switch (newType)
+			{
+				case DefinitionTypes.MemberFields:
+				case DefinitionTypes.StaticFields:
+				case DefinitionTypes.Subtypes:
+				case DefinitionTypes.Constants:
+					dataDefSetup.Enabled = true;
+					dataDefSetup.Visible = true;
+					functionDefSetup.Enabled = false;
+					functionDefSetup.Visible = false;
+					constructorDefSetup.Enabled = false;
+					constructorDefSetup.Visible = false;
+					break;
+				case DefinitionTypes.Constructors:
+					dataDefSetup.Enabled = false;
+					dataDefSetup.Visible = false;
+					functionDefSetup.Enabled = false;
+					functionDefSetup.Visible = false;
+					constructorDefSetup.Enabled = true;
+					constructorDefSetup.Visible = true;
+					break;
+				case DefinitionTypes.MemberFunctions:
+				case DefinitionTypes.StaticFunctions:
+				case DefinitionTypes.Operators:
+					dataDefSetup.Enabled = false;
+					dataDefSetup.Visible = false;
+					functionDefSetup.Enabled = true;
+					functionDefSetup.Visible = true;
+					constructorDefSetup.Enabled = false;
+					constructorDefSetup.Visible = false;
+					break;
 			}
 		}
 
 
 		private void memberFields_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			if (memberFieldsList.SelectedItems.Count == 0) return;
+
 			WriteSelection();
 			string name = memberFieldsList.SelectedItems[memberFieldsList.SelectedItems.Count - 1].Text;
-			definitionSetup = new MemberFieldDefinition(memberFieldData[name]);
+			dataDefSetup.SetData(memberFieldData[name]);
 
-			currentSelectedType = DefinitionTypes.MemberFields;
-			currentSelection = memberFieldsList.SelectedItems[memberFieldsList.SelectedItems.Count - 1].Text;
+			SwitchTo(DefinitionTypes.MemberFields);
+			currentSelection = name;
 		}
 		private void memberFunctionsList_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			if (memberFunctionsList.SelectedItems.Count == 0) return;
+
 			WriteSelection();
 			string name = memberFunctionsList.SelectedItems[memberFunctionsList.SelectedItems.Count - 1].Text;
-			definitionSetup = new ();
-
-			currentSelectedType = DefinitionTypes.MemberFunctions;
-			currentSelection = memberFunctionsList.SelectedItems[memberFunctionsList.SelectedItems.Count - 1].Text;
+			functionDefSetup.SetData(memberFunctionData[name]);
+			
+			SwitchTo(DefinitionTypes.MemberFunctions);
+			currentSelection = name;
 		}
 		private void operatorsList_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			if (operatorsList.SelectedItems.Count == 0) return;
+
 			WriteSelection();
 			string name = operatorsList.SelectedItems[operatorsList.SelectedItems.Count - 1].Text;
-			definitionSetup = new ();
+			functionDefSetup.SetData(operatorData[name]);
 
-			currentSelectedType = DefinitionTypes.Operators;
-			currentSelection = operatorsList.SelectedItems[operatorsList.SelectedItems.Count - 1].Text;
+			SwitchTo(DefinitionTypes.Operators);
+			currentSelection = name;
 		}
 		private void constructorsList_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			if (constructorsList.SelectedItems.Count == 0) return;
+
 			WriteSelection();
 			string name = constructorsList.SelectedItems[constructorsList.SelectedItems.Count - 1].Text;
-			definitionSetup = new ();
+			constructorDefSetup.SetData(constructorData[name]);
 
-			currentSelectedType = DefinitionTypes.Constructors;
-			currentSelection = constructorsList.SelectedItems[constructorsList.SelectedItems.Count - 1].Text;
+			SwitchTo(DefinitionTypes.Constructors);
+			currentSelection = name;
 		}
 		private void staticFieldsList_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			if (staticFieldsList.SelectedItems.Count == 0) return;
+
 			WriteSelection();
 			string name = staticFieldsList.SelectedItems[staticFieldsList.SelectedItems.Count - 1].Text;
-			definitionSetup = new MemberFieldDefinition(staticFieldData[name]);
+			dataDefSetup.SetData(staticFieldData[name]);
 
-			currentSelectedType = DefinitionTypes.StaticFields;
-			currentSelection = staticFieldsList.SelectedItems[staticFieldsList.SelectedItems.Count - 1].Text;
+			SwitchTo(DefinitionTypes.StaticFields);
+			currentSelection = name;
 		}
 		private void staticFunctionsList_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			if (staticFunctionsList.SelectedItems.Count == 0) return;
+
 			WriteSelection();
 			string name = staticFunctionsList.SelectedItems[staticFunctionsList.SelectedItems.Count - 1].Text;
-			definitionSetup = ()
+			functionDefSetup.SetData(staticFunctionData[name]);
 
-			currentSelectedType = DefinitionTypes.StaticFunctions;
-			currentSelection = staticFunctionsList.SelectedItems[staticFunctionsList.SelectedItems.Count - 1].Text;
+			SwitchTo(DefinitionTypes.StaticFunctions);
+			currentSelection = name;
 		}
 		private void constantsList_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			if (constantsList.SelectedItems.Count == 0) return;
+
 			WriteSelection();
 			string name = constantsList.SelectedItems[constantsList.SelectedItems.Count - 1].Text;
-			definitionSetup = new MemberFieldDefinition(constantData[name]);
+			dataDefSetup.SetData(constantData[name]);
 
-			currentSelectedType = DefinitionTypes.Constants;
-			currentSelection = constantsList.SelectedItems[constantsList.SelectedItems.Count - 1].Text;
+			SwitchTo(DefinitionTypes.Constants);
+			currentSelection = name;
 		}
 		private void subtypesList_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			if (subtypesList.SelectedItems.Count == 0) return;
+
 			WriteSelection();
 			string name = subtypesList.SelectedItems[subtypesList.SelectedItems.Count - 1].Text;
-			definitionSetup = new MemberFieldDefinition(subtypeData[name]);
+			dataDefSetup.SetData(subtypeData[name]);
 
-			currentSelectedType = DefinitionTypes.Subtypes;
-			currentSelection = subtypesList.SelectedItems[subtypesList.SelectedItems.Count - 1].Text;
+			SwitchTo(DefinitionTypes.Subtypes);
+			currentSelection = name;
 		}
 
 
+		private string GetNewName(IEnumerable<string> currentKeys)
+		{
+			int n = 1;
+			while (currentKeys.Contains("new" + n.ToString()))
+				n += 1;
+			return "new" + n.ToString();
+		}
 		private void addMemberFieldButton_Click(object sender, EventArgs e)
 		{
+			string name = GetNewName(memberFieldData.Keys);
 
+			memberFieldData.Add(name, new ItemHTMLData());
+			memberFieldData[name].AnchorLinkName = name;
+			
+			memberFieldsList.Items.Add(new ListViewItem(new string[] { name }));
 		}
 		private void addMemberFunctionButton_Click(object sender, EventArgs e)
 		{
+			string name = GetNewName(memberFunctionData.Keys);
 
+			memberFunctionData.Add(name, new FunctionData());
+			memberFunctionData[name].AnchorLinkName = name;
+
+			memberFunctionsList.Items.Add(new ListViewItem(new string[] { name }));
 		}
 		private void addOperatorButton_Click(object sender, EventArgs e)
 		{
+			string name = GetNewName(operatorData.Keys);
 
+			operatorData.Add(name, new FunctionData());
+			operatorData[name].AnchorLinkName = name;
+
+			operatorsList.Items.Add(new ListViewItem(new string[] { name }));
 		}
 		private void addConstructorButton_Click(object sender, EventArgs e)
 		{
+			string name = GetNewName(constructorData.Keys);
 
+			constructorData.Add(name, new ConstructorData());
+			constructorData[name].AnchorLinkName = name;
+
+			constructorsList.Items.Add(new ListViewItem(new string[] { name }));
 		}
 		private void addStaticFieldButton_Click(object sender, EventArgs e)
 		{
+			string name = GetNewName(staticFieldData.Keys);
 
+			staticFieldData.Add(name, new ItemHTMLData());
+			staticFieldData[name].AnchorLinkName = name;
+			
+			staticFieldsList.Items.Add(new ListViewItem(new string[] { name }));
 		}
 		private void addStaticFunctionButton_Click(object sender, EventArgs e)
 		{
+			string name = GetNewName(staticFunctionData.Keys);
 
+			staticFunctionData.Add(name, new FunctionData());
+			staticFunctionData[name].AnchorLinkName = name;
+
+			staticFunctionsList.Items.Add(new ListViewItem(new string[] { name }));
 		}
 		private void addConstantButton_Click(object sender, EventArgs e)
 		{
+			string name = GetNewName(constantData.Keys);
 
+			constantData.Add(name, new ItemHTMLData());
+			constantData[name].AnchorLinkName = name;
+			
+			constantsList.Items.Add(new ListViewItem(new string[] { name }));
 		}
 		private void addSubtypeButton_Click(object sender, EventArgs e)
 		{
+			string name = GetNewName(subtypeData.Keys);
 
+			subtypeData.Add(name, new ItemHTMLData());
+			subtypeData[name].AnchorLinkName = name;
+			
+			subtypesList.Items.Add(new ListViewItem(new string[] { name }));
 		}
 
 
@@ -235,7 +336,7 @@ namespace HTMLGenerator
 
 		private void genHTMLButton_Click(object sender, EventArgs e)
 		{
-
+			//TODO: Implement.
 		}
 	}
 }

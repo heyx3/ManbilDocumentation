@@ -83,7 +83,7 @@ namespace HTMLGenerator
 		/// Adds the HTML element for this item definition to the end of the given string.
 		/// </summary>
 		/// <param name="tabLevel">The base tab level of this element.</param>
-		public void AddElement(int tabLevel, StringBuilder sbOut)
+		public void AddElement(string className, int tabLevel, StringBuilder sbOut)
 		{
 			StrGen.AddTabs(tabLevel, sbOut);
 			sbOut.AppendLine("<li>");
@@ -105,13 +105,13 @@ namespace HTMLGenerator
 						sbOut.AppendLine("&gt;");
 
 						StrGen.AddTabs(tabLevel + 2, sbOut);
-						AddDefinition(sbOut);
+						AddDefinition(className, sbOut);
 						sbOut.AppendLine(";");
 						sbOut.AppendLine("</code>");
 					}
 					else
 					{
-						AddDefinition(sbOut);
+						AddDefinition(className, sbOut);
 						sbOut.AppendLine(";</code>");
 					}
 
@@ -189,7 +189,7 @@ namespace HTMLGenerator
 		/// The definition should NOT include the beginning "template<>" declaration if one is necessary.
 		/// It should also NOT include the semicolon at the end of the definition.
 		/// </summary>
-		protected virtual void AddDefinition(StringBuilder sbOut) { throw new NotImplementedException(); }
+		protected virtual void AddDefinition(string className, StringBuilder sbOut) { throw new NotImplementedException(); }
 
 		private void ItemNameText_TextChanged(object sender, EventArgs e)
 		{
@@ -200,12 +200,12 @@ namespace HTMLGenerator
 		{
 			if (enabled)
 			{
-				contr.ForeColor = SystemColors.Control;
+				//contr.ForeColor = SystemColors.Control;
 				contr.Enabled = true;
 			}
 			else
 			{
-				contr.ForeColor = SystemColors.ControlDark;
+				//contr.ForeColor = SystemColors.ControlDark;
 				contr.Enabled = false;
 			}
 		}
@@ -214,9 +214,15 @@ namespace HTMLGenerator
 
 	public class ItemHTMLData
 	{
-		public bool IsListBreak, IsTemplated;
-		public string TemplateArgs, AccessModifier, ItemType, ItemName,
-					  AnchorLinkName, ItemDesc, CodeSample;
+		public bool IsListBreak = true,
+					IsTemplated = false;
+		public string TemplateArgs = "",
+				      AccessModifier = "",
+					  ItemType = "",
+					  ItemName = "",
+					  AnchorLinkName = "",
+					  ItemDesc = "",
+					  CodeSample = "";
 
 		public ItemHTMLData() { }
 		public ItemHTMLData(ItemHTMLData copy)

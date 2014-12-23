@@ -53,7 +53,7 @@
 			this.memberFunctionsList = new System.Windows.Forms.ListView();
 			this.memberFieldsLabel = new System.Windows.Forms.Label();
 			this.memberFieldsList = new System.Windows.Forms.ListView();
-			this.definitionSetup = new HTMLGenerator.MemberFieldDefinition();
+			this.dataDefSetup = new HTMLGenerator.DataDefinition();
 			this.TODOTextbox = new System.Windows.Forms.TextBox();
 			this.todoLabel = new System.Windows.Forms.Label();
 			this.genHTMLButton = new System.Windows.Forms.Button();
@@ -71,11 +71,15 @@
 			this.codeSampleText = new System.Windows.Forms.RichTextBox();
 			this.classSummaryLabel = new System.Windows.Forms.Label();
 			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.functionDefSetup = new HTMLGenerator.FunctionDefinition();
+			this.constructorDefSetup = new HTMLGenerator.ConstructorDefinition();
 			this.definitionsPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// definitionsPanel
 			// 
+			this.definitionsPanel.Controls.Add(this.constructorDefSetup);
+			this.definitionsPanel.Controls.Add(this.functionDefSetup);
 			this.definitionsPanel.Controls.Add(this.addSubtypeButton);
 			this.definitionsPanel.Controls.Add(this.addConstantButton);
 			this.definitionsPanel.Controls.Add(this.addStaticFunctionButton);
@@ -100,7 +104,7 @@
 			this.definitionsPanel.Controls.Add(this.memberFunctionsList);
 			this.definitionsPanel.Controls.Add(this.memberFieldsLabel);
 			this.definitionsPanel.Controls.Add(this.memberFieldsList);
-			this.definitionsPanel.Controls.Add(this.definitionSetup);
+			this.definitionsPanel.Controls.Add(this.dataDefSetup);
 			this.definitionsPanel.Location = new System.Drawing.Point(332, 189);
 			this.definitionsPanel.Name = "definitionsPanel";
 			this.definitionsPanel.Size = new System.Drawing.Size(828, 563);
@@ -338,13 +342,13 @@
 			this.memberFieldsList.UseCompatibleStateImageBehavior = false;
 			this.memberFieldsList.SelectedIndexChanged += new System.EventHandler(this.memberFields_SelectedIndexChanged);
 			// 
-			// definitionSetup
+			// dataDefSetup
 			// 
-			this.definitionSetup.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.definitionSetup.Location = new System.Drawing.Point(376, 70);
-			this.definitionSetup.Name = "definitionSetup";
-			this.definitionSetup.Size = new System.Drawing.Size(452, 400);
-			this.definitionSetup.TabIndex = 18;
+			this.dataDefSetup.Anchor = System.Windows.Forms.AnchorStyles.Right;
+			this.dataDefSetup.Location = new System.Drawing.Point(376, 76);
+			this.dataDefSetup.Name = "dataDefSetup";
+			this.dataDefSetup.Size = new System.Drawing.Size(452, 394);
+			this.dataDefSetup.TabIndex = 18;
 			// 
 			// TODOTextbox
 			// 
@@ -500,11 +504,25 @@
 			this.textBox2.Size = new System.Drawing.Size(236, 20);
 			this.textBox2.TabIndex = 22;
 			// 
+			// functionDefSetup
+			// 
+			this.functionDefSetup.Location = new System.Drawing.Point(378, 82);
+			this.functionDefSetup.Name = "functionDefSetup";
+			this.functionDefSetup.Size = new System.Drawing.Size(450, 388);
+			this.functionDefSetup.TabIndex = 27;
+			// 
+			// constructorDefSetup
+			// 
+			this.constructorDefSetup.Location = new System.Drawing.Point(378, 82);
+			this.constructorDefSetup.Name = "constructorDefSetup";
+			this.constructorDefSetup.Size = new System.Drawing.Size(450, 388);
+			this.constructorDefSetup.TabIndex = 28;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1165, 757);
+			this.ClientSize = new System.Drawing.Size(1202, 757);
 			this.Controls.Add(this.textBox2);
 			this.Controls.Add(this.classSummaryLabel);
 			this.Controls.Add(this.classDescText);
@@ -564,7 +582,6 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.TextBox systemNameText;
 		private System.Windows.Forms.Label systemNameLabel;
-		private MemberFieldDefinition definitionSetup;
 		protected System.Windows.Forms.RichTextBox classDescText;
 		protected System.Windows.Forms.RichTextBox codeSampleText;
 		private System.Windows.Forms.Label classSummaryLabel;
@@ -577,6 +594,9 @@
 		private System.Windows.Forms.Button addConstantButton;
 		private System.Windows.Forms.Button addStaticFunctionButton;
 		private System.Windows.Forms.Button addStaticFieldButton;
+		private DataDefinition dataDefSetup;
+		private FunctionDefinition functionDefSetup;
+		private ConstructorDefinition constructorDefSetup;
 	}
 }
 

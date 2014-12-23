@@ -1,6 +1,6 @@
 ﻿namespace HTMLGenerator
 {
-	partial class MemberFieldDefinition
+	partial class ConstructorDefinition
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -26,12 +26,15 @@
 		/// Required method for Designer support - do not modify 
 		/// the contents of this method with the code editor.
 		/// </summary>
-		private void InitializeComponent()
+		private void InitializeMyComponent()
 		{
 			components = new System.ComponentModel.Container();
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 		}
 
 		#endregion
+
+		private System.Windows.Forms.Label constructorStartLabel;
+		private System.Windows.Forms.TextBox constructorArgsText;
 	}
 }
