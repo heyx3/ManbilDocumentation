@@ -53,7 +53,6 @@
 			this.memberFunctionsList = new System.Windows.Forms.ListView();
 			this.memberFieldsLabel = new System.Windows.Forms.Label();
 			this.memberFieldsList = new System.Windows.Forms.ListView();
-			this.dataDefSetup = new HTMLGenerator.DataDefinition();
 			this.TODOTextbox = new System.Windows.Forms.TextBox();
 			this.todoLabel = new System.Windows.Forms.Label();
 			this.genHTMLButton = new System.Windows.Forms.Button();
@@ -71,8 +70,12 @@
 			this.codeSampleText = new System.Windows.Forms.RichTextBox();
 			this.classSummaryLabel = new System.Windows.Forms.Label();
 			this.textBox2 = new System.Windows.Forms.TextBox();
-			this.functionDefSetup = new HTMLGenerator.FunctionDefinition();
 			this.constructorDefSetup = new HTMLGenerator.ConstructorDefinition();
+			this.functionDefSetup = new HTMLGenerator.FunctionDefinition();
+			this.dataDefSetup = new HTMLGenerator.DataDefinition();
+			this.chooseDocRootButton = new System.Windows.Forms.Button();
+			this.docRootFolderBrowser = new System.Windows.Forms.FolderBrowserDialog();
+			this.docRootLabel = new System.Windows.Forms.Label();
 			this.definitionsPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -342,14 +345,6 @@
 			this.memberFieldsList.UseCompatibleStateImageBehavior = false;
 			this.memberFieldsList.SelectedIndexChanged += new System.EventHandler(this.memberFields_SelectedIndexChanged);
 			// 
-			// dataDefSetup
-			// 
-			this.dataDefSetup.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.dataDefSetup.Location = new System.Drawing.Point(376, 76);
-			this.dataDefSetup.Name = "dataDefSetup";
-			this.dataDefSetup.Size = new System.Drawing.Size(452, 394);
-			this.dataDefSetup.TabIndex = 18;
-			// 
 			// TODOTextbox
 			// 
 			this.TODOTextbox.Location = new System.Drawing.Point(360, 102);
@@ -504,13 +499,6 @@
 			this.textBox2.Size = new System.Drawing.Size(236, 20);
 			this.textBox2.TabIndex = 22;
 			// 
-			// functionDefSetup
-			// 
-			this.functionDefSetup.Location = new System.Drawing.Point(378, 82);
-			this.functionDefSetup.Name = "functionDefSetup";
-			this.functionDefSetup.Size = new System.Drawing.Size(450, 388);
-			this.functionDefSetup.TabIndex = 27;
-			// 
 			// constructorDefSetup
 			// 
 			this.constructorDefSetup.Location = new System.Drawing.Point(378, 82);
@@ -518,11 +506,52 @@
 			this.constructorDefSetup.Size = new System.Drawing.Size(450, 388);
 			this.constructorDefSetup.TabIndex = 28;
 			// 
+			// functionDefSetup
+			// 
+			this.functionDefSetup.Location = new System.Drawing.Point(378, 82);
+			this.functionDefSetup.Name = "functionDefSetup";
+			this.functionDefSetup.Size = new System.Drawing.Size(450, 388);
+			this.functionDefSetup.TabIndex = 27;
+			// 
+			// dataDefSetup
+			// 
+			this.dataDefSetup.Anchor = System.Windows.Forms.AnchorStyles.Right;
+			this.dataDefSetup.Location = new System.Drawing.Point(376, 76);
+			this.dataDefSetup.Name = "dataDefSetup";
+			this.dataDefSetup.Size = new System.Drawing.Size(452, 394);
+			this.dataDefSetup.TabIndex = 18;
+			// 
+			// chooseDocRootButton
+			// 
+			this.chooseDocRootButton.Location = new System.Drawing.Point(760, 11);
+			this.chooseDocRootButton.Name = "chooseDocRootButton";
+			this.chooseDocRootButton.Size = new System.Drawing.Size(154, 23);
+			this.chooseDocRootButton.TabIndex = 23;
+			this.chooseDocRootButton.Text = "Choose Documentation Root";
+			this.chooseDocRootButton.UseVisualStyleBackColor = true;
+			this.chooseDocRootButton.Click += new System.EventHandler(this.chooseDocRootButton_Click);
+			// 
+			// docRootFolderBrowser
+			// 
+			this.docRootFolderBrowser.RootFolder = System.Environment.SpecialFolder.MyComputer;
+			this.docRootFolderBrowser.SelectedPath = "C:\\Git Repos\\ManbilDocumentation";
+			// 
+			// docRootLabel
+			// 
+			this.docRootLabel.AutoSize = true;
+			this.docRootLabel.Location = new System.Drawing.Point(947, 18);
+			this.docRootLabel.Name = "docRootLabel";
+			this.docRootLabel.Size = new System.Drawing.Size(111, 13);
+			this.docRootLabel.TabIndex = 24;
+			this.docRootLabel.Text = "[Documentation Root]";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1202, 757);
+			this.Controls.Add(this.docRootLabel);
+			this.Controls.Add(this.chooseDocRootButton);
 			this.Controls.Add(this.textBox2);
 			this.Controls.Add(this.classSummaryLabel);
 			this.Controls.Add(this.classDescText);
@@ -597,6 +626,9 @@
 		private DataDefinition dataDefSetup;
 		private FunctionDefinition functionDefSetup;
 		private ConstructorDefinition constructorDefSetup;
+		private System.Windows.Forms.Button chooseDocRootButton;
+		private System.Windows.Forms.FolderBrowserDialog docRootFolderBrowser;
+		private System.Windows.Forms.Label docRootLabel;
 	}
 }
 

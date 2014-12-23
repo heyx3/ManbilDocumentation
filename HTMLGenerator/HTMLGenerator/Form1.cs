@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+
 
 //Data definitions are indexed by their anchor link, which should always be unique.
 using DefinitionDict = System.Collections.Generic.Dictionary<string, HTMLGenerator.ItemHTMLData>;
@@ -44,6 +46,8 @@ namespace HTMLGenerator
 		public MainForm()
 		{
 			InitializeComponent();
+
+			docRootLabel.Text = docRootFolderBrowser.SelectedPath;
 		}
 
 
@@ -149,7 +153,22 @@ namespace HTMLGenerator
 					break;
 			}
 		}
+		
+		private string GetNewName(IEnumerable<string> currentKeys)
+		{
+			int n = 1;
+			while (currentKeys.Contains("new" + n.ToString()))
+				n += 1;
+			return "new" + n.ToString();
+		}
 
+
+		private void chooseDocRootButton_Click(object sender, EventArgs e)
+		{
+			DialogResult res = docRootFolderBrowser.ShowDialog();
+			if (res == System.Windows.Forms.DialogResult.OK)
+				docRootLabel.Text = docRootFolderBrowser.SelectedPath;
+		}
 
 		private void memberFields_SelectedIndexChanged(object sender, EventArgs e)
 		{
@@ -240,14 +259,6 @@ namespace HTMLGenerator
 			currentSelection = name;
 		}
 
-
-		private string GetNewName(IEnumerable<string> currentKeys)
-		{
-			int n = 1;
-			while (currentKeys.Contains("new" + n.ToString()))
-				n += 1;
-			return "new" + n.ToString();
-		}
 		private void addMemberFieldButton_Click(object sender, EventArgs e)
 		{
 			string name = GetNewName(memberFieldData.Keys);
@@ -336,7 +347,71 @@ namespace HTMLGenerator
 
 		private void genHTMLButton_Click(object sender, EventArgs e)
 		{
-			//TODO: Implement.
+			//See if another file is going to be overwritten.
+			string path = Path.Combine(docRootLabel.Text, htmlFileLocationText.Text) + ".html";
+			if (File.Exists(path))
+			{
+				ConfirmOverwriteForm dlg = new ConfirmOverwriteForm();
+				if (dlg.ShowDialog() != DialogResult.OK)
+					return;
+			}
+
+
+			//Generate the file.
+			StringBuilder sb = new StringBuilder("<!DOCTYPE HTML>");
+			sb.AppendLine();
+			sb.AppendLine("<html>");
+
+				sb.AppendLine();
+				sb.AppendLine("\t<head>");
+
+					sb.Append("\t\t<title>Class: ");
+					sb.Append(classNameText.Text);
+					sb.AppendLine("</title>");
+
+					sb.AppendLine("\t\t<link type\"text/cs\" rel=\"stylesheet\" href=\"../MainCSS.css\" />");
+
+				sb.AppendLine("\t</head>");
+
+				sb.AppendLine();
+				sb.AppendLine("\t<body>");
+
+					sb.AppendLine();
+					sb.AppendLine("\t\t<TODO><ul>");
+						sb.Append("\t\t\t");
+						sb.AppendLine(TODOTextbox.Text);
+					sb.AppendLine("\t\t</ul></TODO>");
+
+					sb.AppendLine();
+					sb.AppendLine("\t\t<br class=\"SectionDivider\" />");
+					sb.AppendLine();
+
+					sb.AppendLine();
+					sb.Append("\t\t<h1>");
+					sb.Append(classNameText.Text);
+					sb.AppendLine("</h1>");
+
+					sb.Append("\t\t<p>");
+					sb.Append(classDescText.Text);
+					sb.AppendLine("</p>");
+
+				sb.AppendLine("\t</body>");
+
+			sb.Append("</html>");
+
+
+			//Write the file.
+			try
+			{
+				File.WriteAllText(path, sb.ToString());
+			}
+			catch (Exception exc)
+			{
+				FileErrorPopup dlg = new FileErrorPopup();
+				dlg.ErrorTypeLabel.Text = exc.GetType().ToString();
+				dlg.ErrorMessageLabel.Text = exc.Message;
+				dlg.ShowDialog();
+			}
 		}
 	}
 }
