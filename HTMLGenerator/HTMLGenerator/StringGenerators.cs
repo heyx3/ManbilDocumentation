@@ -27,7 +27,7 @@ public static class StringGenerators
 		new KeyValuePair<char, string>('<', "&lt;"),
 		new KeyValuePair<char, string>('>', "&gt;"),
 	};
-	public static void AddCodeSampleElement(int nListElementTabs, string codeText, StringBuilder outHTML)
+	public static void AddCodeSampleElement(int tabLevel, bool useLITag, string codeText, StringBuilder outHTML)
 	{
 		StringBuilder codeT = new StringBuilder(codeText);
 
@@ -61,10 +61,16 @@ public static class StringGenerators
 		}
 
 		//Finally, output the code text into an HTML code sample div.
-		AddTabs(nListElementTabs, outHTML);
-		outHTML.AppendLine("<li><div class=\"CodeSample\"><code>");
+		AddTabs(tabLevel, outHTML);
+		if (useLITag)
+			outHTML.AppendLine("<li><div class=\"CodeSample\"><code>");
+		else
+			outHTML.AppendLine("<div class=\"CodeSample\"><code>");
 		outHTML.AppendLine(codeT.ToString());
-		AddTabs(nListElementTabs, outHTML);
-		outHTML.AppendLine("</code></div></li>");
+		AddTabs(tabLevel, outHTML);
+		if (useLITag)
+			outHTML.AppendLine("</code></div></li>");
+		else
+			outHTML.AppendLine("</code></div>");
 	}
 }

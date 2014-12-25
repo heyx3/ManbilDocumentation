@@ -29,6 +29,8 @@
 		private void InitializeComponent()
 		{
 			this.definitionsPanel = new System.Windows.Forms.Panel();
+			this.constructorDefSetup = new HTMLGenerator.ConstructorDefinition();
+			this.functionDefSetup = new HTMLGenerator.FunctionDefinition();
 			this.addSubtypeButton = new System.Windows.Forms.Button();
 			this.addConstantButton = new System.Windows.Forms.Button();
 			this.addStaticFunctionButton = new System.Windows.Forms.Button();
@@ -53,6 +55,7 @@
 			this.memberFunctionsList = new System.Windows.Forms.ListView();
 			this.memberFieldsLabel = new System.Windows.Forms.Label();
 			this.memberFieldsList = new System.Windows.Forms.ListView();
+			this.dataDefSetup = new HTMLGenerator.DataDefinition();
 			this.TODOTextbox = new System.Windows.Forms.TextBox();
 			this.todoLabel = new System.Windows.Forms.Label();
 			this.genHTMLButton = new System.Windows.Forms.Button();
@@ -69,13 +72,14 @@
 			this.classDescText = new System.Windows.Forms.RichTextBox();
 			this.codeSampleText = new System.Windows.Forms.RichTextBox();
 			this.classSummaryLabel = new System.Windows.Forms.Label();
-			this.textBox2 = new System.Windows.Forms.TextBox();
-			this.constructorDefSetup = new HTMLGenerator.ConstructorDefinition();
-			this.functionDefSetup = new HTMLGenerator.FunctionDefinition();
-			this.dataDefSetup = new HTMLGenerator.DataDefinition();
+			this.classSummaryText = new System.Windows.Forms.TextBox();
 			this.chooseDocRootButton = new System.Windows.Forms.Button();
 			this.docRootFolderBrowser = new System.Windows.Forms.FolderBrowserDialog();
 			this.docRootLabel = new System.Windows.Forms.Label();
+			this.isTemplatedBox = new System.Windows.Forms.CheckBox();
+			this.templateStartLabel = new System.Windows.Forms.Label();
+			this.templateEndLabel = new System.Windows.Forms.Label();
+			this.templateArgsText = new System.Windows.Forms.TextBox();
 			this.definitionsPanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -112,6 +116,20 @@
 			this.definitionsPanel.Name = "definitionsPanel";
 			this.definitionsPanel.Size = new System.Drawing.Size(828, 563);
 			this.definitionsPanel.TabIndex = 5;
+			// 
+			// constructorDefSetup
+			// 
+			this.constructorDefSetup.Location = new System.Drawing.Point(378, 82);
+			this.constructorDefSetup.Name = "constructorDefSetup";
+			this.constructorDefSetup.Size = new System.Drawing.Size(450, 388);
+			this.constructorDefSetup.TabIndex = 28;
+			// 
+			// functionDefSetup
+			// 
+			this.functionDefSetup.Location = new System.Drawing.Point(378, 82);
+			this.functionDefSetup.Name = "functionDefSetup";
+			this.functionDefSetup.Size = new System.Drawing.Size(450, 388);
+			this.functionDefSetup.TabIndex = 27;
 			// 
 			// addSubtypeButton
 			// 
@@ -345,6 +363,14 @@
 			this.memberFieldsList.UseCompatibleStateImageBehavior = false;
 			this.memberFieldsList.SelectedIndexChanged += new System.EventHandler(this.memberFields_SelectedIndexChanged);
 			// 
+			// dataDefSetup
+			// 
+			this.dataDefSetup.Anchor = System.Windows.Forms.AnchorStyles.Right;
+			this.dataDefSetup.Location = new System.Drawing.Point(376, 76);
+			this.dataDefSetup.Name = "dataDefSetup";
+			this.dataDefSetup.Size = new System.Drawing.Size(452, 394);
+			this.dataDefSetup.TabIndex = 18;
+			// 
 			// TODOTextbox
 			// 
 			this.TODOTextbox.Location = new System.Drawing.Point(360, 102);
@@ -492,34 +518,12 @@
 			this.classSummaryLabel.TabIndex = 21;
 			this.classSummaryLabel.Text = "Quick class summary:";
 			// 
-			// textBox2
+			// classSummaryText
 			// 
-			this.textBox2.Location = new System.Drawing.Point(475, 53);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(236, 20);
-			this.textBox2.TabIndex = 22;
-			// 
-			// constructorDefSetup
-			// 
-			this.constructorDefSetup.Location = new System.Drawing.Point(378, 82);
-			this.constructorDefSetup.Name = "constructorDefSetup";
-			this.constructorDefSetup.Size = new System.Drawing.Size(450, 388);
-			this.constructorDefSetup.TabIndex = 28;
-			// 
-			// functionDefSetup
-			// 
-			this.functionDefSetup.Location = new System.Drawing.Point(378, 82);
-			this.functionDefSetup.Name = "functionDefSetup";
-			this.functionDefSetup.Size = new System.Drawing.Size(450, 388);
-			this.functionDefSetup.TabIndex = 27;
-			// 
-			// dataDefSetup
-			// 
-			this.dataDefSetup.Anchor = System.Windows.Forms.AnchorStyles.Right;
-			this.dataDefSetup.Location = new System.Drawing.Point(376, 76);
-			this.dataDefSetup.Name = "dataDefSetup";
-			this.dataDefSetup.Size = new System.Drawing.Size(452, 394);
-			this.dataDefSetup.TabIndex = 18;
+			this.classSummaryText.Location = new System.Drawing.Point(475, 53);
+			this.classSummaryText.Name = "classSummaryText";
+			this.classSummaryText.Size = new System.Drawing.Size(236, 20);
+			this.classSummaryText.TabIndex = 22;
 			// 
 			// chooseDocRootButton
 			// 
@@ -545,14 +549,55 @@
 			this.docRootLabel.TabIndex = 24;
 			this.docRootLabel.Text = "[Documentation Root]";
 			// 
+			// isTemplatedBox
+			// 
+			this.isTemplatedBox.AutoSize = true;
+			this.isTemplatedBox.Location = new System.Drawing.Point(760, 55);
+			this.isTemplatedBox.Name = "isTemplatedBox";
+			this.isTemplatedBox.Size = new System.Drawing.Size(89, 17);
+			this.isTemplatedBox.TabIndex = 26;
+			this.isTemplatedBox.Text = "Is templated?";
+			this.isTemplatedBox.UseVisualStyleBackColor = true;
+			// 
+			// templateStartLabel
+			// 
+			this.templateStartLabel.AutoSize = true;
+			this.templateStartLabel.Location = new System.Drawing.Point(856, 56);
+			this.templateStartLabel.Name = "templateStartLabel";
+			this.templateStartLabel.Size = new System.Drawing.Size(56, 13);
+			this.templateStartLabel.TabIndex = 27;
+			this.templateStartLabel.Text = "template <";
+			// 
+			// templateEndLabel
+			// 
+			this.templateEndLabel.AutoSize = true;
+			this.templateEndLabel.Location = new System.Drawing.Point(1032, 56);
+			this.templateEndLabel.Name = "templateEndLabel";
+			this.templateEndLabel.Size = new System.Drawing.Size(13, 13);
+			this.templateEndLabel.TabIndex = 28;
+			this.templateEndLabel.Text = ">";
+			// 
+			// templateArgsText
+			// 
+			this.templateArgsText.Enabled = false;
+			this.templateArgsText.Location = new System.Drawing.Point(911, 52);
+			this.templateArgsText.Name = "templateArgsText";
+			this.templateArgsText.Size = new System.Drawing.Size(120, 20);
+			this.templateArgsText.TabIndex = 29;
+			this.templateArgsText.Text = "typename Func";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1202, 757);
+			this.Controls.Add(this.templateArgsText);
+			this.Controls.Add(this.templateEndLabel);
+			this.Controls.Add(this.templateStartLabel);
+			this.Controls.Add(this.isTemplatedBox);
 			this.Controls.Add(this.docRootLabel);
 			this.Controls.Add(this.chooseDocRootButton);
-			this.Controls.Add(this.textBox2);
+			this.Controls.Add(this.classSummaryText);
 			this.Controls.Add(this.classSummaryLabel);
 			this.Controls.Add(this.classDescText);
 			this.Controls.Add(this.codeSampleText);
@@ -614,7 +659,7 @@
 		protected System.Windows.Forms.RichTextBox classDescText;
 		protected System.Windows.Forms.RichTextBox codeSampleText;
 		private System.Windows.Forms.Label classSummaryLabel;
-		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.TextBox classSummaryText;
 		private System.Windows.Forms.Button addMemberFieldButton;
 		private System.Windows.Forms.Button addConstructorButton;
 		private System.Windows.Forms.Button addOperatorButton;
@@ -629,6 +674,10 @@
 		private System.Windows.Forms.Button chooseDocRootButton;
 		private System.Windows.Forms.FolderBrowserDialog docRootFolderBrowser;
 		private System.Windows.Forms.Label docRootLabel;
+		private System.Windows.Forms.CheckBox isTemplatedBox;
+		private System.Windows.Forms.Label templateStartLabel;
+		private System.Windows.Forms.Label templateEndLabel;
+		private System.Windows.Forms.TextBox templateArgsText;
 	}
 }
 

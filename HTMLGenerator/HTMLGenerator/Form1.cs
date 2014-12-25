@@ -345,6 +345,41 @@ namespace HTMLGenerator
 		}
 		
 
+		private void AddDefinitionList(DefinitionDict items, ItemHTMLDefinition defSetup,
+									   string headerName, StringBuilder sb, int nTabs = 2)
+		{
+			StringGenerators.AddTabs(nTabs, sb);
+			sb.Append("<h2>");
+			sb.Append(headerName);
+			sb.AppendLine("</h2>");
+
+			if (items.Count == 0)
+			{
+				StringGenerators.AddTabs(nTabs, sb);
+				sb.AppendLine("<p>None.</p>");
+			}
+			else
+			{
+				StringGenerators.AddTabs(nTabs, sb);
+				sb.AppendLine("<ul class=\"DeclarationList\">");
+
+					foreach (ItemHTMLData dat in items.Values)
+					{
+						defSetup.SetData(dat);
+						defSetup.AddElement(classNameText.Text, nTabs + 1, sb);
+					}
+
+				StringGenerators.AddTabs(nTabs, sb);
+				sb.AppendLine("</ul>");
+			}
+		}
+		private void AddSectionDivider(int nTabs, StringBuilder sb)
+		{
+			sb.AppendLine();
+			StringGenerators.AddTabs(nTabs, sb);
+			sb.AppendLine("<br class=\"SectionDivider\" />");
+			sb.AppendLine();
+		}
 		private void genHTMLButton_Click(object sender, EventArgs e)
 		{
 			//See if another file is going to be overwritten.
@@ -376,15 +411,16 @@ namespace HTMLGenerator
 				sb.AppendLine();
 				sb.AppendLine("\t<body>");
 
-					sb.AppendLine();
-					sb.AppendLine("\t\t<TODO><ul>");
-						sb.Append("\t\t\t");
-						sb.AppendLine(TODOTextbox.Text);
-					sb.AppendLine("\t\t</ul></TODO>");
+					if (TODOTextbox.Text.Length > 0)
+					{
+						sb.AppendLine();
+						sb.AppendLine("\t\t<TODO><ul>");
+							sb.Append("\t\t\t");
+							sb.AppendLine(TODOTextbox.Text);
+						sb.AppendLine("\t\t</ul></TODO>");
 
-					sb.AppendLine();
-					sb.AppendLine("\t\t<br class=\"SectionDivider\" />");
-					sb.AppendLine();
+						AddSectionDivider(2, sb);
+					}
 
 					sb.AppendLine();
 					sb.Append("\t\t<h1>");
@@ -392,8 +428,90 @@ namespace HTMLGenerator
 					sb.AppendLine("</h1>");
 
 					sb.Append("\t\t<p>");
-					sb.Append(classDescText.Text);
+					sb.Append(classSummaryText.Text);
 					sb.AppendLine("</p>");
+
+					AddSectionDivider(2, sb);
+
+					sb.AppendLine("\t\t<h2>Declaration</h2>");
+					sb.Append("\t\t<code class=\"CodeDecl\">");
+						if (isTemplatedBox.Checked)
+						{
+							sb.AppendLine();
+
+							sb.Append("\t\t\t");
+							sb.AppendLine(templateArgsText.Text);
+
+							sb.Append("\t\t\t");
+							sb.Append(classNameText.Text);
+							sb.AppendLine(";");
+
+							sb.Append("\t\t");
+						}
+						else
+						{
+							sb.Append(classNameText.Text);
+							sb.Append(';');
+						}
+					sb.AppendLine("</code>");
+					sb.AppendLine("<p />");
+
+					AddSectionDivider(2, sb);
+
+					AddDefinitionList(subtypeData, dataDefSetup, "Sub-types", sb, 2);
+
+					AddSectionDivider(2, sb);
+
+					AddDefinitionList(constantData, dataDefSetup, "Constants", sb, 2);
+
+					AddSectionDivider(2, sb);
+
+					AddDefinitionList(staticFieldData, dataDefSetup, "Static Fields", sb, 2);
+
+					AddSectionDivider(2, sb);
+
+					AddDefinitionList(memberFieldData, dataDefSetup, "Member Fields", sb, 2);
+
+					AddSectionDivider(2, sb);
+
+					AddDefinitionList(operatorData, functionDefSetup, "Operators", sb, 2);
+
+					AddSectionDivider(2, sb);
+
+					AddDefinitionList(staticFunctionData, functionDefSetup, "Static Functions", sb, 2);
+
+					AddSectionDivider(2, sb);
+
+					AddDefinitionList(constructorData, constructorDefSetup, "Constructors", sb, 2);
+
+					AddSectionDivider(2, sb);
+
+					AddDefinitionList(memberFunctionData, functionDefSetup, "Member Functions", sb, 2);
+
+					AddSectionDivider(2, sb);
+
+					StringGenerators.AddTabs(2, sb);
+					sb.AppendLine("<h2>Usage</h2>");
+					
+					StringGenerators.AddTabs(2, sb);
+					if (classDescText.Text.Length == 0 && codeSampleText.Text.Length == 0)
+					{
+						sb.AppendLine("<h1 style: \"color: red\">ERROR NEEDS 'USAGE' TEXT</h1>");
+					}
+					else
+					{
+						if (classDescText.Text.Length > 0)
+						{
+							sb.Append("<p>");
+							sb.Append(classDescText.Text);
+							sb.AppendLine("</p>");
+						}
+						StringGenerators.AddTabs(2, sb);
+						if (codeSampleText.Text.Length > 0)
+						{
+							StringGenerators.AddCodeSampleElement(2, false, codeSampleText.Text, sb);
+						}
+					}
 
 				sb.AppendLine("\t</body>");
 

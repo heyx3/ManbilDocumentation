@@ -85,6 +85,17 @@ namespace HTMLGenerator
 		/// <param name="tabLevel">The base tab level of this element.</param>
 		public void AddElement(string className, int tabLevel, StringBuilder sbOut)
 		{
+			if (isBreakBox.Checked)
+			{
+				StrGen.AddTabs(tabLevel - 1, sbOut);
+				sbOut.AppendLine("</ul>");
+				StrGen.AddTabs(tabLevel - 1, sbOut);
+				sbOut.AppendLine("<ul>");
+
+				return;
+			}
+
+
 			StrGen.AddTabs(tabLevel, sbOut);
 			sbOut.AppendLine("<li>");
 			
@@ -132,7 +143,7 @@ namespace HTMLGenerator
 					sbOut.Append("</li>");
 
 					if (CodeSampleText.Text.Trim().Length > 0)
-						StrGen.AddCodeSampleElement(tabLevel + 2, CodeSampleText.Text, sbOut);
+						StrGen.AddCodeSampleElement(tabLevel + 2, true, CodeSampleText.Text, sbOut);
 
 				StrGen.AddTabs(tabLevel + 1, sbOut);
 				sbOut.AppendLine("</ul>");
