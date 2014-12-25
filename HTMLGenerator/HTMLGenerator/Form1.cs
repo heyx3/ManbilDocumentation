@@ -404,7 +404,7 @@ namespace HTMLGenerator
 					sb.Append(classNameText.Text);
 					sb.AppendLine("</title>");
 
-					sb.AppendLine("\t\t<link type\"text/cs\" rel=\"stylesheet\" href=\"../MainCSS.css\" />");
+					sb.AppendLine("\t\t<link type=\"text/cs\" rel=\"stylesheet\" href=\"../MainCSS.css\" />");
 
 				sb.AppendLine("\t</head>");
 

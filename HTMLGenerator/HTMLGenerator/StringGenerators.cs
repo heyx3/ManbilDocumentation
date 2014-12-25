@@ -52,8 +52,9 @@ public static class StringGenerators
 				}
 			}
 			
-			if (codeT.ToString().Substring(i, System.Environment.NewLine.Length) ==
-				System.Environment.NewLine)
+			if (i <= codeT.Length - System.Environment.NewLine.Length &&
+				codeT.ToString().Substring(i, System.Environment.NewLine.Length) ==
+					System.Environment.NewLine)
 			{
 				codeT.Insert(i, "<br />");
 				startingLine = true;

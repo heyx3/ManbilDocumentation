@@ -15,6 +15,7 @@ namespace HTMLGenerator
 		public ConstructorDefinition()
 		{
 			InitializeMyComponent();
+			InitializeComponent();
 		}
 		public ConstructorDefinition(ItemHTMLData data)
 			: this()

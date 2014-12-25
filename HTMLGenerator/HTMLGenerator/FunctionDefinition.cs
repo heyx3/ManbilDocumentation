@@ -15,6 +15,7 @@ namespace HTMLGenerator
 		public FunctionDefinition()
 		{
 			InitializeMyComponent();
+			InitializeComponent();
 		}
 		public FunctionDefinition(ItemHTMLData data)
 			: this()
@@ -61,17 +62,13 @@ namespace HTMLGenerator
 			// 
 			// ItemNameText
 			// 
-			this.ItemNameText.Enabled = false;
 			this.ItemNameText.Location = new System.Drawing.Point(177, 84);
 			this.ItemNameText.Size = new System.Drawing.Size(45, 20);
-			this.ItemNameText.Visible = false;
 			// 
 			// ItemTypeText
 			// 
-			this.ItemTypeText.Enabled = false;
 			this.ItemTypeText.Location = new System.Drawing.Point(126, 84);
 			this.ItemTypeText.Size = new System.Drawing.Size(45, 20);
-			this.ItemTypeText.Visible = false;
 			// 
 			// functionStartLabel
 			// 
