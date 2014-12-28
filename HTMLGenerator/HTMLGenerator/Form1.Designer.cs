@@ -502,6 +502,7 @@
 			// 
 			// codeSampleText
 			// 
+			this.codeSampleText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.codeSampleText.Location = new System.Drawing.Point(5, 439);
 			this.codeSampleText.Name = "codeSampleText";
 			this.codeSampleText.Size = new System.Drawing.Size(318, 312);

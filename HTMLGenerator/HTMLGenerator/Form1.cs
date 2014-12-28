@@ -490,23 +490,26 @@ namespace HTMLGenerator
 
 					AddSectionDivider(2, sb);
 
-					StringGenerators.AddTabs(2, sb);
-					sb.AppendLine("<h2>Usage</h2>");
+					sb.AppendLine("\t\t<h2>Usage</h2>");
 					
-					StringGenerators.AddTabs(2, sb);
 					if (classDescText.Text.Length == 0 && codeSampleText.Text.Length == 0)
 					{
-						sb.AppendLine("<h1 style: \"color: red\">ERROR NEEDS 'USAGE' TEXT</h1>");
+						StringGenerators.AddTabs(2, sb);
+						sb.AppendLine("\t\t<h1 style: \"color: red\">ERROR NEEDS 'USAGE' TEXT</h1>");
 					}
 					else
 					{
 						if (classDescText.Text.Length > 0)
 						{
-							sb.Append("<p>");
-							sb.Append(classDescText.Text);
-							sb.AppendLine("</p>");
+							sb.AppendLine("\t\t<ul>");
+								sb.Append("\t\t\t<li>");
+									StringBuilder classDesc = new StringBuilder(classDescText.Text);
+									foreach (char lineBreak in System.Environment.NewLine)
+										classDesc.Replace(lineBreak.ToString(), "</li>" + System.Environment.NewLine + "\t\t\t<li>");
+									sb.Append(classDesc.ToString());
+								sb.AppendLine("</li>");
+							sb.AppendLine("\t\t</ul>");
 						}
-						StringGenerators.AddTabs(2, sb);
 						if (codeSampleText.Text.Length > 0)
 						{
 							StringGenerators.AddCodeSampleElement(2, false, codeSampleText.Text, sb);

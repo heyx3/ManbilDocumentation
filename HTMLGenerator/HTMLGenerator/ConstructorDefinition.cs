@@ -30,7 +30,7 @@ namespace HTMLGenerator
 			sbOut.Append(className);
 			sbOut.Append("(");
 			sbOut.Append(constructorArgsText.Text);
-			sbOut.Append(");");
+			sbOut.Append(")");
 		}
 		public override ItemHTMLData GetData()
 		{

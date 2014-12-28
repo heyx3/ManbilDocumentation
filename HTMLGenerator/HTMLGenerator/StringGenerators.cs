@@ -35,29 +35,28 @@ public static class StringGenerators
 		foreach (KeyValuePair<char, string> replacement in textToHTMLSpecialChars)
 			codeT.Replace(replacement.Key.ToString(), replacement.Value);
 
-		//Next, replace the spacing at the beginning of each line with the HTML spacing element.
-		bool startingLine = true;
+		//Next, replace the line breaks with HTML-formatted breaks.
+		foreach (char lineBreak in System.Environment.NewLine)
+			codeT.Replace(lineBreak.ToString(), "<br />" + System.Environment.NewLine);
+		//Now replace extended spaces with "&emsp;" symbols.
 		for (int i = 0; i < codeT.Length; ++i)
 		{
-			if (startingLine)
+			if (codeT[i] == ' ')
 			{
-				if (codeT[i] == ' ')
+				int j = i + 1;
+				while (j < codeT.Length && codeT[j] == ' ')
+					j += 1;
+
+				int nSpaces = (j - i) - 1;
+				if (nSpaces > 1)
 				{
-					codeT.Remove(i, 1);
-					codeT.Insert(i, "&emsp;");
+					StringBuilder spaceText = new StringBuilder("");
+					for (j = 0; j < nSpaces; ++j)
+						spaceText.Append("&emsp;");
+
+					codeT.Remove(i, nSpaces);
+					codeT.Insert(i, spaceText.ToString());
 				}
-				else
-				{
-					startingLine = false;
-				}
-			}
-			
-			if (i <= codeT.Length - System.Environment.NewLine.Length &&
-				codeT.ToString().Substring(i, System.Environment.NewLine.Length) ==
-					System.Environment.NewLine)
-			{
-				codeT.Insert(i, "<br />");
-				startingLine = true;
 			}
 		}
 

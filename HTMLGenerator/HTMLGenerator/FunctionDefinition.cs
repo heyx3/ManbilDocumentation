@@ -35,7 +35,6 @@ namespace HTMLGenerator
 			sbOut.Append(')');
 			if (isConstBox.Checked)
 				sbOut.Append(" const");
-			sbOut.Append(';');
 		}
 		public override ItemHTMLData GetData()
 		{
