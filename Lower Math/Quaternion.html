@@ -208,6 +208,14 @@
                     <li>For this constructor to work correctly, both direction vectors must be normalized.</li>
                 </ul>
             </li>
+            <li>
+                <a name="EulerAngleConstructor" />
+                <code class="CodeDecl">public Quaternion(Vector3f eulerAngles)</code>
+                <ul>
+                    <li>Creates a quaternion representing a rotation along the X, Y, and Z axes by the given amounts.</li>
+                    <li>This assumes the positive Y axis is forward, the positive X axis is right-ward, and the positive Z axis is upward (this is the same convention used by <a href="../Higher Math/TransformObject.html">TransformObject</a>).</li>
+                </ul>
+            </li>
         </ul>
 
         <br class="SectionDivider" />
