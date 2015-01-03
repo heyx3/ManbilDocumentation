@@ -20,9 +20,6 @@ namespace HTMLGenerator
 		{
 			InitializeComponent();
 
-			isBreakBox.Checked = true;
-
-
 			IsTemplatedBox.CheckedChanged += (s, e) =>
 				{
 					SetEnabledControl(TemplateArgsText, IsTemplatedBox.Checked);
@@ -44,6 +41,9 @@ namespace HTMLGenerator
 					SetEnabledControl(ItemDescText, enableOthers);
 					SetEnabledControl(CodeSampleText, enableOthers);
 				};
+			
+
+			isBreakBox.Checked = true;
 		}
 		/// <summary>
 		/// Creates an item with no template arguments.

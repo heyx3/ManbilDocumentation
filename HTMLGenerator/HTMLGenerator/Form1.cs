@@ -534,5 +534,10 @@ namespace HTMLGenerator
 				dlg.ShowDialog();
 			}
 		}
+
+		private void isTemplatedBox_CheckedChanged(object sender, EventArgs e)
+		{
+			templateArgsText.Enabled = isTemplatedBox.Checked;
+		}
 	}
 }

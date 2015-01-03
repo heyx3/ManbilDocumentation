@@ -559,6 +559,7 @@
 			this.isTemplatedBox.TabIndex = 26;
 			this.isTemplatedBox.Text = "Is templated?";
 			this.isTemplatedBox.UseVisualStyleBackColor = true;
+			this.isTemplatedBox.CheckedChanged += new System.EventHandler(this.isTemplatedBox_CheckedChanged);
 			// 
 			// templateStartLabel
 			// 
