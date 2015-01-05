@@ -257,6 +257,21 @@
                 </ul>
             </li>
             <li>
+                <a name="SetAsRotateXYZ" />
+                <code class="CodeDecl">public void SetAsRotateXYZ(Vector3f eulerAngles)</code>
+                <ul>
+                    <li>Sets this matrix to represent a rotation by the given amounts along each axis.</li>
+                    <li>Rotates by the Y axis, then the X axis, then the Z axis.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="SetAsRotation" />
+                <code class="CodeDecl">public void SetAsRotation(const <a href="Quaternion.html">Quaternion</a>&amp; rot)</code>
+                <ul>
+                    <li>Sets this matrix to represent the same rotation as the given quaternion.</li>
+                </ul>
+            </li>
+            <li>
                 <a name="SetAsTranslation" />
                 <code class="CodeDecl">public void SetAsTranslation(Vector3f pos)</code>
                 <ul>
@@ -264,10 +279,10 @@
                 </ul>
             </li>
             <li>
-                <a name="SetAsRotation" />
-                <code class="CodeDecl">public void SetAsRotation(Vector3f target, Vector3f up, bool alreadyNormalized = false)</code>
+                <a name="SetAsOrientation" />
+                <code class="CodeDecl">public void SetAsOrientation(Vector3f target, Vector3f up, bool alreadyNormalized = false)</code>
                 <ul>
-                    <li>Sets this matrix to represent a rotation that remaps coordinates to be relative to the given orientation.</li>
+                    <li>Sets this matrix to represent a rotation that rotates space so that "target" is pointing along the Z axis and "up" is pointing along the Y.</li>
                     <li>Takes in whether the given orientation vectors haven't been normalized yet.</li>
                 </ul>
             </li>

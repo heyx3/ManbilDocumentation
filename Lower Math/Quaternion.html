@@ -213,7 +213,7 @@
                 <code class="CodeDecl">public Quaternion(Vector3f eulerAngles)</code>
                 <ul>
                     <li>Creates a quaternion representing a rotation along the X, Y, and Z axes by the given amounts.</li>
-                    <li>This assumes the positive Y axis is forward, the positive X axis is right-ward, and the positive Z axis is upward (this is the same convention used by <a href="../Higher Math/TransformObject.html">TransformObject</a>).</li>
+                    <li>The euler angles represent a rotation along the Z axis, then the Y axis, then the X axis.</li>
                 </ul>
             </li>
         </ul>
@@ -315,6 +315,8 @@
                 <code class="CodeDecl">public Vector4f GetEulerAngles(void) const</code>
                 <ul>
                     <li>Gets the euler angles of the rotation this quaternion represents.</li>
+                    <li>Note that these may be different than the euler angles passed into this Quaternion's constructor; there is more than one way to represent a given rotation with euler angles.</li>
+                    <li>The euler angles represent a rotation along the Z axis, then the Y axis, then the X axis.</li>
                     <li><div class="CodeSample">
                         <code>
                             //The following code prints '1.045, -1.23, 0.001' within floating-point error. <br />
