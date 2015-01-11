@@ -415,7 +415,11 @@ namespace HTMLGenerator
 					{
 						sb.AppendLine();
 						sb.AppendLine("\t\t<TODO><ul>");
-							sb.Append("\t\t\t");
+							sb.Append("\t\t\t<li>");
+								StringBuilder toRepl = new StringBuilder(TODOTextbox.Text);
+								StringGenerators.ReplaceLineBreaks(toRepl, "</li>" +
+																		   System.Environment.NewLine +
+																		   "\t\t\t<li>");
 							sb.AppendLine(TODOTextbox.Text);
 						sb.AppendLine("\t\t</ul></TODO>");
 
@@ -439,8 +443,9 @@ namespace HTMLGenerator
 						{
 							sb.AppendLine();
 
-							sb.Append("\t\t\t");
-							sb.AppendLine(templateArgsText.Text);
+							sb.Append("\t\t\ttemplate&lt;");
+							sb.Append(templateArgsText.Text);
+							sb.AppendLine("&gt; <br />");
 
 							sb.Append("\t\t\t");
 							sb.Append(classNameText.Text);
@@ -504,8 +509,10 @@ namespace HTMLGenerator
 							sb.AppendLine("\t\t<ul>");
 								sb.Append("\t\t\t<li>");
 									StringBuilder classDesc = new StringBuilder(classDescText.Text);
-									foreach (char lineBreak in System.Environment.NewLine)
-										classDesc.Replace(lineBreak.ToString(), "</li>" + System.Environment.NewLine + "\t\t\t<li>");
+									StringGenerators.ReplaceLineBreaks(classDesc,
+																	   "</li>" +
+																		System.Environment.NewLine +
+																		"\t\t\t<li>");
 									sb.Append(classDesc.ToString());
 								sb.AppendLine("</li>");
 							sb.AppendLine("\t\t</ul>");

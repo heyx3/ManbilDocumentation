@@ -137,9 +137,10 @@ namespace HTMLGenerator
 						StrGen.AddTabs(tabLevel + 2, replacement);
 						replacement.Append("<li>");
 
-						sbOut.AppendLine(ItemDescText.Text.Replace(System.Environment.NewLine,
-															       replacement.ToString()));
-					StrGen.AddTabs(tabLevel + 2, sbOut);
+						StringBuilder replaced = new StringBuilder(ItemDescText.Text);
+						StrGen.ReplaceLineBreaks(replaced, replacement.ToString());
+						sbOut.AppendLine(replaced.ToString());
+
 					sbOut.Append("</li>");
 
 					if (CodeSampleText.Text.Trim().Length > 0)

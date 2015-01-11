@@ -36,8 +36,7 @@ public static class StringGenerators
 			codeT.Replace(replacement.Key.ToString(), replacement.Value);
 
 		//Next, replace the line breaks with HTML-formatted breaks.
-		foreach (char lineBreak in System.Environment.NewLine)
-			codeT.Replace(lineBreak.ToString(), "<br />" + System.Environment.NewLine);
+		ReplaceLineBreaks(codeT, "<br />" + System.Environment.NewLine);
 		//Now replace extended spaces with "&emsp;" symbols.
 		for (int i = 0; i < codeT.Length; ++i)
 		{
@@ -72,5 +71,14 @@ public static class StringGenerators
 			outHTML.AppendLine("</code></div></li>");
 		else
 			outHTML.AppendLine("</code></div>");
+	}
+
+	/// <summary>
+	/// Replaces all line breaks in the given StringBuilder with the given text.
+	/// </summary>
+	public static void ReplaceLineBreaks(StringBuilder toReplace, string replacementString)
+	{
+		foreach (char c in System.Environment.NewLine)
+			toReplace.Replace(c.ToString(), replacementString);
 	}
 }
