@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Class: Gradient</title>
+		<link type="text/cs" rel="stylesheet" href="../MainCSS.css" />
+	</head>
+
+	<body>
+
+		<TODO><ul>
+Make sure the extra HTML is written out correctly (link tags and code tags).
+Make sure references to "GradientNode" are linked to that file (not all of them are!).
+		</ul></TODO>
+
+		<br class="SectionDivider" />
+
+
+		<h1>Gradient</h1>
+		<p>Represents some kind of smooth gradient of values from <code>t</code> = 0 to <code>t</code> = 1. Can use linear, cubic, or quintic interpolation. Values in the gradient are vectors with a certain number of dimensions specified in the template parameter "Components".</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Declaration</h2>
+		<code class="CodeDecl">
+			template&lt;unsigned int Components&gt; <br />
+			Gradient;
+		</code>
+        <ul>
+            <li>"Components" is the number of floats in each gradient value. For example, 4 means the gradient is a Vector4f (or RGBA color).</li>
+        </ul>
+<p />
+
+		<br class="SectionDivider" />
+
+		<h2>Sub-types</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="Smoothness" />
+				<code class="CodeDecl">public enum Smoothness;</code>
+				<ul>
+					<li>The interpolation quality of a gradient.</li>
+                    <li>"SM_LINEAR" is linear interpolation.</li>
+                    <li>"SM_CUBIC" is cubic interpolation.</li>
+                    <li>"SM_QUINTIC" is quintic interpolation.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GNode" />
+				<code class="CodeDecl">public typedef GradientNode<Components> GNode;</code>
+				<ul>
+					<li>A typedef. "GNode" is a GradientNode with the correct number of components.</li>
+                </ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Constants</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Fields</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Fields</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="SmoothQuality" />
+				<code class="CodeDecl">public Smoothness SmoothQuality;</code>
+				<ul>
+					<li>The type of interpolation this gradient uses.</li>
+                </ul>
+			</li>
+			<li>
+				<a name="Nodes" />
+				<code class="CodeDecl">public std::vector<GNode> Nodes;</code>
+				<ul>
+					<li>The gradient nodes representing this gradient, in ascending order by <code>t</code> value.</li>
+                </ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Operators</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Functions</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="Set" />
+				<code class="CodeDecl">private void Set(GNode n1, GNode n2, GNode n3, GNode n4);</code>
+				<ul>
+					<li>Quickly copies the given gradient value into the other given gradient value.</li>
+                </ul>
+			</li>
+			<li>
+				<a name="MakeVector2" />
+				<code class="CodeDecl">private std::vector&lt;GNode&gt; MakeVector(GNode n1, GNode n2, GNode n3, GNode n4);</code>
+				<ul>
+					<li>Makes a vector with two values -- the given nodes.</li>
+                    <li>Used for a <a href="#StartEndConstructor">constructor</a>.</li>
+                    <li>The elements are added to the vector in the order they're passed in.</li>
+                </ul>
+			</li>
+			<li>
+				<a name="MakeVector3" />
+				<code class="CodeDecl">private std::vector&lt;GNode&gt; MakeVector(GNode n1, GNode n2, GNode n3, GNode n4);</code>
+				<ul>
+                    <li>Makes a vector with three values -- the given nodes.</li>
+                    <li>Used for a <a href="#StartMidEndConstructor">constructor</a>.</li>
+                    <li>The elements are added to the vector in the order they're passed in.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="MakeVector4" />
+				<code class="CodeDecl">private std::vector&lt;GNode&gt; MakeVector(GNode n1, GNode n2, GNode n3, GNode n4);</code>
+				<ul>
+                    <li>Makes a vector with four values -- the given nodes.</li>
+                    <li>Used for a <a href="#StartMid2EndConstructor">constructor</a>.</li>
+                    <li>The elements are added to the vector in the order they're passed in.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Constructors</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="VectorConstructor" />
+				<code class="CodeDecl">public Gradient(GNode startVal, GNode endVal, GNode mid1, GNode mid2, Smoothness smoothQuality);</code>
+				<ul>
+					<li>Creates a gradient with the given nodes and smoothness.</li>
+                </ul>
+			</li>
+			<li>
+				<a name="StartEndConstructor" />
+				<code class="CodeDecl">public Gradient(GNode startVal, GNode endVal, GNode mid1, GNode mid2, Smoothness smoothQuality);</code>
+				<ul>
+					<li>Creates a gradient that just interpolates from one value to another.</li>
+                </ul>
+			</li>
+			<li>
+				<a name="StartMidEndConstructor" />
+				<code class="CodeDecl">public Gradient(GNode startVal, GNode endVal, GNode mid1, GNode mid2, Smoothness smoothQuality);</code>
+				<ul>
+					<li>Creates a gradient that interpolates from one value to another, with a midpoint somewhere in between them.</li>
+                </ul>
+			</li>
+			<li>
+				<a name="StartMid2EndConstructor" />
+				<code class="CodeDecl">public Gradient(GNode startVal, GNode endVal, GNode mid1, GNode mid2, Smoothness smoothQuality);</code>
+				<ul>
+					<li>Creates a gradient that interpolates from one value to another, with two midpoints somewhere in between them.</li>
+                    <li>Assumes that the midpoints are ordered correctly when passed into this constructor.</li>
+                </ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Functions</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="IsValidGradient" />
+				<code class="CodeDecl">public bool IsValidGradient(void);</code>
+				<ul>
+					<li>Gets whether this gradient has at least one point, making it valid for use.</li>
+                </ul>
+			</li>
+			<li>
+				<a name="GetValue" />
+				<code class="CodeDecl">public void GetValue(float t, float outVals[Components]);</code>
+				<ul>
+                    <li>Gets the gradient value at the given <code>t</code>.</li>
+                    <li><code>t</code> will be clamped to be inside the range this gradient covers.</li>
+					<li>Assumes that this gradient is valid.</li>
+                </ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Usage</h2>
+		<ul>
+			<li>This object can be used to create a gradient of colors (or other values). The gradient could then be stored in a texture for rendering or gpu particle data.</li>
+		</ul>
+		<div class="CodeSample"><code>
+//The following code creates a smooth transition from white to black.<br />
+typedef Gradient&lt;4&gt; Grad4;<br />
+Vector4f white(1.0f, 1.0f, 1.0f, 1.0f),<br />
+&emsp; &emsp; &emsp; &emsp; &emsp;black(0.0f, 0.0f, 0.0f, 1.0f);<br />
+Grad4 whiteToBlack(Grad4::GNode(0.0f, &amp;white.x), Grad4::GNode(1.0f, &amp;black.x), Grad4::SM_QUINTIC);<br />
+const unsigned int gradientWidth = 256;<br />
+Vector4f gradientPixels[gradientWidth];<br />
+for (unsigned int i = 0; i < gradientWidth; ++i)<br />
+&emsp;&emsp;&emsp;&emsp;whitetoBlack.GetValue((float)i / (float)gradientWidth, &amp;gradientPixels[i].x);
+		</code></div>
+	</body>
+</html>
