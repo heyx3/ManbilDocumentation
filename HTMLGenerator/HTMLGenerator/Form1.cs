@@ -109,11 +109,19 @@ namespace HTMLGenerator
 				{
 					toWrite[currentSelection] = defSetup.GetData();
 				}
-				else
+				else if (!toWrite.ContainsKey(defSetup.AhrefName.Text))
 				{
 					itemlist.FindItemWithText(currentSelection).Text = defSetup.AhrefName.Text;
 					toWrite.Remove(currentSelection);
 					toWrite.Add(defSetup.AhrefName.Text, defSetup.GetData());
+				}
+				else
+				{
+					MessageBox.Show("The item '" + defSetup.AhrefName.Text +
+									"' already exists. Reverting the current item's name to '" +
+									currentSelection + "'...");
+					defSetup.AhrefName.Text = currentSelection;
+					toWrite[currentSelection] = defSetup.GetData();
 				}
 			}
 		}
