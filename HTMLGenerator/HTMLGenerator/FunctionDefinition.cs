@@ -25,10 +25,10 @@ namespace HTMLGenerator
 
 		protected override void AddDefinition(string className, StringBuilder sbOut)
 		{
-			string accessModifier = (AccessModifierDropdown.SelectedItem == null ?
-											"ERROR_NO_ACCESS_MODIFIER" :
-											AccessModifierDropdown.SelectedItem.ToString());
-			sbOut.Append(accessModifier);
+			if (AccessModifierDropdown.SelectedItem == null)
+				sbOut.Append("ERROR_NO_ACCESS_MODIFIER");
+			else
+				sbOut.Append(AccessModifierDropdown.SelectedItem.ToString());
 			sbOut.Append(' ');
 			sbOut.Append(ItemTypeText.Text);
 			sbOut.Append(' ');

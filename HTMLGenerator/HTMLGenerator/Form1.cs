@@ -123,6 +123,8 @@ namespace HTMLGenerator
 					defSetup.AhrefName.Text = currentSelection;
 					toWrite[currentSelection] = defSetup.GetData();
 				}
+
+				currentSelection = null;
 			}
 		}
 		private void SwitchTo(DefinitionTypes newType)
