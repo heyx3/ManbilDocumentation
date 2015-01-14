@@ -133,15 +133,15 @@ namespace HTMLGenerator
 					sbOut.Append("<li>");
 
 						StringBuilder replacement = new StringBuilder("</li>");
-						replacement.Append(System.Environment.NewLine);
+						replacement.AppendLine();
 						StrGen.AddTabs(tabLevel + 2, replacement);
 						replacement.Append("<li>");
 
 						StringBuilder replaced = new StringBuilder(ItemDescText.Text);
 						StrGen.ReplaceLineBreaks(replaced, replacement.ToString());
-						sbOut.AppendLine(replaced.ToString());
+						sbOut.Append(replaced.ToString());
 
-					sbOut.Append("</li>");
+					sbOut.AppendLine("</li>");
 
 					if (CodeSampleText.Text.Trim().Length > 0)
 						StrGen.AddCodeSampleElement(tabLevel + 2, true, CodeSampleText.Text, sbOut);
