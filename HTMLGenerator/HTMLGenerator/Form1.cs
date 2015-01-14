@@ -400,6 +400,11 @@ namespace HTMLGenerator
 			}
 
 
+			//Save the currently-selected data.
+			if (currentSelection != null)
+				WriteSelection();
+
+
 			//Generate the file.
 			StringBuilder sb = new StringBuilder("<!DOCTYPE HTML>");
 			sb.AppendLine();
@@ -428,7 +433,9 @@ namespace HTMLGenerator
 								StringGenerators.ReplaceLineBreaks(toRepl, "</li>" +
 																		   System.Environment.NewLine +
 																		   "\t\t\t<li>");
-							sb.AppendLine(TODOTextbox.Text);
+							sb.Append(toRepl.ToString());
+							sb.AppendLine("</li>");
+
 						sb.AppendLine("\t\t</ul></TODO>");
 
 						AddSectionDivider(2, sb);
@@ -445,8 +452,24 @@ namespace HTMLGenerator
 
 					AddSectionDivider(2, sb);
 
+					sb.AppendLine("\t\t<h2>Metadata</h2>");
+					sb.Append("\t\t<p>Located in \"");
+					sb.Append(hFileLocationText.Text);
+					sb.Append("\". ");
+					if (hasCppFileCheck.Checked)
+						sb.Append("Has a .cpp file in the same location.");
+					else
+						sb.Append("Does not have a .cpp file.");
+					sb.Append(" Part of the <a href=\"../");
+					sb.Append(systemHTMLText.Text);
+					sb.Append("\">");
+					sb.Append(systemNameText.Text);
+					sb.AppendLine("</a> system.</p>");
+
+					AddSectionDivider(2, sb);
+
 					sb.AppendLine("\t\t<h2>Declaration</h2>");
-					sb.Append("\t\t<code class=\"CodeDecl\">");
+					sb.Append("\t\t<code class=\"CodeDecl\">class ");
 						if (isTemplatedBox.Checked)
 						{
 							sb.AppendLine();
@@ -467,7 +490,7 @@ namespace HTMLGenerator
 							sb.Append(';');
 						}
 					sb.AppendLine("</code>");
-					sb.AppendLine("<p />");
+					sb.AppendLine("\t\t<p />");
 
 					AddSectionDivider(2, sb);
 
