@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Class: BumpmapToNormalmap</title>
+		<link type="text/cs" rel="stylesheet" href="../MainCSS.css" />
+	</head>
+
+	<body>
+
+		<h1>BumpmapToNormalmap</h1>
+		<p>Converts a bumpmap to a normal map.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Metadata</h2>
+		<p>Located in "Math/Higher Math/BumpmapToNormalmap.h". Has a .cpp file in the same location. Part of the <a href="../Higher Math.html">Higher Math</a> system.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Declaration</h2>
+		<code class="CodeDecl">class BumpmapToNormalmap;</code>
+		<p />
+
+		<br class="SectionDivider" />
+
+		<h2>Sub-types</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Constants</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Fields</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Fields</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Operators</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Functions</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="Convert" />
+				<code class="CodeDecl">public void Convert(const <a href="../Lower Math/Array2D.html">Array2D</a>&lt;float&gt;&amp; heightmap, float heightScale, bool normalizeRange, Array2D&lt;Vector3f&gt;&amp; outNormals);</code>
+				<ul>
+					<li>Converts the given bumpmap into a normal map and stores it in the given out array.</li>
+					<li>Resizes the normalmap array if it isn't currently the same size as the bumpmap array.</li>
+					<li><div class="CodeSample"><code>
+//Create a bumpmap.<br />
+Array2D&lt;float&gt; bumpmap(512, 512);<br />
+//[Some code to generate an interesting bumpmap]<br />
+<br />
+//Convert it to a normalmap.<br />
+Array2D&lt;Vector3f&gt;&amp; normalMap(bumpmap.GetWidth(), bumpmap.GetHeight());<br />
+BumpmapToNormalmap::Convert(bumpmap, 10.0f, true, normalMap);<br />
+<br />
+//[Now store the normal values as RGB colors in a texture]
+					</code></div></li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Constructors</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Functions</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Usage</h2>
+		<ul>
+			<li>Bumpmaps (also known as a heightmap) are often generated via coherent noise generation.</li>
+			<li>Normal maps are used to fake complex bumps on a flat surface by tricking the lighting system -- a normalmap texture specifies the normal of the surface being rendered, relative to the <em>actual</em> surface normal.</li>
+			<li>This class provides a single static function that takes in a bumpmap and outputs a normal map that will give a flat surface the appearance of the given bumps.</li>
+			<li>Because textures generally store values between 0 and 1, but normals range from -1 to 1, the output normalmap can optionally be remapped to [0, 1] for storage in a texture. When rendering the texture, just make sure to reverse the mapping before using the normals.</li>
+		</ul>
+	</body>
+</html>
