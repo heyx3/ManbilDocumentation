@@ -8,23 +8,20 @@
 
 	<body>
 
-		<TODO><ul>
-Make sure the extra HTML is written out correctly (link tags and code tags).
-Make sure references to "GradientNode" are linked to that file (not all of them are!).
-		</ul></TODO>
-
-		<br class="SectionDivider" />
-
-
 		<h1>Gradient</h1>
 		<p>Represents some kind of smooth gradient of values from <code>t</code> = 0 to <code>t</code> = 1. Can use linear, cubic, or quintic interpolation. Values in the gradient are vectors with a certain number of dimensions specified in the template parameter "Components".</p>
+
+        <br class="SectionDivider" />
+
+        <h2>Metadata</h2>
+        <p>Located in "Math/Higher Math/Gradient.h". Does not have a .cpp file. Part of the <a href="../Higher Math.html">Higher Math</a> system.</p>
 
 		<br class="SectionDivider" />
 
 		<h2>Declaration</h2>
 		<code class="CodeDecl">
 			template&lt;unsigned int Components&gt; <br />
-			Gradient;
+			class Gradient;
 		</code>
         <ul>
             <li>"Components" is the number of floats in each gradient value. For example, 4 means the gradient is a Vector4f (or RGBA color).</li>
@@ -47,7 +44,7 @@ Make sure references to "GradientNode" are linked to that file (not all of them 
 			</li>
 			<li>
 				<a name="GNode" />
-				<code class="CodeDecl">public typedef GradientNode<Components> GNode;</code>
+				<code class="CodeDecl">public typedef <a href="GradientNode.html">GradientNode</a>&lt;Components&gt; GNode;</code>
 				<ul>
 					<li>A typedef. "GNode" is a GradientNode with the correct number of components.</li>
                 </ul>

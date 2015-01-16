@@ -63,7 +63,7 @@ Array2D&lt;float&gt; bumpmap(512, 512);<br />
 //[Some code to generate an interesting bumpmap]<br />
 <br />
 //Convert it to a normalmap.<br />
-Array2D&lt;Vector3f&gt;&amp; normalMap(bumpmap.GetWidth(), bumpmap.GetHeight());<br />
+Array2D&lt;Vector3f&gt; normalMap(bumpmap.GetWidth(), bumpmap.GetHeight());<br />
 BumpmapToNormalmap::Convert(bumpmap, 10.0f, true, normalMap);<br />
 <br />
 //[Now store the normal values as RGB colors in a texture]
