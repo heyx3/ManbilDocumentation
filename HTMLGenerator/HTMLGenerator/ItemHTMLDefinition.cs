@@ -107,6 +107,10 @@ namespace HTMLGenerator
 				StrGen.AddTabs(tabLevel + 1, sbOut);
 				sbOut.Append("<code class=\"CodeDecl\">");
 
+					StringBuilder baseDecl = new StringBuilder("");
+					AddDefinition(className, baseDecl);
+					StrGen.ReplaceSpecialChars(baseDecl);
+
 					if (IsTemplatedBox.Checked)
 					{
 						sbOut.AppendLine();
@@ -116,13 +120,14 @@ namespace HTMLGenerator
 						sbOut.AppendLine("&gt; <br />");
 
 						StrGen.AddTabs(tabLevel + 2, sbOut);
-						AddDefinition(className, sbOut);
+						sbOut.Append(baseDecl.ToString());
 						sbOut.AppendLine(";");
+						StrGen.AddTabs(tabLevel + 1, sbOut);
 						sbOut.AppendLine("</code>");
 					}
 					else
 					{
-						AddDefinition(className, sbOut);
+						sbOut.Append(baseDecl.ToString());
 						sbOut.AppendLine(";</code>");
 					}
 

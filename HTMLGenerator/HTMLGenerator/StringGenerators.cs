@@ -27,13 +27,20 @@ public static class StringGenerators
 		new KeyValuePair<char, string>('<', "&lt;"),
 		new KeyValuePair<char, string>('>', "&gt;"),
 	};
+	/// <summary>
+	/// Replaces any special HTML characters with the correct text representation of that character.
+	/// </summary>
+	public static void ReplaceSpecialChars(StringBuilder str)
+	{
+		foreach (KeyValuePair<char, string> replacement in textToHTMLSpecialChars)
+			str.Replace(replacement.Key.ToString(), replacement.Value);
+	}
 	public static void AddCodeSampleElement(int tabLevel, bool useLITag, string codeText, StringBuilder outHTML)
 	{
 		StringBuilder codeT = new StringBuilder(codeText);
 
 		//First replace any special characters.
-		foreach (KeyValuePair<char, string> replacement in textToHTMLSpecialChars)
-			codeT.Replace(replacement.Key.ToString(), replacement.Value);
+		ReplaceSpecialChars(codeT);
 
 		//Next, replace the line breaks with HTML-formatted breaks.
 		ReplaceLineBreaks(codeT, "<br />" + System.Environment.NewLine);

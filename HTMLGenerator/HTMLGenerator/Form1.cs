@@ -471,7 +471,7 @@ namespace HTMLGenerator
 					AddSectionDivider(2, sb);
 
 					sb.AppendLine("\t\t<h2>Declaration</h2>");
-					sb.Append("\t\t<code class=\"CodeDecl\">class ");
+					sb.Append("\t\t<code class=\"CodeDecl\">");
 						if (isTemplatedBox.Checked)
 						{
 							sb.AppendLine();
@@ -480,7 +480,7 @@ namespace HTMLGenerator
 							sb.Append(templateArgsText.Text);
 							sb.AppendLine("&gt; <br />");
 
-							sb.Append("\t\t\t");
+							sb.Append("\t\t\tclass ");
 							sb.Append(classNameText.Text);
 							sb.AppendLine(";");
 
@@ -488,6 +488,7 @@ namespace HTMLGenerator
 						}
 						else
 						{
+							sb.Append("class ");
 							sb.Append(classNameText.Text);
 							sb.Append(';');
 						}
