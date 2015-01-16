@@ -113,7 +113,7 @@ namespace HTMLGenerator
 						StrGen.AddTabs(tabLevel + 2, sbOut);
 						sbOut.Append("template&lt;");
 						sbOut.Append(TemplateArgsText.Text);
-						sbOut.AppendLine("&gt;");
+						sbOut.AppendLine("&gt; <br />");
 
 						StrGen.AddTabs(tabLevel + 2, sbOut);
 						AddDefinition(className, sbOut);
