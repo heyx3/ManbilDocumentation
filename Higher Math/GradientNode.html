@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Class: GradientNode</title>
+		<link type="text/cs" rel="stylesheet" href="../MainCSS.css" />
+	</head>
+
+	<body>
+
+		<br class="SectionDivider" />
+
+
+		<h1>GradientNode</h1>
+		<p>A single value at a specific point in a <a href="Gradient.html">Gradient</a>.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Metadata</h2>
+		<p>Located in "Math/Higher Math/Gradient.h". Does not have a .cpp file. Part of the <a href="../Higher Math.html">Higher Math</a> system.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Declaration</h2>
+		<code class="CodeDecl">
+			template&lt;unsigned int Components&gt; <br />
+			class GradientNode;
+		</code>
+        <ul>
+            <li>"Components" is the number of floats in each gradient value. For example, 4 means the gradient is a Vector4f (or RGBA color).</li>
+        </ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Sub-types</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Constants</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Fields</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Fields</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="T" />
+				<code class="CodeDecl">public float T;</code>
+				<ul>
+					<li>The point in the gradient that this node resides at.</li>
+					<li>This value will be clamped between 0 and 1 by the Gradient class.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="Value" />
+				<code class="CodeDecl">public float Value[Components];</code>
+				<ul>
+					<li>The value of this gradient; essentially a vector with <code>Component</code> dimensions.</li>
+					<li><div class="CodeSample"><code>
+//Set a node's RGB colors to a light blue.<br />
+float newCol[] = { 0.5f, 0.5f, 1.0f };<br />
+node.SetValue(newCol);
+					</code></div></li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Operators</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Functions</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Constructors</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="DataConstructor" />
+				<code class="CodeDecl">public GradientNode(float t, const float value[Components]);</code>
+				<ul>
+					<li>Creates a new GradientNode with the given T and a copy of the given Value.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="CopyConstructor" />
+				<code class="CodeDecl">public GradientNode(const GradientNode&lt;Components&gt;&amp; cpy);</code>
+				<ul>
+					<li>Creates a copy of the given node.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Functions</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="SetValue" />
+				<code class="CodeDecl">public void SetValue(const float newValue[Components]);</code>
+				<ul>
+					<li>Sets this node's <code>Value</code> field to the given new value.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Usage</h2>
+		<ul>
+			<li>This class is used by <a href="Gradient.html">Gradient</a>; each GradientNode represents a single point in the gradient.</li>
+		</ul>
+		<div class="CodeSample"><code>
+//Create a gradient node at the beginning of a gradient.<br />
+float bright = 1.0f;<br />
+GradientNode&lt;1&gt; start(0.0f, &amp;bright);<br />
+<br />
+//Create a gradient node at the end of a gradient.<br />
+float dark = 0.0f;<br />
+GradientNode&lt;1&gt; end(1.0f, &amp;dark);
+		</code></div>
+	</body>
+</html>
