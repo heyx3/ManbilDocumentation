@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Class: ProjectionInfo</title>
+		<link type="text/cs" rel="stylesheet" href="../MainCSS.css" />
+	</head>
+
+	<body>
+
+		<h1>ProjectionInfo</h1>
+		<p>Information about a 3D perspective (field of view, aspect ratio, and near/far clipping planes).</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Metadata</h2>
+		<p>Located in "Math/Higher Math/ProjectionInfo.h". Does not have a .cpp file. Part of the <a href="../Higher Math.html">Higher Math</a> system.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Declaration</h2>
+		<code class="CodeDecl">class ProjectionInfo;</code>
+		<p />
+
+		<br class="SectionDivider" />
+
+		<h2>Sub-types</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Constants</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Fields</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Fields</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="FOV" />
+				<code class="CodeDecl">public float FOV;</code>
+				<ul>
+					<li>The vertical field of view, measured in radians.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="Width" />
+				<code class="CodeDecl">public float Width;</code>
+				<ul>
+					<li>The width of the viewing area.</li>
+					<li>Should be in pixels.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="Height" />
+				<code class="CodeDecl">public float Height;</code>
+				<ul>
+					<li>The height of the viewing area.</li>
+					<li>Should be in pixels.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="zNear" />
+				<code class="CodeDecl">public float zNear;</code>
+				<ul>
+					<li>Anything closer to the camera than this distance will not be rendered.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="zFar" />
+				<code class="CodeDecl">public float zFar;</code>
+				<ul>
+					<li>Anything farther from the camera than this distance will not be rendered.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Operators</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Functions</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Constructors</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="VoidConstructor" />
+				<code class="CodeDecl">public ProjectionInfo(float fov, float width, float height, float zNear, float zFar);</code>
+				<ul>
+					<li>Creates a constructor with default, sane (though not ideal) values.</li>
+					<li>The FOV is 2.3561945, or 135 degrees.</li>
+					<li>The width and height are 800.0 and 600.0, respectively.</li>
+					<li>The zNear and zFar are 0.1 and 1000.0, respectively.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="DataConstructor" />
+				<code class="CodeDecl">public ProjectionInfo(float fov, float width, float height, float zNear, float zFar);</code>
+				<ul>
+					<li>Creates a ProjectionInfo with the given values.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Functions</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="GetAspectRatio" />
+				<code class="CodeDecl">public float GetAspectRatio(float degrees);</code>
+				<ul>
+					<li>Gets the aspect ratio for this projection data.</li>
+					<li>Calculates it via <code>Width / Height</code>.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="SetFOVDegrees" />
+				<code class="CodeDecl">public void SetFOVDegrees(float degrees);</code>
+				<ul>
+					<li>Sets the vertical field of view (i.e. the <code>FOV</code> field) to the given value, converted to radians.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Usage</h2>
+		<ul>
+			<li>This class is a data structure that represents information about a 3D point of view. When taken along with camera position, forward vector, and upward vector, a 3D view fustrum can be calculated.</li>
+			<li>It is encapsulated in the <a href="Camera.html">Camera</a> class.</li>
+			<li>Field of view, or FOV, is the vertical angle of the region the 3D perspective can see.</li>
+			<li>Aspect ratio is the ratio of <code>width / height</code>.</li>
+			<li>The horizontal field of view of some projection "<code>info</code>" can be computed with <code>info.FOV * info.GetAspectRatio()</code>.</li>
+			<li><code>zNear</code> and <code>zFar</code> are the closest and farthest distances from the perspective that are visible, respectively.</li>
+		</ul>
+	</body>
+</html>
