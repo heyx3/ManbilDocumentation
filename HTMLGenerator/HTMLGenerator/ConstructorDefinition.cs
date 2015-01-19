@@ -42,7 +42,7 @@ namespace HTMLGenerator
 		public override void SetData(ItemHTMLData data)
 		{
 			base.SetData(data);
-			(data as ConstructorData).Arguments = constructorArgsText.Text;
+			constructorArgsText.Text = (data as ConstructorData).Arguments;
 		}
 
 		private void InitializeComponent()

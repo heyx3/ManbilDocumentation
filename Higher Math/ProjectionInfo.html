@@ -96,7 +96,7 @@
 		<ul class="DeclarationList">
 			<li>
 				<a name="VoidConstructor" />
-				<code class="CodeDecl">public ProjectionInfo(float fov, float width, float height, float zNear, float zFar);</code>
+				<code class="CodeDecl">public ProjectionInfo(void);</code>
 				<ul>
 					<li>Creates a constructor with default, sane (though not ideal) values.</li>
 					<li>The FOV is 2.3561945, or 135 degrees.</li>
@@ -119,7 +119,7 @@
 		<ul class="DeclarationList">
 			<li>
 				<a name="GetAspectRatio" />
-				<code class="CodeDecl">public float GetAspectRatio(float degrees);</code>
+				<code class="CodeDecl">public float GetAspectRatio(void);</code>
 				<ul>
 					<li>Gets the aspect ratio for this projection data.</li>
 					<li>Calculates it via <code>Width / Height</code>.</li>
