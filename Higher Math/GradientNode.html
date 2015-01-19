@@ -4,6 +4,7 @@
 	<head>
 		<title>Class: GradientNode</title>
 		<link type="text/cs" rel="stylesheet" href="../MainCSS.css" />
+        <script src="../google-code-prettify/run_prettify.js"></script>
 	</head>
 
 	<body>
@@ -22,7 +23,7 @@
 		<br class="SectionDivider" />
 
 		<h2>Declaration</h2>
-		<code class="CodeDecl">
+		<code class="CodeDecl prettyprint">
 			template&lt;unsigned int Components&gt; <br />
 			class GradientNode;
 		</code>
@@ -51,7 +52,7 @@
 		<ul class="DeclarationList">
 			<li>
 				<a name="T" />
-				<code class="CodeDecl">public float T;</code>
+				<code class="CodeDecl prettyprint">public float T;</code>
 				<ul>
 					<li>The point in the gradient that this node resides at.</li>
 					<li>This value will be clamped between 0 and 1 by the Gradient class.</li>
@@ -59,10 +60,10 @@
 			</li>
 			<li>
 				<a name="Value" />
-				<code class="CodeDecl">public float Value[Components];</code>
+				<code class="CodeDecl prettyprint">public float Value[Components];</code>
 				<ul>
 					<li>The value of this gradient; essentially a vector with <code>Component</code> dimensions.</li>
-					<li><div class="CodeSample"><code>
+					<li><div class="CodeSample"><code class="prettyprint">
 //Set a node's RGB colors to a light blue.<br />
 float newCol[] = { 0.5f, 0.5f, 1.0f };<br />
 node.SetValue(newCol);
@@ -87,14 +88,14 @@ node.SetValue(newCol);
 		<ul class="DeclarationList">
 			<li>
 				<a name="DataConstructor" />
-				<code class="CodeDecl">public GradientNode(float t, const float value[Components]);</code>
+				<code class="CodeDecl prettyprint">public GradientNode(float t, const float value[Components]);</code>
 				<ul>
 					<li>Creates a new GradientNode with the given T and a copy of the given Value.</li>
 				</ul>
 			</li>
 			<li>
 				<a name="CopyConstructor" />
-				<code class="CodeDecl">public GradientNode(const GradientNode&lt;Components&gt;&amp; cpy);</code>
+				<code class="CodeDecl prettyprint">public GradientNode(const GradientNode&lt;Components&gt;&amp; cpy);</code>
 				<ul>
 					<li>Creates a copy of the given node.</li>
 				</ul>
@@ -107,7 +108,7 @@ node.SetValue(newCol);
 		<ul class="DeclarationList">
 			<li>
 				<a name="SetValue" />
-				<code class="CodeDecl">public void SetValue(const float newValue[Components]);</code>
+				<code class="CodeDecl prettyprint">public void SetValue(const float newValue[Components]);</code>
 				<ul>
 					<li>Sets this node's <code>Value</code> field to the given new value.</li>
 				</ul>
@@ -120,7 +121,7 @@ node.SetValue(newCol);
 		<ul>
 			<li>This class is used by <a href="Gradient.html">Gradient</a>; each GradientNode represents a single point in the gradient.</li>
 		</ul>
-		<div class="CodeSample"><code>
+		<div class="CodeSample"><code class="prettyprint">
 //Create a gradient node at the beginning of a gradient.<br />
 float bright = 1.0f;<br />
 GradientNode&lt;1&gt; start(0.0f, &amp;bright);<br />

@@ -4,6 +4,7 @@
     <head>
         <title>Class: Vector4u</title>
         <link type="text/css" rel="stylesheet" href="../MainCSS.css" />
+        <script src="../google-code-prettify/run_prettify.js"></script>
     </head>
 
     <body>
@@ -17,7 +18,7 @@
         <br class="SectionDivider" />
 
         <h2>Declaration</h2>
-        <code class="CodeDecl">class Vector4u;</code>
+        <code class="CodeDecl prettyprint">class Vector4u;</code>
         <p />
 
         <br class="SectionDivider" />
@@ -41,28 +42,28 @@
         <ul class="DeclarationList">
             <li>
                 <a name="x" />
-                <code class="CodeDecl">public unsigned int x</code>
+                <code class="CodeDecl prettyprint">public unsigned int x</code>
                 <ul>
                     <li>The X component of the vector.</li>
                 </ul>
             </li>
             <li>
                 <a name="y" />
-                <code class="CodeDecl">public unsigned int y</code>
+                <code class="CodeDecl prettyprint">public unsigned int y</code>
                 <ul>
                     <li>The Y component of the vector.</li>
                 </ul>
             </li>
             <li>
                 <a name="z" />
-                <code class="CodeDecl">public unsigned int z</code>
+                <code class="CodeDecl prettyprint">public unsigned int z</code>
                 <ul>
                     <li>The Z component of the vector.</li>
                 </ul>
             </li>
             <li>
                 <a name="w" />
-                <code class="CodeDecl">public unsigned int w</code>
+                <code class="CodeDecl prettyprint">public unsigned int w</code>
                 <ul>
                     <li>The W component of the vector.</li>
                 </ul>
@@ -75,21 +76,21 @@
         <ul class="DeclarationList">
             <li>
                 <a name="()" />
-                <code class="CodeDecl">unsigned int operator()(const Vector4u&amp; v) const</code>
+                <code class="CodeDecl prettyprint">unsigned int operator()(const Vector4u&amp; v) const</code>
                 <ul>
                     <li>Gets a hash code. Allows this vector to be used for std collections that uses hashes.</li>
                 </ul>
             </li>
             <li>
                 <a name="[]Const" />
-                <code class="CodeDecl">public const unsigned int&amp; operator[](unsigned int index) const</code>
+                <code class="CodeDecl prettyprint">public const unsigned int&amp; operator[](unsigned int index) const</code>
                 <ul>
                     <li>Accesses the X, Y, Z, or W component using 0, 1, 2, or 3, respectively.</li>
                 </ul>
             </li>
             <li>
                 <a name="[]" />
-                <code class="CodeDecl">public unsigned int&amp; operator[](unsigned int index)</code>
+                <code class="CodeDecl prettyprint">public unsigned int&amp; operator[](unsigned int index)</code>
                 <ul>
                     <li>Accesses the X, Y, Z, or W component using 0, 1, 2, or 3, respectively.</li>
                 </ul>
@@ -98,63 +99,63 @@
         <ul class="DeclarationList">
             <li>
                 <a name="+=" />
-                <code class="CodeDecl">public Vector4u&amp; operator+=(const Vector4u&amp; other)</code>
+                <code class="CodeDecl prettyprint">public Vector4u&amp; operator+=(const Vector4u&amp; other)</code>
                 <ul>
                     <li>Adds the given vector to this one.</li>
                 </ul>
             </li>
             <li>
                 <a name="-=" />
-                <code class="CodeDecl">public Vector4u&amp; operator-=(const Vector4u&amp; other)</code>
+                <code class="CodeDecl prettyprint">public Vector4u&amp; operator-=(const Vector4u&amp; other)</code>
                 <ul>
                     <li>Subtracts the given vector from this one.</li>
                 </ul>
             </li>
             <li>
                 <a name="*=" />
-                <code class="CodeDecl">public Vector4u&amp; operator*=(unsigned int i)</code>
+                <code class="CodeDecl prettyprint">public Vector4u&amp; operator*=(unsigned int i)</code>
                 <ul>
                     <li>Multiplies each component by the given unsigned int.</li>
                 </ul>
             </li>
             <li>
                 <a name="/=" />
-                <code class="CodeDecl">public Vector4u&amp; operator/=(unsigned int i)</code>
+                <code class="CodeDecl prettyprint">public Vector4u&amp; operator/=(unsigned int i)</code>
                 <ul>
                     <li>Divides each component by the given unsigned int.</li>
                 </ul>
             </li>
             <li>
                 <a name="+" />
-                <code class="CodeDecl">public Vector4u operator+(const Vector4u&amp; other) const</code>
+                <code class="CodeDecl prettyprint">public Vector4u operator+(const Vector4u&amp; other) const</code>
                 <ul>
                     <li>Adds this vector and the given one together.</li>
                 </ul>
             </li>
             <li>
                 <a name="-" />
-                <code class="CodeDecl">public Vector4u operator-(const Vector4u&amp; other) const</code>
+                <code class="CodeDecl prettyprint">public Vector4u operator-(const Vector4u&amp; other) const</code>
                 <ul>
                     <li>Subtracts the given vector from this one.</li>
                 </ul>
             </li>
             <li>
                 <a name="*" />
-                <code class="CodeDecl">public Vector4u operator*(unsigned int i) const</code>
+                <code class="CodeDecl prettyprint">public Vector4u operator*(unsigned int i) const</code>
                 <ul>
                     <li>Multiplies each component by the given unsigned int.</li>
                 </ul>
             </li>
             <li>
                 <a name="/" />
-                <code class="CodeDecl">public Vector4u operator/(unsigned int i) const</code>
+                <code class="CodeDecl prettyprint">public Vector4u operator/(unsigned int i) const</code>
                 <ul>
                     <li>Divides each component by the given unsigned int.</li>
                 </ul>
             </li>
             <li>
                 <a name="Negate" />
-                <code class="CodeDecl">public Vector4u operator-(void) const</code>
+                <code class="CodeDecl prettyprint">public Vector4u operator-(void) const</code>
                 <ul>
                     <li>Gets the inverse of this vector.</li>
                 </ul>
@@ -163,14 +164,14 @@
         <ul class="DeclarationList">
             <li>
                 <a name="==" />
-                <code class="CodeDecl">public bool operator==(const Vector4u&amp; other) const</code>
+                <code class="CodeDecl prettyprint">public bool operator==(const Vector4u&amp; other) const</code>
                 <ul>
                     <li>Gets whether this vector is identical to the given one.</li>
                 </ul>
             </li>
             <li>
                 <a name="!=" />
-                <code class="CodeDecl">public bool operator!=(const Vector4u&amp; other) const</code>
+                <code class="CodeDecl prettyprint">public bool operator!=(const Vector4u&amp; other) const</code>
                 <ul>
                     <li>Gets whether this vector is NOT identical to the given one.</li>
                 </ul>
@@ -178,7 +179,7 @@
 
             <li>
                 <a name="=" />
-                <code class="CodeDecl">public Vector4u&amp; operator=(Vector4u v)</code>
+                <code class="CodeDecl prettyprint">public Vector4u&amp; operator=(Vector4u v)</code>
                 <ul>
                     <li>Sets this vector to be equal to the given vector.</li>
                 </ul>
@@ -196,28 +197,28 @@
         <ul class="DeclarationList">
             <li>
                 <a name="DefaultConstructor" />
-                <code class="CodeDecl">public Vector4u(void)</code>
+                <code class="CodeDecl prettyprint">public Vector4u(void)</code>
                 <ul>
                     <li>Default constructor. Initializes all values to 0.</li>
                 </ul>
             </li>
             <li>
                 <a name="UIntConstructor" />
-                <code class="CodeDecl">public Vector4u(unsigned int x, unsigned int y, unsigned int z, unsigned int w)</code>
+                <code class="CodeDecl prettyprint">public Vector4u(unsigned int x, unsigned int y, unsigned int z, unsigned int w)</code>
                 <ul>
                     <li>Takes in the value of each component.</li>
                 </ul>
             </li>
             <li>
                 <a name="CopyConstructor" />
-                <code class="CodeDecl">Vector4u(const Vector4u&amp; copy)</code>
+                <code class="CodeDecl prettyprint">Vector4u(const Vector4u&amp; copy)</code>
                 <ul>
                     <li>Initializes this vector with the given vector's components.</li>
                 </ul>
             </li>
             <li>
                 <a name="Vector3uConstructor" />
-                <code class="CodeDecl">Vector4u(Vector3u xyz, unsigned int w)</code>
+                <code class="CodeDecl prettyprint">Vector4u(Vector3u xyz, unsigned int w)</code>
                 <ul>
                     <li>Initializes this vector using the given X/Y/Z values and the given W value.</li>
                 </ul>
@@ -230,14 +231,14 @@
         <ul class="DeclarationList">
             <li>
                 <a name="MultiplyComponents" />
-                <code class="CodeDecl">public void MultiplyComponents(Vector4u scale)</code>
+                <code class="CodeDecl prettyprint">public void MultiplyComponents(Vector4u scale)</code>
                 <ul>
                     <li>Multiplies this vector's individual components by the given vector's individual components.</li>
                 </ul>
             </li>
             <li>
                 <a name="ComponentProduct" />
-                <code class="CodeDecl">public Vector4u ComponentProduct(Vector4u scale) const</code>
+                <code class="CodeDecl prettyprint">public Vector4u ComponentProduct(Vector4u scale) const</code>
                 <ul>
                     <li>Multiplie thsi vector's individual components by the given vector's individual components.</li>
                 </ul>
@@ -246,14 +247,14 @@
         <ul class="DeclarationList">
             <li>
                 <a name="ClampI" />
-                <code class="CodeDecl">public Vector4u Clamp(unsigned int min, unsigned int max) const</code>
+                <code class="CodeDecl prettyprint">public Vector4u Clamp(unsigned int min, unsigned int max) const</code>
                 <ul>
                     <li>Clamps each component to be inside the specified range.</li>
                 </ul>
             </li>
             <li>
                 <a name="ClampV" />
-                <code class="CodeDecl">public Vector4u Clamp(Vector4u min, Vector4u max) const</code>
+                <code class="CodeDecl prettyprint">public Vector4u Clamp(Vector4u min, Vector4u max) const</code>
                 <ul>
                     <li>Clamps each component to be inside the specified range.</li>
                 </ul>
@@ -262,49 +263,49 @@
         <ul class="DeclarationList">
             <li>
                 <a name="Dot" />
-                <code class="CodeDecl">public unsigned int Dot(Vector4u other) const</code>
+                <code class="CodeDecl prettyprint">public unsigned int Dot(Vector4u other) const</code>
                 <ul>
                     <li>Gets the dot product of this vector and the given one.</li>
                 </ul>
             </li>
             <li>
                 <a name="Abs" />
-                <code class="CodeDecl">public Vector4u Abs(void) const</code>
+                <code class="CodeDecl prettyprint">public Vector4u Abs(void) const</code>
                 <ul>
                     <li>Gets the absolute value of all components.</li>
                 </ul>
             </li>
             <li>
                 <a name="LengthSquared" />
-                <code class="CodeDecl">public unsigned int LengthSquared(void) const</code>
+                <code class="CodeDecl prettyprint">public unsigned int LengthSquared(void) const</code>
                 <ul>
                     <li>Gets the square of the length of this vector.</li>
                 </ul>
             </li>
             <li>
                 <a name="Length" />
-                <code class="CodeDecl">public float Length(void) const</code>
+                <code class="CodeDecl prettyprint">public float Length(void) const</code>
                 <ul>
                     <li>Gets the length of this vector.</li>
                 </ul>
             </li>
             <li>
                 <a name="Distance" />
-                <code class="CodeDecl">public float Distance(Vector4u other) const</code>
+                <code class="CodeDecl prettyprint">public float Distance(Vector4u other) const</code>
                 <ul>
                     <li>Gets the distance from this vector to the given vector.</li>
                 </ul>
             </li>
             <li>
                 <a name="DistanceSquared" />
-                <code class="CodeDecl">public unsigned int DistanceSquared(Vector4u other) const</code>
+                <code class="CodeDecl prettyprint">public unsigned int DistanceSquared(Vector4u other) const</code>
                 <ul>
                     <li>Gets the square of the distance from this vector to the given vector.</li>
                 </ul>
             </li>
             <li>
                 <a name="ManhattanDistance" />
-                <code class="CodeDecl">public unsigned int ManhattanDistance(Vector4u other) const</code>
+                <code class="CodeDecl prettyprint">public unsigned int ManhattanDistance(Vector4u other) const</code>
                 <ul>
                     <li>Gets the Manhattan Distance (the sum of the distance along each individual component).</li>
                 </ul>
@@ -313,7 +314,7 @@
         <ul class="DeclarationList">
             <li>
                 <a name="GetHashCode" />
-                <code class="CodeDecl">public unsigned int GetHashCode(void) const</code>
+                <code class="CodeDecl prettyprint">public unsigned int GetHashCode(void) const</code>
                 <ul>
                     <li>Gets a hash code for this vector.</li>
                 </ul>

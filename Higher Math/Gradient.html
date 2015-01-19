@@ -4,6 +4,7 @@
 	<head>
 		<title>Class: Gradient</title>
 		<link type="text/cs" rel="stylesheet" href="../MainCSS.css" />
+        <script src="../google-code-prettify/run_prettify.js"></script>
 	</head>
 
 	<body>
@@ -19,7 +20,7 @@
 		<br class="SectionDivider" />
 
 		<h2>Declaration</h2>
-		<code class="CodeDecl">
+		<code class="CodeDecl prettyprint">
 			template&lt;unsigned int Components&gt; <br />
 			class Gradient;
 		</code>
@@ -34,7 +35,7 @@
 		<ul class="DeclarationList">
 			<li>
 				<a name="Smoothness" />
-				<code class="CodeDecl">public enum Smoothness;</code>
+				<code class="CodeDecl prettyprint">public enum Smoothness;</code>
 				<ul>
 					<li>The interpolation quality of a gradient.</li>
                     <li>"SM_LINEAR" is linear interpolation.</li>
@@ -44,7 +45,7 @@
 			</li>
 			<li>
 				<a name="GNode" />
-				<code class="CodeDecl">public typedef <a href="GradientNode.html">GradientNode</a>&lt;Components&gt; GNode;</code>
+				<code class="CodeDecl prettyprint">public typedef <a href="GradientNode.html">GradientNode</a>&lt;Components&gt; GNode;</code>
 				<ul>
 					<li>A typedef. "GNode" is a GradientNode with the correct number of components.</li>
                 </ul>
@@ -67,14 +68,14 @@
 		<ul class="DeclarationList">
 			<li>
 				<a name="SmoothQuality" />
-				<code class="CodeDecl">public Smoothness SmoothQuality;</code>
+				<code class="CodeDecl prettyprint">public Smoothness SmoothQuality;</code>
 				<ul>
 					<li>The type of interpolation this gradient uses.</li>
                 </ul>
 			</li>
 			<li>
 				<a name="Nodes" />
-				<code class="CodeDecl">public std::vector<GNode> Nodes;</code>
+				<code class="CodeDecl prettyprint">public std::vector<GNode> Nodes;</code>
 				<ul>
 					<li>The gradient nodes representing this gradient, in ascending order by <code>t</code> value.</li>
                 </ul>
@@ -92,14 +93,14 @@
 		<ul class="DeclarationList">
 			<li>
 				<a name="Set" />
-				<code class="CodeDecl">private void Set(const float src[Components], float dest[Components]);</code>
+				<code class="CodeDecl prettyprint">private void Set(const float src[Components], float dest[Components]);</code>
 				<ul>
 					<li>Quickly copies the given gradient value into the other given gradient value.</li>
                 </ul>
 			</li>
 			<li>
 				<a name="MakeVector2" />
-				<code class="CodeDecl">private std::vector&lt;GNode&gt; MakeVector(GNode n1, GNode n2);</code>
+				<code class="CodeDecl prettyprint">private std::vector&lt;GNode&gt; MakeVector(GNode n1, GNode n2);</code>
 				<ul>
 					<li>Makes a vector with two values -- the given nodes.</li>
                     <li>Used for a <a href="#StartEndConstructor">constructor</a>.</li>
@@ -108,7 +109,7 @@
 			</li>
 			<li>
 				<a name="MakeVector3" />
-				<code class="CodeDecl">private std::vector&lt;GNode&gt; MakeVector(GNode n1, GNode n2, GNode n3);</code>
+				<code class="CodeDecl prettyprint">private std::vector&lt;GNode&gt; MakeVector(GNode n1, GNode n2, GNode n3);</code>
 				<ul>
                     <li>Makes a vector with three values -- the given nodes.</li>
                     <li>Used for a <a href="#StartMidEndConstructor">constructor</a>.</li>
@@ -117,7 +118,7 @@
 			</li>
 			<li>
 				<a name="MakeVector4" />
-				<code class="CodeDecl">private std::vector&lt;GNode&gt; MakeVector(GNode n1, GNode n2, GNode n3, GNode n4);</code>
+				<code class="CodeDecl prettyprint">private std::vector&lt;GNode&gt; MakeVector(GNode n1, GNode n2, GNode n3, GNode n4);</code>
 				<ul>
                     <li>Makes a vector with four values -- the given nodes.</li>
                     <li>Used for a <a href="#StartMid2EndConstructor">constructor</a>.</li>
@@ -132,28 +133,28 @@
 		<ul class="DeclarationList">
 			<li>
 				<a name="VectorConstructor" />
-				<code class="CodeDecl">public Gradient(const std::vector&lt;GNode&gt;&amp; nodes, Smoothness smoothQuality);</code>
+				<code class="CodeDecl prettyprint">public Gradient(const std::vector&lt;GNode&gt;&amp; nodes, Smoothness smoothQuality);</code>
 				<ul>
 					<li>Creates a gradient with the given nodes and smoothness.</li>
                 </ul>
 			</li>
 			<li>
 				<a name="StartEndConstructor" />
-				<code class="CodeDecl">public Gradient(GNode startVal, GNode endVal, Smoothness smoothQuality);</code>
+				<code class="CodeDecl prettyprint">public Gradient(GNode startVal, GNode endVal, Smoothness smoothQuality);</code>
 				<ul>
 					<li>Creates a gradient that just interpolates from one value to another.</li>
                 </ul>
 			</li>
 			<li>
 				<a name="StartMidEndConstructor" />
-				<code class="CodeDecl">public Gradient(GNode startVal, GNode endVal, GNode mid, Smoothness smoothQuality);</code>
+				<code class="CodeDecl prettyprint">public Gradient(GNode startVal, GNode endVal, GNode mid, Smoothness smoothQuality);</code>
 				<ul>
 					<li>Creates a gradient that interpolates from one value to another, with a midpoint somewhere in between them.</li>
                 </ul>
 			</li>
 			<li>
 				<a name="StartMid2EndConstructor" />
-				<code class="CodeDecl">public Gradient(GNode startVal, GNode endVal, GNode mid1, GNode mid2, Smoothness smoothQuality);</code>
+				<code class="CodeDecl prettyprint">public Gradient(GNode startVal, GNode endVal, GNode mid1, GNode mid2, Smoothness smoothQuality);</code>
 				<ul>
 					<li>Creates a gradient that interpolates from one value to another, with two midpoints somewhere in between them.</li>
                     <li>Assumes that the midpoints are ordered correctly when passed into this constructor.</li>
@@ -167,14 +168,14 @@
 		<ul class="DeclarationList">
 			<li>
 				<a name="IsValidGradient" />
-				<code class="CodeDecl">public bool IsValidGradient(void);</code>
+				<code class="CodeDecl prettyprint">public bool IsValidGradient(void);</code>
 				<ul>
 					<li>Gets whether this gradient has at least one point, making it valid for use.</li>
                 </ul>
 			</li>
 			<li>
 				<a name="GetValue" />
-				<code class="CodeDecl">public void GetValue(float t, float outVals[Components]);</code>
+				<code class="CodeDecl prettyprint">public void GetValue(float t, float outVals[Components]);</code>
 				<ul>
                     <li>Gets the gradient value at the given <code>t</code>.</li>
                     <li><code>t</code> will be clamped to be inside the range this gradient covers.</li>
@@ -189,7 +190,7 @@
 		<ul>
 			<li>This object can be used to create a gradient of colors (or other values). The gradient could then be stored in a texture for rendering or gpu particle data.</li>
 		</ul>
-		<div class="CodeSample"><code>
+		<div class="CodeSample"><code class="prettyprint">
 //The following code creates a smooth transition from white to black.<br />
 typedef Gradient&lt;4&gt; Grad4;<br />
 Vector4f white(1.0f, 1.0f, 1.0f, 1.0f),<br />

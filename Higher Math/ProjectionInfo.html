@@ -4,6 +4,7 @@
 	<head>
 		<title>Class: ProjectionInfo</title>
 		<link type="text/cs" rel="stylesheet" href="../MainCSS.css" />
+        <script src="../google-code-prettify/run_prettify.js"></script>
 	</head>
 
 	<body>
@@ -19,7 +20,7 @@
 		<br class="SectionDivider" />
 
 		<h2>Declaration</h2>
-		<code class="CodeDecl">class ProjectionInfo;</code>
+		<code class="CodeDecl prettyprint">class ProjectionInfo;</code>
 		<p />
 
 		<br class="SectionDivider" />
@@ -43,14 +44,14 @@
 		<ul class="DeclarationList">
 			<li>
 				<a name="FOV" />
-				<code class="CodeDecl">public float FOV;</code>
+				<code class="CodeDecl prettyprint">public float FOV;</code>
 				<ul>
 					<li>The vertical field of view, measured in radians.</li>
 				</ul>
 			</li>
 			<li>
 				<a name="Width" />
-				<code class="CodeDecl">public float Width;</code>
+				<code class="CodeDecl prettyprint">public float Width;</code>
 				<ul>
 					<li>The width of the viewing area.</li>
 					<li>Should be in pixels.</li>
@@ -58,7 +59,7 @@
 			</li>
 			<li>
 				<a name="Height" />
-				<code class="CodeDecl">public float Height;</code>
+				<code class="CodeDecl prettyprint">public float Height;</code>
 				<ul>
 					<li>The height of the viewing area.</li>
 					<li>Should be in pixels.</li>
@@ -66,14 +67,14 @@
 			</li>
 			<li>
 				<a name="zNear" />
-				<code class="CodeDecl">public float zNear;</code>
+				<code class="CodeDecl prettyprint">public float zNear;</code>
 				<ul>
 					<li>Anything closer to the camera than this distance will not be rendered.</li>
 				</ul>
 			</li>
 			<li>
 				<a name="zFar" />
-				<code class="CodeDecl">public float zFar;</code>
+				<code class="CodeDecl prettyprint">public float zFar;</code>
 				<ul>
 					<li>Anything farther from the camera than this distance will not be rendered.</li>
 				</ul>
@@ -96,7 +97,7 @@
 		<ul class="DeclarationList">
 			<li>
 				<a name="VoidConstructor" />
-				<code class="CodeDecl">public ProjectionInfo(void);</code>
+				<code class="CodeDecl prettyprint">public ProjectionInfo(void);</code>
 				<ul>
 					<li>Creates a constructor with default, sane (though not ideal) values.</li>
 					<li>The FOV is 2.3561945, or 135 degrees.</li>
@@ -106,7 +107,7 @@
 			</li>
 			<li>
 				<a name="DataConstructor" />
-				<code class="CodeDecl">public ProjectionInfo(float fov, float width, float height, float zNear, float zFar);</code>
+				<code class="CodeDecl prettyprint">public ProjectionInfo(float fov, float width, float height, float zNear, float zFar);</code>
 				<ul>
 					<li>Creates a ProjectionInfo with the given values.</li>
 				</ul>
@@ -119,7 +120,7 @@
 		<ul class="DeclarationList">
 			<li>
 				<a name="GetAspectRatio" />
-				<code class="CodeDecl">public float GetAspectRatio(void);</code>
+				<code class="CodeDecl prettyprint">public float GetAspectRatio(void);</code>
 				<ul>
 					<li>Gets the aspect ratio for this projection data.</li>
 					<li>Calculates it via <code>Width / Height</code>.</li>
@@ -127,7 +128,7 @@
 			</li>
 			<li>
 				<a name="SetFOVDegrees" />
-				<code class="CodeDecl">public void SetFOVDegrees(float degrees);</code>
+				<code class="CodeDecl prettyprint">public void SetFOVDegrees(float degrees);</code>
 				<ul>
 					<li>Sets the vertical field of view (i.e. the <code>FOV</code> field) to the given value, converted to radians.</li>
 				</ul>

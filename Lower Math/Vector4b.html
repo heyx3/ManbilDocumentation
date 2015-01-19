@@ -4,6 +4,7 @@
     <head>
         <title>Class: Vector4b</title>
         <link type="text/css" rel="stylesheet" href="../MainCSS.css" />
+        <script src="../google-code-prettify/run_prettify.js"></script>
     </head>
 
     <body>
@@ -17,7 +18,7 @@
         <br class="SectionDivider" />
 
         <h2>Declaration</h2>
-        <code class="CodeDecl">class Vector4b;</code>
+        <code class="CodeDecl prettyprint">class Vector4b;</code>
         <p />
 
         <br class="SectionDivider" />
@@ -41,28 +42,28 @@
         <ul class="DeclarationList">
             <li>
                 <a name="x" />
-                <code class="CodeDecl">public unsigned char x</code>
+                <code class="CodeDecl prettyprint">public unsigned char x</code>
                 <ul>
                     <li>The X component of the vector.</li>
                 </ul>
             </li>
             <li>
                 <a name="y" />
-                <code class="CodeDecl">public unsigned char y</code>
+                <code class="CodeDecl prettyprint">public unsigned char y</code>
                 <ul>
                     <li>The Y component of the vector.</li>
                 </ul>
             </li>
             <li>
                 <a name="z" />
-                <code class="CodeDecl">public unsigned char z</code>
+                <code class="CodeDecl prettyprint">public unsigned char z</code>
                 <ul>
                     <li>The Z component of the vector.</li>
                 </ul>
             </li>
             <li>
                 <a name="w" />
-                <code class="CodeDecl">public unsigned char w</code>
+                <code class="CodeDecl prettyprint">public unsigned char w</code>
                 <ul>
                     <li>The w component of the vector.</li>
                 </ul>
@@ -75,14 +76,14 @@
         <ul class="DeclarationList">
             <li>
                 <a name="+=" />
-                <code class="CodeDecl">public Vector4b&amp; operator+=(const Vector4b&amp; other)</code>
+                <code class="CodeDecl prettyprint">public Vector4b&amp; operator+=(const Vector4b&amp; other)</code>
                 <ul>
                     <li>Adds the given vector to this one. Clamps the values between 0 and 255 instead of overflowing/wrapping around.</li>
                 </ul>
             </li>
             <li>
                 <a name="-=" />
-                <code class="CodeDecl">public Vector4b&amp; operator-=(const Vector4b&amp; other)</code>
+                <code class="CodeDecl prettyprint">public Vector4b&amp; operator-=(const Vector4b&amp; other)</code>
                 <ul>
                     <li>Subtracts the given vector from this one. Clamps the values between 0 and 255 instead of overflowing/wrapping around.</li>
                 </ul>
@@ -100,21 +101,21 @@
         <ul class="DeclarationList">
             <li>
                 <a name="DefaultConstructor" />
-                <code class="CodeDecl">public Vector4b(void)</code>
+                <code class="CodeDecl prettyprint">public Vector4b(void)</code>
                 <ul>
                     <li>Default constructor. Initializes all values to 0.</li>
                 </ul>
             </li>
             <li>
                 <a name="ByteConstructor" />
-                <code class="CodeDecl">public Vector4b(unsigned char x, unsigned char y, unsigned char z, unsigned char w)</code>
+                <code class="CodeDecl prettyprint">public Vector4b(unsigned char x, unsigned char y, unsigned char z, unsigned char w)</code>
                 <ul>
                     <li>Initializes the components to the given values.</li>
                 </ul>
             </li>
             <li>
                 <a name="FloatConstructor" />
-                <code class="CodeDecl">public Vector3b(float x, float y, float z, float w)</code>
+                <code class="CodeDecl prettyprint">public Vector3b(float x, float y, float z, float w)</code>
                 <ul>
                     <li>Takes in values from 0 to 1 for each component and converts them to unsigned bytes in the range 0-255.</li>
                 </ul>

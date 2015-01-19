@@ -4,15 +4,11 @@
 	<head>
 		<title>Class: Geometryf</title>
 		<link type="text/cs" rel="stylesheet" href="../MainCSS.css" />
+        <link href="../google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
+        <script src="../google-code-prettify/run_prettify.js"></script>
 	</head>
 
 	<body>
-
-		<TODO><ul>
-		</ul></TODO>
-
-		<br class="SectionDivider" />
-
 
 		<h1>Geometryf</h1>
 		<p>Various useful geometric functions. The functions are abstracted with templates to handle a float vector class with any number of dimensions.</p>
@@ -25,7 +21,7 @@
 		<br class="SectionDivider" />
 
 		<h2>Declaration</h2>
-		<code class="CodeDecl">class Geometryf;</code>
+		<code class="CodeDecl prettyprint">class Geometryf;</code>
 		<p />
 
 		<br class="SectionDivider" />
@@ -34,7 +30,7 @@
 		<ul class="DeclarationList">
             <li>
                 <a name="ClosestValues" />
-                <code class="CodeDecl">
+                <code class="CodeDecl prettyprint">
                     template&lt;class Vector&gt; <br />
                     public struct ClosestValues;
                 </code>
@@ -44,7 +40,7 @@
             </li>
 			<li>
 				<a name="PointOnLineAtValueResult" />
-				<code class="CodeDecl">
+				<code class="CodeDecl prettyprint">
 					template&lt;class Vector&gt; <br />
 					public struct PointOnLineAtValueResult;
 				</code>
@@ -80,14 +76,14 @@
 		<ul class="DeclarationList">
 			<li>
 				<a name="WithinError" />
-				<code class="CodeDecl">private bool WithinError(float f1, float f2, float error);</code>
+				<code class="CodeDecl prettyprint">private bool WithinError(float f1, float f2, float error);</code>
 				<ul>
 					<li>Gets whether the given two values are within the given error margin.</li>
 				</ul>
 			</li>
 			<li>
 				<a name="NumbDimensions" />
-				<code class="CodeDecl">
+				<code class="CodeDecl prettyprint">
 					template&lt;class Vector&gt; <br />
 					private int NumbDimensions(void);
 				</code>
@@ -100,7 +96,7 @@
         <ul class="DeclarationList">
             <li>
                 <a name="AreColinear" />
-                <code class="CodeDecl">
+                <code class="CodeDecl prettyprint">
                     template&lt;class Vector&gt; <br />
                     public bool AreColinear(Vector p1, Vector p2, Vector p3, float errorMargin = 0.1f);
                 </code>
@@ -110,7 +106,7 @@
             </li>
             <li>
                 <a name="AreColinearFast" />
-                <code class="CodeDecl">
+                <code class="CodeDecl prettyprint">
                     template&lt;class Vector&gt; <br />
                     public bool AreColinearFast(Vector p1, Vector p2, Vector p3, float errorMargin = 0.1f);
                 </code>
@@ -122,7 +118,7 @@
         <ul class="DeclarationList">
             <li>
                 <a name="AreCoplanar" />
-                <code class="CodeDecl">
+                <code class="CodeDecl prettyprint">
                     template&lt;class Vector&gt; <br />
                     public bool AreCoplanar(Vector p1, Vector p2, Vector p3, Vector p4, float errorMargin = 0.1f);
                 </code>
@@ -132,7 +128,7 @@
             </li>
             <li>
                 <a name="AreCoplanarFast" />
-                <code class="CodeDecl">
+                <code class="CodeDecl prettyprint">
                     template&lt;class Vector&gt; <br />
                     public bool AreCoplanarFast(Vector p1, Vector p2, Vector p3, Vector p4, float errorMargin = 0.1f);
                 </code>
@@ -144,7 +140,7 @@
         <ul class="DeclarationList">
             <li>
                 <a name="TriangleArea" />
-                <code class="CodeDecl">
+                <code class="CodeDecl prettyprint">
                     template&lt;class Vector&gt; <br />
                     public float TriangleArea(Vector p1, Vector p2, Vector p3);
                 </code>
@@ -154,7 +150,7 @@
             </li>
             <li>
                 <a name="TriangleInterpolate" />
-                <code class="CodeDecl">
+                <code class="CodeDecl prettyprint">
                     template&lt;class Vector&gt; <br />
                     public float TriangleInterpolate(Vector p1, float val1, Vector p2, float val2,<br />
 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;Vector p3, float val3, Vector interpPos);
@@ -163,7 +159,7 @@
                     <li>Interpolates between values at three corners of a triangle based on a fourth point inside the triangle.</li>
                     <li>
                         <div class="CodeSample">
-                            <code>
+                            <code class="prettyprint">
 //Create a 2D triangular region with height values.<br />
 Vector2f p1(0.0f, 0.0f),<br />
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; p2(0.0f, 1.0f),<br />
@@ -186,7 +182,7 @@ std::cout &lt;&lt; "The height in the center is " &lt;&lt; heightAtCenter &lt;&l
         <ul class="DeclarationList">
             <li>
                 <a name="GetLongestAxis" />
-                <code class="CodeDecl">
+                <code class="CodeDecl prettyprint">
                     template&lt;class Vector&gt; <br />
                     public unsigned int GetLongestAxis(Vector v);
                 </code>
@@ -198,7 +194,7 @@ std::cout &lt;&lt; "The height in the center is " &lt;&lt; heightAtCenter &lt;&l
         <ul class="DeclarationList">
             <li>
                 <a name="ClosestToLine" />
-                <code class="CodeDecl">
+                <code class="CodeDecl prettyprint">
                     template&lt;class Vector&gt; <br />
                     public Vector ClosestToLine(Vector line1, Vector line2, Vector separatePoint, bool isLineInfinte);
                 </code>
@@ -209,7 +205,7 @@ std::cout &lt;&lt; "The height in the center is " &lt;&lt; heightAtCenter &lt;&l
             </li>
             <li>
                 <a name="ClosestToIntersection" />
-                <code class="CodeDecl">
+                <code class="CodeDecl prettyprint">
                     template&lt;class Vector&gt; <br />
                     public <a href="#ClosestValues">ClosestValues</a>&lt;Vector&gt; ClosestToIntersection(Vector firstLine_1, Vector firstLine_2,<br />
 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;Vector secondLine_1, Vector secondLine_2,<br />
@@ -223,7 +219,7 @@ std::cout &lt;&lt; "The height in the center is " &lt;&lt; heightAtCenter &lt;&l
             </li>
             <li>
                 <a name="GetPointOnLineAtValue" />
-                <code class="CodeDecl">
+                <code class="CodeDecl prettyprint">
                     template&lt;class Vector&gt; <br />
                     public <a href="#PointOnLineAtValueResult">PointOnLineAtValueResult</a>&lt;Vector&gt; GetPointOnLineAtValue(Vector pointOnLine, Vector lineDir,<br />
 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; unsigned int axis, float targetValue);
@@ -238,7 +234,7 @@ std::cout &lt;&lt; "The height in the center is " &lt;&lt; heightAtCenter &lt;&l
                     </li>
                     <li>
                         <div class="CodeSample">
-                            <code>
+                            <code class="prettyprint">
 //Say we have a line that we know has some extent along the X axis,<br />
 //&emsp;&emsp; and we want to get the point where that line's x value is exactly 3.0:<br />
 Vector3f pointOnLine(0.5f, 0.0f, 0.35f);<br />
@@ -256,7 +252,7 @@ assert(result.Point == (pointOnLine + (lineDir * result.t)));
         <ul class="DeclarationList">
             <li>
                 <a name="CalculateNormalsFull" />
-                <code class="CodeDecl">
+                <code class="CodeDecl prettyprint">
                     template&lt;typename VertexType&gt; <br />
                     public void CalculateNormals(VertexType* vertices, unsigned int nVertices,<br />
 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;const unsigned int* indices, unsigned int nIndices,<br />
@@ -271,7 +267,7 @@ assert(result.Point == (pointOnLine + (lineDir * result.t)));
                     <li>Also takes in a function that gets whether a given normal is flipped the wrong way, to make sure normals aren't flipped the wrong way when computed.</li>
                     <li>
                         <div class="CodeSample">
-                            <code>
+                            <code class="prettyprint">
 //Create some triangles.<br />
 struct VertexPosNormal { Vector3f vPos, vNormal; };<br />
 std::vector&lt;VertexPosNormal&gt; vertices;<br />
@@ -296,7 +292,7 @@ Geometryf::CalculateNormals(vertices.data(), vertices.size(), indices.data(), in
             </li>
             <li>
                 <a name="CalculateNormals" />
-                <code class="CodeDecl">
+                <code class="CodeDecl prettyprint">
                     template&lt;typename VertexType&gt; <br />
                     public void CalculateNormals(VertexType* vertices, unsigned int nVertices,<br />
 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;const unsigned int* indices, unsigned int nIndices,<br />

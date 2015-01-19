@@ -4,6 +4,7 @@
     <head>
         <title>Class: BasicMath</title>
         <link type="text/css" rel="stylesheet" href="../MainCSS.css" />
+        <script src="../google-code-prettify/run_prettify.js"></script>
     </head>
 
     <body>
@@ -18,7 +19,7 @@
         <br class="SectionDivider" />
 
         <h2>Declaration</h2>
-        <code class="CodeDecl">class BasicMath;</code>
+        <code class="CodeDecl prettyprint">class BasicMath;</code>
 
         <br class="SectionDivider" />
 
@@ -26,13 +27,13 @@
         <ul class="DeclarationList">
             <li>
                 <a name="ClampIntervalResult" />
-                <code class="CodeDecl">public struct ClampIntervalResult</code>
+                <code class="CodeDecl prettyprint">public struct ClampIntervalResult</code>
                 <ul>
                     <li>
                         Fields:
                         <ul>
-                            <li><code>public int zero;</code></li>
-                            <li><code>public int one;</code></li>
+                            <li><code class="prettyprint">public int zero;</code></li>
+                            <li><code class="prettyprint">public int one;</code></li>
                         </ul>
                     </li>
                     <li>Represents data returned by the function <a href="#ClampToIntervalBounds"><code>ClampToIntervalBounds()</code></a>.</li>
@@ -47,7 +48,7 @@
         <ul class="DeclarationList">
             <li>
                 <a name="NaN" />
-                <code class="CodeDecl">public float NaN</code>
+                <code class="CodeDecl prettyprint">public float NaN</code>
                 <ul>
                     <li>Represents an invalid floating-point value.</li>
                     <li>Use <a href="#IsNaN"><code>IsNaN()</code></a> to test whether a given float is NaN."</li>
@@ -66,7 +67,7 @@
         <ul class="DeclarationList">
             <li>
                 <a name="IsNaN" />
-                <code class="CodeDecl">public float IsNaN(float testF)</code>
+                <code class="CodeDecl prettyprint">public float IsNaN(float testF)</code>
                 <ul>
                     <li>Gets whether the given value is NaN.</li>
                 </ul>
@@ -75,7 +76,7 @@
         <ul class="DeclarationList">
             <li>
                 <a name="FastInvSqrt1" />
-                <code class="CodeDecl">public float FastInvSqrt1(float f)</code>
+                <code class="CodeDecl prettyprint">public float FastInvSqrt1(float f)</code>
                 <ul>
                     <li>Quickly computes 1.0 / sqrt(f).</li>
                     <li>Slightly faster than "FastInvSqrt2()".</li>
@@ -84,7 +85,7 @@
             </li>
             <li>
                 <a name="FastInvSqrt2" />
-                <code class="CodeDecl">public float FastInvSqrt2(float f)</code>
+                <code class="CodeDecl prettyprint">public float FastInvSqrt2(float f)</code>
                 <ul>
                     <li>Quickly computes 1.0 / sqrt(f).</li>
                     <li>More precise than "FastInvSqrt1()".</li>
@@ -95,7 +96,7 @@
         <ul class="DeclarationList">
             <li>
                 <a name="IntPow" />
-                <code class="CodeDecl">public long IntPow(int base, int exponent)</code>
+                <code class="CodeDecl prettyprint">public long IntPow(int base, int exponent)</code>
                 <ul>
                     <li>Raises an integer to the power of another integer.</li>
                     <li>Uses <a href="http://stackoverflow.com/questions/101439/the-most-efficient-way-to-implement-an-integer-based-power-function-powint-int">Exponentiation by Squaring</a></li>
@@ -103,7 +104,7 @@
             </li>
             <li>
                 <a name="Sign" />
-                <code class="CodeDecl">public int Sign&lt;T&gt;(T val)</code>
+                <code class="CodeDecl prettyprint">public int Sign&lt;T&gt;(T val)</code>
                 <ul>
                     <li>Computes the sign (-1, 0, or 1) of the given value without any branching.</li>
                     <li>
@@ -117,42 +118,42 @@
             </li>
             <li>
                 <a name="Abs" />
-                <code class="CodeDecl">public unsigned int Abs(int i)</code>
+                <code class="CodeDecl prettyprint">public unsigned int Abs(int i)</code>
                 <ul>
                     <li>Computes the absolute value of the given integer.</li>
                 </ul>
             </li>
             <li>
                 <a name="Abs" />
-                <code class="CodeDecl">public float Abs(float f)</code>
+                <code class="CodeDecl prettyprint">public float Abs(float f)</code>
                 <ul>
                     <li>Computes the absolute value of the given float.</li>
                 </ul>
             </li>
             <li>
                 <a name="Round" />
-                <code class="CodeDecl">public float Round(float v, int decimals)</code>
+                <code class="CodeDecl prettyprint">public float Round(float v, int decimals)</code>
                 <ul>
                     <li>Rounds the given float to the given number of decimals.</li>
                 </ul>
             </li>
             <li>
                 <a name="RoundToInt" />
-                <code class="CodeDecl">public int RoundToInt(float v)</code>
+                <code class="CodeDecl prettyprint">public int RoundToInt(float v)</code>
                 <ul>
                     <li>Rounds the given float to the nearest integer.</li>
                 </ul>
             </li>
             <li>
                 <a name="RoundToInt" />
-                <code class="CodeDecl">public int RoundToInt(double d)</code>
+                <code class="CodeDecl prettyprint">public int RoundToInt(double d)</code>
                 <ul>
                     <li>Rounds the given double to the nearest integer.</li>
                 </ul>
             </li>
             <li>
                 <a name="RoundToUInt" />
-                <code class="CodeDecl">public unsigned int RoundToUInt(float v)</code>
+                <code class="CodeDecl prettyprint">public unsigned int RoundToUInt(float v)</code>
                 <ul>
                     <li>Rounds the given float to the nearest integer.</li>
                     <li class="Warning">Assumes the given value is greater than or equal to 0.</li>
@@ -160,7 +161,7 @@
             </li>
             <li>
                 <a name="RoundToUInt" />
-                <code class="CodeDecl">public unsigned int RoundToUInt(double v)</code>
+                <code class="CodeDecl prettyprint">public unsigned int RoundToUInt(double v)</code>
                 <ul>
                     <li>Rounds the given double to the nearest integer.</li>
                     <li class="Warning">Assumes the given value is greater than or equal to 0.</li>
@@ -170,35 +171,35 @@
         <ul class="DeclarationList">
             <li>
                 <a name="RadToDeg" />
-                <code class="CodeDecl">public float RadToDeg(float radians)</code>
+                <code class="CodeDecl prettyprint">public float RadToDeg(float radians)</code>
                 <ul>
                     <li>Converts the given amount from radians to degrees.</li>
                 </ul>
             </li>
             <li>
                 <a name="DegToRad" />
-                <code class="CodeDecl">public float DegToRad(float degrees)</code>
+                <code class="CodeDecl prettyprint">public float DegToRad(float degrees)</code>
                 <ul>
                     <li>Converts the given amount from degrees to radians.</li>
                 </ul>
             </li>
             <li>
                 <a name="Log" />
-                <code class="CodeDecl">public float Log(float value)</code>
+                <code class="CodeDecl prettyprint">public float Log(float value)</code>
                 <ul>
                     <li>Computes the logarithm base-<code>e</code> of the given value.</li>
                 </ul>
             </li>
             <li>
                 <a name="Log" />
-                <code class="CodeDecl">public float Log(float value, float base)</code>
+                <code class="CodeDecl prettyprint">public float Log(float value, float base)</code>
                 <ul>
                     <li>Computes the logarithm of the given value with the given base.</li>
                 </ul>
             </li>
             <li>
                 <a name="Root" />
-                <code class="CodeDecl">public float Root(float value, float root)</code>
+                <code class="CodeDecl prettyprint">public float Root(float value, float root)</code>
                 <ul>
                     <li>Computes the given root of the given value.</li>
                 </ul>
@@ -207,7 +208,7 @@
         <ul class="DeclarationList">
             <li>
                 <a name="Clamp" />
-                <code class="CodeDecl">public T Clamp&lt;T&gt;(T val, T min, T max)</code>
+                <code class="CodeDecl prettyprint">public T Clamp&lt;T&gt;(T val, T min, T max)</code>
                 <ul>
                     <li>Clamps the given value between the given min and the given max.</li>
                     <li>
@@ -220,7 +221,7 @@
             </li>
             <li>
                 <a name="Max" />
-                <code class="CodeDecl">public T Max&lt;T&gt;(T one, T two)</code>
+                <code class="CodeDecl prettyprint">public T Max&lt;T&gt;(T one, T two)</code>
                 <ul>
                     <li>Finds the max of the two given values.</li>
                     <li>
@@ -233,7 +234,7 @@
             </li>
             <li>
                 <a name="Max" />
-                <code class="CodeDecl">public T Max&lt;T&gt;(T one, T two, T three)</code>
+                <code class="CodeDecl prettyprint">public T Max&lt;T&gt;(T one, T two, T three)</code>
                 <ul>
                     <li>Finds the max of the three given values.</li>
                     <li>
@@ -246,7 +247,7 @@
             </li>
             <li>
                 <a name="Min" />
-                <code class="CodeDecl">public T Min&lt;T&gt;(T one, T two)</code>
+                <code class="CodeDecl prettyprint">public T Min&lt;T&gt;(T one, T two)</code>
                 <ul>
                     <li>Finds the min of the two given values.</li>
                     <li>
@@ -259,7 +260,7 @@
             </li>
             <li>
                 <a name="Min" />
-                <code class="CodeDecl">public T Min&lt;T&gt;(T one, T two, T three)</code>
+                <code class="CodeDecl prettyprint">public T Min&lt;T&gt;(T one, T two, T three)</code>
                 <ul>
                     <li>Finds the min of the three given values.</li>
                     <li>
@@ -272,19 +273,19 @@
             </li>
             <li>
                 <a name="ClampToInterval" />
-                <code class="CodeDecl">public float ClampToInterval(float intervalStart, float intervalSize, float value)</code>
+                <code class="CodeDecl prettyprint">public float ClampToInterval(float intervalStart, float intervalSize, float value)</code>
                 <ul>
                     <li>Snaps the given value to the nearest value of <code>x</code> that satisfies <code>x == (intervalStart + (intervalSize * n))</code> for some integer <code>n</code>.</li>
                 </ul>
             </li>
             <li>
                 <a name="ClampToIntervalBounds" />
-                <code class="CodeDecl">public <a href="#ClampIntervalResult">ClampIntervalResult</a> ClampToIntervalBounds(float intervalStart, float intervalSize, float value)</code>
+                <code class="CodeDecl prettyprint">public <a href="#ClampIntervalResult">ClampIntervalResult</a> ClampToIntervalBounds(float intervalStart, float intervalSize, float value)</code>
                 <ul>
                     <li>Computes the same thing as <a href="#ClampToInterval"><code>ClampToInterval()</code></a>, but instead of returning the snapped value, this function returns the two values of <code>n</code> that the given value falls between.</li>
                     <li>
                         <div class="CodeSample">
-                            <code>
+                            <code class="prettyprint">
                                 //In this sample, the interval starts at 0 and is spaced out every 1 unit. <br />
                                 ClampIntervalResult res = BasicMath::ClampToIntervalBounds(0.0f, 1.0f, 0.5f); <br />
                                 std::cout << res.zero << "\n"; // Outputs 0. <br />
@@ -303,7 +304,7 @@
         <ul class="DeclarationList">
             <li>
                 <a name="IsFactor" />
-                <code class="CodeDecl">public bool IsFactor(int n, int factor)</code>
+                <code class="CodeDecl prettyprint">public bool IsFactor(int n, int factor)</code>
                 <ul>
                     <li>Gets whether "factor" is a factor of "n".</li>
                 </ul>
@@ -312,26 +313,26 @@
         <ul class="DeclarationList">
             <li>
                 <a name="Lerp" />
-                <code class="CodeDecl">public float Lerp(float start, float end, float lerp)</code>
+                <code class="CodeDecl prettyprint">public float Lerp(float start, float end, float lerp)</code>
                 <ul>
                     <li>Linearly interpolates from <code>start</code> to <code>end</code>, using <code>lerp</code> as the interpolant.</li>
                 </ul>
             </li>
             <li>
                 <a name="LerpComponent" />
-                <code class="CodeDecl">public float LerpComponent(float start, float end, float value)</code>
+                <code class="CodeDecl prettyprint">public float LerpComponent(float start, float end, float value)</code>
                 <ul>
                     <li>Gets the value <code>t</code> that satisfies the condition <code>lerp(start, end, t) == value</code>.</li>
                 </ul>
             </li>
             <li>
                 <a name="Remap" />
-                <code class="CodeDecl">public float Remap(float startSource, float endSource, float startDest, float endDest, float sourceValue)</code>
+                <code class="CodeDecl prettyprint">public float Remap(float startSource, float endSource, float startDest, float endDest, float sourceValue)</code>
                 <ul>
                     <li>Remapsthe <code>sourceValue</code> from the range [<code>startSource, endSource</code>] to the range [<code>startDest, endDest</code>].</li>
                     <li>
                         <div class="CodeSample">
-                            <code>
+                            <code class="prettyprint">
                                 //The following remaps the value 0.5 from the range [0, 1] to the range [0, 10]. <br />
                                 std::cout << BasicMath::Remap(0.0f, 1.0f, 0.0f, 10.0f, 0.5f) << "\n"; // Outputs 5.
                             </code>
@@ -341,14 +342,14 @@
             </li>
             <li>
                 <a name="Smooth" />
-                <code class="CodeDecl">public float Smooth(float value)</code>
+                <code class="CodeDecl prettyprint">public float Smooth(float value)</code>
                 <ul>
                     <li>Performs <a href="https://en.wikipedia.org/wiki/Smoothstep">smoothstep</a>, which pushes a value (assumed to be between 0 and 1) away from 0.5 and towards 0 or 1.</li>
                 </ul>
             </li>
             <li>
                 <a name="SuperSmooth" />
-                <code class="CodeDecl">public float SuperSmooth(float value)</code>
+                <code class="CodeDecl prettyprint">public float SuperSmooth(float value)</code>
                 <ul>
                     <li>Performs "supersmoothstep", or "smootherstep", which is the same as <a href="#Smooth">smoothstep</a> but more dramatic.</li>
                 </ul>

@@ -4,6 +4,7 @@
     <head>
         <title>Class: Interval</title>
         <link type="text/css" rel="stylesheet" href="../MainCSS.css" />
+        <script src="../google-code-prettify/run_prettify.js"></script>
     </head>
 
     <body>
@@ -20,7 +21,7 @@
         <br class="SectionDivider" />
 
         <h2>Declaration</h2>
-        <code class="CodeDecl">class Interval;</code>
+        <code class="CodeDecl prettyprint">class Interval;</code>
 
         <br class="SectionDivider" />
 
@@ -43,21 +44,21 @@
         <ul class="DeclarationList">
             <li>
                 <a name="GetZeroToOne" />
-                <code class="CodeDecl">public Interval GetZeroToOne(void)</code>
+                <code class="CodeDecl prettyprint">public Interval GetZeroToOne(void)</code>
                 <ul>
                     <li>Gets an interval from 0.0f to 1.0f.</li>
                 </ul>
             </li>
             <li>
                 <a name="GetByteInterval" />
-                <code class="CodeDecl">public Interval GetByteInterval(void)</code>
+                <code class="CodeDecl prettyprint">public Interval GetByteInterval(void)</code>
                 <ul>
                     <li>Gets an interval from 0.0f to 255.0f.</li>
                 </ul>
             </li>
             <li>
                 <a name="GetInvalidInterval" />
-                <code class="CodeDecl">public Interval GetInvalidInterval(void)</code>
+                <code class="CodeDecl prettyprint">public Interval GetInvalidInterval(void)</code>
                 <ul>
                     <li>Gets an interval from 0.0f to 0.0f.</li>
                 </ul>
@@ -66,14 +67,14 @@
         <ul class="DeclarationList">
             <li>
                 <a name="Union" />
-                <code class="CodeDecl">public Interval Union(Interval one, Interval two)</code>
+                <code class="CodeDecl prettyprint">public Interval Union(Interval one, Interval two)</code>
                 <ul>
                     <li>Gets the smallest-possible interval that covers the given two intervals.</li>
                 </ul>
             </li>
             <li>
                 <a name="Intersection" />
-                <code class="CodeDecl">public Interval Intersection(Interval one, Interval two)</code>
+                <code class="CodeDecl prettyprint">public Interval Intersection(Interval one, Interval two)</code>
                 <ul>
                     <li>Gets an interval spanning the intersection of the given two intervals.</li>
                     <li>Returns an invalid interval if the two intervals don't intersect.</li>
@@ -87,21 +88,21 @@
         <ul class="DeclarationList">
             <li>
                 <a name="center" />
-                <code class="CodeDecl">private float center</code>
+                <code class="CodeDecl prettyprint">private float center</code>
                 <ul>
                     <li>The center of this interval.</li>
                 </ul>
             </li>
             <li>
                 <a name="range" />
-                <code class="CodeDecl">private float range</code>
+                <code class="CodeDecl prettyprint">private float range</code>
                 <ul>
                     <li>The range of this interval.</li>
                 </ul>
             </li>
             <li>
                 <a name="halfRange" />
-                <code class="CodeDecl">private float halfRange</code>
+                <code class="CodeDecl prettyprint">private float halfRange</code>
                 <ul>
                     <li>Half of the range of this interval.</li>
                     <li>This value is stored for quicker computation of the start and end of the interval, as well as other things.</li>
@@ -115,14 +116,14 @@
         <ul class="DeclarationList">
             <li>
                 <a name="operator==" />
-                <code class="CodeDecl">public bool operator==(const Interval&amp; other) const</code>
+                <code class="CodeDecl prettyprint">public bool operator==(const Interval&amp; other) const</code>
                 <ul>
                     <li>Gets whether this interval is exactly equal to the given one.</li>
                 </ul>
             </li>
             <li>
                 <a name="operator!=" />
-                <code class="CodeDecl">public bool operator!=(const Interval&amp; other) const</code>
+                <code class="CodeDecl prettyprint">public bool operator!=(const Interval&amp; other) const</code>
                 <ul>
                     <li>Gets whether this interval is NOT exactly equal to the given one.</li>
                 </ul>
@@ -133,21 +134,21 @@
         <ul class="DeclarationList">
             <li>
                 <a name="DefaultConstructor" />
-                <code class="CodeDecl">public Interval(void)</code>
+                <code class="CodeDecl prettyprint">public Interval(void)</code>
                 <ul>
                     <li>Creates an interval from 0.0f to 1.0f.</li>
                 </ul>
             </li>
             <li>
                 <a name="CenterRangeConstructor" />
-                <code class="CodeDecl">public Interval(float center, float range)</code>
+                <code class="CodeDecl prettyprint">public Interval(float center, float range)</code>
                 <ul>
                     <li>Creates an interval with the given center and range.</li>
                 </ul>
             </li>
             <li>
                 <a name="StartEndConstructor" />
-                <code class="CodeDecl">public Interval(float start, float end, float epsilon, bool startInclusive, bool endInclusive)</code>
+                <code class="CodeDecl prettyprint">public Interval(float start, float end, float epsilon, bool startInclusive, bool endInclusive)</code>
                 <ul>
                     <li>Creates an interval with the given start and end.</li>
                     <li>The user of the class specifies whether each end is inclusive, as well as the margin of error for exclusive ends.</li>
@@ -161,7 +162,7 @@
         <ul class="DeclarationList">
             <li>
                 <a name="IsValid" />
-                <code class="CodeDecl">public bool IsValid(void) const</code>
+                <code class="CodeDecl prettyprint">public bool IsValid(void) const</code>
                 <ul>
                     <li>Gets whether this interval is valid (i.e. its range is greater than 0.0f).</li>
                 </ul>
@@ -170,42 +171,42 @@
         <ul class="DeclarationList">
             <li>
                 <a name="GetStart" />
-                <code class="CodeDecl">public float GetStart(void) const</code>
+                <code class="CodeDecl prettyprint">public float GetStart(void) const</code>
                 <ul>
                     <li>Gets the value at the start of this interval (inclusive).</li>
                 </ul>
             </li>
             <li>
                 <a name="GetEnd" />
-                <code class="CodeDecl">public float GetEnd(void) const</code>
+                <code class="CodeDecl prettyprint">public float GetEnd(void) const</code>
                 <ul>
                     <li>Gets the value at the end of this interval (inclusive).</li>
                 </ul>
             </li>
             <li>
                 <a name="GetCenter" />
-                <code class="CodeDecl">public float GetCenter(void) const</code>
+                <code class="CodeDecl prettyprint">public float GetCenter(void) const</code>
                 <ul>
                     <li>Gets the value at the exact center of this interval.</li>
                 </ul>
             </li>
             <li>
                 <a name="GetRange" />
-                <code class="CodeDecl">public float GetRange(void) const</code>
+                <code class="CodeDecl prettyprint">public float GetRange(void) const</code>
                 <ul>
                     <li>Gets the range this interval spans.</li>
                 </ul>
             </li>
             <li>
                 <a name="GetHalfRange" />
-                <code class="CodeDecl">public float GetHalfRange(void) const</code>
+                <code class="CodeDecl prettyprint">public float GetHalfRange(void) const</code>
                 <ul>
                     <li>Gets half the value of the range this interval spans.</li>
                 </ul>
             </li>
             <li>
                 <a name="GetQuarterRange" />
-                <code class="CodeDecl">public float GetQuarterRange(void) const</code>
+                <code class="CodeDecl prettyprint">public float GetQuarterRange(void) const</code>
                 <ul>
                     <li>Gets a quarter the value of the range this interval spans.</li>
                 </ul>
@@ -214,42 +215,42 @@
         <ul class="DeclarationList">
             <li>
                 <a name="GetFirstHalf" />
-                <code class="CodeDecl">public Interval GetFirstHalf(void) const</code>
+                <code class="CodeDecl prettyprint">public Interval GetFirstHalf(void) const</code>
                 <ul>
                     <li>Gets an interval that spans the first half of this interval's range.</li>
                 </ul>
             </li>
             <li>
                 <a name="GetSecondHalf" />
-                <code class="CodeDecl">public Interval GetSecondHalf(void) const</code>
+                <code class="CodeDecl prettyprint">public Interval GetSecondHalf(void) const</code>
                 <ul>
                     <li>Gets an interval that spans the second half of this interval's range.</li>
                 </ul>
             </li>
             <li>
                 <a name="GetFirstQuarter" />
-                <code class="CodeDecl">public Interval GetFirstQuarter(void) const</code>
+                <code class="CodeDecl prettyprint">public Interval GetFirstQuarter(void) const</code>
                 <ul>
                     <li>Gets an interval that spans the first quarter of this interval's range.</li>
                 </ul>
             </li>
             <li>
                 <a name="GetSecondQuarter" />
-                <code class="CodeDecl">public Interval GetSecondQuarter(void) const</code>
+                <code class="CodeDecl prettyprint">public Interval GetSecondQuarter(void) const</code>
                 <ul>
                     <li>Gets an interval that spans the second quarter of this interval's range.</li>
                 </ul>
             </li>
             <li>
                 <a name="GetThirdQuarter" />
-                <code class="CodeDecl">public Interval GetThirdQuarter(void) const</code>
+                <code class="CodeDecl prettyprint">public Interval GetThirdQuarter(void) const</code>
                 <ul>
                     <li>Gets an interval that spans the third quarter of this interval's range.</li>
                 </ul>
             </li>
             <li>
                 <a name="GetFourthQuarter" />
-                <code class="CodeDecl">public Interval GetFourthQuarter(void) const</code>
+                <code class="CodeDecl prettyprint">public Interval GetFourthQuarter(void) const</code>
                 <ul>
                     <li>Gets an interval that spans the fourth quarter of this interval's range.</li>
                 </ul>
@@ -258,21 +259,21 @@
         <ul class="DeclarationList">
             <li>
                 <a name="Inflate" />
-                <code class="CodeDecl">public Interval Inflate(float rangeScale) const</code>
+                <code class="CodeDecl prettyprint">public Interval Inflate(float rangeScale) const</code>
                 <ul>
                     <li>Scales up this interval's range by the given value.</li>
                 </ul>
             </li>
             <li>
                 <a name="Widen" />
-                <code class="CodeDecl">public Interval Widen(float deltaRange) const</code>
+                <code class="CodeDecl prettyprint">public Interval Widen(float deltaRange) const</code>
                 <ul>
                     <li>Increases this interval's range by the given amount.</li>
                 </ul>
             </li>
             <li>
                 <a name="Translate" />
-                <code class="CodeDecl">public Interval Translate(float deltaCenter) const</code>
+                <code class="CodeDecl prettyprint">public Interval Translate(float deltaCenter) const</code>
                 <ul>
                     <li>Shifts this interval's center by the given amount.</li>
                 </ul>
@@ -281,19 +282,19 @@
         <ul class="DeclarationList">
             <li>
                 <a name="Clamp" />
-                <code class="CodeDecl">public float Clamp(float value) const</code>
+                <code class="CodeDecl prettyprint">public float Clamp(float value) const</code>
                 <ul>
                     <li>Clamps the given value to stay inside this interval.</li>
                 </ul>
             </li>
             <li>
                 <a name="WrapValueAroundInterval" />
-                <code class="CodeDecl">public float WrapValueAroundInterval(float value) const</code>
+                <code class="CodeDecl prettyprint">public float WrapValueAroundInterval(float value) const</code>
                 <ul>
                     <li>Wraps the given value around the edges of this interval.</li>
                     <li>
                         <div class="CodeSample">
-                            <code>
+                            <code class="prettyprint">
                                 //The following code prints out the value '1.5'. <br />
                                 Interval oneToFive(1.0f, 5.0f, 0.0f, true, true); <br />
                                 std::cout << oneToFive.WrapValueAroundInterval(5.5f); <br />
@@ -308,26 +309,26 @@
             </li>
             <li>
                 <a name="GetLerpComponent" />
-                <code class="CodeDecl">public float GetLerpComponent(float value) const</code>
+                <code class="CodeDecl prettyprint">public float GetLerpComponent(float value) const</code>
                 <ul>
                     <li>Gets the value <code>t</code> such that <code>lerp(intervalStart, intervalEnd, t) == value</code>.</li>
                 </ul>
             </li>
             <li>
                 <a name="Lerp" />
-                <code class="CodeDecl">public float Lerp(float t) const</code>
+                <code class="CodeDecl prettyprint">public float Lerp(float t) const</code>
                 <ul>
                     <li>Interpolates from the start of the interval to the end.</li>
                 </ul>
             </li>
             <li>
                 <a name="MapValue" />
-                <code class="CodeDecl">public float MapValue(Interval destination, float value) const</code>
+                <code class="CodeDecl prettyprint">public float MapValue(Interval destination, float value) const</code>
                 <ul>
                     <li>Remaps the given value from this interval to the given interval.</li>
                     <li>
                         <div class="CodeSample">
-                            <code>
+                            <code class="prettyprint">
                                 //The following code prints out the value '3.0'. <br />
                                 Interval oneToFive(1.0f, 5.0f, 0.0f, true, true); <br />
                                 Interval twoToSix(2.0f, 6.0f, 0.0f, true, true); <br />
@@ -339,12 +340,12 @@
             </li>
             <li>
                 <a name="Reflect" />
-                <code class="CodeDecl">public float Reflect(float val) const</code>
+                <code class="CodeDecl prettyprint">public float Reflect(float val) const</code>
                 <ul>
                     <li>Reflects the given value around the center of this interval.</li>
                     <li>
                         <div class="CodeSample">
-                            <code>
+                            <code class="prettyprint">
                                 //The following code prints out the value '7.5'. <br />
                                 Interval zeroToTen(5.0f, 5.0f); <br />
                                 std::cout << zeroToTen.Reflect(2.5f);
@@ -357,21 +358,21 @@
         <ul class="DeclarationList">
             <li>
                 <a name="FloatIsInside" />
-                <code class="CodeDecl">public bool IsInside(float value) const</code>
+                <code class="CodeDecl prettyprint">public bool IsInside(float value) const</code>
                 <ul>
                     <li>Gets whether the given value is inside this interval.</li>
                 </ul>
             </li>
             <li>
                 <a name="IntervalIsInside" />
-                <code class="CodeDecl">public bool IsInside(Interval outer) const</code>
+                <code class="CodeDecl prettyprint">public bool IsInside(Interval outer) const</code>
                 <ul>
                     <li>Gets whether this interval is inside the given one.</li>
                 </ul>
             </li>
             <li>
                 <a name="Touches" />
-                <code class="CodeDecl">public bool Touches(Interval other) const</code>
+                <code class="CodeDecl prettyprint">public bool Touches(Interval other) const</code>
                 <ul>
                     <li>Gets whether the given Interval intersects this interval at all.</li>
                 </ul>
@@ -380,7 +381,7 @@
         <ul class="DeclarationList">
             <li>
                 <a name="RandomInsideRange" />
-                <code class="CodeDecl">public float RandomInsideRange(<a href="FastRand.html">FastRand</a>&amp; fr) const</code>
+                <code class="CodeDecl prettyprint">public float RandomInsideRange(<a href="FastRand.html">FastRand</a>&amp; fr) const</code>
                 <ul>
                     <li>Gets a random value inside this interval's range using the given PRNG.</li>
                 </ul>
@@ -389,7 +390,7 @@
         <ul class="DeclarationList">
             <li>
                 <a name="GetHashCode" />
-                <code class="CodeDecl">public int GetHashCode(void) const</code>
+                <code class="CodeDecl prettyprint">public int GetHashCode(void) const</code>
                 <ul>
                     <li>Hashes this interval to create a hash code.</li>
                 </ul>
@@ -405,7 +406,7 @@
 
         <h2>Samples</h2>
         <div class="CodeSample">
-            <code>
+            <code class="prettyprint">
                 Interval oneToThree(1.0f, 3.0f, 0.0f, true, true); <br />
                 std::cout << "The start of the interval is " << oneToThree.GetStart() << // 1.0 <br />
 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  "\nThe end of the interval is " << oneToThree.GetEnd() <<   // 3.0 <br />
