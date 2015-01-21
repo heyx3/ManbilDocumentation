@@ -69,9 +69,9 @@ public static class StringGenerators
 		//Finally, output the code text into an HTML code sample div.
 		AddTabs(tabLevel, outHTML);
 		if (useLITag)
-			outHTML.AppendLine("<li><div class=\"CodeSample\"><code>");
+			outHTML.AppendLine("<li><div class=\"CodeSample\"><code class=\"prettyprint\">");
 		else
-			outHTML.AppendLine("<div class=\"CodeSample\"><code>");
+			outHTML.AppendLine("<div class=\"CodeSample\"><code class=\"prettyprint\">");
 		outHTML.AppendLine(codeT.ToString());
 		AddTabs(tabLevel, outHTML);
 		if (useLITag)

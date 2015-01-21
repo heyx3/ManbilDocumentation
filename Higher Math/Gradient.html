@@ -27,7 +27,6 @@
         <ul>
             <li>"Components" is the number of floats in each gradient value. For example, 4 means the gradient is a Vector4f (or RGBA color).</li>
         </ul>
-<p />
 
 		<br class="SectionDivider" />
 
@@ -168,14 +167,14 @@
 		<ul class="DeclarationList">
 			<li>
 				<a name="IsValidGradient" />
-				<code class="CodeDecl prettyprint">public bool IsValidGradient(void);</code>
+				<code class="CodeDecl prettyprint">public bool IsValidGradient(void) const;</code>
 				<ul>
 					<li>Gets whether this gradient has at least one point, making it valid for use.</li>
                 </ul>
 			</li>
 			<li>
 				<a name="GetValue" />
-				<code class="CodeDecl prettyprint">public void GetValue(float t, float outVals[Components]);</code>
+				<code class="CodeDecl prettyprint">public void GetValue(float t, float outVals[Components]) const;</code>
 				<ul>
                     <li>Gets the gradient value at the given <code>t</code>.</li>
                     <li><code>t</code> will be clamped to be inside the range this gradient covers.</li>

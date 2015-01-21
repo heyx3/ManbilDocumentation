@@ -90,7 +90,7 @@ namespace HTMLGenerator
 				StrGen.AddTabs(tabLevel - 1, sbOut);
 				sbOut.AppendLine("</ul>");
 				StrGen.AddTabs(tabLevel - 1, sbOut);
-				sbOut.AppendLine("<ul>");
+				sbOut.AppendLine("<ul class=\"DeclarationList\">");
 
 				return;
 			}
@@ -105,7 +105,7 @@ namespace HTMLGenerator
 				sbOut.AppendLine("\" />");
 
 				StrGen.AddTabs(tabLevel + 1, sbOut);
-				sbOut.Append("<code class=\"CodeDecl\">");
+				sbOut.Append("<code class=\"CodeDecl prettyprint\">");
 
 					StringBuilder baseDecl = new StringBuilder("");
 					AddDefinition(className, baseDecl);

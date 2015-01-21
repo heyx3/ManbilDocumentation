@@ -420,6 +420,7 @@ namespace HTMLGenerator
 					sb.AppendLine("</title>");
 
 					sb.AppendLine("\t\t<link type=\"text/cs\" rel=\"stylesheet\" href=\"../MainCSS.css\" />");
+					sb.AppendLine("\t\t<script src=\"../google-code-prettify/run_prettify.js\"></script>");
 
 				sb.AppendLine("\t</head>");
 
@@ -471,7 +472,7 @@ namespace HTMLGenerator
 					AddSectionDivider(2, sb);
 
 					sb.AppendLine("\t\t<h2>Declaration</h2>");
-					sb.Append("\t\t<code class=\"CodeDecl\">");
+					sb.Append("\t\t<code class=\"CodeDecl prettyprint\">");
 						if (isTemplatedBox.Checked)
 						{
 							sb.AppendLine();
