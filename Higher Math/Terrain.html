@@ -1,0 +1,270 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Class: Terrain</title>
+		<link type="text/cs" rel="stylesheet" href="../MainCSS.css" />
+        <script src="../google-code-prettify/run_prettify.js"></script>
+	</head>
+
+	<body>
+
+		<h1>Terrain</h1>
+		<p>Represents a rectangular terrain with a heightmap of floats. Provides math operations on the terrain, as well as a way to generate a mesh for it with a specified Level of Detail.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Metadata</h2>
+		<p>Located in "Math/Higher Math/Terrain.h". Has a .cpp file in the same location. Part of the <a href="../Higher Math.html">Higher Math</a> system.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Declaration</h2>
+		<code class="CodeDecl prettyprint">class Terrain;</code>
+		<p />
+
+		<br class="SectionDivider" />
+
+		<h2>Sub-types</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Constants</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Fields</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Fields</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="heightmap" />
+				<code class="CodeDecl prettyprint">private <a href="../Lower Math/Array2D.html">Array2D</a>&lt;float&gt; heightmap;</code>
+				<ul>
+					<li>The heightmap for ever point in the terrain.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Operators</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="operator[]NonConst" />
+				<code class="CodeDecl prettyprint">public float&amp; operator[](Vector2u l);</code>
+				<ul>
+					<li>Gets/sets the value of the terrain's heightmap at the given point on the terrain.</li>
+					<li>Assumes that the given position is inside this terrain.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="operator[]Const" />
+				<code class="CodeDecl prettyprint">public const float&amp; operator[](Vector2u l) const;</code>
+				<ul>
+					<li>Gets the value of the terrain's heightmap at the given point on the terrain.</li>
+					<li>Assumes that the given position is inside this terrain.</li>
+				</ul>
+			</li>
+        </ul>
+        <ul class="DeclarationList">
+			<li>
+				<a name="operator[]Interp" />
+				<code class="CodeDecl prettyprint">public float operator[](Vector2f p) const;</code>
+				<ul>
+					<li>Gets the height at the given point on the terrain.</li>
+					<li>Interpolates linearly between points on the heightmap.</li>
+					<li><div class="CodeSample"><code class="prettyprint">
+//Gets the height value at the very center of the terrain.<br />
+float height = terrain[Vector2f(terrain.GetWidth() * 0.5f, terrain.GetHeight() * 0.5f)];
+					</code></div></li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Functions</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="GetNVertices" />
+				<code class="CodeDecl prettyprint">public Vector2u GetNVertices(Vector2u regionSize, unsigned int zoomOut = 0);</code>
+				<ul>
+					<li>Gets the number of vertices needed along each axis to generate triangles for a terrain of the given size.</li>
+					<li>Takes in the LOD (0 = full detail, 1 = 1/4 detail, 2 = 1/8 detail, etc.).</li>
+					<li>Returns {0, 0} if the given LOD cannot be applied to the given region size.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GetNIndices" />
+				<code class="CodeDecl prettyprint">public unsigned int GetNIndices(Vector2u regionSize, unsigned int zoomOut = 0);</code>
+				<ul>
+					<li>Gets the number of indices needed to generate triangles for a terrain of the given size.</li>
+					<li>Takes in the LOD (0 = full detail, 1 = 1/4 detail, 2 = 1/8 detail, etc.).</li>
+					<li>Returns 0 if the given LOD cannot be applied to the given region size.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Constructors</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="Constructor" />
+				<code class="CodeDecl prettyprint">public Terrain(Vector2u size);</code>
+				<ul>
+					<li>Creates a terrain of the given size with flat heightmap filled with 0.0.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Functions</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="Interp" />
+				<code class="CodeDecl prettyprint">private float Interp(Vector2f pos) const;</code>
+				<ul>
+					<li>Interpolates to get the height at the given position in between heightmap points.</li>
+				</ul>
+			</li>
+		</ul>
+        <ul class="DeclarationList">
+            <li>
+                <a name="GetWidth" />
+                <code class="CodeDecl prettyprint">public unsigned int GetWidth(void) const;</code>
+                <ul>
+                    <li>Gets the width of this terrain (i.e. its heightmap's extension along the X axis).</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetHeight" />
+                <code class="CodeDecl prettyprint">public unsigned int GetHeight(void) const;</code>
+                <ul>
+                    <li>Gets the height of this terrain (i.e. its heightmap's extension along the Y axis).</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="DeclarationList">
+            <li>
+                <a name="GetHeightmap" />
+                <code class="CodeDecl prettyprint">public const <a href="../Lower Math/Array2D.html">Array2D</a>&lt;float&gt;&amp; GetHeightmap(void) const;</code>
+                <ul>
+                    <li>Gets the heightmap defining this terrain.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="SetHeightmap" />
+                <code class="CodeDecl prettyprint">public void SetHeightmap(const <a href="../Lower Math/Array2D.html">Array2D</a>&lt;float&gt;&amp;copy);</code>
+                <ul>
+                    <li>Sets this terrain's heightmap to a copy of the given heightmap.</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="DeclarationList">
+            <li>
+                <a name="GenerateTriangles" />
+                <code class="CodeDecl prettyprint">public void GenerateTriangles(std::vector&lt;VertexType&gt;&amp; outVerts,<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; std::vector&lt;unsigned int&gt;&amp; outIndices,<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; Vector3f*(*vertPosGetter)(VertexType&amp; vert),<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; Vector2f*(*vertUVGetter)(VertexType&amp; vert),<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; Vector3f*(*vertNormalGetter)(VertexType&amp; vert),<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; Vector2u topLeft, Vector2u bottomRight,<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; float heightScale = 1.0f, unsigned int zoomOut = 0) const;</code>
+                <ul>
+                    <li>Generates positions and indices for some rectangular subset of this terrain.</li>
+                    <li>
+                        Takes in:
+                        <ol>
+                            <li>The output collections for vertices/indices.</li>
+                            <li>Getters for a vertex's data (pass 0 for the vertex normal getter to skip computation of normals).</li>
+                            <li>The rectangular region of this terrain to create.</li>
+                            <li>The scale for the terrain's heightmap values.</li>
+                            <li>The LOD level of the terrain (0 = full detail, 1 = 1/4 detail, 2 = 1/8 detail, etc.).</li>
+                        </ol>
+                    </li>
+                    <li>Assumes the region can be split down to the given level of detail.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GeneerateTrianglesFull" />
+                <code class="CodeDecl prettyprint">public void GeneerateTrianglesFull(std::vector&lt;VertexType&gt;&amp; outVerts,<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;std::vector&lt;unsigned int&gt;&amp; outIndices,<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;Vector3f*(*vertPosGetter)(VertexType&amp; vert),<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;Vector2f*(*vertUVGetter)(VertexType&amp; vert),<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;Vector3f*(*vertNormalGetter)(VertexType&amp; vert),<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;float heightScale = 1.0f, unsigned int zoomOut = 0) const;</code>
+                <ul>
+                    <li>Generates positions and indices for this entire terrain.</li>
+                    <li>
+                        Takes in:
+                        <ol>
+                            <li>The output collections for vertices/indices.</li>
+                            <li>Getters for a vertex's data (pass 0 for the vertex normal getter to skip computation of normals).</li>
+                            <li>The scale for the terrain's heightmap values.</li>
+                            <li>The LOD level of the terrain (0 = full detail, 1 = 1/4 detail, 2 = 1/8 detail, etc.).</li>
+                        </ol>
+                    </li>
+                    <li>Assumes the region can be split down to the given level of detail.</li>
+                </ul>
+            </li>
+        </ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Usage</h2>
+		<ul>
+			<li>Represents a rectangular terrain with a heightmap of floats.</li>
+			<li>
+                The LOD system is represented by an unsigned integer passed into the various terrain operations:
+                <ul>
+                    <li>0 = full detail</li>
+                    <li>1 = quarter detail</li>
+                    <li>2 = eighth detail</li>
+                    <li>etc.</li>
+                </ul>
+            </li>
+			<li>Must have an odd number of heightmap elements if using the LOD system.</li>
+		</ul>
+		<div class="CodeSample"><code class="prettyprint">
+//Create a terrain object.<br />
+Array2D&lt;float&gt; heightmap(257, 257);<br />
+//[generate height values using some algorithm]<br />
+Terrain terr(heightmap.GetWidth(), heightmap.GetHeight());<br />
+terr.SetHeightmap(heightmap);<br />
+<br />
+//Now we can interpolate between the heightmap values to get a height<br />
+//&emsp;&emsp; at any point on the terrain.<br />
+float heightAtCenter = terr[Vector2f(128.5f, 128.5f)];<br />
+<br />
+//We can also generate a mesh for rendering part or all of it.<br />
+struct Vertex { Vector3f Pos, Normal; Vector2f UV; };<br />
+std::vector&lt;Vertex&gt; vertices;<br />
+std::vector&lt;unsigned int&gt; indices;<br />
+<br />
+//The following line generates a mesh for one corner of the terrain (1/4 the total terrain) at full detail.<br />
+terr.GenerateTriangles(vertices, indices,<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [](Vertex&amp; v) { return &amp;v.Pos; },<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [](Vertex&amp; v) { return &amp;v.UV; },<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [](Vertex&amp; v) { return &amp;v.Normal; },<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Vector2u(0, 0), Vector2u(128, 128),<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 10.0f, 0);<br />
+<br />
+//The following lines generate a mesh for the full terrain but at 1/8 detail.<br />
+vertices.clear();<br />
+indices.clear();<br />
+terr.GenerateTrianglesFull(vertices, indices,<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [](Vertex&amp; v) { return &amp;v.Pos; },<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [](Vertex&amp; v) { return &amp;v.UV; },<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [](Vertex&amp; v) { return &amp;v.Normal; },<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 10.0f, 2);
+		</code></div>
+	</body>
+</html>
