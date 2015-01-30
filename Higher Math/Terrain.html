@@ -171,13 +171,16 @@ float height = terrain[Vector2f(terrain.GetWidth() * 0.5f, terrain.GetHeight() *
         <ul class="DeclarationList">
             <li>
                 <a name="GenerateTriangles" />
-                <code class="CodeDecl prettyprint">public void GenerateTriangles(std::vector&lt;VertexType&gt;&amp; outVerts,<br />
+                <code class="CodeDecl prettyprint">
+template&lt;typename VertexType&gt;<br />
+public void GenerateTriangles(std::vector&lt;VertexType&gt;&amp; outVerts,<br />
 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; std::vector&lt;unsigned int&gt;&amp; outIndices,<br />
 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; Vector3f*(*vertPosGetter)(VertexType&amp; vert),<br />
 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; Vector2f*(*vertUVGetter)(VertexType&amp; vert),<br />
 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; Vector3f*(*vertNormalGetter)(VertexType&amp; vert),<br />
 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; Vector2u topLeft, Vector2u bottomRight,<br />
-&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; float heightScale = 1.0f, unsigned int zoomOut = 0) const;</code>
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; float heightScale = 1.0f, unsigned int zoomOut = 0) const;
+                </code>
                 <ul>
                     <li>Generates positions and indices for some rectangular subset of this terrain.</li>
                     <li>
@@ -194,13 +197,16 @@ float height = terrain[Vector2f(terrain.GetWidth() * 0.5f, terrain.GetHeight() *
                 </ul>
             </li>
             <li>
-                <a name="GeneerateTrianglesFull" />
-                <code class="CodeDecl prettyprint">public void GeneerateTrianglesFull(std::vector&lt;VertexType&gt;&amp; outVerts,<br />
-&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;std::vector&lt;unsigned int&gt;&amp; outIndices,<br />
-&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;Vector3f*(*vertPosGetter)(VertexType&amp; vert),<br />
-&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;Vector2f*(*vertUVGetter)(VertexType&amp; vert),<br />
-&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;Vector3f*(*vertNormalGetter)(VertexType&amp; vert),<br />
-&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;float heightScale = 1.0f, unsigned int zoomOut = 0) const;</code>
+                <a name="GenerateTrianglesFull" />
+                <code class="CodeDecl prettyprint">
+template&lt;typename VertexType&gt;<br />
+public void GenerateTrianglesFull(std::vector&lt;VertexType&gt;&amp; outVerts,<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; std::vector&lt;unsigned int&gt;&amp; outIndices,<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; Vector3f*(*vertPosGetter)(VertexType&amp; vert),<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; Vector2f*(*vertUVGetter)(VertexType&amp; vert),<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; Vector3f*(*vertNormalGetter)(VertexType&amp; vert),<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; float heightScale = 1.0f, unsigned int zoomOut = 0) const;
+                </code>
                 <ul>
                     <li>Generates positions and indices for this entire terrain.</li>
                     <li>
@@ -231,7 +237,7 @@ float height = terrain[Vector2f(terrain.GetWidth() * 0.5f, terrain.GetHeight() *
                     <li>etc.</li>
                 </ul>
             </li>
-			<li>Must have an odd number of heightmap elements if using the LOD system.</li>
+			<li>A suggested size for the heightmap when extensively using the LOD option is one more than a power of two.</li>
 		</ul>
 		<div class="CodeSample"><code class="prettyprint">
 //Create a terrain object.<br />
@@ -249,15 +255,15 @@ struct Vertex { Vector3f Pos, Normal; Vector2f UV; };<br />
 std::vector&lt;Vertex&gt; vertices;<br />
 std::vector&lt;unsigned int&gt; indices;<br />
 <br />
-//The following line generates a mesh for one corner of the terrain (1/4 the total terrain) at full detail.<br />
+//The following line generates a mesh for the min corner of the terrain (1/4 the total terrain) at full detail.<br />
 terr.GenerateTriangles(vertices, indices,<br />
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [](Vertex&amp; v) { return &amp;v.Pos; },<br />
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [](Vertex&amp; v) { return &amp;v.UV; },<br />
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [](Vertex&amp; v) { return &amp;v.Normal; },<br />
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Vector2u(0, 0), Vector2u(128, 128),<br />
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 10.0f, 0);<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 10.0f, 0); // The '10.0f' here is just the scale of the terrain's heightmap.<br />
 <br />
-//The following lines generate a mesh for the full terrain but at 1/8 detail.<br />
+//The following lines generate a new mesh for the full terrain but at 1/8 detail.<br />
 vertices.clear();<br />
 indices.clear();<br />
 terr.GenerateTrianglesFull(vertices, indices,<br />

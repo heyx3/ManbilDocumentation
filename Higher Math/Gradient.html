@@ -10,7 +10,10 @@
 	<body>
 
 		<h1>Gradient</h1>
-		<p>Represents some kind of smooth gradient of values from <code>t</code> = 0 to <code>t</code> = 1. Can use linear, cubic, or quintic interpolation. Values in the gradient are vectors with a certain number of dimensions specified in the template parameter "Components".</p>
+		<p>Represents some kind of smooth gradient of values from <code>t</code> = 0 to <code>t</code> = 1.
+        Can use linear, cubic, or quintic interpolation.
+        Values in the gradient are vectors with a certain number of dimensions specified in the template parameter "Components".
+        The gradient values are represented as a list of <a href="GradientNode.html">GradientNodes</a>.</p>
 
         <br class="SectionDivider" />
 
@@ -74,7 +77,7 @@
 			</li>
 			<li>
 				<a name="Nodes" />
-				<code class="CodeDecl prettyprint">public std::vector<GNode> Nodes;</code>
+				<code class="CodeDecl prettyprint">public std::vector&lt;GNode&gt; Nodes;</code>
 				<ul>
 					<li>The gradient nodes representing this gradient, in ascending order by <code>t</code> value.</li>
                 </ul>
@@ -187,7 +190,7 @@
 
 		<h2>Usage</h2>
 		<ul>
-			<li>This object can be used to create a gradient of colors (or other values). The gradient could then be stored in a texture for rendering or gpu particle data.</li>
+			<li>One common use for gradients is to create smooth colors for rendering; a computed color gradient could be stored in a texture for material or gpu particle data.</li>
 		</ul>
 		<div class="CodeSample"><code class="prettyprint">
 //The following code creates a smooth transition from white to black.<br />
