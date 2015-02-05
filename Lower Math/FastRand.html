@@ -4,6 +4,7 @@
     <head>
         <title>Class: FastRand</title>
         <link type="text/css" rel="stylesheet" href="../MainCSS.css" />
+        <script src="../google-code-prettify/run_prettify.js"></script>
     </head>
 
     <body>
@@ -17,7 +18,7 @@
         <br class="SectionDivider" />
 
         <h2>Declaration</h2>
-        <code class="CodeDecl">class FastRand;</code>
+        <code class="CodeDecl prettyprint">class FastRand;</code>
         <p />
 
         <br class="SectionDivider" />
@@ -41,7 +42,7 @@
         <ul class="DeclarationList">
             <li>
                 <a name="Seed" />
-                <code class="CodeDecl">public int Seed</code>
+                <code class="CodeDecl prettyprint">public int Seed</code>
                 <ul>
                     <li>The most recently-generated number in the sequence. Used to generate the next number.</li>
                     <li>Will always be positive/zero unless manually set to a negative number.</li>
@@ -65,7 +66,7 @@
         <ul class="DeclarationList">
             <li>
                 <a name="SeedConstructor" />
-                <code class="CodeDecl">public FastRand(int seed = 1234567)</code>
+                <code class="CodeDecl prettyprint">public FastRand(int seed = 1234567)</code>
                 <ul>
                     <li>Initializes this PRNG with the given seed. Any int value is a valid seed.</li>
                 </ul>
@@ -78,14 +79,14 @@
         <ul class="DeclarationList">
             <li>
                 <a name="GetRandInt" />
-                <code class="CodeDecl">public int GetRandInt(void)</code>
+                <code class="CodeDecl prettyprint">public int GetRandInt(void)</code>
                 <ul>
                     <li>Generates a new random integer, stores it in "Seed", and returns it. The new value will always be non-negative.</li>
                 </ul>
             </li>
             <li>
                 <a name="GetZeroToOne" />
-                <code class="CodeDecl">public float GetZeroToOne(void)</code>
+                <code class="CodeDecl prettyprint">public float GetZeroToOne(void)</code>
                 <ul>
                     <li>Generates a new random number from 0 to 1.</li>
                     <li>After calling this, "Seed" will be set to a new pseudo-random integer.</li>

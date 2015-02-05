@@ -41,12 +41,13 @@ namespace HTMLGenerator
 		}
 		public override ItemHTMLData GetData()
 		{
-			return new FunctionData(functionArgsText.Text, base.GetData());
+			return new FunctionData(functionArgsText.Text, isConstBox.Checked, base.GetData());
 		}
 		public override void SetData(ItemHTMLData data)
 		{
 			base.SetData(data);
-			(data as FunctionData).Arguments = functionArgsText.Text;
+			functionArgsText.Text = (data as FunctionData).Arguments;
+			isConstBox.Checked = (data as FunctionData).IsConst;
 		}
 
 		private void InitializeComponent()
@@ -131,6 +132,7 @@ namespace HTMLGenerator
 	public class FunctionData : ItemHTMLData
 	{
 		public string Arguments = "";
+		public bool IsConst = false;
 
 		/// <summary>
 		/// Creates a function that just represents a list break.
@@ -144,6 +146,7 @@ namespace HTMLGenerator
 		{
 			IsListBreak = false;
 			IsTemplated = false;
+			IsConst = false;
 
 			AccessModifier = accessModifier;
 			Arguments = constructorArgs;
@@ -159,6 +162,7 @@ namespace HTMLGenerator
 		{
 			IsListBreak = false;
 			IsTemplated = true;
+			IsConst = false;
 
 			TemplateArgs = templateArgs;
 			AccessModifier = accessModifier;
@@ -167,10 +171,11 @@ namespace HTMLGenerator
 			ItemDesc = constructorDesc;
 			CodeSample = codeSample;
 		}
-		public FunctionData(string arguments, ItemHTMLData baseCopy)
+		public FunctionData(string arguments, bool isConst, ItemHTMLData baseCopy)
 			: base(baseCopy)
 		{
 			Arguments = arguments;
+			IsConst = isConst;
 		}
 		/// <summary>
 		/// Creates a copy of the given function data.
@@ -179,6 +184,7 @@ namespace HTMLGenerator
 			: base(copy)
 		{
 			Arguments = copy.Arguments;
+			IsConst = copy.IsConst;
 		}
 	}
 }

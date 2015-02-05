@@ -1,3 +1,11 @@
+h1 {
+    font-size: 2.0em;
+}
+h2 {
+    font-size: 1.325em;
+}
+
+
 body {
     background-color: #dedede;
     color: black;
@@ -9,11 +17,12 @@ p {
 }
 
 code {
-    font-size: 0.9em;
+    font-size: 0.935em;
     font-family: Consolas, monospace;
 }
 .CodeDecl {
     font-weight: bold;
+    font-size: 0.92675em;
 }
 
 .Warning {
@@ -25,16 +34,16 @@ code {
     background-color: #c3c3c3;
     color: #000000;
 
-    font-size: 0.8em;
+    font-size: 0.935em;
 
     border: 2px solid #333333;
     
     padding-top: 2px;
     padding-bottom: 2px;
-    padding-left: 10px;
+    padding-left: 5px;
     padding-right: 10px;
 
-    vertical-align: middle;
+    vertical-align: top;
 
     margin-bottom: 10px;
 
@@ -66,4 +75,10 @@ TODO {
 
     color: red;
     font-size: x-large;
+}
+
+@media screen {
+    .pun, .opn, .clo {
+        color: #000;
+    }
 }

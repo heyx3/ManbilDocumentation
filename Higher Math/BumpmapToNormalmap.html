@@ -4,6 +4,7 @@
 	<head>
 		<title>Class: BumpmapToNormalmap</title>
 		<link type="text/cs" rel="stylesheet" href="../MainCSS.css" />
+        <script src="../google-code-prettify/run_prettify.js"></script>
 	</head>
 
 	<body>
@@ -19,7 +20,7 @@
 		<br class="SectionDivider" />
 
 		<h2>Declaration</h2>
-		<code class="CodeDecl">class BumpmapToNormalmap;</code>
+		<code class="CodeDecl prettyprint">class BumpmapToNormalmap;</code>
 		<p />
 
 		<br class="SectionDivider" />
@@ -53,7 +54,9 @@
 		<ul class="DeclarationList">
 			<li>
 				<a name="Convert" />
-				<code class="CodeDecl">public void Convert(const <a href="../Lower Math/Array2D.html">Array2D</a>&lt;float&gt;&amp; heightmap, float heightScale, bool normalizeRange, Array2D&lt;Vector3f&gt;&amp; outNormals);</code>
+                <code class="CodeDecl prettyprint">
+                    public void Convert(const <a href="../Lower Math/Array2D.html">Array2D</a>&lt;float&gt;&amp; heightmap, float heightScale, bool normalizeRange,<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; Array2D&lt;Vector3f&gt;&amp; outNormals);</code>
 				<ul>
 					<li>Converts the given bumpmap into a normal map and stores it in the given out array.</li>
 					<li>Resizes the normalmap array if it isn't currently the same size as the bumpmap array.</li>

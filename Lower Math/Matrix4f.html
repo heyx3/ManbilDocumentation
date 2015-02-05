@@ -4,6 +4,7 @@
     <head>
         <title>Class: Matrix4f</title>
         <link type="text/css" rel="stylesheet" href="../MainCSS.css" />
+        <script src="../google-code-prettify/run_prettify.js"></script>
     </head>
 
     <body>
@@ -20,7 +21,7 @@
         <br class="SectionDivider" />
 
         <h2>Declaration</h2>
-        <code class="CodeDecl">class Matrix4f;</code>
+        <code class="CodeDecl prettyprint">class Matrix4f;</code>
         <p />
 
         <br class="SectionDivider" />
@@ -44,7 +45,7 @@
         <ul class="DeclarationList">
             <li>
                 <a name="MultiplyMatrix2" />
-                <code class="CodeDecl">public Matrix4f Multiply(const Matrix4f&amp; lhs, const Matrix4f&amp; rhs)</code>
+                <code class="CodeDecl prettyprint">public Matrix4f Multiply(const Matrix4f&amp; lhs, const Matrix4f&amp; rhs)</code>
                 <ul>
                     <li>Performs the multiplication <code>lhs * rhs</code>.</li>
                     <li>Gets a new matrix whose transform is equivalent to "rhs" transform followed by "lhs" transform.</li>
@@ -52,7 +53,7 @@
             </li>
             <li>
                 <a name="MultiplyMatrix3" />
-                <code class="CodeDecl">public Matrix4f Multiply(const Matrix4f&amp; one, const Matrix4f&amp; two, const Matrix4f&amp; three)</code>
+                <code class="CodeDecl prettyprint">public Matrix4f Multiply(const Matrix4f&amp; one, const Matrix4f&amp; two, const Matrix4f&amp; three)</code>
                 <ul>
                     <li>Performs the multiplication <code>one * two * three</code>.</li>
                     <li>Gets a new matrix whose transform is equivalent to "three" transform followed by "two" transform followed by "one" transform.</li>
@@ -60,7 +61,7 @@
             </li>
             <li>
                 <a name="MultiplyVector" />
-                <code class="CodeDecl">public Vector4f Multiply(const Matrix4f&amp; lhs, const Vector4f&amp; rhs)</code>
+                <code class="CodeDecl prettyprint">public Vector4f Multiply(const Matrix4f&amp; lhs, const Vector4f&amp; rhs)</code>
                 <ul>
                     <li>Pre-multiplies the given vector and matrix (<code>lhs * rhs</code>).</li>
                     <li>Essentially applies the matrix's transformation to the given 3-dimensional vector with an added fourth homogenous component.</li>
@@ -74,7 +75,7 @@
         <ul class="DeclarationList">
             <li>
                 <a name="values" />
-                <code class="CodeDecl">private float values[4][4];</code>
+                <code class="CodeDecl prettyprint">private float values[4][4];</code>
                 <ul>
                     <li>The 16 values in this matrix. The first index is the row and the second is the column.</li>
                     <li>More easily read/written via the <a href="#operator[]">[] operators</a>.</li>
@@ -88,14 +89,14 @@
         <ul class="DeclarationList">
             <li>
                 <a name="operator[]" />
-                <code class="CodeDecl">public float&amp; operator[](Vector2u loc)</code>
+                <code class="CodeDecl prettyprint">public float&amp; operator[](Vector2u loc)</code>
                 <ul>
                     <li>Gets the matrix element with the given column (X) and row (Y).</li>
                 </ul>
             </li>
             <li>
                 <a name="operator[]Const" />
-                <code class="CodeDecl">public const float&amp; operator[](Vector2u loc) const</code>
+                <code class="CodeDecl prettyprint">public const float&amp; operator[](Vector2u loc) const</code>
                 <ul>
                     <li>Gets the matrix element with the given column (X) and row (Y).</li>
                 </ul>
@@ -104,14 +105,14 @@
         <ul class="DeclarationList">
             <li>
                 <a name="operator==" />
-                <code class="CodeDecl">public bool operator==(const Matrix4f&amp; other) const</code>
+                <code class="CodeDecl prettyprint">public bool operator==(const Matrix4f&amp; other) const</code>
                 <ul>
                     <li>Determines whether this matrix is exactly equal to the given one.</li>
                 </ul>
             </li>
             <li>
                 <a name="operator=" />
-                <code class="CodeDecl">public Matrix4f&amp; operator=(const Matrix4f&amp; cpy)</code>
+                <code class="CodeDecl prettyprint">public Matrix4f&amp; operator=(const Matrix4f&amp; cpy)</code>
                 <ul>
                     <li>Sets this matrix to be exactly equal to the given one.</li>
                 </ul>
@@ -122,14 +123,14 @@
         <ul class="DeclarationList">
             <li>
                 <a name="DefaultConstructor" />
-                <code class="CodeDecl">public Matrix4f(void)</code>
+                <code class="CodeDecl prettyprint">public Matrix4f(void)</code>
                 <ul>
                     <li>Initializes this matrix as an identity matrix.</li>
                 </ul>
             </li>
             <li>
                 <a name="CopyConstructor" />
-                <code class="CodeDecl">public Matrix4f(const Matrix4f&amp; copy)</code>
+                <code class="CodeDecl prettyprint">public Matrix4f(const Matrix4f&amp; copy)</code>
                 <ul>
                     <li>Initializes this matrix to have the same values as the given one.</li>
                 </ul>
@@ -142,21 +143,21 @@
         <ul class="DeclarationList">
             <li>
                 <a name="SetMatrix" />
-                <code class="CodeDecl">public void Set(const Matrix4f&amp; copy)</code>
+                <code class="CodeDecl prettyprint">public void Set(const Matrix4f&amp; copy)</code>
                 <ul>
                     <li>Sets this matrix to have the same values as the given one.</li>
                 </ul>
             </li>
             <li>
                 <a name="SetFloat" />
-                <code class="CodeDecl">public void Set(float fillValue)</code>
+                <code class="CodeDecl prettyprint">public void Set(float fillValue)</code>
                 <ul>
                     <li>Fills this matrix with the given value.</li>
                 </ul>
             </li>
             <li>
                 <a name="SetFunc" />
-                <code class="CodeDecl">
+                <code class="CodeDecl prettyprint">
                     template&lt;typename Func&gt; <br />
                     public void SetFunc(Func evaluator)
                 </code>
@@ -165,7 +166,7 @@
                     <li>The function takes in the location of the current value (column and row) and the element to ouput a value to.</li>
                     <li>The function should have the signature <code>void GetElement(Vector2u gridLoc, float* outVal)</code>.</li>
                     <li><div class="CodeSample">
-                        <code>
+                        <code class="prettyprint">
                             //The following lines create an identity matrix by using a lambda. <br />
                             //Small note: in practice creating an identity matrix wouldn't have to be done manually; <br />
                             // this is just an example of how to use "SetFunc". <br />
@@ -182,14 +183,14 @@
         <ul class="DeclarationList">
             <li>
                 <a name="GetDeterminant" />
-                <code class="CodeDecl">public float GetDeterminant(void) const</code>
+                <code class="CodeDecl prettyprint">public float GetDeterminant(void) const</code>
                 <ul>
                     <li>Calculates the determinant of this matrix.</li>
                 </ul>
             </li>
             <li>
                 <a name="GetTranspose" />
-                <code class="CodeDecl">public Matrix4f GetTranspose(void) const</code>
+                <code class="CodeDecl prettyprint">public Matrix4f GetTranspose(void) const</code>
                 <ul>
                     <li>Gets the transpose of this matrix.</li>
                     <li>A "transposed" matrix switches its rows and columns.</li>
@@ -197,7 +198,7 @@
             </li>
             <li>
                 <a name="GetInverse" />
-                <code class="CodeDecl">public Matrix4f GetInverse(void) const</code>
+                <code class="CodeDecl prettyprint">public Matrix4f GetInverse(void) const</code>
                 <ul>
                     <li>Computes the inverse of this matrix.</li>
                     <li>If this matrix can't be inverted, returns a matrix with all elements set to <code>BasicMath::NaN</code>.</li>
@@ -207,7 +208,7 @@
         <ul class="DeclarationList">
             <li>
                 <a name="Apply" />
-                <code class="CodeDecl">public Vector3f Apply(Vector3f v) const</code>
+                <code class="CodeDecl prettyprint">public Vector3f Apply(Vector3f v) const</code>
                 <ul>
                     <li>Applies this matrix's transformation to the given Vector3.</li>
                 </ul>
@@ -216,49 +217,49 @@
         <ul class="DeclarationList">
             <li>
                 <a name="SetAsIdentity" />
-                <code class="CodeDecl">public void SetAsIdentity(void)</code>
+                <code class="CodeDecl prettyprint">public void SetAsIdentity(void)</code>
                 <ul>
                     <li>Sets this matrix to be the identity matrix.</li>
                 </ul>
             </li>
             <li>
                 <a name="SetAsScaleVector" />
-                <code class="CodeDecl">public void SetAsScale(Vector3f scaleDimensions)</code>
+                <code class="CodeDecl prettyprint">public void SetAsScale(Vector3f scaleDimensions)</code>
                 <ul>
                     <li>Sets this matrix to represent a scale transformation.</li>
                 </ul>
             </li>
             <li>
                 <a name="SetAsScaleFloat" />
-                <code class="CodeDecl">public void SetAsScale(float scale)</code>
+                <code class="CodeDecl prettyprint">public void SetAsScale(float scale)</code>
                 <ul>
                     <li>Sets this matrix to represent a scale transformation.</li>
                 </ul>
             </li>
             <li>
                 <a name="SetAsRotateX" />
-                <code class="CodeDecl">public void SetAsRotateX(float radians)</code>
+                <code class="CodeDecl prettyprint">public void SetAsRotateX(float radians)</code>
                 <ul>
                     <li>Sets this matrix to represent a rotation along the X axis.</li>
                 </ul>
             </li>
             <li>
                 <a name="SetAsRotateY" />
-                <code class="CodeDecl">public void SetAsRotateY(float radians)</code>
+                <code class="CodeDecl prettyprint">public void SetAsRotateY(float radians)</code>
                 <ul>
                     <li>Sets this matrix to represent a rotation along the Y axis.</li>
                 </ul>
             </li>
             <li>
                 <a name="SetAsRotateZ" />
-                <code class="CodeDecl">public void SetAsRotateZ(float radians)</code>
+                <code class="CodeDecl prettyprint">public void SetAsRotateZ(float radians)</code>
                 <ul>
                     <li>Sets this matrix to represent a rotation along the Z axis.</li>
                 </ul>
             </li>
             <li>
                 <a name="SetAsRotateXYZ" />
-                <code class="CodeDecl">public void SetAsRotateXYZ(Vector3f eulerAngles)</code>
+                <code class="CodeDecl prettyprint">public void SetAsRotateXYZ(Vector3f eulerAngles)</code>
                 <ul>
                     <li>Sets this matrix to represent a rotation by the given amounts along each axis.</li>
                     <li>Rotates by the Y axis, then the X axis, then the Z axis.</li>
@@ -266,21 +267,21 @@
             </li>
             <li>
                 <a name="SetAsRotation" />
-                <code class="CodeDecl">public void SetAsRotation(const <a href="Quaternion.html">Quaternion</a>&amp; rot)</code>
+                <code class="CodeDecl prettyprint">public void SetAsRotation(const <a href="Quaternion.html">Quaternion</a>&amp; rot)</code>
                 <ul>
                     <li>Sets this matrix to represent the same rotation as the given quaternion.</li>
                 </ul>
             </li>
             <li>
                 <a name="SetAsTranslation" />
-                <code class="CodeDecl">public void SetAsTranslation(Vector3f pos)</code>
+                <code class="CodeDecl prettyprint">public void SetAsTranslation(Vector3f pos)</code>
                 <ul>
                     <li>Sets this matrix to represent a translation.</li>
                 </ul>
             </li>
             <li>
                 <a name="SetAsOrientation" />
-                <code class="CodeDecl">public void SetAsOrientation(Vector3f target, Vector3f up, bool alreadyNormalized = false)</code>
+                <code class="CodeDecl prettyprint">public void SetAsOrientation(Vector3f target, Vector3f up, bool alreadyNormalized = false)</code>
                 <ul>
                     <li>Sets this matrix to represent a rotation that rotates space so that "target" is pointing along the Z axis and "up" is pointing along the Y.</li>
                     <li>Takes in whether the given orientation vectors haven't been normalized yet.</li>
@@ -288,7 +289,7 @@
             </li>
             <li>
                 <a name="SetAsPerspProj" />
-                <code class="CodeDecl">public void SetAsPerspProj(float fovRadians, float screenW, float screenH, float zNear, float zFar)</code>
+                <code class="CodeDecl prettyprint">public void SetAsPerspProj(float fovRadians, float screenW, float screenH, float zNear, float zFar)</code>
                 <ul>
                     <li>Sets this matrix to represent a perspective projection.</li>
                     <li>Transforms an orthogonal scene into a 3D scene with perspective (e.x. parallel lines converging on the horizon).</li>
@@ -296,7 +297,7 @@
             </li>
             <li>
                 <a name="SetAsOrthoProj" />
-                <code class="CodeDecl">public void SetAsOrthoProj(Vector3f minBounds, Vector3f maxBounds)</code>
+                <code class="CodeDecl prettyprint">public void SetAsOrthoProj(Vector3f minBounds, Vector3f maxBounds)</code>
                 <ul>
                     <li>Sets this matrix to represent an orthogonal projection.</li>
                     <li>Transforms an orthogonal scene to remap its view bounds to the given min and max.</li>
@@ -304,7 +305,7 @@
             </li>
             <li>
                 <a name="SetAsWVP" />
-                <code class="CodeDecl">public void SetAsWVP(const Matrix4f&amp; projM, const Matrix4f&amp; camM, const Matrix4f&amp; worldM)</code>
+                <code class="CodeDecl prettyprint">public void SetAsWVP(const Matrix4f&amp; projM, const Matrix4f&amp; camM, const Matrix4f&amp; worldM)</code>
                 <ul>
                     <li>Sets this matrix to represent a WorldViewProjection matrix given the various individual matrices.</li>
                     <li>This matrix transforms a coordinate from object space all the way to screen space (i.e. a unit cube from -1 to 1).</li>
@@ -321,7 +322,7 @@
            is at the origin and pointing down the positive Z axis), then finally "screen space" (everything visible is inside a
            unit cube from -1 to 1 centered at the origin).</p>
         <div class="CodeSample">
-            <code>
+            <code class="prettyprint">
                 //Define the player's camera data. <br />
                 Vector3f playerPos(10.0f, 10.0f, 10.0f), <br />
 &emsp; &emsp; &emsp; &emsp;    playerForward = Vector3f(1.0f, 1.0f, 0.0f).Normalized(), <br />

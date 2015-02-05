@@ -1,0 +1,274 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Class: Camera</title>
+		<link type="text/cs" rel="stylesheet" href="../MainCSS.css" />
+		<script src="../google-code-prettify/run_prettify.js"></script>
+	</head>
+
+	<body>
+
+		<TODO><ul>
+			<li>Link to Matrix4f.html in matrix functions.</li>
+		</ul></TODO>
+
+		<br class="SectionDivider" />
+
+
+		<h1>Camera</h1>
+		<p>Represents a basic 2D or 3D camera. Stores its rotation via "forward" and "upwards" vectors.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Metadata</h2>
+		<p>Located in "Math/Higher Math/Camera.h". Has a .cpp file in the same location. Part of the <a href="../Higher Math.html">Higher Math</a> system.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Declaration</h2>
+		<code class="CodeDecl prettyprint">class Camera;</code>
+		<p />
+
+		<br class="SectionDivider" />
+
+		<h2>Sub-types</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Constants</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Fields</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Fields</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="LockUp" />
+				<code class="CodeDecl prettyprint">public bool LockUp;</code>
+				<ul>
+					<li>If true, keeps the upward vector locked, keeping it immune to pitching.</li>
+					<li>The upward vector will always be affected by rolling and rotation via Quaternion, however.</li>
+					<li>When enabled, the camera's forward vector will be restricted from getting too close to the upward vector via "ClosestDotVariance".</li>
+				</ul>
+			</li>
+			<li>
+				<a name="ClosestDotVariance" />
+				<code class="CodeDecl prettyprint">public float ClosestDotVariance;</code>
+				<ul>
+					<li>If "LockUp" is true, this field indicates the closest the camera can get to the up/down vector in terms of their dot product.</li>
+					<li>
+                        Should be between 0 (can look all the way up/down) and 1 (can't pitch the camera at all).
+					    <ul>
+                            <li>The best value is usually close to 0.</li>
+                        </ul>
+                    </li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="PerspectiveInfo" />
+				<code class="CodeDecl prettyprint">public <a href="ProjectionInfo.html">ProjectionInfo</a> PerspectiveInfo;</code>
+				<ul>
+					<li>The information about this camera's 3D perspective (field of view, clipping planes, and aspect ratio).</li>
+					<li>Only applicable if this is supposed to be a 3D camera.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="MinOrthoBounds" />
+				<code class="CodeDecl prettyprint">public Vector3f MinOrthoBounds;</code>
+				<ul>
+					<li>The information about this camera's 2D perspective (visible rectangular region, relative to the camera).</li>
+					<li>Only applicable if this is supposed to be a 2D camera (or in the rare case you want a 3D camera without the usual 3D perspective).</li>
+					<li>This vector defines the min corner of the visible region relative to the camera.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="MaxOrthoBounds" />
+				<code class="CodeDecl prettyprint">public Vector3f MaxOrthoBounds;</code>
+				<ul>
+					<li>The information about this camera's 2D perspective (visible rectangular region, relative to the camera).</li>
+					<li>Only applicable if this is supposed to be a 2D camera (or in the rare case you want a 3D camera without the usual 3D perspective).</li>
+					<li>This vector defines the max corner of the visible region relative to the camera.</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="pos" />
+				<code class="CodeDecl prettyprint">public Vector3f pos;</code>
+				<ul>
+					<li>This camera's position.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="forward" />
+				<code class="CodeDecl prettyprint">public Vector3f forward;</code>
+				<ul>
+					<li>This camera's forward vector.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="up" />
+				<code class="CodeDecl prettyprint">public Vector3f up;</code>
+				<ul>
+					<li>This camera's upwards vector.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Operators</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Functions</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Constructors</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="Constructor" />
+				<code class="CodeDecl prettyprint">public Camera(Vector3f pos = Vector3f(0.0f, 0.0f, 0.0f),<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; Vector3f forward = Vector3f(1.0f, 0.0f, 0.0f),<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; Vector3f up = Vector3f(0.0f, 0.0f, 1.0f),<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; bool lockUp = true);</code>
+				<ul>
+					<li>Creates a camera with the given data.</li>
+					<li>Note that no projection info is provided here to initialize the camera with; that information should be set manually.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Functions</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="GetPosition" />
+				<code class="CodeDecl prettyprint">public Vector3f GetPosition(void) const;</code>
+				<ul>
+					<li>Gets this camera's position.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GetForward" />
+				<code class="CodeDecl prettyprint">public Vector3f GetForward(void) const;</code>
+				<ul>
+					<li>Gets this camera's forward vector.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GetUpward" />
+				<code class="CodeDecl prettyprint">public Vector3f GetUpward(void) const;</code>
+				<ul>
+					<li>Gets this camera's upward vector.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GetSideways" />
+				<code class="CodeDecl prettyprint">public Vector3f GetSideways(void) const;</code>
+				<ul>
+					<li>Computes this camera's sideways vector.</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="SetPosition" />
+				<code class="CodeDecl prettyprint">public void SetPosition(Vector3f newPos);</code>
+				<ul>
+					<li>Sets this camera's position.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="IncrementPosition" />
+				<code class="CodeDecl prettyprint">public void IncrementPosition(Vector3f amount);</code>
+				<ul>
+					<li>Adds the given value to this camera's position.</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="SetRotation" />
+				<code class="CodeDecl prettyprint">public void SetRotation(void);</code>
+				<ul>
+					<li>Sets this camera's rotation to the specified forward and upward vectors.</li>
+					<li>Assumes the given vectors are already normalized.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="Rotate" />
+				<code class="CodeDecl prettyprint">public void Rotate(<a href="../Lower Math/Quaternion.html">Quaternion</a> rotation);</code>
+				<ul>
+					<li>Rotates this camera using the given Quaternion.</li>
+					<li>Note that this function will rotate the upwards vector regardless of "LockUp"'s value.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="AddPitch" />
+				<code class="CodeDecl prettyprint">public void AddPitch(float radians);</code>
+				<ul>
+					<li>Pitches this camrera by the given amount of radians.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="AddYaw" />
+				<code class="CodeDecl prettyprint">public void AddYaw(float radians);</code>
+				<ul>
+					<li>Changes this camera's yaw by the given amount of radians.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="AddRoll" />
+				<code class="CodeDecl prettyprint">public void AddRoll(float radians);</code>
+				<ul>
+					<li>Rolls this camera by the given number of radians.</li>
+					<li>Note that this function inherently must rotate the "upward" vector, regardless of "LockUp".</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="GetViewTransform" />
+				<code class="CodeDecl prettyprint">public void GetViewTransform(Matrix4f&amp; outM) const;</code>
+				<ul>
+					<li>Gets the matrix to transform coordinates from world space into this camera's space.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GetPerspectiveTransform" />
+				<code class="CodeDecl prettyprint">public void GetPerspectiveTransform(Matrix4f&amp; outM) const;</code>
+				<ul>
+					<li>Gets the 3D projection matrix that transforms coordinates from camera space into Normalized Device Coordinates.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GetOrthoProjection" />
+				<code class="CodeDecl prettyprint">public void GetOrthoProjection(Matrix4f&amp; outM) const;</code>
+				<ul>
+					<li>Gets the 2D perspective matrix that transforms coordinates from camera space into Normalized Device Coordinates.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Usage</h2>
+		<ul>
+			<li>This is the recommended base class for any cameras used in-game; it handles all of the necessary math.</li>
+		</ul>
+	</body>
+</html>

@@ -1,0 +1,320 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Class: Geometryf</title>
+		<link type="text/cs" rel="stylesheet" href="../MainCSS.css" />
+        <link href="../google-code-prettify/prettify.css" type="text/css" rel="stylesheet" />
+        <script src="../google-code-prettify/run_prettify.js"></script>
+	</head>
+
+	<body>
+
+		<h1>Geometryf</h1>
+		<p>Various useful geometric functions. The functions are abstracted with templates to handle a float vector class with any number of dimensions.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Metadata</h2>
+		<p>Located in "Math/Higher Math/ClassName.h". Has a .cpp file in the same location. Part of the <a href="../Higher Math.html">Higher Math</a> system.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Declaration</h2>
+		<code class="CodeDecl prettyprint">class Geometryf;</code>
+		<p />
+
+		<br class="SectionDivider" />
+
+		<h2>Sub-types</h2>
+		<ul class="DeclarationList">
+            <li>
+                <a name="ClosestValues" />
+                <code class="CodeDecl prettyprint">
+                    template&lt;class Vector&gt; <br />
+                    public struct ClosestValues;
+                </code>
+                <ul>
+                    <li>The return value for <a href="#ClosestToIntersection">ClosestToIntersection()</a>.</li>
+                </ul>
+            </li>
+			<li>
+				<a name="PointOnLineAtValueResult" />
+				<code class="CodeDecl prettyprint">
+					template&lt;class Vector&gt; <br />
+					public struct PointOnLineAtValueResult;
+				</code>
+				<ul>
+					<li>The return value of <a href="#GetPointOnLineAtValue">GetPointOnLineAtValue()</a>.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Constants</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Fields</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Fields</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Operators</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Functions</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="WithinError" />
+				<code class="CodeDecl prettyprint">private bool WithinError(float f1, float f2, float error);</code>
+				<ul>
+					<li>Gets whether the given two values are within the given error margin.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="NumbDimensions" />
+				<code class="CodeDecl prettyprint">
+					template&lt;class Vector&gt; <br />
+					private int NumbDimensions(void);
+				</code>
+				<ul>
+					<li>Gets the dimensionality of the given vector.</li>
+					<li>Used for <a href="#GetLongestAxis">GetLongestAxis()</a>.</li>
+				</ul>
+			</li>
+        </ul>
+        <ul class="DeclarationList">
+            <li>
+                <a name="AreColinear" />
+                <code class="CodeDecl prettyprint">
+                    template&lt;class Vector&gt; <br />
+                    public bool AreColinear(Vector p1, Vector p2, Vector p3, float errorMargin = 0.1f);
+                </code>
+                <ul>
+                    <li>Gets whether the given points all lie on the same line, within the given margin of error.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="AreColinearFast" />
+                <code class="CodeDecl prettyprint">
+                    template&lt;class Vector&gt; <br />
+                    public bool AreColinearFast(Vector p1, Vector p2, Vector p3, float errorMargin = 0.1f);
+                </code>
+                <ul>
+                    <li>Same behavior as <a href="#AreColinear">AreColinear()</a>, but using a fast approximation of vector lengths.</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="DeclarationList">
+            <li>
+                <a name="AreCoplanar" />
+                <code class="CodeDecl prettyprint">
+                    template&lt;class Vector&gt; <br />
+                    public bool AreCoplanar(Vector p1, Vector p2, Vector p3, Vector p4, float errorMargin = 0.1f);
+                </code>
+                <ul>
+                    <li>Gets whether the given points all lie on the same plane, within the given margin of error.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="AreCoplanarFast" />
+                <code class="CodeDecl prettyprint">
+                    template&lt;class Vector&gt; <br />
+                    public bool AreCoplanarFast(Vector p1, Vector p2, Vector p3, Vector p4, float errorMargin = 0.1f);
+                </code>
+                <ul>
+                    <li>Same behavior as <a href="#AreCoplanar">AreCoplanar()</a>, but using a fast approximation of vector lengths.</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="DeclarationList">
+            <li>
+                <a name="TriangleArea" />
+                <code class="CodeDecl prettyprint">
+                    template&lt;class Vector&gt; <br />
+                    public float TriangleArea(Vector p1, Vector p2, Vector p3);
+                </code>
+                <ul>
+                    <li>Gets the area of the given triangle.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="TriangleInterpolate" />
+                <code class="CodeDecl prettyprint">
+                    template&lt;class Vector&gt; <br />
+                    public float TriangleInterpolate(Vector p1, float val1, Vector p2, float val2,<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;Vector p3, float val3, Vector interpPos);
+                </code>
+                <ul>
+                    <li>Interpolates between values at three corners of a triangle based on a fourth point inside the triangle.</li>
+                    <li>
+                        <div class="CodeSample">
+                            <code class="prettyprint">
+//Create a 2D triangular region with height values.<br />
+Vector2f p1(0.0f, 0.0f),<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; p2(0.0f, 1.0f),<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; p3(1.0f, 0.0f);<br />
+float height1 = 0.0f,<br />
+&emsp;&emsp;&emsp;&emsp;&emsp; height2 = 1.0f,<br />
+&emsp;&emsp;&emsp;&emsp;&emsp; height3 = 0.65f;<br />
+<br />
+//Now get the height at the center of the triangle.<br />
+Vector2f center(0.25f, 0.25f);<br />
+float heightAtCenter = Geometryf::TriangleInterpolate(p1, height1, p2, height2,<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; p3, height3, center);<br />
+std::cout &lt;&lt; "The height in the center is " &lt;&lt; heightAtCenter &lt;&lt; "\n";
+                            </code>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="DeclarationList">
+            <li>
+                <a name="GetLongestAxis" />
+                <code class="CodeDecl prettyprint">
+                    template&lt;class Vector&gt; <br />
+                    public unsigned int GetLongestAxis(Vector v);
+                </code>
+                <ul>
+                    <li>Given values along each axis, finds the axis with the largest magnitude.</li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="DeclarationList">
+            <li>
+                <a name="ClosestToLine" />
+                <code class="CodeDecl prettyprint">
+                    template&lt;class Vector&gt; <br />
+                    public Vector ClosestToLine(Vector line1, Vector line2, Vector separatePoint, bool isLineInfinte);
+                </code>
+                <ul>
+                    <li>Gets the point on the given line that is closest to the given separate point.</li>
+                    <li>Takes in whether the given line is infinite or just a segment.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="ClosestToIntersection" />
+                <code class="CodeDecl prettyprint">
+                    template&lt;class Vector&gt; <br />
+                    public <a href="#ClosestValues">ClosestValues</a>&lt;Vector&gt; ClosestToIntersection(Vector firstLine_1, Vector firstLine_2,<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;Vector secondLine_1, Vector secondLine_2,<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;bool isLineInfinte);
+                </code>
+                <ul>
+                    <li>Given two lines, finds the one point on each line that is closest to the other line.</li>
+                    <li>By definition, the distance between these two points is the minimum distance between the two lines.</li>
+                    <li>Takes in whether the lines are infinite or just segments.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetPointOnLineAtValue" />
+                <code class="CodeDecl prettyprint">
+                    template&lt;class Vector&gt; <br />
+                    public <a href="#PointOnLineAtValueResult">PointOnLineAtValueResult</a>&lt;Vector&gt; GetPointOnLineAtValue(Vector pointOnLine, Vector lineDir,<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; unsigned int axis, float targetValue);
+                </code>
+                <ul>
+                    <li>
+                        Given a line, and axis, and a target value, finds the point <code>p</code> and value <code>t</code> where:
+                        <ul>
+                            <li><code>p == pointOnLine + (lineDir * t)</code></li>
+                            <li><code>p[axis] == targetValue</code></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="CodeSample">
+                            <code class="prettyprint">
+//Say we have a line that we know has some extent along the X axis,<br />
+//&emsp;&emsp; and we want to get the point where that line's x value is exactly 3.0:<br />
+Vector3f pointOnLine(0.5f, 0.0f, 0.35f);<br />
+Vector3f lineDir = Vector3f(1.0f, 1.0f, 1.0f).Normalized();<br />
+float targetX = 3.0f;<br />
+auto result = Geometryf::GetPointOnLineAtValue(pointOnLine, lineDir, 0, targetX);<br />
+assert(result.Point.x == targetX);<br />
+assert(result.Point == (pointOnLine + (lineDir * result.t)));
+                            </code>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="DeclarationList">
+            <li>
+                <a name="CalculateNormalsFull" />
+                <code class="CodeDecl prettyprint">
+                    template&lt;typename VertexType&gt; <br />
+                    public void CalculateNormals(VertexType* vertices, unsigned int nVertices,<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;const unsigned int* indices, unsigned int nIndices,<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;Vector3f&amp;(*getNormal)(VertexType&amp; vertex),<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;Vector3f(*getPos)(const VertexType&amp; vertex)<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;bool(*shouldFlipNormal)(const Vector3f&amp; normal, const VertexType&amp; vert, void* pData),<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;void* pData = 0);
+                </code>
+                <ul>
+                    <li>Calculates the normals for a collection of triangles (specified by their vertices and groups of 3 indices).</li>
+                    <li>Takes in functions to get various properties of each vertex.</li>
+                    <li>Also takes in a function that gets whether a given normal is flipped the wrong way, to make sure normals aren't flipped the wrong way when computed.</li>
+                    <li>
+                        <div class="CodeSample">
+                            <code class="prettyprint">
+//Create some triangles.<br />
+struct VertexPosNormal { Vector3f vPos, vNormal; };<br />
+std::vector&lt;VertexPosNormal&gt; vertices;<br />
+std::vector&lt;unsigned int&gt; indices;<br />
+//[generate vertex positions and triangle indices]<br />
+//[for the sake of this example, pretend that the mesh is convex,<br />
+// and so all the vertex normals should be pointing away from the origin]<br />
+<br />
+//Now generate normals for the vertices.<br />
+Geometryf::CalculateNormals(vertices.data(), vertices.size(), indices.data(), indices.size(),<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; [](VertexType&amp; v) -> Vector3f&amp; { return v.vPos; },<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; [](VertexType&amp; v) -> Vector3f { return v.vNormal; },<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; [](const Vector3f&amp; normal, const VertexType&amp; vert, void* pData)<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; {<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; //Return true if normal isn't pointing outwards.<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; return normal.Dot(vert.vPos) < 0.0f;<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; });
+                            </code>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a name="CalculateNormals" />
+                <code class="CodeDecl prettyprint">
+                    template&lt;typename VertexType&gt; <br />
+                    public void CalculateNormals(VertexType* vertices, unsigned int nVertices,<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;const unsigned int* indices, unsigned int nIndices,<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;bool(*shouldFlipNormal)(const Vector3f&amp; normal, const VertexType&amp; vert, void* pData),<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;void* pData = 0);
+                </code>
+                <ul>
+                    <li>Does the same thing as the other verion of <a href="#CalculateNormalsFull">CalculateNormals()</a>.</li>
+                    <li>Assumes the vertex type being used has "Normal" and "Pos" fields that are Vector3fs.</li>
+                </ul>
+            </li>
+        </ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Constructors</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Functions</h2>
+		<p>None.</p>
+
+	</body>
+</html>
