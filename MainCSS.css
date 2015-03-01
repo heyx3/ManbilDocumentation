@@ -86,15 +86,14 @@ TODO {
 
 .TextSection {
 
-    background: #aaaaaa;
+    background: #cbcbcb;
     border: 2px solid black;
     padding: 8px;
 
-    max-width: 800px;
+    max-width: 820px;
 }
 
 .TextSectionList {
-    list-style-type: decimal;
 }
 .TextSectionList > li {
 
