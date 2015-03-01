@@ -1,0 +1,120 @@
+ <!DOCTYPE html>
+ <html>
+    
+    <head>
+        <title>Manbil introduction</title>
+        <link type="text/css" rel="stylesheet" href="MainCSS.css" />
+        <script src="google-code-prettify/run_prettify.js"></script>
+    </head>
+
+    <body>
+
+        <h1>Manbil Introduction</h1>
+        <div class="TextSection">
+            <p>
+                Manbil is a 3D game engine designed to be an educational tool. While there are several open-source game
+                engines already available, they are generally not designed to be taken apart and studied by students
+                interested in learning how these engines tick. Manbil, on the other hand, is created with the goal of
+                having very loosely-coupled systems that can be learned from the ground up, without having to understand
+                the total complexity of the engine.
+            </p>
+            <p>
+                This documentation assumes the reader is familiar with C++. Familiarity with Visual Studio is also helpful,
+                but it isn't required.
+            </p>
+            <p>
+                The engine <a href="https://github.com/heyx3/Manbil">source</a> and
+                <a href="https://github.com/heyx3/ManbilDocumentation">documentation</a> are both available on Github.
+            </p>
+            <p>
+                A quick reference guide for setting up the engine and making new projectss is available
+                <a href="Quick Start.html">here</a>.
+            </p>
+            <p>
+                If you have any questions, comments, or suggestions, feel free to email William Manning at
+                <a href="mailto:manning.w@husky.neu.edu">manning.w@husky.neu.edu</a>.
+            </p>
+        </div>
+
+        <br class="SectionDivider" />
+
+        <div class="TextSection">
+            <h2>Development Platform</h2>
+            <ul class="TextSectionList">
+                <li>
+                    C++
+                    <ul class="TextSectionList">
+                        <li>Templates are OK; macros are occasionally useful but shouldn't be abused.</li>
+                        <li>
+                            Exceptions are used very sparingly -- only when less exotic error-handling would
+                            substantially clutter otherwise simple functions (for example, the Serialization system).
+                        </li>
+                        <li>
+                            STL is used quite a bit, though often functions that take an std::vector will also provide an
+                            overload that takes in a raw pointer to an array so that nobody is forced to use std::vectors.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Visual Studio 2013
+                    <ul class="TextSectionList">
+                        <li>A powerful but Windows-only IDE</li>
+                        <li>The "Express" edition is free.</li>
+                        <li>
+                            Other versions (Professional, Ultimate, etc.) are expensive, but free through some student
+                            programs (such as Northeastern CCIS!).
+                        </li>
+                        <li>
+                            One quirk to note for anybody new to Visual Studio: in the IDE, files are organized into
+                            "filters". These function exactly like folders, but they are not actual folders! It is
+                            generally a good idea to make sure the folder hierarchy matches the filter hierarchy for
+                            simplicity.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Windows 7 or later
+                    <ul class="TextSectionList">
+                        <li>
+                            The engine code should theoretically support OSX and Linux (except the Oculus Rift stuff),
+                            but this has never been attempted, let alone tested, and there are no build configurations
+                            set up for it.
+                        </li>
+                        <li>
+                            The engine code should also theoretically support older versions of Windows, but this has
+                            not been tested either (and Visual Studio 2013 only works on Windows 7 and later).
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <br class="SectionDivider" />
+
+        <div class="TextSection">
+            <h2>Coding Standards</h2>
+            <ul class="TextSectionList">
+                <li>Verbosity over ambiguity.</li>
+                <li>
+                    The engine is generous with line breaks to provide clear separation of code based on its context.
+                    <ul class="TextSectionList">
+                        <li>
+                            For example, there are almost always two line breaks between sections in a class declaration
+                            (fields, constructors, operators, methods).
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Max line length is around 105.
+                    <ul class="TextSectionList">
+                        <li>
+                            105 characters is about half the width of a 1080p screen with some wiggle room when using
+                            Consolas font size 10.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </body>
+
+ </html>
