@@ -82,3 +82,25 @@ TODO {
         color: #000;
     }
 }
+
+
+.TextSection {
+
+    background: #aaaaaa;
+    border: 2px solid black;
+    padding: 8px;
+
+    max-width: 800px;
+}
+
+.TextSectionList {
+    list-style-type: decimal;
+}
+.TextSectionList > li {
+
+    margin-left: -10px;
+    margin-right: 5px;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

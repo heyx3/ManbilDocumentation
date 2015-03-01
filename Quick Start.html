@@ -1,0 +1,256 @@
+ <!DOCTYPE html>
+ <html>
+    
+    <head>
+        <title>Manbil quick-start guide</title>
+        <link type="text/css" rel="stylesheet" href="MainCSS.css" />
+        <script src="google-code-prettify/run_prettify.js"></script>
+    </head>
+
+    <body>
+
+        <h1>Manbil Quick-start Guide</h1>
+
+        <div class="TextSection">
+            <h2>How to download and set up the engine:</h2>
+            <ol class="TextSectionList">
+                <li>
+                    Go to <a href="https://github.com/heyx3/Manbil">the Github repository</a> and
+                    clone it to your computer.
+                </li>
+                <li>
+                    In your local clone of the repo, open "Manbil.sln" with Visual Studio 2013.
+                </li>
+                <li>
+                    Press F6 or select "Build>Rebuild Solution" along the top of the window to build
+                    the engine. You may get plenty of warnings, but should get no errors.
+                </li>
+                <li>
+                    Test the engine's functionality by going to "Manbil/main.cpp", making sure everything
+                    in the <code class="prettyprint">main()</code> function is commented out except for
+                    <code class="prettyprint">SimpleRenderWorld().RunWorld();</code>, and press F5 or
+                    select "Debug>Start Debugging" along the top of the window to run a very simple 3D
+                    world.
+                </li>
+                <li>
+                    The world should display a rotating cube against a grey background. The camera
+                    can be rotated with the mouse and moved with WASD and EQ. Press spacebar to
+                    decouple the mouse from the window, allowing you to resize the window.
+                </li>
+                <li>
+                    If any of these steps is not working, email William Manning at
+                    <a href="">manning.w@husky.neu.edu</a>.
+                </li>
+            </ol>
+        </div>
+
+        <br class="SectionDivider" />
+
+        <div class="TextSection">
+            <h2>How to create a new project that uses the engine:</h2>
+            <ol class="TextSectionList">
+                <li><strong>(Recommended)</strong> Make a fork of the github repo to work off of.
+                This way you can easily play with the engine source if you want to make changes
+                to it.</li>
+                <li>Create a new folder inside the "Manbil" folder (where the source is located)
+                for your prjoect source, to separate it from the rest of the engine. It is also
+                recommended to create a corresponding filter in Visual Studio. For this explanation,
+                we will pretend the project/folder is called "MyGame".</li>
+                <li>
+                    In the "MyGame" folder/filter, create a new .h file and name it something like
+                    "MyGameWorld.h". Paste in the following code (making sure to rename all instances
+                    of "MyGameWorld" if you're using a different name):
+                    <pre class="prettyprint">
+#pragma once
+
+#include "../Game Loop/SFMLOpenGLWorld.h"
+#include "../Rendering/Rendering.hpp"
+
+class MyGameWorld : public SFMLOpenGLWorld
+{
+public:
+    MyGameWorld(void);
+    
+protected:
+
+    virtual sf::VideoMode GetModeToUse(unsigned int windowW, unsigned int windowH) override;
+    virtual std::string GetWindowTitle(void) override;
+    virtual sf::Uint32 GetSFStyleFlags(void) override;
+
+    virtual void InitializeWorld(void) override;
+    virtual void OnWorldEnd(void) override;
+
+    virtual void OnInitializeError(std::string errorMsg) override;
+    virtual void OnWindowResized(unsigned int newWidth, unsigned int newHeight) override;
+
+    virtual void UpdateWorld(float elapsedSeconds) override;
+    virtual void RenderOpenGL(float elapsedSeconds) override;
+
+private:
+
+    //TODO: declare world data here.
+    Vector2u windowSize;
+};
+</pre>
+                </li>
+                <li>
+                    Create a .cpp file in the same location, "MyGameWorld.cpp". Paste in the
+                    following code, again replacing all instances of "MyGameWorld" with your world
+                    class's name:
+                    <pre class="prettyprint">
+#include "SimpleRenderWorld.h"
+
+
+MyGameWorld::MyGameWorld(void)
+    : windowSize(800, 600),
+      SFMLOpenGLWorld(800, 600, sf::ContextSettings())
+{
+}
+
+sf::VideoMode MyGameWorld::GetModeToUse(unsigned int windowW, unsigned int windowH)
+{
+    //Change this return value to change the window resolution mode.
+    //To use native fullscreen, return "sf::VideoMode::getFullscreenModes()[0];".
+    return sf::VideoMode(windowW, windowH);
+}
+std::string MyGameWorld::GetWindowTitle(void)
+{
+    //Change this to change the string on the window's title-bar
+    //    (assuming it has a title-bar).
+    return "World window";
+}
+sf::Uint32 MyGameWorld::GetSFStyleFlags(void)
+{
+    //Change this to change the properties of the window.
+    return sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close;
+}
+
+void MyGameWorld::InitializeWorld(void)
+{
+    SFMLOpenGLWorld::InitializeWorld();
+    //If there was an error initializing the game, don’t bother with
+    //    the rest of initialization.
+    if (IsGameOver())
+    {
+        return;
+    }
+
+    //TODO: Initialization code here.
+}
+void MyGameWorld::OnWorldEnd(void)
+{
+    //TODO: De-initialization code here.
+}
+
+void MyGameWorld::UpdateWorld(float elapsedSeconds)
+{
+    //TODO: Update code here.
+}
+void MyGameWorld::RenderOpenGL(float elapsedSeconds)
+{
+    //Set up rendering state.
+    //Modify these constructors to change various aspects of how rendering is done.
+    ScreenClearer(true, true, false, Vector4f(0.2, 0.2, 0.9f, 0.0f)).ClearScreen();
+    RenderingState(RenderingState::C_NONE).EnableState();
+    BlendMode::GetOpaque().EnableMode();
+
+    glViewport(0, 0, windowSize.x, windowSize.y);
+
+    //TODO: Render code here.
+}
+
+void MyGameWorld::OnInitializeError(std::string errorMsg)
+{
+    //Print the error message and end the game.
+    SFMLOpenGLWorld::OnInitializeError(errorMsg);
+    EndWorld();
+}
+void MyGameWorld::OnWindowResized(unsigned int newWidth, unsigned int newHeight)
+{
+    windowSize.x = newWidth;
+    windowSize.y = newHeight;
+}
+</pre>
+                </li>
+                <li>
+                    Open "Manbil/main.cpp".
+                    <ol class="TextSectionList">
+                        <li>Add <code class="prettyprint">#include "MyGameWorld/MyGameWorld.h"</code>
+                        near the top of the file.</li>
+                        <li>Inside the <code class="prettyprint">main()</code> function, make sure
+                        all other worlds are commented-out and write <code class="prettyprint">
+                        MyGameWorld().RunWorld();</code>. Your world will now run when you run
+                        the program.</li>
+                    </ol>
+                </li>
+                <li>If you run the world now, you will get a blank, blue screen. Now fill in the
+                various .cpp implementations and add member fields to the class to add behavior
+                to your world.</li>
+            </ol>
+        </div>
+
+        <br class="SectionDivider" />
+
+        <div class="TextSection">
+            <h2>How to add resources to your project:</h2>
+            <ol class="TextSectionList">
+                <li>
+                    Anything placed in the “Dependencies/Include In Build/Universal” folder will get
+                    copied to the path of all built executables. Anything placed in the
+                    “Dependencies/Include In Build/Debug” and “Dependencies/Include In Build/Release”
+                    folders will only be copied to the path of the “Debug” and “Release” builds,
+                    respectively. For example, if you place a texture “tex.png” into
+                    “Dependencies/Include In Build/Universal”, the relative path from the executable
+                    to the texture will always just be “tex.png”.
+                </li>
+            </ol>
+        </div>
+
+        <br class="TextSection" />
+
+        <div class="TextSection">
+            <h2>How to make a release build of your project:</h2>
+            <ol class="TextSectionList">
+                <li>
+                    Simply build with the "Release" configuration. Everything the application needs
+                    should then be inside "Build/Release".
+                </li>
+            </ol>
+        </div>
+
+        <br class="SectionDivider" />
+
+        <div class="TextSection">
+            <h2>How to add a new library to your project:</h2>
+            <ol class="TextSectionList">
+                <li><strong>(Recommended)</strong> Place the library into the "Plugins" folder so
+                it can get added to the git repo, ensuring its availability on the same relative
+                path for any computer that uses the repo.</li>
+                <li>
+                    Go into the Manbil project properties, under
+                    “Configuration Properties>VC++ Directories”.
+                    <ol class="TextSectionList">
+                        <li>Add the path to the plugin's header files to the "Include Directories"
+                        property. This enables you to <code class="prettyprint">#include</code> and
+                        use the library headers in your project.</li>
+                        <li>If the plugin also provides the source, add the source path to the
+                        "Source Directories" property to be able to step-into the library's source
+                        when debugging.</li>
+                    </ol>
+                </li>
+                <li>
+                    Place the library's .lib files into "Dependencies/Libraries/Debug",
+                    "Dependencies/Libraries/Release", or "Dependencies/Libraries/Universal"
+                    depending on which build configurations each lib file is used in.
+                </li>
+                <li>
+                    Place the library's .dll files into "Dependencies/Include in Build/Debug",
+                    "Dependencies/Include in Build/Release", or "Dependencies/Include in Build/Universal",
+                    depending on which build configurations each dll is used in.
+                </li>
+            </ol>
+        </div>
+
+    </body>
+
+ </html>
