@@ -98,7 +98,7 @@ private:
                     following code, again replacing all instances of "MyGameWorld" with your world
                     class's name:
                     <pre class="prettyprint">
-#include "SimpleRenderWorld.h"
+#include "MyGameWorld.h"
 
 
 MyGameWorld::MyGameWorld(void)
@@ -128,7 +128,7 @@ sf::Uint32 MyGameWorld::GetSFStyleFlags(void)
 void MyGameWorld::InitializeWorld(void)
 {
     SFMLOpenGLWorld::InitializeWorld();
-    //If there was an error initializing the game, donít bother with
+    //If there was an error initializing the game, don‚Äôt bother with
     //    the rest of initialization.
     if (IsGameOver())
     {
@@ -195,13 +195,13 @@ void MyGameWorld::OnWindowResized(unsigned int newWidth, unsigned int newHeight)
             <h2>How to add resources to your project:</h2>
             <ol class="TextSectionList">
                 <li>
-                    Anything placed in the ìDependencies/Include In Build/Universalî folder will get
+                    Anything placed in the ‚ÄúDependencies/Include In Build/Universal‚Äù folder will get
                     copied to the path of all built executables. Anything placed in the
-                    ìDependencies/Include In Build/Debugî and ìDependencies/Include In Build/Releaseî
-                    folders will only be copied to the path of the ìDebugî and ìReleaseî builds,
-                    respectively. For example, if you place a texture ìtex.pngî into
-                    ìDependencies/Include In Build/Universalî, the relative path from the executable
-                    to the texture will always just be ìtex.pngî.
+                    ‚ÄúDependencies/Include In Build/Debug‚Äù and ‚ÄúDependencies/Include In Build/Release‚Äù
+                    folders will only be copied to the path of the ‚ÄúDebug‚Äù and ‚ÄúRelease‚Äù builds,
+                    respectively. For example, if you place a texture ‚Äútex.png‚Äù into
+                    ‚ÄúDependencies/Include In Build/Universal‚Äù, the relative path from the executable
+                    to the texture will always just be ‚Äútex.png‚Äù.
                 </li>
             </ol>
         </div>
@@ -228,7 +228,7 @@ void MyGameWorld::OnWindowResized(unsigned int newWidth, unsigned int newHeight)
                 path for any computer that uses the repo.</li>
                 <li>
                     Go into the Manbil project properties, under
-                    ìConfiguration Properties>VC++ Directoriesî.
+                    ‚ÄúConfiguration Properties>VC++ Directories‚Äù.
                     <ol class="TextSectionList">
                         <li>Add the path to the plugin's header files to the "Include Directories"
                         property. This enables you to <code class="prettyprint">#include</code> and
