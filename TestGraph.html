@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Graph Test</title>
+        <link type="text/css" rel="stylesheet" href="MainCSS.css" />
+        <link type="text/css" rel="stylesheet" href="GraphCSS.css" />
+    </head>
+
+
+
+    <body>
+
+        <h1>Manbil Systems</h1>
+        <p>The most complex/important systems are larger. Click on a system to go to its documentation.</p>
+
+        <br class="SectionDivider" />
+
+        <script src="D3/d3.min.js" charset="utf-8"></script>
+        <script>
+
+            //Create an SVG area for drawing shapes.
+            var svg = d3.select("body").append("svg")
+                        .attr("width", 980)
+                        .attr("height", 800)
+                        .attr("color", "white")
+
+            svg.append("defs")
+               .append("marker")
+                  .attr("id", "arrowEnd")
+                  .attr("markerWidth", 12)
+                  .attr("markerHeight", 12)
+                  .attr("orient", "auto")
+                  .attr("refX", 3.1)
+                  .attr("refY", 1.83333)
+                  .append("path")
+                    .attr("d", "M0,0 L0,3.66666 L3.3333,2 L0,0")
+                    .attr("style", "stroke:#000000;fill:#000000;")
+
+            //Makes a new system node linking to the given system.
+            //Returns the node's outer "a" element.
+            function makeNode(posX, posY, textSize, linkTo, textStr) {
+
+                var textBorderX = 8,
+                    textBorderY = 5;
+
+                var hackYOffset = -5; //Text height isn't being computed perfectly, so here's a hack Y offset.
+
+                //Make the root link/group objects.
+                var rootObj = svg.append("a")
+                    .attr("xlink:href", linkTo)
+                    .attr("target", "_blank")
+                    .attr("class", "linkToSystem");
+                //var groupObj = rootObj.append("g");
+
+                //Add the rectangle and text.
+                var rectObj = rootObj.append("rect")
+                                     .attr("rx", 10)
+                                     .attr("ry", 10)
+                                     .attr("class", "nodeBackground");
+                var textObj = rootObj.append("text")
+                                     .attr("font-size", textSize)
+                                     .text(textStr)
+                                     .attr("class", "nodeText");
+
+                //Measure the size of the text.
+                var textWidth = textObj.node().getBoundingClientRect().width;
+                var textHeight = textObj.node().getBoundingClientRect().height;
+
+                //Resize the rectangle to fit the text.
+                var boxWidth = textWidth + (2 * textBorderX),
+                    boxHeight = textHeight + (2 * textBorderY);
+                rectObj.attr("width", boxWidth)
+                       .attr("height", boxHeight);
+                
+                //Move the group to be centered at the given position.
+                var finalPosX = posX - (boxWidth / 2),
+                    finalPosY = posY - (boxHeight / 2);
+                rectObj.attr("x", finalPosX)
+                       .attr("y", finalPosY);
+                textObj.attr("x", finalPosX + (boxWidth / 2) - (textWidth / 2))
+                       .attr("y", finalPosY + (boxHeight / 2) + (textHeight / 2) + hackYOffset);
+                
+                return rootObj;
+            }
+            //Connects two nodes. Returns the connection SVG line.
+            //Takes in where on the start and end nodes to put each line vertex.
+            function makeConnection(start, end, startLerpX, startLerpY, endLerpX, endLerpY) {
+                
+                //Get bounding boxes.
+                var startBBox = start.node().getElementsByTagName("rect")[0].getBoundingClientRect(),
+                    endBBox = end.node().getElementsByTagName("rect")[0].getBoundingClientRect();
+                var svgBBox = svg.node().getBoundingClientRect();
+
+
+                function lerp(a1, a2, t) { return a1 + (t * (a2 - a1)); }
+
+
+                //Push out the line so that it doesn't sit too close to the node.
+                var featherX = 0.05,
+                    featherY = 0.1;
+                if (startLerpX == 0.0) startLerpX -= featherX;
+                if (startLerpX == 1.0) startLerpX += featherX;
+                if (startLerpY == 0.0) startLerpY -= featherY;
+                if (startLerpY == 1.0) startLerpY += featherY;
+                if (endLerpX == 0.0) endLerpX -= featherX;
+                if (endLerpX == 1.0) endLerpX += featherX;
+                if (endLerpY == 0.0) endLerpY -= featherY;
+                if (endLerpY == 1.0) endLerpY += featherY;
+
+                //Compute the line vertices.
+                var startX = lerp(startBBox.left, startBBox.right, startLerpX) - svgBBox.left,
+                    startY = lerp(startBBox.top, startBBox.bottom, startLerpY) - svgBBox.top,
+                    endX = lerp(endBBox.left, endBBox.right, endLerpX) - svgBBox.left,
+                    endY = lerp(endBBox.top, endBBox.bottom, endLerpY) - svgBBox.top;
+
+                //Make the line.
+                var connectionLine = svg.append("line")
+                                        .attr("x1", startX)
+                                        .attr("y1", startY)
+                                        .attr("x2", endX)
+                                        .attr("y2", endY)
+                                        .attr("class", "nodeConnection");
+            }
+
+            var smallSize = 23,
+                largeSize = 35;
+            var lowerMath = makeNode(573, 148, largeSize, "Lower Math.html", "Lower Math"),
+                higherMath = makeNode(312, 225, smallSize, "Higher Math.html", "Higher Math"),
+                shapes = makeNode(330, 34.5, smallSize, "Shapes.html", "Shapes"),
+                noiseGeneration = makeNode(881.5, 55.78, smallSize, "Noise Generation.html", "Noise Generation"),
+                input = makeNode(250, 120, smallSize, "Input.html", "Input"),
+                gameLoop = makeNode(91.5, 99, smallSize, "Game Loop.html", "Game Loop"),
+                basicRendering = makeNode(152, 312.5, largeSize, "Basic Rendering.html", "Basic Rendering"),
+                textures = makeNode(495, 321, largeSize, "Textures.html", "Textures"),
+                primitives = makeNode(97, 474.5, smallSize, "Primitives.html", "Primitives"),
+                dataNodes = makeNode(457, 478.5, largeSize, "DataNode.html", "DataNode"),
+                serialization = makeNode(795, 335, largeSize, "Serialization.html", "Serialization"),
+                gpuParticles = makeNode(820.5, 735, smallSize, "GPU Particles.html", "GPU Particles"),
+                curves = makeNode(96, 627, smallSize, "Curves.html", "Curves"),
+                gui = makeNode(355, 659, largeSize, "GUI.html", "GUI"),
+                editors = makeNode(301, 768.5, smallSize, "Editors.html", "Editors"),
+                water = makeNode(550, 722, smallSize, "Water.html", "Water");
+
+            makeConnection(lowerMath, shapes, 0.0, 0.0, 1.0, 1.0);
+            makeConnection(lowerMath, input, 0.0, 0.5, 1.0, 0.5);
+            makeConnection(lowerMath, noiseGeneration, 1.0, 0.0, 0.0, 0.8);
+            makeConnection(lowerMath, higherMath, 0.0, 1.0, 1.0, 0.0);
+            makeConnection(lowerMath, textures, 0.5, 1.0, 0.5, 0.0);
+            makeConnection(input, gameLoop, 0.0, 0.4, 1.0, 0.6);
+            makeConnection(higherMath, basicRendering, 0.0, 1.0, 0.6, 0.0);
+            makeConnection(basicRendering, primitives, 0.4, 1.0, 0.5, 0.0);
+            makeConnection(basicRendering, dataNodes, 0.99, 1.0, 0.0, 0.0);
+            makeConnection(serialization, dataNodes, 0.0, 1.0, 1.0, 0.0);
+            makeConnection(dataNodes, curves, 0.0, 1.0, 1.0, 0.0);
+            makeConnection(dataNodes, gui, 0.4, 1.0, 0.7, 0.0);
+            makeConnection(gui, editors, 0.4, 1.0, 0.6, 0.0);
+            makeConnection(dataNodes, water, 0.65, 1.0, 0.4, 0.0);
+            makeConnection(dataNodes, gpuParticles, 1.0, 1.0, 0.0, 0.0);
+
+        </script>
+
+    </body>
+
+</html>

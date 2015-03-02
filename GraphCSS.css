@@ -1,0 +1,21 @@
+svg {
+    //display: block;
+    //position: relative;
+}
+
+.nodeText {
+    fill: #efefef;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+.nodeBackground {
+    fill: #222222;
+}
+
+.nodeConnection {
+    stroke: black;
+    stroke-width: 5px;
+    marker-end: url(#arrowEnd);
+}
