@@ -94,7 +94,14 @@
         <div class="TextSection">
             <h2>Coding Standards</h2>
             <ul class="TextSectionList">
-                <li>Verbosity over ambiguity.</li>
+                <li>
+                    Verbosity over ambiguity.
+                    <ul class="TextSectionList">
+                        <li>Names of classes, functions, parameters, etc. try to be descriptive.</li>
+                        <li>Every class/field/function that isn't extremely straightforward (e.x. getter/setter functions) has a comment above it explaining it.</li>
+                        <li>Visual studio uses these comments; you can hover the mouse over any item in the code and the comments directly above its declaration will appear as a tooltip.</li>
+                    </ul>
+                </li>
                 <li>
                     The engine is generous with line breaks to provide clear separation of code based on its context.
                     <ul class="TextSectionList">
@@ -108,8 +115,42 @@
                     Max line length is around 105.
                     <ul class="TextSectionList">
                         <li>
-                            105 characters is about half the width of a 1080p screen with some wiggle room when using
-                            Consolas font size 10.</li>
+                            105 characters is about half the width of a 1080p screen plus some wiggle room when using
+                            Consolas font size 10.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Declarations of class elements are broadly split into public, protected, and private sections (in that order).
+                    Each of those sections is organized as follows:
+                    <ol class="TextSectionList">
+                        <li>Enums, typedefs, and nested classes</li>
+                        <li>
+                            Static elements:
+                            <ol class="TextSectionList">
+                                <li>Static fields</li>
+                                <li>Static functions</li>
+                            </ol>
+                        </li>
+                        <li>
+                            Member elements:
+                            <ol class="TextSectionList">
+                                <li>Member fields</li>
+                                <li>Constructors</li>
+                                <li>Operators</li>
+                                <li>Member functions</li>
+                            </ol>
+                        </li>
+                    </ol>
+                    As mentioned above, these categories tend to be separated by double line breaks.
+                </li>
+                <li>Spaces, not tabs.</li>
+                <li>Curly braces go on their own line.</li>
+                <li>
+                    CamelCase for almost everything, with the following exceptions:
+                    <ul class="TextSectionList">
+                        <li>Private fields of a class (but not functions!) are lowerCamelCase.</li>
+                        <li>Constants, enum values, and macros are CAPS_WITH_UNDERSCORES.</li>
                     </ul>
                 </li>
             </ul>
