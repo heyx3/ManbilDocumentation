@@ -541,7 +541,7 @@ namespace HTMLGenerator
 					{
 						if (classDescText.Text.Length > 0)
 						{
-							sb.AppendLine("\t\t<ul>");
+							sb.AppendLine("\t\t<div class=\"TextSection\"><ul>");
 								sb.Append("\t\t\t<li>");
 									StringBuilder classDesc = new StringBuilder(classDescText.Text);
 									StringGenerators.ReplaceLineBreaks(classDesc,
@@ -550,7 +550,7 @@ namespace HTMLGenerator
 																		"\t\t\t<li>");
 									sb.Append(classDesc.ToString());
 								sb.AppendLine("</li>");
-							sb.AppendLine("\t\t</ul>");
+							sb.AppendLine("\t\t</ul></div>");
 						}
 						if (codeSampleText.Text.Length > 0)
 						{
