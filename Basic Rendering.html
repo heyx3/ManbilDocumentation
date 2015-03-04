@@ -29,98 +29,102 @@
 
         <br class="SectionDivider" />
 
-        <h2>Classes/files</h2>
-        <ul>
-            <li>
-                <a href="Basic Rendering/OpenGLIncludes.html">OpenGLIncludes.h</a>
-                <ul>
-                    <li>Provides the OpenGL API as well as some useful enums and typedefs.</li>
-                </ul>
-            </li>
-            <li>
-                <a href="Basic Rendering/ScreenClearer.html">ScreenClearer</a>
-                <ul>
-                    <li>Clears the screen (or the currently-bound render target) to some given color/depth/stencil values.</li>
-                </ul>
-            </li>
-            <li>
-                <a href="Basic Rendering/RenderingState.html">RenderingState</a>
-                <ul>
-                    <li>Represents information about rendering state such as which faces to cull or which pixels/fragments to ignore based on alpha.</li>
-                </ul>
-            </li>
-            <li>
-                <a href="Basic Rendering/BlendMode.html">BlendMode</a>
-                <ul>
-                    <li>Represents information about blending state. Provides several default blending presets such as "Opaque", "Transparent", and "Additive".</li>
-                </ul>
-            </li>
-            <li>
-                <a href="Basic Rendering/RenderIOAttributes.html">RenderIOAttributes</a>
-                <ul>
-                    <li>Describes shader input or output data, such as the attributes of the vertices passed into the vertex shader.</li>
-                </ul>
-            </li>
-            <li>
-                <a href="Basic Rendering/MeshData.html">MeshData</a>
-                <ul>
-                    <li>Represents a set of vertices and (optionally) indices.</li>
-                    <li>Also optionally stores a copy of the vertex/index data on the CPU for easy access.</li>
-                </ul>
-            </li>
-            <li>
-                <a href="Basic Rendering/Mesh.html">Mesh</a>
-                <ul>
-                    <li>An object with one or more MeshData "submeshes", as well as a <a href="Higher Math/TransformObject.html">Transform</a>.</li>
-                    <li>Only one submesh is active at a time.</li>
-                </ul>
-            </li>
-            <li>
-                <a href="Basic Rendering/Vertices.html">Vertices.h</a>
-                <ul>
-                    <li>Defines several useful vertex types with commonly-used data such as position, UVs, and normals.</li>
-                </ul>
-            </li>
-            <li>
-                <a href="Basic Rendering/GLVectors.html">GLVectors</a>
-                <ul>
-                    <li>Defines floating-point and signed integer vectors (<code>VectorF</code> and <code>VectorI</code>, respectively) with between 1 and 4 components.</li>
-                </ul>
-            </li>
-            <li>
-                <a href="Basic Rendering/UniformCollections.html">UniformCollections.h</a>
-                <ul>
-                    <li>Defines various "uniforms", which are shader parameters that can be changed at any time by the software.</li>
-                </ul>
-            </li>
-            <li>
-                <a href="Basic Rendering/MaterialUsageFlags.html">MaterialUsageFlags</a>
-                <ul>
-                    <li>This "Basic Rendering" system provides some built-in shader uniforms that any material can use.</li>
-                    <li>This data structure stores which of these built-in shader uniforms will actually be used by a material.</li>
-                </ul>
-            </li>
-            <li>
-                <a href="Basic Rendering/MaterialConstants.html">MaterialConstants</a>
-                <ul>
-                    <li>Defines the names of the various buit-in uniforms,
-                    as well as functions to generate headers for vertex, fragment, and geometry shaders.</li>
-                </ul>
-            </li>
-            <li>
-                <a href="Basic Rendering/RenderInfo.html">RenderInfo</a>
-                <ul>
-                    <li>Important data that's used to set the built-in uniforms that all materials share.</li>
-                </ul>
-            </li>
-            <li>
-                <a href="Basic Rendering/Material.html">Material</a>
-                <ul>
-                    <li>Represents a single combination of vertex and fragment (and optionally geometry) shader.</li>
-                </ul>
-            </li>
-        </ul>
+        <div class="TextSection">
+            <h2>Classes/files</h2>
+            <ul>
+                <li>
+                    <a href="Basic Rendering/OpenGLIncludes.html">OpenGLIncludes.h</a>
+                    <ul>
+                        <li>Provides the OpenGL API as well as some useful enums and typedefs.</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Basic Rendering/ScreenClearer.html">ScreenClearer</a>
+                    <ul>
+                        <li>Clears the screen (or the currently-bound render target) to some given color/depth/stencil values.</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Basic Rendering/RenderingState.html">RenderingState</a>
+                    <ul>
+                        <li>Represents information about rendering state such as which faces to cull or which pixels/fragments to ignore based on alpha.</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Basic Rendering/BlendMode.html">BlendMode</a>
+                    <ul>
+                        <li>Represents information about blending state. Provides several default blending presets such as "Opaque", "Transparent", and "Additive".</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Basic Rendering/RenderIOAttributes.html">RenderIOAttributes</a>
+                    <ul>
+                        <li>Describes shader input or output data, such as the attributes of the vertices passed into the vertex shader.</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Basic Rendering/MeshData.html">MeshData</a>
+                    <ul>
+                        <li>Represents a set of vertices and (optionally) indices.</li>
+                        <li>Also optionally stores a copy of the vertex/index data on the CPU for easy access.</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Basic Rendering/Mesh.html">Mesh</a>
+                    <ul>
+                        <li>An object with one or more MeshData "submeshes", as well as a <a href="Higher Math/TransformObject.html">Transform</a>.</li>
+                        <li>Only one submesh is active at a time.</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Basic Rendering/Vertices.html">Vertices.h</a>
+                    <ul>
+                        <li>Defines several useful vertex types with commonly-used data such as position, UVs, and normals.</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Basic Rendering/GLVectors.html">GLVectors</a>
+                    <ul>
+                        <li>Defines floating-point and signed integer vectors (<code>VectorF</code> and <code>VectorI</code>, respectively) with between 1 and 4 components.</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Basic Rendering/UniformCollections.html">UniformCollections.h</a>
+                    <ul>
+                        <li>Defines various "uniforms", which are shader parameters that can be changed at any time by the software.</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Basic Rendering/MaterialUsageFlags.html">MaterialUsageFlags</a>
+                    <ul>
+                        <li>This "Basic Rendering" system provides some built-in shader uniforms that any material can use.</li>
+                        <li>This data structure stores which of these built-in shader uniforms will actually be used by a material.</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Basic Rendering/MaterialConstants.html">MaterialConstants</a>
+                    <ul>
+                        <li>Defines the names of the various buit-in uniforms,
+                        as well as functions to generate headers for vertex, fragment, and geometry shaders.</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Basic Rendering/RenderInfo.html">RenderInfo</a>
+                    <ul>
+                        <li>Important data that's used to set the built-in uniforms that all materials share.</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Basic Rendering/Material.html">Material</a>
+                    <ul>
+                        <li>Represents a single combination of vertex and fragment (and optionally geometry) shader.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
 
+        <br class="SectionDivider" />
+        <br class="SectionDivider" />
         <br class="SectionDivider" />
 
         <div class="TextSection">
