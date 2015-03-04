@@ -391,16 +391,14 @@
 
         <br class="SectionDivider" />
 
-        <h2>Usage</h2>
-        <p>This class can be used to represent 2D arrays and easily perform high-level computations/modifications to them.
-           For best cache usage, array iteration should be done through the Y axis in the outer loop
-               and the X axis in the inner loop.</p>
+        <div class="TextSection">
+            <h2>Usage</h2>
+            <p>This class can be used to represent 2D arrays and easily perform high-level computations/modifications to them.
+               For best cache usage, array iteration should be done through the Y axis in the outer loop
+                   and the X axis in the inner loop.</p>
 
-        <br class="SectionDivider" />
-
-        <h2>Samples</h2>
-        <div class="CodeSample">
-            <code class="prettyprint">
+            <div class="CodeSample">
+                <code class="prettyprint">
                 typedef Array2D&lt;int&gt; IntArray2D; <br />
                 IntArray2D ints1(3, 3, 42), //Fills this array with 42. <br />
 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;ints2(5, 5, 43); //Fills this array with 43. <br />
@@ -416,7 +414,8 @@
                 std::cout << testPos2.x << ", " << testPos2.y << "\n"; // Outputs "4, 0". <br />
                 testPos2 = ints2.Wrap(testPos1); <br />
                 std::cout << testPos2.x << ", " << testPos2.y << "\n"; // Outputs "4, 4".<br />
-            </code>
+                </code>
+            </div>
         </div>
 
     </body>

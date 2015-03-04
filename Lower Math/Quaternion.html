@@ -335,33 +335,34 @@
 
         <br class="SectionDivider" />
 
-        <h2>Usage</h2>
-        <p>When representing generic transformations potentially involving translation, rotation, scaling,
-           and more, you should use a matrix. When representing only rotation, you should use a quaternion.</p>
-        <div class="CodeSample">
-            <code class="prettyprint">
-                Quaternion rot90AroundZ(Vector3f(0.0f, 0.0f, 1.0f), BasicMath::DegToRad(90.0f)); <br />
-                Vector3f point(1.0f, 0.0f, 0.0f), <br />
+        <div class="TextSection">
+            <h2>Usage</h2>
+            <p>When representing generic transformations potentially involving translation, rotation, scaling,
+                and more, you should use a matrix. When representing only rotation, you should use a quaternion.</p>
+            <div class="CodeSample">
+                <code class="prettyprint">
+                    Quaternion rot90AroundZ(Vector3f(0.0f, 0.0f, 1.0f), BasicMath::DegToRad(90.0f)); <br />
+                    Vector3f point(1.0f, 0.0f, 0.0f), <br />
 &emsp; &emsp; &emsp; &emsp; &emsp;rotatedPoint = rot90AroundZ.Rotated(point); <br />
-                std::cout << rotatedPoint.x << ", " << rotatedPoint.y << ", " << rotatedPoint.z << "\n"; //Prints '0.0f, 1.0f, 0.0f'. <br />
-                <br />
-                Quaternion posToNeg(Vector3f(1.0f, 1.0f, 1.0f).Normalized(), <br />
+                    std::cout << rotatedPoint.x << ", " << rotatedPoint.y << ", " << rotatedPoint.z << "\n"; //Prints '0.0f, 1.0f, 0.0f'. <br />
+                    <br />
+                    Quaternion posToNeg(Vector3f(1.0f, 1.0f, 1.0f).Normalized(), <br />
 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; Vector3f(-1.0f, -1.0f, -1.0f).Normalized()); <br />
-                point = posToNeg.Rotated(Vector3f(1.0f, 1.0f, 1.0f)); <br />
-                std::cout << point.x << ", " << point.y << ", " << point.z << "\n"; //Prints '-1, -1, -1'. <br />
-                point = posToNeg.Rotated(Vector3f(-1.0f, -1.0f, -1.0f)); <br />
-                std::cout << point.x << ", " << point.y << ", " << point.z << "\n"; //Prints '1, 1, 1'. <br />
-                <br />
-                Quaternion rot90AroundZThenPosToNeg(rot90AroundZ, posToNeg); <br />
-                point = rot90AroundZThenPosToNeg.Rotated(Vector3f(1.0f, 1.0f, 1.0f)); <br />
-                //The above line did the following transformations: <br />
-                // -Starting with { 1, 1, 1 }. <br />
-                // -Rotated 90 degrees around the Z to get { -1, 1, 1 }. <br />
-                // -Rotated with the "posToNeg" quaternion to get { 1, -1, -1 }. <br />
-                std::cout << point.x << ", " << point.y << ", " << point.z << "\n"; //Prints '1, -1, -1'. <br />
-            </code>
+                    point = posToNeg.Rotated(Vector3f(1.0f, 1.0f, 1.0f)); <br />
+                    std::cout << point.x << ", " << point.y << ", " << point.z << "\n"; //Prints '-1, -1, -1'. <br />
+                    point = posToNeg.Rotated(Vector3f(-1.0f, -1.0f, -1.0f)); <br />
+                    std::cout << point.x << ", " << point.y << ", " << point.z << "\n"; //Prints '1, 1, 1'. <br />
+                    <br />
+                    Quaternion rot90AroundZThenPosToNeg(rot90AroundZ, posToNeg); <br />
+                    point = rot90AroundZThenPosToNeg.Rotated(Vector3f(1.0f, 1.0f, 1.0f)); <br />
+                    //The above line did the following transformations: <br />
+                    // -Starting with { 1, 1, 1 }. <br />
+                    // -Rotated 90 degrees around the Z to get { -1, 1, 1 }. <br />
+                    // -Rotated with the "posToNeg" quaternion to get { 1, -1, -1 }. <br />
+                    std::cout << point.x << ", " << point.y << ", " << point.z << "\n"; //Prints '1, -1, -1'. <br />
+                </code>
+            </div>
         </div>
-
     </body>
 
  </html>

@@ -115,13 +115,15 @@ node.SetValue(newCol);
 			</li>
 		</ul>
 
-		<br class="SectionDivider" />
+        <br class="SectionDivider" />
+        <br class="SectionDivider" />
 
-		<h2>Usage</h2>
-		<ul>
-			<li>This class is used by <a href="Gradient.html">Gradient</a>; each GradientNode represents a single point in the gradient.</li>
-		</ul>
-		<div class="CodeSample"><code class="prettyprint">
+        <div class="TextSection">
+		    <h2>Usage</h2>
+		    <ul>
+			    <li>This class is used by <a href="Gradient.html">Gradient</a>; each GradientNode represents a single point in the gradient.</li>
+		    </ul>
+		    <div class="CodeSample"><code class="prettyprint">
 //Create a gradient node at the beginning of a gradient.<br />
 float bright = 1.0f;<br />
 GradientNode&lt;1&gt; start(0.0f, &amp;bright);<br />
@@ -129,6 +131,7 @@ GradientNode&lt;1&gt; start(0.0f, &amp;bright);<br />
 //Create a gradient node at the end of a gradient.<br />
 float dark = 0.0f;<br />
 GradientNode&lt;1&gt; end(1.0f, &amp;dark);
-		</code></div>
+		    </code></div>
+        </div>
 	</body>
 </html>

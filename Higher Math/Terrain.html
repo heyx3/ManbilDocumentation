@@ -225,52 +225,53 @@ public void GenerateTrianglesFull(std::vector&lt;VertexType&gt;&amp; outVerts,<b
 
 		<br class="SectionDivider" />
 
-		<h2>Usage</h2>
-		<ul>
-			<li>Represents a rectangular terrain with a heightmap of floats.</li>
-			<li>
-                The LOD system is represented by an unsigned integer passed into the various terrain operations:
-                <ul>
-                    <li>0 = full detail</li>
-                    <li>1 = quarter detail</li>
-                    <li>2 = eighth detail</li>
-                    <li>etc.</li>
-                </ul>
-            </li>
-			<li>A suggested size for the heightmap when extensively using the LOD option is one more than a power of two.</li>
-		</ul>
-		<div class="CodeSample"><code class="prettyprint">
-//Create a terrain object.<br />
-Array2D&lt;float&gt; heightmap(257, 257);<br />
-//[generate height values using some algorithm]<br />
-Terrain terr(heightmap.GetWidth(), heightmap.GetHeight());<br />
-terr.SetHeightmap(heightmap);<br />
-<br />
-//Now we can interpolate between the heightmap values to get a height<br />
-//&emsp;&emsp; at any point on the terrain.<br />
-float heightAtCenter = terr[Vector2f(128.5f, 128.5f)];<br />
-<br />
-//We can also generate a mesh for rendering part or all of it.<br />
-struct Vertex { Vector3f Pos, Normal; Vector2f UV; };<br />
-std::vector&lt;Vertex&gt; vertices;<br />
-std::vector&lt;unsigned int&gt; indices;<br />
-<br />
-//The following line generates a mesh for the min corner of the terrain (1/4 the total terrain) at full detail.<br />
-terr.GenerateTriangles(vertices, indices,<br />
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [](Vertex&amp; v) { return &amp;v.Pos; },<br />
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [](Vertex&amp; v) { return &amp;v.UV; },<br />
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [](Vertex&amp; v) { return &amp;v.Normal; },<br />
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Vector2u(0, 0), Vector2u(128, 128),<br />
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 10.0f, 0); // The '10.0f' here is just the scale of the terrain's heightmap.<br />
-<br />
-//The following lines generate a new mesh for the full terrain but at 1/8 detail.<br />
-vertices.clear();<br />
-indices.clear();<br />
-terr.GenerateTrianglesFull(vertices, indices,<br />
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [](Vertex&amp; v) { return &amp;v.Pos; },<br />
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [](Vertex&amp; v) { return &amp;v.UV; },<br />
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [](Vertex&amp; v) { return &amp;v.Normal; },<br />
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 10.0f, 2);
-		</code></div>
+		<div class="TextSection">
+            <h2>Usage</h2>
+		    <ul>
+			    <li>Represents a rectangular terrain with a heightmap of floats.</li>
+			    <li>
+                    The LOD system is represented by an unsigned integer passed into the various terrain operations:
+                    <ul>
+                        <li>0 = full detail</li>
+                        <li>1 = quarter detail</li>
+                        <li>2 = eighth detail</li>
+                        <li>etc.</li>
+                    </ul>
+                </li>
+			    <li>A suggested size for the heightmap when extensively using the LOD option is one more than a power of two.</li>
+		    </ul>
+		    <div class="CodeSample"><code class="prettyprint">
+    //Create a terrain object.<br />
+    Array2D&lt;float&gt; heightmap(257, 257);<br />
+    //[generate height values using some algorithm]<br />
+    Terrain terr(heightmap.GetWidth(), heightmap.GetHeight());<br />
+    terr.SetHeightmap(heightmap);<br />
+    <br />
+    //Now we can interpolate between the heightmap values to get a height<br />
+    //&emsp;&emsp; at any point on the terrain.<br />
+    float heightAtCenter = terr[Vector2f(128.5f, 128.5f)];<br />
+    <br />
+    //We can also generate a mesh for rendering part or all of it.<br />
+    struct Vertex { Vector3f Pos, Normal; Vector2f UV; };<br />
+    std::vector&lt;Vertex&gt; vertices;<br />
+    std::vector&lt;unsigned int&gt; indices;<br />
+    <br />
+    //The following line generates a mesh for the min corner of the terrain (1/4 the total terrain) at full detail.<br />
+    terr.GenerateTriangles(vertices, indices,<br />
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [](Vertex&amp; v) { return &amp;v.Pos; },<br />
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [](Vertex&amp; v) { return &amp;v.UV; },<br />
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [](Vertex&amp; v) { return &amp;v.Normal; },<br />
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Vector2u(0, 0), Vector2u(128, 128),<br />
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 10.0f, 0); // The '10.0f' here is just the scale of the terrain's heightmap.<br />
+    <br />
+    //The following lines generate a new mesh for the full terrain but at 1/8 detail.<br />
+    vertices.clear();<br />
+    indices.clear();<br />
+    terr.GenerateTrianglesFull(vertices, indices,<br />
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [](Vertex&amp; v) { return &amp;v.Pos; },<br />
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [](Vertex&amp; v) { return &amp;v.UV; },<br />
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; [](Vertex&amp; v) { return &amp;v.Normal; },<br />
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 10.0f, 2);
+		    </code></div></div>
 	</body>
 </html>

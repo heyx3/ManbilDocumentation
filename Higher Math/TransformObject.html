@@ -313,11 +313,14 @@ Vector3f forward = rot.Rotated(TransformObject::Forward());
 
 		<br class="SectionDivider" />
 
-		<h2>Usage</h2>
-		<ul>
-			<li>Useful for representing objects in 3D space.</li>
-			<li>When describing this object's rotation with Euler angles, keep in mind that the object is first rotated along the Z axis (yaw), then along the local Y axis (roll), then the local X axis (pitch).</li>
-			<li>At its core, this object uses a <a href="../Lower Math/Quaternion.html">Quaternion</a> to represent its rotation, but it also caches its current forward/upward vectors, because these vectors tend to be used often.</li>
-		</ul>
+        <div class="TextSection">
+            <h2>Usage</h2>
+            <ul>
+                <li>Useful for representing objects in 3D space.</li>
+                <li>When describing this object's rotation with Euler angles, keep in mind that the object is first rotated along the Z axis (yaw), then along the local Y axis (roll), then the local X axis (pitch).</li>
+                <li>At its core, this object uses a <a href="../Lower Math/Quaternion.html">Quaternion</a> to represent its rotation, but it also caches its current forward/upward vectors, because these vectors tend to be used often.</li>
+            </ul>
+        </div>
+
 	</body>
 </html>

@@ -530,35 +530,39 @@ namespace HTMLGenerator
 
 					AddSectionDivider(2, sb);
 
-					sb.AppendLine("\t\t<h2>Usage</h2>");
-					
-					if (classDescText.Text.Length == 0 && codeSampleText.Text.Length == 0)
-					{
-						StringGenerators.AddTabs(2, sb);
-						sb.AppendLine("\t\t<h1 style: \"color: red\">ERROR NEEDS 'USAGE' TEXT</h1>");
-					}
-					else
-					{
-						if (classDescText.Text.Length > 0)
-						{
-							sb.AppendLine("\t\t<div class=\"TextSection\"><ul>");
-								sb.Append("\t\t\t<li>");
-									StringBuilder classDesc = new StringBuilder(classDescText.Text);
-									StringGenerators.ReplaceLineBreaks(classDesc,
-																	   "</li>" +
-																		System.Environment.NewLine +
-																		"\t\t\t<li>");
-									sb.Append(classDesc.ToString());
-								sb.AppendLine("</li>");
-							sb.AppendLine("\t\t</ul></div>");
-						}
-						if (codeSampleText.Text.Length > 0)
-						{
-							StringGenerators.AddCodeSampleElement(2, false, codeSampleText.Text, sb);
-						}
-					}
+					sb.AppendLine("\t\t<div class=\"TextSection\">");
 
-				sb.AppendLine("\t</body>");
+						sb.AppendLine("\t\t\t<h2>Usage</h2>");
+					
+						if (classDescText.Text.Length == 0 && codeSampleText.Text.Length == 0)
+						{
+							StringGenerators.AddTabs(2, sb);
+							sb.AppendLine("\t\t\t<h1 style: \"color: red\">ERROR NEEDS 'USAGE' TEXT</h1>");
+						}
+						else
+						{
+							if (classDescText.Text.Length > 0)
+							{
+								sb.AppendLine("\t\t\t<ul>");
+									sb.Append("\t\t\t\t<li>");
+										StringBuilder classDesc = new StringBuilder(classDescText.Text);
+										StringGenerators.ReplaceLineBreaks(classDesc,
+																		   "</li>" +
+																			System.Environment.NewLine +
+																			"\t\t\t\t<li>");
+										sb.Append(classDesc.ToString());
+									sb.AppendLine("</li>");
+								sb.AppendLine("\t\t\t</ul>");
+							}
+							if (codeSampleText.Text.Length > 0)
+							{
+								StringGenerators.AddCodeSampleElement(3, false, codeSampleText.Text, sb);
+							}
+						}
+
+					sb.AppendLine("\t\t</div>");
+
+				sb.AppendLine("\t\t</body>");
 
 			sb.Append("</html>");
 

@@ -399,14 +399,12 @@
 
         <br class="SectionDivider" />
 
-        <h2>Usage</h2>
-        <p>This class can be used to represent spans across a scalar space. It is immutable; there are no public fields or non-const functions.</p>
+        <div class="TextSection">
+            <h2>Usage</h2>
+            <p>This class can be used to represent spans across a scalar space. It is immutable; there are no public fields or non-const functions.</p>
 
-        <br class="SectionDivider" />
-
-        <h2>Samples</h2>
-        <div class="CodeSample">
-            <code class="prettyprint">
+            <div class="CodeSample">
+                <code class="prettyprint">
                 Interval oneToThree(1.0f, 3.0f, 0.0f, true, true); <br />
                 std::cout << "The start of the interval is " << oneToThree.GetStart() << // 1.0 <br />
 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  "\nThe end of the interval is " << oneToThree.GetEnd() <<   // 3.0 <br />
@@ -421,9 +419,9 @@
 &emsp; &emsp; &emsp; &emsp;   zeroToSixteen = Interval::Union(zeroToFour, eightToSixteen), // Gets the union of the two. <br />
 &emsp; &emsp; &emsp; &emsp;   negOneToSixteen = Interval::Union(zeroToSixteen, zeroToFour.Translate(-1.0f)), // Another union. <br />
 &emsp; &emsp; &emsp; &emsp;   invalidInterval = Interval::Intersection(zeroToFour, tenToFourteen); // An Interval that doesn't span any space.
-            </code>
+                </code>
+            </div>
         </div>
-
     </body>
 
  </html>

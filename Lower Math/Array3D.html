@@ -334,16 +334,14 @@
 
         <br class="SectionDivider" />
 
-        <h2>Usage</h2>
-        <p>This class can be used to represent 3D arrays and easily perform high-level computations/modifications to them.
-           For best cache usage, array iteration should be done through the Z axis in the outer loop,
+        <div class="TextSection">
+            <h2>Usage</h2>
+            <p>This class can be used to represent 3D arrays and easily perform high-level computations/modifications to them.
+               For best cache usage, array iteration should be done through the Z axis in the outer loop,
                the Y axis in the middle loop, and the X axis in the inner loop.</p>
 
-        <br class="SectionDivider" />
-
-        <h2>Samples</h2>
-        <div class="CodeSample">
-            <code class="prettyprint">
+            <div class="CodeSample">
+                <code class="prettyprint">
                 typedef Array3D&lt;int&gt; IntArray3D; <br />
                 IntArray3D ints3(3, 3, 3, 42), //Fills this array with 42. <br />
 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;ints5(5, 5, 5, 43); //Fills this array with 43. <br />
@@ -359,7 +357,8 @@
                 std::cout << testPos2.x << ", " << testPos2.y << ", " << testPos2.z << "\n"; // Outputs "4, 0, 4". <br />
                 testPos2 = ints5.Wrap(testPos1); <br />
                 std::cout << testPos2.x << ", " << testPos2.y << ", " << testPos2.z << "\n"; // Outputs "4, 4, 0".<br />
-            </code>
+                </code>
+            </div>
         </div>
 
     </body>

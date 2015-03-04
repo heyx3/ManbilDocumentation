@@ -87,12 +87,15 @@ BumpmapToNormalmap::Convert(bumpmap, 10.0f, true, normalMap);<br />
 
 		<br class="SectionDivider" />
 
-		<h2>Usage</h2>
-		<ul>
-			<li>Bumpmaps (also known as a heightmap) are often generated via coherent noise generation.</li>
-			<li>Normal maps are used to fake complex bumps on a flat surface by tricking the lighting system -- a normalmap texture specifies the normal of the surface being rendered, relative to the <em>actual</em> surface normal.</li>
-			<li>This class provides a single static function that takes in a bumpmap and outputs a normal map that will give a flat surface the appearance of the given bumps.</li>
-			<li>Because textures generally store values between 0 and 1, but normals range from -1 to 1, the output normalmap can optionally be remapped to [0, 1] for storage in a texture. When rendering the texture, just make sure to reverse the mapping before using the normals.</li>
-		</ul>
+        <div class="TextSection">
+            <h2>Usage</h2>
+            <ul>
+                <li>Bumpmaps (also known as a heightmap) are often generated via coherent noise generation.</li>
+                <li>Normal maps are used to fake complex bumps on a flat surface by tricking the lighting system -- a normalmap texture specifies the normal of the surface being rendered, relative to the <em>actual</em> surface normal.</li>
+                <li>This class provides a single static function that takes in a bumpmap and outputs a normal map that will give a flat surface the appearance of the given bumps.</li>
+                <li>Because textures generally store values between 0 and 1, but normals range from -1 to 1, the output normalmap can optionally be remapped to [0, 1] for storage in a texture. When rendering the texture, just make sure to reverse the mapping before using the normals.</li>
+            </ul>
+        </div>
+
 	</body>
 </html>

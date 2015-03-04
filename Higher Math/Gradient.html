@@ -164,35 +164,37 @@
 			</li>
 		</ul>
 
-		<br class="SectionDivider" />
+        <br class="SectionDivider" />
 
-		<h2>Member Functions</h2>
-		<ul class="DeclarationList">
-			<li>
-				<a name="IsValidGradient" />
-				<code class="CodeDecl prettyprint">public bool IsValidGradient(void) const;</code>
-				<ul>
-					<li>Gets whether this gradient has at least one point, making it valid for use.</li>
+        <h2>Member Functions</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="IsValidGradient" />
+                <code class="CodeDecl prettyprint">public bool IsValidGradient(void) const;</code>
+                <ul>
+                    <li>Gets whether this gradient has at least one point, making it valid for use.</li>
                 </ul>
-			</li>
-			<li>
-				<a name="GetValue" />
-				<code class="CodeDecl prettyprint">public void GetValue(float t, float outVals[Components]) const;</code>
-				<ul>
+            </li>
+            <li>
+                <a name="GetValue" />
+                <code class="CodeDecl prettyprint">public void GetValue(float t, float outVals[Components]) const;</code>
+                <ul>
                     <li>Gets the gradient value at the given <code>t</code>.</li>
                     <li><code>t</code> will be clamped to be inside the range this gradient covers.</li>
-					<li>Assumes that this gradient is valid.</li>
+                    <li>Assumes that this gradient is valid.</li>
                 </ul>
-			</li>
-		</ul>
+            </li>
+        </ul>
 
-		<br class="SectionDivider" />
+        <br class="SectionDivider" />
+        <br class="SectionDivider" />
 
-		<h2>Usage</h2>
-		<ul>
-			<li>One common use for gradients is to create smooth colors for rendering; a computed color gradient could be stored in a texture for material or gpu particle data.</li>
-		</ul>
-		<div class="CodeSample"><code class="prettyprint">
+		<div class="TextSection">
+            <h2>Usage</h2>
+		    <ul>
+			    <li>One common use for gradients is to create smooth colors for rendering; a computed color gradient could be stored in a texture for material or gpu particle data.</li>
+            </ul>
+		    <div class="CodeSample"><code class="prettyprint">
 //The following code creates a smooth transition from white to black.<br />
 typedef Gradient&lt;4&gt; Grad4;<br />
 Vector4f white(1.0f, 1.0f, 1.0f, 1.0f),<br />
@@ -202,6 +204,8 @@ const unsigned int gradientWidth = 256;<br />
 Vector4f gradientPixels[gradientWidth];<br />
 for (unsigned int i = 0; i < gradientWidth; ++i)<br />
 &emsp;&emsp;&emsp;&emsp;whitetoBlack.GetValue((float)i / (float)gradientWidth, &amp;gradientPixels[i].x);
-		</code></div>
+		    </code></div>
+        </div>
+
 	</body>
 </html>
