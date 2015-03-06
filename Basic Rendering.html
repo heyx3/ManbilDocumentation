@@ -163,9 +163,9 @@
             </p>
             <p>
                In Manbil, these attributes can be described with the
-               <a href="Basic Rendering/RenderIOAttributes.html">RenderIOAttributes</a> class, which storesa list
+               <a href="Basic Rendering/RenderIOAttributes.html">RenderIOAttributes</a> class, which stores a list
                of <code class="prettyprint">RenderIOAttributes::Attribute</code> instances. Each instance has
-               a size (1, 2, 3, or 4, corresponding to "float", "vec2", "vec3", and "vec4" respectively),
+               a size (1, 2, 3, or 4, corresponding to "float", "Vector2f", "Vector3f", and "vec4" respectively),
                a name (referring to what it is called in the inputs to the vertex shader),
                and whether it is supposed to be normalized (this should usually be false unless the attribute
                represents a surface normal vector).
@@ -238,7 +238,8 @@
 //These "uniforms" are set by the programmer before rendering the triangles.
 uniform mat4 transformMat;
 
-//Let's say the vertices have a "position" vec3 attribute and a "UV" vec2 attribute.
+//Define the input vertex attributes we expect.
+//The vertices have a "position" vec3 attribute and a "UV" vec2 attribute.
 //The "(location = x)" specifiers ensure that the attributes are sent to the shader
 //    in the same order as the actual vertex data.
 in (location = 0) vec3 position;
@@ -250,15 +251,15 @@ void main()
 {
     //Quick refresher on how to do matrix transformation:
     //In order to encode more complex transformations such as translation,
-    //    3D transform matrices should be given a fourth row/column (following the
-    //    pattern of an identity matrix), and 3D points should be given a fourth
-    //    component (with the value 1.0). This extra component is called the
-    //    "homogenous" component.
-    //Fortunately, constructors in shaders are incredibly flexible -- we can specify
+    //    3D transform matrices are given a fourth row/column, and 3D points
+    //    are given a fourth component (with the default value 1.0). This extra
+    //    component is called the "homogenous" component.
+    //Constructors in shaders are incredibly flexible -- we can specify
     //    a vec3 for the first three arguments (xyz) and a float for the fourth (w).
-    vec3 homogPos = vec4(position, 1.0);
+    vec4 homogPos = vec4(position, 1.0);
     
-    //Output the transformed position to a special OpenGL keyword.
+    //Output the transformed position to a special OpenGL keyword that expects
+    //    the vec4 screen-space position.
     //In this engine, matrices are premultiplied -- keep in mind that order matters
     //    with matrix multiplication.
     gl_Position = transformMat * homogPos;
@@ -269,8 +270,7 @@ void main()
             <p>
                 After the vertex shader, the GPU creates each triangle from the vertices/indices and
                 draws all the pixels on the screen that that triangle covers. The pixels' color is determined by a
-                "fragment shader". For example, a simple fragment shader that just colors every triangle red
-                would look like this:
+                "fragment shader". Here is an example of a simple fragment shader that just colors every triangle red:
                 <div class="CodeSample">
                     <pre class="prettyprint">
 //Still using OpenGL version 4.0.
@@ -289,9 +289,9 @@ void main()
                 </div>
             </p>
             <p>
-                Every material should have at least vertex and fragment shaders. There are several other shaders,
+                Every material should have a vertex and a fragment shader. There are several other shaders,
                 including tesselation and geometry shaders, but they are not often used (and tesselation shaders aren't
-                currently even supported in this rendering system). Whereas vertex shaders operate on individual vertices,
+                currently supported in this rendering system). Whereas vertex shaders operate on individual vertices,
                 the geometry shader (which runs after the vertex shader) operates on whole shapes, outputting new shapes in
                 their place (for example, you can pass in vertices as individual points instead of a triangle list, then
                 in the geometry shader expand each point to a square "billboard" that always faces the player).
@@ -300,14 +300,17 @@ void main()
                 online to see how to write geometry shaders.
             </p>
             <p>
-                The Manbil class that handles materials is just "Material". In its constructor, it takes
-                vertex/fragment (and optionally geometry) shaders, information about the
-                <a href="Basic Rendering/RenderIOAttributes.html">vertex attributes<a></a> it should expect
-                as input, a collection of the <a href="Basic Rendering/UniformCollections.html">uniforms</a>
-                (a.k.a. parameters) the shaders have, and information about the type of
-                <a href="Basic Rendering/BlendMode.html">blending</a> it should use.
-                It also takes a reference to a string that it will set if there was an error setting up
-                the material.
+                In Manbil, materials are handled by the <a href="Basic Rendering/Material.html">Material</a> class.
+                In its constructor, it takes in:
+                <ul>
+                    <li>Vertex/fragment (and optionally geometry) shaders</li>
+                    <li>Information about the <a href="Basic Rendering/RenderIOAttributes.html">vertex attributes<a></a>
+                        it should expect as input</li>
+                    <li>A collection of the <a href="Basic Rendering/UniformCollections.html">uniforms</a> (a.k.a.
+                        parameters) its shaders use</li>
+                    <li>The type of <a href="Basic Rendering/BlendMode.html">blending</a> it should use</li>
+                    <li>A reference to a string that it will output an error message to if something went wrong
+                        when creating the material.</li>
             </p>
         </div>
 
