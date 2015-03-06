@@ -159,6 +159,15 @@
                 method; it is primarily a stylistic choice.
             </p>
             <p>
+               In Manbil, these attributes can be described with the
+               <a href="Basic Rendering/RenderIOAttributes.html">RenderIOAttributes</a> class, which storesa list
+               of <code class="prettyprint">RenderIOAttributes::Attribute</code> instances. Each instance has
+               a size (1, 2, 3, or 4, corresponding to "float", "vec2", "vec3", and "vec4" respectively),
+               a name (referring to what it is called in the inputs to the vertex shader),
+               and whether it is supposed to be normalized (this should usually be false unless the attribute
+               represents a surface normal vector).
+            </p>
+            <p>
                 If you only set vertices when creating a mesh (and assuming you are using a normal triangle list instead
                 of a triangle <em>strip</em>, described below), then OpenGL interprets each group of three vertices in
                 sequence to be a single triangle. However, this is often an inefficient way to create meshes; you
