@@ -203,12 +203,99 @@
 
             <h3>Creating a Material</h3>
             <p>
-                Every material should have at least a vertex and fragment shader.
-                Geometry shaders are optional, more complex, and not often used; they will be covered towards the bottom
-                of this page.
+                As mentioned above, "material" is the common term for a GPU program that renders triangles into pixels
+                on the screen. This process of rendering triangles is referred to as the "graphics pipeline".
+                Materials generally have at least two "shaders" -- individual programs written by the programmer that
+                add important functionality to the rendering pipeline.
+                The first shader in the pipeline is the "vertex" shader, which takes in all the individual vertices
+                being rendered and converts them from "object" space (the space they were modeled in, where they're
+                centered around the origin) into "screen space" (a cube region from {-1, -1, -1} to {1, 1, 1} --
+                outside this range, the vertices are not visible on the screen).
             </p>
             <p>
+                Here is an example of a standard vertex shader that uses vertices with a "position" attribute
+                and a "UV" attribute. It also takes in a matrix as a parameter, containing the transformation
+                from object-space to screen-space:
+                <div class="CodeSample">
+                    <pre class="prettyprint">
+//Let's use OpenGL version 4.0.
+#version 400
 
+
+//Define the 4x4 matrix parameter.
+//These "uniforms" are set by the programmer before rendering the triangles.
+uniform mat4 transformMat;
+
+//Let's say the vertices have a "position" vec3 attribute and a "UV" vec2 attribute.
+//The "(location = x)" specifiers ensure that the attributes are sent to the shader
+//    in the same order as the actual vertex data.
+in (location = 0) vec3 position;
+in (location = 1) vec2 uv;
+
+
+//Just like a C program, shaders use "main" as an entry point.
+void main()
+{
+    //Quick refresher on how to do matrix transformation:
+    //In order to encode more complex transformations such as translation,
+    //    3D transform matrices should be given a fourth row/column (following the
+    //    pattern of an identity matrix), and 3D points should be given a fourth
+    //    component (with the value 1.0). This extra component is called the
+    //    "homogenous" component.
+    //Fortunately, constructors in shaders are incredibly flexible -- we can specify
+    //    a vec3 for the first three arguments (xyz) and a float for the fourth (w).
+    vec3 homogPos = vec4(position, 1.0);
+    
+    //Output the transformed position to a special OpenGL keyword.
+    //In this engine, matrices are premultiplied -- keep in mind that order matters
+    //    with matrix multiplication.
+    gl_Position = transformMat * homogPos;
+}
+                    </pre>
+                </div>
+            </p>
+            <p>
+                After the vertex shader, the GPU creates each triangle from the vertices/indices and
+                draws all the pixels on the screen that that triangle covers. The pixels' color is determined by a
+                "fragment shader". For example, a simple fragment shader that just colors every triangle red
+                would look like this:
+                <div class="CodeSample">
+                    <pre class="prettyprint">
+//Still using OpenGL version 4.0.
+#version 400
+
+//Outputting a single RGBA color.
+out vec4 outColor;
+
+//Just like a vertex shader, use "main" as the entry point.
+void main()
+{
+    //Output a solid red color.
+    outColor = vec4(1.0, 0.0, 0.0, 1.0);
+}
+                    </pre>
+                </div>
+            </p>
+            <p>
+                Every material should have at least vertex and fragment shaders. There are several other shaders,
+                including tesselation and geometry shaders, but they are not often used (and tesselation shaders aren't
+                currently even supported in this rendering system). Whereas vertex shaders operate on individual vertices,
+                the geometry shader (which runs after the vertex shader) operates on whole shapes, outputting new shapes in
+                their place (for example, you can pass in vertices as individual points instead of a triangle list, then
+                in the geometry shader expand each point to a square "billboard" that always faces the player).
+                Refer to the OpenGL documentation or one of the many
+                other <a href="http://www.lighthouse3d.com/tutorials/glsl-core-tutorial/geometry-shader/">resoures</a>
+                online to see how to write geometry shaders.
+            </p>
+            <p>
+                The Manbil class that handles materials is just "Material". In its constructor, it takes
+                vertex/fragment (and optionally geometry) shaders, information about the
+                <a href="Basic Rendering/RenderIOAttributes.html">vertex attributes<a></a> it should expect
+                as input, a collection of the <a href="Basic Rendering/UniformCollections.html">uniforms</a>
+                (a.k.a. parameters) the shaders have, and information about the type of
+                <a href="Basic Rendering/BlendMode.html">blending</a> it should use.
+                It also takes a reference to a string that it will set if there was an error setting up
+                the material.
             </p>
         </div>
 
