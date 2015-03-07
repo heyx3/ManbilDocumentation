@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Class: ScreenClearer</title>
+		<link type="text/cs" rel="stylesheet" href="../MainCSS.css" />
+		<script src="../google-code-prettify/run_prettify.js"></script>
+	</head>
+
+	<body>
+
+		<h1>ScreenClearer</h1>
+		<p>An object that can clear the current render target.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Metadata</h2>
+		<p>Located in "Rendering/Basic Rendering/ScreenClearer.h". Has a .cpp file in the same location. Part of the <a href="../Basic Rendering.html">Basic Rendering</a> system.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Declaration</h2>
+		<code class="CodeDecl prettyprint">class ScreenClearer;</code>
+		<p />
+
+		<br class="SectionDivider" />
+
+		<h2>Sub-types</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Constants</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Fields</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Fields</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="ClearColor" />
+				<code class="CodeDecl prettyprint">public bool ClearColor;</code>
+				<ul>
+					<li>Whether the color buffer should be cleared and replaced with the value of the "ClearedColor" field.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="ClearDepth" />
+				<code class="CodeDecl prettyprint">public bool ClearDepth;</code>
+				<ul>
+					<li>Whether the depth buffer should be cleared and replaced with the value of the "ClearedDepth" field.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="ClearStencil" />
+				<code class="CodeDecl prettyprint">public bool ClearStencil;</code>
+				<ul>
+					<li>Whether the stencil buffer should be cleared and replaced with the value in the "ClearedStencil" field.</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="ClearedColor" />
+				<code class="CodeDecl prettyprint">public Vector4f ClearedColor;</code>
+				<ul>
+					<li>The color that the current render target's color buffer will be cleared to (assuming the "ClearColor" field is true).</li>
+				</ul>
+			</li>
+			<li>
+				<a name="ClearedDepth" />
+				<code class="CodeDecl prettyprint">public float ClearedDepth;</code>
+				<ul>
+					<li>The depth that the current render target's depth buffer will be cleared to (assuming the "ClearDepth" field is true).</li>
+				</ul>
+			</li>
+			<li>
+				<a name="ClearedStencil" />
+				<code class="CodeDecl prettyprint">public int ClearedStencil;</code>
+				<ul>
+					<li>The stencil value that the current render target's stencil buffer will be cleared to (assuming the "ClearStencil" field is true).</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Operators</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Functions</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Constructors</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="Constructor" />
+				<code class="CodeDecl prettyprint">
+public ScreenClearer(bool clearColor = true, bool clearDepth = true, bool clearStencil = false, <br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;Vector4f clearedColor = Vector4f(0.0f, 0.0f, 0.0f, 0.0f), <br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;float clearedDepth = 1.0f, int clearedStencil = 0);</code>
+				<ul>
+					<li>Creates a new ScreenClearer with the given values.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Functions</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="ClearScreen" />
+				<code class="CodeDecl prettyprint">public void ClearScreen(void) const;</code>
+				<ul>
+					<li>Clears the screen based on this instance's fields</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<div class="TextSection">
+			<h2>Usage</h2>
+			<div class="CodeSample"><code class="prettyprint">
+ScreenClearer clearer;<br />
+//Clear to a pure blue color.<br />
+clearer.ClearedColor = Vector4f(0.0f, 0.0f, 1.0f, 0.0);<br />
+//Set the cleared depth so that only extremely close<br />
+//&emsp;&emsp;&emsp; objects aren't counted as "obscured".<br />
+//Keep in mind that depth values go from 0 - 1, but they<br />
+//&emsp;&emsp;&emsp; aren't linear.<br />
+clearer.ClearedDepth = 0.5f;<br />
+//Now actually clear the screen.<br />
+clearer.ClearScreen();
+			</code></div>
+		</div>
+		</body>
+</html>

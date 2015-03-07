@@ -1,0 +1,280 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Class: RenderingState</title>
+		<link type="text/cs" rel="stylesheet" href="../MainCSS.css" />
+		<script src="../google-code-prettify/run_prettify.js"></script>
+	</head>
+
+	<body>
+
+		<h1>RenderingState</h1>
+		<p>Stores the state of various rendering options such as which faces to cull.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Metadata</h2>
+		<p>Located in "Rendering/Basic Rendering/RenderingState.h". Has a .cpp file in the same location. Part of the <a href="../Basic Rendering.html">Basic Rendering</a> system.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Declaration</h2>
+		<code class="CodeDecl prettyprint">class RenderingState;</code>
+		<p />
+
+		<br class="SectionDivider" />
+
+		<h2>Sub-types</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="Cullables" />
+                <code class="CodeDecl prettyprint">public enum Cullables;</code>
+                <ul>
+                    <li>Specifies which surfaces to cull.</li>
+                    <li>
+                        C_FRONT
+                        <ul>
+                            <li>Cull triangles that face towards the camera.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        C_BACK
+                        <ul>
+                            <li>Cull triangles that face away from the camera.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        C_FRONT_AND_BACK
+                        <ul>
+                            <li>Cull all triangles (no triangles will be rendered).</li>
+                        </ul>
+                    </li>
+                    <li>
+                        C_NONE
+                        <ul>
+                            <li>Don't cull triangles.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a name="AlphaTests" />
+                <code class="CodeDecl prettyprint">public enum Cullables;</code>
+                <ul>
+                    <li>Different ways to ignore pixels of a certain alpha value.</li>
+                    <li>
+                        AT_NEVER
+                        <ul>
+                            <li>Ignore all pixels, regardless of alpha value.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        AT_ALWAYS
+                        <ul>
+                            <li>Use all pixels, regardless of alpha value.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        AT_EQUAL
+                        <ul>
+                            <li>Use all pixels whose alpha is exactly equal to the test value.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        AT_NOT_EQUAL
+                        <ul>
+                            <li>Use all pixels whose alpha is NOT equal to the test value.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        AT_LESS
+                        <ul>
+                            <li>Use all pixels whose alpha is less than the test value.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        AT_GREATER
+                        <ul>
+                            <li>Use all pixels whose alpha is greater than the test value.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        AT_LESS_OR_EQUAL
+                        <ul>
+                            <li>Use all pixels whose alpha is less than or equal to the test value.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        AT_GREATER_OR_EQUAL
+                        <ul>
+                            <li>Use all pixels whose alpha is greater than or equal to the test value.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Constants</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Fields</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Fields</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="ToCull" />
+				<code class="CodeDecl prettyprint">public Cullables ToCull;</code>
+				<ul>
+					<li>Whether the color buffer should be cleared and replaced with the value of the "ClearedColor" field.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="AlphaTest" />
+				<code class="CodeDecl prettyprint">public AlphaTests AlphaTest;</code>
+				<ul>
+					<li>The test to use when determining whether a pixel should be ignored or not.</li>
+                    <li>
+                        If a pixel is ignored, or "discarded", its color does not affect the color buffer
+                        and it's depth is not written to the depth buffer.
+                    </li>
+				</ul>
+			</li>
+			<li>
+				<a name="AlphaTestValue" />
+				<code class="CodeDecl prettyprint">public float AlphaTestValue;</code>
+				<ul>
+					<li>The value to use for the alpha test.</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="UseDepthTesting" />
+				<code class="CodeDecl prettyprint">public bool UseDepthTesting;</code>
+				<ul>
+					<li>Whether to use depth testing -- if true, parts of triangles will not be rendered if they are behind triangles that have already been rendered.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="WriteToDepthBuffer" />
+				<code class="CodeDecl prettyprint">public bool WriteToDepthBuffer;</code>
+				<ul>
+					<li>Whether to write triangles to the depth buffer as they are rendered -- if false, triangles will stop obscuring other triangles.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Operators</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Functions</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Constructors</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="Constructor" />
+				<code class="CodeDecl prettyprint">
+public RenderingState(Cullables toCull, bool useDepthTesting = true, bool writeDepthBuffer = true, <br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; AlphaTests test = AlphaTests::AT_ALWAYS, float alphaTestValue = 0.0f);
+                </code>
+				<ul>
+					<li>Creates a new ScreenClearer with the given values.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Functions</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="UsesAlphaTesting" />
+				<code class="CodeDecl prettyprint">public bool UsesAlphaTesting(void) const;</code>
+				<ul>
+					<li>Gets whether or not this state uses alpha testing.</li>
+					<li>This will return true if the "AlphaTest" field is not set to "AlphaTest::AT_ALWAYS".</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="EnableCullState" />
+				<code class="CodeDecl prettyprint">public void EnableCullState(void) const;</code>
+				<ul>
+					<li>Sets the rendering pipeline to use this instance's culling state.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="EnableAlphaTestState" />
+				<code class="CodeDecl prettyprint">public void EnableAlphaTestState(void) const;</code>
+				<ul>
+					<li>Sets the rendering pipeline to use this instance's alpha testing state.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="EnableDepthTestState" />
+				<code class="CodeDecl prettyprint">public void EnableDepthTestState(void) const;</code>
+				<ul>
+					<li>Sets the rendering pipeline to use this instance's depth testing state.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="EnableDepthWriteState" />
+				<code class="CodeDecl prettyprint">public void EnableDepthWriteState(void) const;</code>
+				<ul>
+					<li>Sets the rendering pipeline to use this instance's depth-writing state.</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="EnableState" />
+				<code class="CodeDecl prettyprint">public void EnableState(void) const;</code>
+				<ul>
+					<li>Sets the rendering pipeline to use this instance's entire state settings.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<div class="TextSection">
+			<h2>Usage</h2>
+			<div class="CodeSample"><code class="prettyprint">
+//Cull triangles that are facing away from the camera<br />
+//&emsp;&emsp;&emsp; like usual.<br />
+RenderingState state(RenderingState::Cullables::C_BACK);<br />
+state.ToCull = RenderingState::C_BACK;<br />
+//If any pixels have less than 0.5 alpha, ignore them<br />
+//&emsp;&emsp;&emsp; and don't let them obscure other triangles<br />
+//&emsp;&emsp;&emsp; behind them.<br />
+state.AlphaTest = RenderingState::AT_GREATER;<br />
+state.AlphaTestValue = 0.5f;<br />
+//Disable depth testing so that triangles will be drawn<br />
+//&emsp;&emsp;&emsp; even if they're being obscured by something else.<br />
+state.UseDepthTesting = false;<br />
+//Don't let any triangles obscure future triangles<br />
+//&emsp;&emsp;&emsp; that want to use use depth testing.<br />
+state.WriteToDepthBuffer = false;<br />
+<br />
+//Now use the state.<br />
+state.EnableState();
+			</code></div>
+		</div>
+		</body>
+</html>
