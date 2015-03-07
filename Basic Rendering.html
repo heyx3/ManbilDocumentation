@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+﻿ <!DOCTYPE html>
  <html>
     
     <head>
@@ -28,7 +28,7 @@
         <br class="SectionDivider" />
 
         <h2>Metadata</h2>
-        <p>Located in "Remderomg/Basic Rendering". Builds off of the <a href="Higher Math.html">Higher Math</a> system.</p>
+        <p>Located in "Rendering/Basic Rendering". Builds off of the <a href="Higher Math.html">Higher Math</a> system.</p>
 
         <br class="SectionDivider" />
 
@@ -133,16 +133,15 @@
         <div class="TextSection">
             <h2>How to use this system</h2>
             <p>
-                The following is an explanation of how to use this rendering system. Take a look at the
-                "SimpleRenderWorld" game world in the "Manbil/Sample Worlds" folder in the engine to see an example of
-                these features in action.
+                Take a look at the "SimpleRenderWorld" game world in the "Manbil/Sample Worlds" folder in the engine to
+                see an example of these features in action.
             </p>
 
             <h3>How Meshes are Stored</h3>
             <p>
                 Before you can render anything, you must create triangles to render (you could also use other
                 shapes, but this will very rarely be necessary unless using the geometry shader). Before diving into
-                mesh creation, however, some information about vertex attributes is needed.
+                mesh creation, however, some knowledge about vertex attributes is needed.
             </p>
             <p>
                 Each vertex in a triangle contains some number of "attributes". These vertex attributes describe the
@@ -162,7 +161,7 @@
                 method; it is primarily a stylistic choice.
             </p>
             <p>
-               In Manbil, these attributes can be described with the
+               In Manbil, these attributes are described with the
                <a href="Basic Rendering/RenderIOAttributes.html">RenderIOAttributes</a> class, which stores a list
                of <code class="prettyprint">RenderIOAttributes::Attribute</code> instances. Each instance has
                a size (1, 2, 3, or 4, corresponding to "float", "Vector2f", "Vector3f", and "vec4" respectively),
@@ -304,13 +303,22 @@ void main()
                 In its constructor, it takes in:
                 <ul>
                     <li>Vertex/fragment (and optionally geometry) shaders</li>
-                    <li>Information about the <a href="Basic Rendering/RenderIOAttributes.html">vertex attributes<a></a>
+                    <li>Information about the <a href="Basic Rendering/RenderIOAttributes.html">vertex attributes</a>
                         it should expect as input</li>
                     <li>A collection of the <a href="Basic Rendering/UniformCollections.html">uniforms</a> (a.k.a.
                         parameters) its shaders use</li>
                     <li>The type of <a href="Basic Rendering/BlendMode.html">blending</a> it should use</li>
                     <li>A reference to a string that it will output an error message to if something went wrong
                         when creating the material.</li>
+                </ul>
+                Once created, you can get various information about the material (blend mode, uniforms, vertex
+                attributes, etc.) as well as change the blend mode. To render with the material, simply call one of
+                the "<code class="prettyprint">Render()</code>" overloads. They all take in a
+                <a href="Basic Rendering/RenderInfo.html">RenderInfo</a> instance, a set of values to use for the
+                uniform parameters, and one or more meshes to render.
+                There is also an overload that takes <a href="Basic Rendering/MeshData.html">MeshData</a> instances,
+                along with the corresponding "world" transform matrices to use for each one (which converts from object
+                space to "world coordinate" space).
             </p>
         </div>
 
