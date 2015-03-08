@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Class: RenderInfo</title>
+		<link type="text/cs" rel="stylesheet" href="../MainCSS.css" />
+		<script src="../google-code-prettify/run_prettify.js"></script>
+	</head>
+
+	<body>
+
+		<h1>RenderInfo</h1>
+		<p>Represents rendering data that is needed when setting up materials' built-in uniforms.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Metadata</h2>
+		<p>Located in "Rendering/Basic Rendering/RenderInfo.h". Has a .cpp file in the same location. Part of the <a href="../Basic Rendering.html">Basic Rendering</a> system.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Declaration</h2>
+		<code class="CodeDecl prettyprint">class RenderInfo;</code>
+		<p />
+
+		<br class="SectionDivider" />
+
+		<h2>Sub-types</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Constants</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Fields</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Fields</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="TotalElapsedSeconds" />
+				<code class="CodeDecl prettyprint">public float TotalElapsedSeconds;</code>
+				<ul>
+					<li>The total amount of elapsed time since the game world started.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="Cam" />
+				<code class="CodeDecl prettyprint">public <a href="../Higher Math/Camera.html">Camera</a>* Cam;</code>
+				<ul>
+					<li>The camera perspective being used to render.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="mView" />
+				<code class="CodeDecl prettyprint">public <a href="../Lower Math/Matrix4f.html">Matrix4f</a>* mView;</code>
+				<ul>
+					<li>A reference to the view matrix, which converts from world space to camera space (coordinates are relative to the camera's position and orientation).</li>
+					<li><div class="CodeSample"><code class="prettyprint">
+RenderInfo info(...);<br />
+Camera gameCam(...);<br />
+<br />
+Matrix4f viewMat;<br />
+gameCam.GetViewTransform(viewMat);<br />
+info.mView = &amp;viewMat;
+					</code></div></li>
+				</ul>
+			</li>
+			<li>
+				<a name="mProj" />
+				<code class="CodeDecl prettyprint">public <a href="../Lower Math/Matrix4f.html">Matrix4f</a>* mProj;</code>
+				<ul>
+					<li>A reference to the projection matrix, which converts from camera space to "NDC" space (a box from {-1, -1, -1} to {1, 1, 1}).</li>
+					<li><div class="CodeSample"><code class="prettyprint">
+RenderInfo info(...);<br />
+Camera gameCam(...);<br />
+<br />
+Matrix4f projMat;<br />
+//For a 3D perspective view, use this:<br />
+gameCam.GetPerspectiveTransform(projMat);<br />
+//For a 2D orthographic view, use this:<br />
+gameCam.GetOrthoProjection(projMat);<br />
+<br />
+info.mProj = &amp;projMat;
+					</code></div></li>
+				</ul>
+			</li>
+			<li>
+				<a name="mVP" />
+				<code class="CodeDecl prettyprint">public <a href="../Lower Math/Matrix4f.html">Matrix4f</a> mVP;</code>
+				<ul>
+					<li>The combination of the view and perspective transform; transforms coordinates from world space to NDC space.</li>
+					<li>This field is automatically computed in the RenderInfo constructor.</li>
+                    <li>
+                        Make sure to set this value if you change the view or projection transform:
+                        <code class="prettyprint">info.mVP = Matrix4f::Multiply(mProj, mView)</code>.
+                    </li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Operators</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Functions</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Constructors</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="Constructor" />
+				<code class="CodeDecl prettyprint">public RenderInfo(float totalElapsedSeconds, Camera* cam, Matrix4f* viewM, Matrix4f* projM);</code>
+				<ul>
+					<li>Creates a new RenderInfo with the given values.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Functions</h2>
+		<p>None.</p>
+
+		</body>
+</html>
