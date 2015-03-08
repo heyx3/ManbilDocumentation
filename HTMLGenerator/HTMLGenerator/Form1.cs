@@ -537,7 +537,7 @@ namespace HTMLGenerator
 						if (classDescText.Text.Length == 0 && codeSampleText.Text.Length == 0)
 						{
 							StringGenerators.AddTabs(2, sb);
-							sb.AppendLine("\t\t\t<h1 style: \"color: red\">ERROR NEEDS 'USAGE' TEXT</h1>");
+							sb.AppendLine("\t\t\t<h1 style=\"color:red;\">ERROR NEEDS 'USAGE' TEXT</h1>");
 						}
 						else
 						{
