@@ -1,0 +1,338 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Class: BlendMode</title>
+		<link type="text/cs" rel="stylesheet" href="../MainCSS.css" />
+		<script src="../google-code-prettify/run_prettify.js"></script>
+	</head>
+
+	<body>
+
+		<h1>BlendMode</h1>
+		<p>Specifies how surfaces can be blended with other surfaces behind them. Some common presets are exposed via static methods.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Metadata</h2>
+		<p>Located in "Rendering/Basic Rendering/BlendMode.h". Has a .cpp file in the same location. Part of the <a href="../Basic Rendering.html">Basic Rendering</a> system.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Declaration</h2>
+		<code class="CodeDecl prettyprint">class BlendMode;</code>
+		<p />
+
+		<br class="SectionDivider" />
+
+		<h2>Sub-types</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="BlendingExpressions" />
+				<code class="CodeDecl prettyprint">public enum BlendingExpressions;</code>
+				<ul>
+					<li>The various possible contributions from the source/destination pixel color.</li>
+                    <li>
+                        BE_ZERO
+                        <ul>
+                            <li>The contribution is 0.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        BE_ONE
+                        <ul>
+                            <li>The contribution is just the pixel color itself.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        BE_SRC_COLOR
+                        <ul>
+                            <li>The contribution is the pixel color multiplied by the source pixel's color.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        BE_DEST_COLOR
+                        <ul>
+                            <li>The contribution is the pixel color multiplied by the destination pixel's color.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        BE_INVERSE_SRC_COLOR
+                        <ul>
+                            <li>The contribution is the pixel color multiplied by the inverted source pixel color (1.0 - color).</li>
+                        </ul>
+                    </li>
+                    <li>
+                        BE_INVERSE_DEST_COLOR
+                        <ul>
+                            <li>The contribution is the pixel color multiplied by the inverted destination pixel color (1.0 - color).</li>
+                        </ul>
+                    </li>
+                    <li>
+                        BE_SRC_ALPHA
+                        <ul>
+                            <li>The contribution is the pixel color multiplied by the source pixel's alpha.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        BE_DEST_ALPHA
+                        <ul>
+                            <li>The contribution is the pixel color multiplied by the destination pixel's alpha</li>
+                        </ul>
+                    </li>
+                    <li>
+                        BE_INVERSE_SRC_ALPHA
+                        <ul>
+                            <li>The contribution is the pixel color multiplied by the inverse of the source pixel's alpha (1.0 - alpha).</li>
+                        </ul>
+                    </li>
+                    <li>
+                        BE_INVERSE_DEST_ALPHA
+                        <ul>
+                            <li>The contribution is the pixel color multiplied by the inverse of the destination pixel's alpha (1.0 - alpha).</li>
+                        </ul>
+                    </li>
+				</ul>
+			</li>
+			<li>
+				<a name="BlendingOps" />
+				<code class="CodeDecl prettyprint">public enum BlendingOps;</code>
+				<ul>
+					<li>The various possible ways to combine each color's contribution.</li>
+                    <li>
+                        BO_ADD
+                        <ul>
+                            <li>Adds the source and destination contributions together.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        BO_SUBTRACT_DEST
+                        <ul>
+                            <li>Subtracts the destination contribution from the source contribution.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        BO_SUBTRACT_SRC
+                        <ul>
+                            <li>Subtracts the source contribution from the destination contribution.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        BO_MIN
+                        <ul>
+                            <li>Gets the smallest of the two contributions for each color component individually.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        BO_MAX
+                        <ul>
+                            <li>Gets the largest of the two contributions for each color component individually.</li>
+                        </ul>
+                    </li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Constants</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Fields</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="CurrentMode" />
+				<code class="CodeDecl prettyprint">private BlendMode CurrentMode;</code>
+				<ul>
+					<li>The most recently-enabled blending mode.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Fields</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="SourceBlend" />
+				<code class="CodeDecl prettyprint">public BlendingExpressions SourceBlend;</code>
+				<ul>
+					<li>The multiplier for the source color term.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="DestBlend" />
+				<code class="CodeDecl prettyprint">public BlendingExpressions DestBlend;</code>
+				<ul>
+					<li>The multiplier for the destination color term.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="Op" />
+				<code class="CodeDecl prettyprint">public BlendingOps Op;</code>
+				<ul>
+					<li>The operator to use to combine source and destination terms.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Operators</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="operator=" />
+				<code class="CodeDecl prettyprint">public BlendMode&amp; operator=(const BlendMode&amp; cpy);</code>
+				<ul>
+					<li>Sets this blend mode to have the given blend mode's values.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="operator==" />
+				<code class="CodeDecl prettyprint">public bool operator==(const BlendMode&amp; other) const;</code>
+				<ul>
+					<li>Gets whether this blend mode is exactly equal to the given one.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="operator!=" />
+				<code class="CodeDecl prettyprint">public bool operator!=(void);</code>
+				<ul>
+					<li>Gets whether this blend mode is <em>not</em> exactly equal to the given one.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Functions</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="GetCurrentMode" />
+				<code class="CodeDecl prettyprint">public BlendMode GetCurrentMode(void);</code>
+				<ul>
+					<li>Gets the currently-active blending mode.</li>
+					<li>Keep in mind that this only works if blending modes are <em>only</em> ever set through use of this class.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GetOpaque" />
+				<code class="CodeDecl prettyprint">public BlendMode GetOpaque(void);</code>
+				<ul>
+					<li>Gets an opaque blending mode (pixels are solid and fully obscure anything behind them).</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GetTransparent" />
+				<code class="CodeDecl prettyprint">public BlendMode GetTransparent(void);</code>
+				<ul>
+					<li>Gets a transparent blending mode (mix between source and destination color based on the source's alpha).</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GetAdditive" />
+				<code class="CodeDecl prettyprint">public BlendMode GetAdditive(void);</code>
+				<ul>
+					<li>Gets an additive blending mode (add the source and destination colors together).</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GetMultiply" />
+				<code class="CodeDecl prettyprint">public BlendMode GetMultiply(void);</code>
+				<ul>
+					<li>Gets a multiplicative blending mode (multiply the source and destination colors together).</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="ToGLEnumExpr" />
+				<code class="CodeDecl prettyprint">private unsigned int ToGLEnum(BlendingExpressions expr);</code>
+				<ul>
+					<li>Converts the given BlendingExpression into a corresponding OpenGL enum value.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="ToGLEnumOp" />
+				<code class="CodeDecl prettyprint">private unsigned int ToGLEnum(BlendingOps op);</code>
+				<ul>
+					<li>Converts the given BlendingOp into a corresponding OpenGL enum value.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Constructors</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="Constructor" />
+				<code class="CodeDecl prettyprint">public BlendMode(BlendingExpressions sourceBlend, BlendingExpressions destBlend, BlendingOps op);</code>
+				<ul>
+					<li>Creates a new instance with the given values.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="CopyConstructor" />
+				<code class="CodeDecl prettyprint">public BlendMode(const BlendMode&amp; cpy);</code>
+				<ul>
+					<li>Creates a copy of the given blend mode.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Functions</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="EnableMode" />
+				<code class="CodeDecl prettyprint">public void EnableMode(void) const;</code>
+				<ul>
+					<li>Sets OpenGL to use this blending mode.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="IsOpaque" />
+				<code class="CodeDecl prettyprint">public bool IsOpaque(void) const;</code>
+				<ul>
+					<li>Gets whether this mode uses opaque rendering.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<div class="TextSection">
+			<h2>Usage</h2>
+			<ul>
+				<li>A BlendMode instance specifies the subset of OpenGL's rendering state that pertains to blending. For example, you could create "opaque", "transparent", or "additive" blend states.</li>
+				<li>When a triangle's fragment shader outputs pixel colors, the values are applied onto the screen. The blending mode describes how to combine the new ("source') pixel with the old ("destination") pixel.</li>
+				<li>
+                    The computation of the final blended pixel is <code>(SrcPixel * SrcExpr) [Blend Op] (DestPixel * DestExpr)</code>
+                    <ul>
+                        <li><code>SrcPixel</code> is the "source' pixel RGB color.</li>
+                        <li><code>DestPixel</code> is the "destination" pixel RGB color.</li>
+                        <li><code>[Blend Op]</code> is the blending operation used to combine the source and destination terms (add, subtract, multiply, min, or max).</li>
+                        <li>For example, the opaque blending mode should overwrite the destination color with the source color, so <code>SrcExpr</code> should be BE_ONE, <code>DestExpr</code> should be BE_ZERO, and the blending operation could be BO_ADD, BO_SUBTRACT_DEST, or BO_MAX.</li>
+                    </ul>
+                </li>
+				<li>Some blending expressions use a color's alpha, allowing for blend modes that use some form of partial transparency.</li>
+				<li>Once a blending mode is created, just use its <code>EnableMode()</code> method to set it as the active blending mode.</li>
+				<li>Note that when rendering with the <a href="Material.html">Material</a> class, the blending mode is automatically enabled and doesn't have to be set manually.</li>
+			</ul>
+			<div class="CodeSample"><code class="prettyprint">
+//Set OpenGL to render opaque triangles.<br />
+BlendMode::GetOpaque().EnableMode();<br />
+<br />
+//...<br />
+<br />
+//Set OpenGL to render additive triangles (useful for<br />
+//&emsp;&emsp;&emsp; some particle effects).<br />
+BlendMode::GetAdditive().EnableMode();
+			</code></div>
+		</div>
+		</body>
+</html>
