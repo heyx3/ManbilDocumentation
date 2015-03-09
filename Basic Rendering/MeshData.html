@@ -1,0 +1,399 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Class: MeshData</title>
+		<link type="text/cs" rel="stylesheet" href="../MainCSS.css" />
+		<script src="../google-code-prettify/run_prettify.js"></script>
+	</head>
+
+	<body>
+
+		<h1>MeshData</h1>
+		<p>A collection of vertices and (optionally) indices for rendering.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Metadata</h2>
+		<p>Located in "Rendering/Basic Rendering/MeshData.h". Has a .cpp file in the same location. Part of the <a href="../Basic Rendering.html">Basic Rendering</a> system.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Declaration</h2>
+		<code class="CodeDecl prettyprint">class MeshData;</code>
+		<p />
+
+		<br class="SectionDivider" />
+
+		<h2>Sub-types</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="BufferUsageFrequency" />
+				<code class="CodeDecl prettyprint">public enum BufferUsageFrequency;</code>
+				<ul>
+					<li>Different usage patterns for the mesh data.</li>
+					<li>Only affects performance/optimization, not functionality.</li>
+                    <li>
+                        BUF_STATIC
+                        <ul>
+                            <li>The data will not need to be modified after it's first set.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        BUF_DYNAMIC
+                        <ul>
+                            <li>The data will be modified occasionally, but not constantly.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        BUF_STREAM
+                        <ul>
+                            <li>The data will be modified as often as it is actually used.</li>
+                        </ul>
+                    </li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Constants</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Fields</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="currentVHandle" />
+				<code class="CodeDecl prettyprint">private RenderObjHandle currentVHandle;</code>
+				<ul>
+					<li>The most recently-used vertex handle.</li>
+					<li>Obviously this is only useful if no outside code manipulates vertex buffers outside of this class.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="currentIHandle" />
+				<code class="CodeDecl prettyprint">private RenderObjHandle currentIHandle;</code>
+				<ul>
+					<li>The most recently-used index handle.</li>
+					<li>Obviously this is only useful if no outside code manipulates index buffers outside of this class.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Fields</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="PrimType" />
+				<code class="CodeDecl prettyprint">public PrimitiveTypes PrimType;</code>
+				<ul>
+					<li>The type of shapes this instance's vertices/indices represent.</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="verticesHandle" />
+				<code class="CodeDecl prettyprint">private RenderObjHandle verticesHandle;</code>
+				<ul>
+					<li>An OpenGL handle to this instance's vertex data.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="indicesHandle" />
+				<code class="CodeDecl prettyprint">private RenderObjHandle indicesHandle;</code>
+				<ul>
+					<li>An OpenGL handle to this instance's index data.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="nVertices" />
+				<code class="CodeDecl prettyprint">private unsigned int nVertices;</code>
+				<ul>
+					<li>The number of vertices this instance stores.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="nIndices" />
+				<code class="CodeDecl prettyprint">private unsigned int nIndices;</code>
+				<ul>
+					<li>The number of indices this instance stores.</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="vertexAttributes" />
+				<code class="CodeDecl prettyprint">private <a href="RenderIOAttributes.html">RenderIOAttributes</a> vertexAttributes;</code>
+				<ul>
+					<li>The attributes for the type of vertex this instance stores.</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="storesData" />
+				<code class="CodeDecl prettyprint">private bool storesData;</code>
+				<ul>
+					<li>Whether this instance should store a CPU-side copy of the vertex/index data for easy querying.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="verticesData" />
+				<code class="CodeDecl prettyprint">private std::vector&lt;unsigned char&gt; verticesData;</code>
+				<ul>
+					<li>The vertices stored by this instance.</li>
+					<li>This is only used if the "storesData" field is true.</li>
+					<li>The data is stored as individual bytes because the vertex attributes may be any size.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="indicesData" />
+				<code class="CodeDecl prettyprint">private std::vector&lt;unsigned int&gt; indicesData;</code>
+				<ul>
+					<li>The indices stored by this instance.</li>
+					<li>This is only used if the "storesData" field is true.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Operators</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="operator=" />
+				<code class="CodeDecl prettyprint">public MeshData&amp; operator=(MeshData&amp;&amp; other);</code>
+				<ul>
+					<li>The move assignment operator.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Functions</h2>
+		<ul class="DeclarationList">
+            <li>
+                <a name="GetCurrentVHandle" />
+                <code class="CodeDecl prettyprint">public RenderObjHandle GetCurrentVHandle(void);</code>
+                <ul>
+                    <li>Gets the vertex handle most recently bound by this class.</li>
+                    <li>
+                        Assuming no outside code tries manually binding OpenGL vertex data, this is also the currently-bound
+                        OpenGL vertex buffer object.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a name="GetCurrentIHandle" />
+                <code class="CodeDecl prettyprint">public RenderObjHandle GetCurrentIHandle(void);</code>
+                <ul>
+                    <li>Gets the index handle most recently bound by this class.</li>
+                    <li>
+                        Assuming no outside code tries manually binding OpenGL index data, this is also the currently-bound
+                        OpenGL index buffer object.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="DeclarationList">
+			<li>
+				<a name="ToGLEnum" />
+				<code class="CodeDecl prettyprint">private GLenum ToGLEnum(BufferUsageFrequency usage);</code>
+				<ul>
+					<li>Converts the given frequency usage into the corresponding GLenum for vertex/index buffer usage.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Constructors</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="Constructor" />
+				<code class="CodeDecl prettyprint">public MeshData(bool shouldStoreData, PrimitiveTypes primType);</code>
+				<ul>
+					<li>Creates a new instance, given the type of primitive and whether to store a copy of the vertex data on the CPU.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="MoveConstructor" />
+				<code class="CodeDecl prettyprint">public MeshData(MeshData&amp;&amp; other);</code>
+				<ul>
+					<li>The Move Constructor for this class.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Functions</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="MoveTo" />
+				<code class="CodeDecl prettyprint">public void MoveTo(MeshData&amp; newData);</code>
+				<ul>
+					<li>Functions as a manual move operation, moving this instance's data into the given instance.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GetStoresData" />
+				<code class="CodeDecl prettyprint">public bool GetStoresData(void) const;</code>
+				<ul>
+					<li>Gets whether this instance stores a copy of vertex/index data on the CPU.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GetUsesIndices" />
+				<code class="CodeDecl prettyprint">public bool GetUsesIndices(void);</code>
+				<ul>
+					<li>Gets whether this instance's vertex data has accompanying indices.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GetNVertices" />
+				<code class="CodeDecl prettyprint">public unsigned int GetNVertices(void) const;</code>
+				<ul>
+					<li>Gets the number of vertices this instance has.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GetNIndices" />
+				<code class="CodeDecl prettyprint">public unsigned int GetNIndices(void) const;</code>
+				<ul>
+					<li>Gest the number of indices this instance has.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GetVerticesHandle" />
+				<code class="CodeDecl prettyprint">public RenderObjHandle GetVerticesHandle(void) const;</code>
+				<ul>
+					<li>Gets the OpenGL handle to the vertices.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GetIndicesHandle" />
+				<code class="CodeDecl prettyprint">public RenderObjHandle GetIndicesHandle(void) const;</code>
+				<ul>
+					<li>Gets the OpenGL handle to the indices.</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="GetVertexData" />
+				<code class="CodeDecl prettyprint">
+					template&lt;typename VertexType&gt; <br />
+					public const VertexType* GetVertexData(void) const;
+				</code>
+				<ul>
+					<li>Gets a pointer to the array of vertex data.</li>
+					<li><strong>Important:</strong> assumes that this instance stores a CPU copy of the data.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GetIndexData" />
+				<code class="CodeDecl prettyprint">public const unsigned int* GetIndexData(void) const;</code>
+				<ul>
+					<li>Gets a pointer to the array of index data.</li>
+					<li><strong>Important:</strong> assumes that this instance stores a CPU copy of the data.</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="ReadVertexData" />
+				<code class="CodeDecl prettyprint">
+					template&lt;typename VertexType&gt; <br />
+					public void ReadVertexData(std::vector&lt;VertexType&gt;&amp; outVertexData);
+				</code>
+				<ul>
+					<li>Reads the vertex data from the GPU into the given collection.</li>
+					<li>This is how the data can be read without storing a longer-term copy of it on the CPU.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="ReadIndexData" />
+				<code class="CodeDecl prettyprint">public void ReadIndexData(std::vector&lt;unsigned int&gt;&amp; outIndexData);</code>
+				<ul>
+					<li>Reads the index data from the GPU into the given collection.</li>
+					<li>This is how the data can be read without storing a longer-term copy of it on the CPU.</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="SetVertexDataVector" />
+				<code class="CodeDecl prettyprint">
+					template&lt;typename VertexType&gt; <br />
+					public void SetVertexData(const std::vector&lt;VertexType&gt;&amp; newVertices, <br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; BufferUsageFrequency usage, RenderIOAttributes vertexAttributes);
+				</code>
+				<ul>
+					<li>Sets this instance's vertex data to the given collection of vertices.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="SetVertexDataArray" />
+				<code class="CodeDecl prettyprint">
+					template&lt;typename VertexType&gt; <br />
+					public void SetVertexData(const VertexType* newVertices, unsigned int nVertices,<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; BufferUsageFrequency usage, RenderIOAttributes vertexAttributes);
+				</code>
+				<ul>
+					<li>Sets this instance's vertex data to the given collection of vertices.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="SetIndexDataVector" />
+				<code class="CodeDecl prettyprint">public void SetIndexData(const std::vector&lt;unsigned int&gt;&amp; newVertices,<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;BufferUsageFrequency usage);</code>
+				<ul>
+					<li>Sets this instance's index data to the given collection of indices.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="SetIndexDataArray" />
+				<code class="CodeDecl prettyprint">public void SetIndexData(const unsigned int* newVertices, unsigned int nVertices,<br />
+&emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;BufferUsageFrequency usage);</code>
+				<ul>
+					<li>Sets this instance's index data to the given collection of indices.</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="RemoveIndexData" />
+				<code class="CodeDecl prettyprint">public bool RemoveIndexData(void);</code>
+				<ul>
+					<li>Removes this instance's indices if they exist.</li>
+					<li>Returns whether they existed.</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="Bind" />
+				<code class="CodeDecl prettyprint">public void Bind(void) const;</code>
+				<ul>
+					<li>Sets this instance's vertices/indices as the currently-active OpenGL vertex/index buffers.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<div class="TextSection">
+			<h2>Usage</h2>
+			<ul>
+				<li>This class represents a set of shapes (usually triangles) that can be rendered.</li>
+                <li>It can optionally store a copy of the data on RAM for quick CPU access.</li>
+			</ul>
+		</div>
+		</body>
+</html>
