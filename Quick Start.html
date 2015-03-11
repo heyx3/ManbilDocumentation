@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+﻿ <!DOCTYPE html>
  <html>
     
     <head>
@@ -185,9 +185,17 @@ void MyGameWorld::OnWindowResized(unsigned int newWidth, unsigned int newHeight)
                         the program.</li>
                     </ol>
                 </li>
-                <li>If you run the world at this point, you should get a blank, blue screen. Fill in the
-                various .cpp implementations and add member fields to the class to add behavior
-                to your world.</li>
+                <li>
+                    If you run the world at this point, you should get a blank, blue screen. Fill in the
+                    various .cpp implementations and add member fields to the class to add behavior
+                    to your world.
+                </li>
+                <li>
+                    In the interest of cutting down on game size, it's a good idea to remove the
+                    "Dependencies/Include in Build/Universal/Content/Sample Worlds" folder, which contains
+                    all the content used in the sample worlds. This content will presumably not be needed
+                    for your own project.
+                </li>
             </ol>
         </div>
 
@@ -225,7 +233,7 @@ void MyGameWorld::OnWindowResized(unsigned int newWidth, unsigned int newHeight)
         <div class="TextSection">
             <h2>How to add a new library to your project:</h2>
             <ol class="TextSectionList">
-                <li><strong>(Recommended)</strong> Place the library into the "Plugins" folder so
+                <li><strong>Recommended:</strong> Place the library into the "Plugins" folder so
                 it can get added to the git repo, ensuring its availability on the same relative
                 path for any computer that uses the repo.</li>
                 <li>
