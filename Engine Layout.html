@@ -1,0 +1,455 @@
+﻿<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="William Manning">
+        <title>Graph Test</title>
+        <link type="text/css" rel="stylesheet" href="MainCSS.css" />
+        <link type="text/css" rel="stylesheet" href="GraphCSS.css" />
+        <script src="google-code-prettify/run_prettify.js"></script>
+    </head>
+
+
+
+    <body>
+
+        <h1>System Graph</h1>
+        <p>
+            The following is a graph of the various sytems in the engine, from lowest-level to highest-level.
+            The engine is designed in a very segmented way -- you can get a simple game world up and running
+            with just the Game Loop and Basic Rendering systems, but you can also use the higher-level
+            systems to easily add more complex objects to the world. The most important systems are drawn
+            larger, and the less important systems are drawn smaller. Click on a system to go to its
+            documentation.
+        </p>
+
+        <br class="SectionDivider" />
+
+        <script src="D3/d3.min.js" charset="utf-8"></script>
+        <script>
+
+            //Create an SVG area for drawing shapes.
+            var svg = d3.select("body").append("svg")
+                        .attr("width", 800)
+                        .attr("height", 800)
+                        .attr("color", "white")
+
+            svg.append("defs")
+               .append("marker")
+                  .attr("id", "arrowEnd")
+                  .attr("markerWidth", 12)
+                  .attr("markerHeight", 12)
+                  .attr("orient", "auto")
+                  .attr("refX", 3.1)
+                  .attr("refY", 1.83333)
+                  .append("path")
+                    .attr("d", "M0,0 L0,3.66666 L3.3333,2 L0,0")
+                    .attr("style", "stroke:#000000;fill:#000000;")
+
+            //Makes a new system node linking to the given system.
+            //Returns the node's outer "a" element.
+            function makeNode(posX, posY, textSize, linkTo, textStr) {
+
+                var textBorderX = 8,
+                    textBorderY = 5;
+
+                var hackYOffset = -5; //Text height isn't being computed perfectly, so here's a hack Y offset.
+
+                //Make the root link/group objects.
+                var rootObj = svg.append("a")
+                    .attr("xlink:href", linkTo)
+                    .attr("target", "_blank")
+                    .attr("class", "linkToSystem");
+
+                //Add the rectangle and text.
+                var rectObj = rootObj.append("rect")
+                                     .attr("rx", 10)
+                                     .attr("ry", 10)
+                                     .attr("class", "nodeBackground");
+                var textObj = rootObj.append("text")
+                                     .attr("font-size", textSize)
+                                     .text(textStr)
+                                     .attr("class", "nodeText");
+
+                //Measure the size of the text.
+                var textWidth = textObj.node().getBoundingClientRect().width;
+                var textHeight = textObj.node().getBoundingClientRect().height;
+
+                //Resize the rectangle to fit the text.
+                var boxWidth = textWidth + (2 * textBorderX),
+                    boxHeight = textHeight + (2 * textBorderY);
+                rectObj.attr("width", boxWidth)
+                       .attr("height", boxHeight);
+                
+                //Move the group to be centered at the given position.
+                var finalPosX = posX - (boxWidth / 2),
+                    finalPosY = posY - (boxHeight / 2);
+                rectObj.attr("x", finalPosX)
+                       .attr("y", finalPosY);
+                textObj.attr("x", finalPosX + (boxWidth / 2) - (textWidth / 2))
+                       .attr("y", finalPosY + (boxHeight / 2) + (textHeight / 2) + hackYOffset);
+                
+                return rootObj;
+            }
+            //Connects two nodes. Returns the connection SVG line.
+            //Takes in where on the start and end nodes to put each line vertex.
+            function makeConnection(start, end, startLerpX, startLerpY, endLerpX, endLerpY) {
+                
+                //Get bounding boxes.
+                var startBBox = start.node().getElementsByTagName("rect")[0].getBoundingClientRect(),
+                    endBBox = end.node().getElementsByTagName("rect")[0].getBoundingClientRect();
+                var svgBBox = svg.node().getBoundingClientRect();
+
+
+                function lerp(a1, a2, t) { return a1 + (t * (a2 - a1)); }
+
+
+                //Push out the line so that it doesn't sit too close to the node.
+                var featherX = 0.05,
+                    featherY = 0.1;
+                if (startLerpX == 0.0) startLerpX -= featherX;
+                if (startLerpX == 1.0) startLerpX += featherX;
+                if (startLerpY == 0.0) startLerpY -= featherY;
+                if (startLerpY == 1.0) startLerpY += featherY;
+                if (endLerpX == 0.0) endLerpX -= featherX;
+                if (endLerpX == 1.0) endLerpX += featherX;
+                if (endLerpY == 0.0) endLerpY -= featherY;
+                if (endLerpY == 1.0) endLerpY += featherY;
+
+                //Compute the line vertices.
+                var startX = lerp(startBBox.left, startBBox.right, startLerpX) - svgBBox.left,
+                    startY = lerp(startBBox.top, startBBox.bottom, startLerpY) - svgBBox.top,
+                    endX = lerp(endBBox.left, endBBox.right, endLerpX) - svgBBox.left,
+                    endY = lerp(endBBox.top, endBBox.bottom, endLerpY) - svgBBox.top;
+
+                //Make the line.
+                var connectionLine = svg.append("line")
+                                        .attr("x1", startX)
+                                        .attr("y1", startY)
+                                        .attr("x2", endX)
+                                        .attr("y2", endY)
+                                        .attr("class", "nodeConnection");
+            }
+
+            var smallSize = 20,
+                largeSize = 32;
+            var lowerMath = makeNode(430, 50, largeSize, "Lower Math.html", "Lower Math"),
+                higherMath = makeNode(340, 240, largeSize, "Higher Math.html", "Higher Math"),
+                shapes = makeNode(680, 200, smallSize, "Shapes.html", "Shapes"),
+                noiseGeneration = makeNode(720, 140, smallSize, "Noise Generation.html", "Noise Generation"),
+                input = makeNode(265, 155, smallSize, "Input.html", "Input"),
+                gameLoop = makeNode(100, 240, largeSize, "Game Loop.html", "Game Loop"),
+                basicRendering = makeNode(340, 360, largeSize, "Basic Rendering.html", "Basic Rendering"),
+                textures = makeNode(520, 240, largeSize, "Textures.html", "Textures"),
+                primitives = makeNode(97, 475, smallSize, "Primitives.html", "Primitives"),
+                dataNodes = makeNode(457, 479, largeSize, "DataNode.html", "DataNode"),
+                serialization = makeNode(700, 360, largeSize, "Serialization.html", "Serialization"),
+                gpuParticles = makeNode(700, 630, smallSize, "GPU Particles.html", "GPU Particles"),
+                curves = makeNode(200, 590, smallSize, "Curves.html", "Curves"),
+                gui = makeNode(375, 630, largeSize, "GUI.html", "GUI"),
+                editors = makeNode(335, 735, smallSize, "Editors.html", "Editors"),
+                water = makeNode(520, 690, smallSize, "Water.html", "Water");
+
+            makeConnection(lowerMath, shapes, 0.75, 1.0, 0.0, 0.0);
+            makeConnection(lowerMath, input, 0.1, 1.0, 1.0, 0.0);
+            makeConnection(lowerMath, noiseGeneration, 1.0, 1.0, 0.0, 0.0);
+            makeConnection(lowerMath, higherMath, 0.3, 1.0, 0.5, 0.0);
+            makeConnection(lowerMath, textures, 0.5, 1.0, 0.5, 0.0);
+            makeConnection(input, gameLoop, 0.0, 1.0, 1.0, 0.0);
+            makeConnection(higherMath, basicRendering, 0.5, 1.0, 0.5, 0.0);
+            makeConnection(basicRendering, primitives, 0.25, 1.0, 1.0, 0.0);
+            makeConnection(basicRendering, dataNodes, 0.75, 1.0, 0.25, 0.0);
+            makeConnection(textures, dataNodes, 0.4, 1.0, 0.6, 0.0);
+            makeConnection(serialization, dataNodes, 0.0, 1.0, 1.0, 0.0);
+            makeConnection(dataNodes, curves, 0.0, 1.0, 1.0, 0.0);
+            makeConnection(dataNodes, gui, 0.4, 1.0, 0.7, 0.0);
+            makeConnection(gui, editors, 0.4, 1.0, 0.6, 0.0);
+            makeConnection(dataNodes, water, 0.65, 1.0, 0.4, 0.0);
+            makeConnection(dataNodes, gpuParticles, 1.0, 1.0, 0.0, 0.0);
+
+        </script>
+
+        <br class="SectionDivider" />
+        <br class="SectionDivider" />
+
+        <div class="TextSection">
+            <h1>Systems Summary</h1>
+            <ul class="TextSectionList">
+                <li>
+                    <strong><a href="Lower Math.html">Lower Math</a></strong>
+                    <ul>
+                        <li>Basic mathematical stuff -- vectors, matrices, quaternions, etc.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong><a href="Higher Math.html">Higher Math</a></strong>
+                    <ul>
+                        <li>
+                            3D math objects that are useful for real-time graphics, including transform objects,
+                            cameras, and terrain heightmap simulation.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong><a href="Basic Rendering.html">Basic Rendering</a></strong>
+                    <ul>
+                        <li>The foundation of all rendering systems in the engine.</li>
+                        <li>
+                            Provides basic low-level graphics objects like Meshes, Materials, and
+                            RenderingStates.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong><a href="Input.html">Input</a></strong>
+                    <ul>
+                        <li>
+                            A system for abstracting input code away from the specific keys/buttons/etc.
+                            being used. Also provides some basic input-related things like a basic
+                            keyboard-/mouse-controlled camera.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong><a href="Game Loop.html">Game Loop</a></strong>
+                    <ul>
+                        <li>
+                            Handles initialization of OpenGL and the game window, as well as an
+                            update/render loop and input.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong><a href="Textures.html">Textures</a></strong>
+                    <ul>
+                        <li>Provides a nice wrapper around OpenGL texture objects.</li>
+                        <li>2D textures are basically just images -- a 2D grid of point-like pixels.</li>
+                        <li>3D textures are just the 3D version of 2D textures -- they're a 3D grid of pixels.</li>
+                        <li>
+                            Cubemap textures are not grids at all; they are made up of six 2D texture faces.
+                            Whereas 2D textures are queried with a 2D coordinate, and 3D textures are queried
+                            with a 3D coordinate, cubemap textures are queried with a 3D vector pointing towards
+                            a face on the cube. This is very useful for skyboxes and reflections.
+                        </li>
+                        <li>
+                            RenderTargets allow you to render things into textures instead of rendering
+                            straight onto the screen. You can then use those rendered textures for a wide
+                            variety of things, such as post-processing effects.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong><a href="Serialization.html">Serialization</a></strong>
+                    <ul>
+                        <li>Provides a way for classes to describe their data.</li>
+                        <li>Also provides classes that write/read that data to/from an XML or binary file.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong><a href="Data Node.html">Data Node</a></strong>
+                    <ul>
+                        <li>
+                            Provides a higher-level way to create shaders that lends itself to a graphical
+                            editor.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong><a href="GUI.html">GUI</a></strong>
+                    <ul>
+                        <li>Provides a low-level GUI system.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong><a href="Noise Generation.html">Noise Generation</a></strong>
+                    <ul>
+                        <li>Provides a system for generating 2D/3D noise on the CPU.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong><a href="Shapes.html">Shapes</a></strong>
+                    <ul>
+                        <li>
+                            Provides a system for 2D/3D shape collision detection and related geometric
+                            functionality.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong><a href="Primitives.html">Primitives</a></strong>
+                    <ul>
+                        <li>Provides some useful basic meshes like quads and cubes.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong><a href="Curves.html">Curves</a></strong>
+                    <ul>
+                        <li>Provides a way to quickly and easly render Bezier Curves.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong><a href="GPU Particles.html">GPU Particles</a></strong>
+                    <ul>
+                        <li>Provides a high-level system for defining GPU particle shaders.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong><a href="Water.html">Water</a></strong>
+                    <ul>
+                        <li>GPU water simulation and rendering.</li>
+                        <li>Also acts as an example of how to extend the DataNode system in new ways.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong><a href="Editors.html">Editors</a></strong>
+                    <ul>
+                        <li>Provides the framework for defining a GUI panel with editable values.</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <br class="SectionDivider" />
+        <br class="SectionDivider" />
+
+        <div class="TextSection">
+            <h1>Sample Worlds</h1>
+            <p>
+                The engine comes with quite a few simple worlds that each demonstrate one or two important systems.
+                These worlds are heavily-commented and complement the explanations on each system's doc page.
+            </p>
+            <ul class="TextSectionList">
+                <li>
+                    <strong>SimpleRenderWorld</strong>
+                    <ul class="TextSectionList">
+                        <li>A very simple game world that just displays a rotating cube.</li>
+                        <li>
+                            Showcases the low-level <a href="Game Loop.html">Game Loop</a> and
+                            <a href="Basic Rendering.html">Basic Rendering</a> systems.
+                        </li>
+                        <li>The cube's surface is colored based on its world position.</li>
+                        <li>Use WASD/EQ to move the camera and the mouse to rotate it.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>DataNodeRenderWorld</strong>
+                    <ul class="TextSectionList">
+                        <li>Another simple game world, this time displaying a textured floor.</li>
+                        <li>
+                            Showcases the <a href="Textures.html">Textures</a> and
+                            <a href="DataNode.html">DataNode</a> systems.
+                        </li>
+                        <li>Use WASD/EQ to move the camera and the mouse to rotate it.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>WaterWorld</strong>
+                    <ul class="TextSectionList">
+                        <li>A game world that shows a rippling water surface and a skybox.</li>
+                        <li>
+                            Showcases some more complex uses of the <a href="Textures.html">Textures</a>
+                            system as well as the <a href="Water.html">Water</a> system.
+                        </li>
+                        <li>Use WASD/EQ to move the camera and the mouse to rotate it.</li>
+                        <li>
+                            Left-click to add a randomized ripple to the water, spreading outward from the
+                            camera's position.
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <br class="SectionDivider" />
+        <br class="SectionDivider" />
+
+        <div class="TextSection">
+            <h1>Demo Worlds</h1>
+            <p>
+                Along with simple example worlds, the engine comes with several toy demos that feature more
+                complex behavior. These demos are each stored in their own branches on the github repo to
+                prevent clutter in the engine.
+            </p>
+            <ul class="TextSectionList">
+                <li>
+                    <strong>Voxels</strong>
+                    <ul class="TextSectionList">
+                        <li>A basic voxel engine with one type of block.</li>
+                        <li>
+                            Uses an unorthodox method for rendering the voxel faces:
+                            <ul>
+                                <li>Each face (top, bottom, left, right, front, back) is a different render pass.</li>
+                                <li>
+                                    Each pass uses the same material, but changes a "coroutine" uniform
+                                    (essentially a function pointer) to tell the material which face to
+                                    render in that pass.
+                                </li>
+                                <li>
+                                    The vertices are stored as individual points, and a geometry shader
+                                    turns each point into a face based on the coroutine's current value.
+                                    The geometry shader doesn't render a point's face if that face is
+                                    obscured (information about which faces are obscured is passed in as
+                                    vertex attributes).
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Use WASD/EQ to move the camera and the mouse to rotate it.</li>
+                        <li>Left-click to remove the voxel being pointed at.</li>
+                        <li>Right-click to add a voxel on the face of the voxel being pointed at.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>TwoTriangles</strong>
+                    <ul class="TextSectionList">
+                        <li>Inspired by <a href="shadertoy.com">ShaderToy</a>.</li>
+                        <li>
+                            Provides an offline version of the ShaderToy tool, plus some extra features
+                            that ShaderToy doesn't have, such as a movable camera and a less limited form
+                            of GLSL.
+                        </li>
+                        <li>
+                            Check out ShaderToy to see what this world does. Refer to
+                            "Quad World Shader Constants.txt" for the names of the parameters you can use
+                            in your fragment shaders.
+                        </li>
+                        <li>
+                            Use WASD/EQ to move the camera, the mouse to rotate the camera, and spacebar to
+                            toggle camera control.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Planet Sim</strong>
+                    <ul class="TextSectionList">
+                        <li>A game world that generates a planet mesh.</li>
+                        <li>The mesh is generated like a cubemap: six different faces, projected onto a sphere.</li>
+                        <li>
+                            The planet isn't perfect; it has seams around the edges of each "face" of the
+                            cubemap.
+                        </li>
+                        <li>Use WASD/EQ to move the camera and the mouse to rotate it.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Old Ones</strong>
+                    <ul class="TextSectionList">
+                        <li>The most complex demo; used as an example of the engine's capabilities.</li>
+                        <li>
+                            Combines a normal rendered city with a distance-raymarched fractal shape that
+                            flies around the sky unnaturally, like an alien being that can move in more than
+                            three dimensions.
+                        </li>
+                        <li>
+                            Automatically detects and uses an Oculus Rift if one is plugged in, set to
+                            Extended Mode, and positioned off the right edge of the actual computer monitor
+                            in the display settings.
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </body>
+
+</html>
