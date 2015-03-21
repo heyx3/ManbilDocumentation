@@ -1,0 +1,244 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Class: RenderIOAttributes</title>
+		<link type="text/cs" rel="stylesheet" href="../MainCSS.css" />
+		<script src="../google-code-prettify/run_prettify.js"></script>
+	</head>
+
+	<body>
+
+		<h1>RenderIOAttributes</h1>
+		<p>Represents information passed into or out from shaders.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Metadata</h2>
+		<p>Located in "Rendering/Basic Rendering/RenderIOAttributes.h". Has a .cpp file in the same location. Part of the <a href="../Basic Rendering.html">Basic Rendering</a> system.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Declaration</h2>
+		<code class="CodeDecl prettyprint">class RenderIOAttributes;</code>
+		<p />
+
+		<br class="SectionDivider" />
+
+		<h2>Sub-types</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="Attribute" />
+				<pre class="CodeDecl prettyprint">public struct Attribute
+{
+    unsigned int Size;
+    bool IsNormalized;
+    std::string Name;
+};</pre>
+				<ul>
+					<li>A single input/output value.</li>
+					<li>Has a size between 1 and 4 (corresponding to <code>float</code>, <code>Vector2f</code>, <code>Vector3f</code>, and <code>Vector4f</code>).</li>
+					<li>Also has a boolean indicating whether the value should be normalized, and a custom variable name for the shaders that use it.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Constants</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Fields</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Fields</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="attributes" />
+				<code class="CodeDecl prettyprint">private std::vector&lt;Attribute&gt; attributes;</code>
+				<ul>
+					<li>This instance's attributes.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="ioSize" />
+				<code class="CodeDecl prettyprint">private unsigned int ioSize;</code>
+				<ul>
+					<li>The total number of float components this instance has.</li>
+					<li>Equal to the sum of the sizes of every attribute.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Operators</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="operator==" />
+				<code class="CodeDecl prettyprint">public bool operator==(const RenderIOAttributes&amp; other);</code>
+				<ul>
+					<li>Gets whether the given instance has the exact same attributes as this one.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="operator!=" />
+				<code class="CodeDecl prettyprint">public bool operator!=(const RenderIOAttributes&amp; other);</code>
+				<ul>
+					<li>Gets whether the given instance's attributes do not exactly match this one's.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Functions</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="GetMaxAttributes" />
+				<code class="CodeDecl prettyprint">public unsigned int GetMaxAttributes(void);</code>
+				<ul>
+					<li>Gets the maximum number of vertex attributes that OpenGL can handle at once.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Constructors</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="ConstructorDefault" />
+				<code class="CodeDecl prettyprint">public RenderIOAttributes(void);</code>
+				<ul>
+					<li>Creates an instance with no attributes.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="ConstructorAttr1" />
+				<code class="CodeDecl prettyprint">public RenderIOAttributes(Attribute attr);</code>
+				<ul>
+					<li>Creates an instance with one attribute.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="ConstructorAttr2" />
+				<code class="CodeDecl prettyprint">public RenderIOAttributes(Attribute attr1, Attribute attr2);</code>
+				<ul>
+					<li>Creates an instance with two attributes.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="ConstructorAttr3" />
+				<code class="CodeDecl prettyprint">public RenderIOAttributes(Attribute attr1, Attribute attr2, Attribute attr3);</code>
+				<ul>
+					<li>Creates an instance with three attributes.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="ConstructorAttr4" />
+				<code class="CodeDecl prettyprint">public RenderIOAttributes(Attribute attr1, Attribute attr2, Attribute attr3, Attribute attr4);</code>
+				<ul>
+					<li>Creates an instance with four attributes.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="ConstructorAttr5" />
+				<code class="CodeDecl prettyprint">public RenderIOAttributes(Attribute attr1, Attribute attr2, Attribute attr3, Attribute attr4, Attribute attr5);</code>
+				<ul>
+					<li>Creates an instance with five attributes.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="ConstructorAttrVector" />
+				<code class="CodeDecl prettyprint">public RenderIOAttributes(const std::vector&lt;Attribute&gt;&amp; attributes);</code>
+				<ul>
+					<li>Creates an instance with the given attributes.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Functions</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="GetAttributes" />
+				<code class="CodeDecl prettyprint">public const std::vector&lt;Attribute&gt;&amp; GetAttributes(void) const;</code>
+				<ul>
+					<li>Gets this instance's attributes.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GetNumbAttributes" />
+				<code class="CodeDecl prettyprint">public unsigned int GetNumbAttributes(void) const;</code>
+				<ul>
+					<li>Gets the number of attributes this instance has.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GetAttribute" />
+				<code class="CodeDecl prettyprint">public const Attribute&amp; GetAttribute(unsigned int index) const;</code>
+				<ul>
+					<li>Gets the attribute at the given index.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="SetAttributes" />
+				<code class="CodeDecl prettyprint">public void SetAttributes(const std::vector&lt;Attribute&gt;&amp; newAttributes);</code>
+				<ul>
+					<li>Sets this instance's attributes to the given collection.</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="GetTotalIOSize" />
+				<code class="CodeDecl prettyprint">public unsigned int GetTotalIOSize(void) const;</code>
+				<ul>
+					<li>Gets the total cumulative size of all the attributes together, in bytes.</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="EnableAttributes" />
+				<code class="CodeDecl prettyprint">public void EnableAttributes(void) const;</code>
+				<ul>
+					<li>Tells OpenGL that the vertex buffer currently being used has this instance's attributes.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="DisableAttributes" />
+				<code class="CodeDecl prettyprint">public void DisableAttributes(void) const;</code>
+				<ul>
+					<li>Tells OpenGL to stop using this instance's vertex attributes for the vertex buffer currently being used.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<div class="TextSection">
+			<h2>Usage</h2>
+			<p>This class represents the information passed into or out from each shader as a list of "Attributes".</p>
+			<div class="CodeSample"><code class="prettyprint">
+//Create the data type we'll be using for mesh vertices.<br />
+struct MyVertex<br />
+{<br />
+&emsp;&emsp;&emsp; Vector3f Position, Normal;<br />
+&emsp;&emsp;&emsp; Vector2f TexCoords;<br />
+};<br />
+<br />
+//Now define the vertex attributes.<br />
+RenderIOAttributes vertData(Attribute(3, false, "vIn_Pos"),<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Attribute(3, true, "vIn_Normal"),<br />
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Attribute(2, false, "vIn_UV"));
+			</code></div>
+		</div>
+		</body>
+</html>

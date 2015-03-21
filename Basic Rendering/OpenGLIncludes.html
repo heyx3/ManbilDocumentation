@@ -1,0 +1,253 @@
+﻿<!DOCTYPE html>
+ <html>
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="William Manning">
+        <title>File: OpenGLIncludes.h</title>
+        <link type="text/css" rel="stylesheet" href="../MainCSS.css" />
+        <script src="../google-code-prettify/run_prettify.js"></script>
+    </head>
+
+    <body>
+
+        <h1>OpenGLIncludes.h</h1>
+
+        <div class="TextSection">
+
+            <p>This file contains several definitions and enumerators for the OpenGL API.</p>
+
+            <h2>Metadata</h2>
+            <p>Has a .cpp file in the same location. Part of the <a href="../Basic Rendering.html">Basic Rendering</a> system.</p>
+
+            <h2>Declarations</h2>
+
+            <ul class="DeclarationList">
+                <li>
+                    <code class="CodeDecl prettyprint">typedef GLuint RenderObjHandle;</code>
+                    <ul>
+                        <li>A handle to some kind of data (buffer, texture, shader, etc).</li>
+                    </ul>
+                </li>
+                <li>
+                    <code class="CodeDecl prettyprint">typedef GLint UniformLocation</code>
+                    <ul>
+                        <li>A handle to the location of a uniform parameter in a shader.</li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="DeclarationList">
+                <li>
+                    <code class="CodeDecl prettyprint">UniformLocation INVALID_UNIFORM_LOCATION = -1;</code>
+                    <ul>
+                        <li>The value that represents an invalid handle.</li>
+                    </ul>
+                </li>
+                <li>
+                    <code class="CodeDecl prettyprint">RenderObjHandle INVALID_RENDER_OBJ_HANDLE = 0;</code>
+                    <ul>
+                        <li>The value that represents an invalid handle.</li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="DeclarationList prettyprint">
+                <li>
+                    <code class="CodeDecl prettyprint">enum PrimitiveTypes;</code>
+                    <ul>
+                        <li>Various types of primitive shapes that can be rendered with shaders.</li>
+                        <li>
+                            <b>PT_POINTS</b>
+                            <ul>
+                                <li>Individual points, defined by single vertices.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <b>PT_LINE_LIST</b>
+                            <ul>
+                                <li>Individual lines, defined by pairs of vertices.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <b>PT_LINE_STRIP</b>
+                            <ul>
+                                <li>Connected lines -- each verex defines a line that connects to the previous vertex.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <b>PT_TRIANGLE_LIST</b>
+                            <ul>
+                                <li>Individual triangles, defined by groups of 3 vertices.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <b>PT_TRIANGLE_STRIP</b>
+                            <ul>
+                                <li>Connected triangles -- each vertex defines a triangle with it and the previous two vertices.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <code class="CodeDecl prettyprint">GLenum PrimitiveTypeToGLEnum(PrimitiveTypes t);</code>
+                    <ul>
+                        <li>Converts the given enum value into a corresponding OpenGL enum value.</li>
+                    </ul>
+                </li>
+                <li>
+                    <code class="CodeDecl prettyprint">std::string PrimitiveTypeToGSInput(PrimitiveTypes t);</code>
+                    <ul>
+                        <li>Converts the given enum value into a corresponding geometry shader input keyword.</li>
+                    </ul>
+                </li>
+                <li>
+                    <code class="CodeDecl prettyprint">std::string PrimitiveTypeToGSOutput(PrimitiveTypes t);</code>
+                    <ul>
+                        <li>Converts the given enum value into a corresponding geometry shader output keyword.</li>
+                    </ul>
+                </li>
+                <li>
+                    <code class="CodeDecl prettyprint">unsigned int PrimitiveTypeToNVertices(PrimitiveTypes t);</code>
+                    <ul>
+                        <li>Gets the number of vertices needed to define a single instance of the given primitive.</li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="DeclarationList">
+                <li>
+                    <code class="CodeDecl prettyprint">enum TextureTypes;</code>
+                    <ul>
+                        <li>The various types of textures that can be used in OpenGL.</li>
+                        <li>
+                            <b>TT_2D</b>
+                            <ul>
+                                <li>A 2D texture, essentially a 2D grid of color values.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <b>TT_3D</b>
+                            <ul>
+                                <li>A 3D texture, essentially a 3D grid of color values.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <b>TT_CUBE</b>
+                            <ul>
+                                <li>A Cubemap texture, which is a set of six 2D textures defining the faces of a cube.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <code class="CodeDecl prettyprint">GLenum TextureTypeToGLEnum</code>
+                    <ul>
+                        <li>Converts the given enum value into the corresponding OpenGL enum value.</li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="DeclarationList">
+                <li>
+                    <code class="CodeDecl prettyprint">enum CubeTextureTypes</code>
+                    <ul>
+                        <li>The six faces of a cubemap texture.</li>
+                        <li>
+                            <b>CTT_X_NEG</b>
+                            <ul>
+                                <li>The negative X face.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <b>CTT_Y_NEG</b>
+                            <ul>
+                                <li>The negative Y face.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <b>CTT_Z_NEG</b>
+                            <ul>
+                                <li>The negative Z face.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <b>CTT_X_POS</b>
+                            <ul>
+                                <li>The positive X face.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <b>CTT_Y_POS</b>
+                            <ul>
+                                <li>The positive Y face.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <b>CTT_Z_POS</b>
+                            <ul>
+                                <li>The positive Z face.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <code class="CodeDecl prettyprint">GLenum TextureTypeToGLEnum(CubeTextureTypes t);</code>
+                    <ul>
+                        <li>Converts the given enum value into the corresponding OpenGL enum value.</li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="DeclarationList">
+                <li>
+                    <code class="CodeDecl prettyprint">enum Shaders</code>
+                    <ul>
+                        <li>The different types of OpenGL shaders.</li>
+                        <li>
+                            <b>SH_VERTEX</b>
+                            <ul>
+                                <li>Vertex shader</li>
+                                <li>Takes in each vertex and outputs its screen-space coordinates.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <b>SH_FRAGMENT</b>
+                            <ul>
+                                <li>Fragment shader</li>
+                                <li>Takes in the information output by the vertex shader and outputs the color of the geometry's surface.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <b>SH_GEOMETRY</b>
+                            <ul>
+                                <li>Geometry shader</li>
+                                <li>Optional shader that modifies the primitives being output from the vertex shader.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <code class="CodeDecl prettyprint">GLenum ShaderTypeToGLEnum(Shader sh);</code>
+                    <ul>
+                        <li>Converts the given enum value into the corresponding OpenGL enum value.</li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="DeclarationList">
+                <li>
+                    <code class="CodeDecl prettyprint">const char* GetCurrentRenderingError(void);</code>
+                    <ul>
+                        <li>Gets the most recent OpenGL error that occurred.</li>
+                        <li>When this is called, the stack of OpenGL errors is cleared.</li>
+                        <li>Returns the empty string if there is no error.</li>
+                    </ul>
+                </li>
+                <li>
+                    <code class="CodeDecl prettyprint">void ClearAllRenderingErrors(void);</code>
+                    <ul>
+                        <li>Clears all outstanding OpenGL errors.</li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+
+    </body>
+
+ </html>
