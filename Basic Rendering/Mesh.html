@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Class: Mesh</title>
+		<link type="text/cs" rel="stylesheet" href="../MainCSS.css" />
+		<script src="../google-code-prettify/run_prettify.js"></script>
+	</head>
+
+	<body>
+
+		<h1>Mesh</h1>
+		<p>An object with vertex/index data and a Transform (position, rotation, and scale).</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Metadata</h2>
+		<p>Located in "Rendering/Basic Rendering/Mesh.h". Has a .cpp file in the same location. Part of the <a href="../Basic Rendering.html">Basic Rendering</a> system.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Declaration</h2>
+		<code class="CodeDecl prettyprint">class Mesh;</code>
+		<p />
+
+		<br class="SectionDivider" />
+
+		<h2>Sub-types</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Constants</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Fields</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Fields</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="SubMeshes" />
+				<code class="CodeDecl prettyprint">public std::vector&lt;<a href="MeshData.html">MeshData</a>&gt; SubMeshes;</code>
+				<ul>
+					<li>The various mesh data belonging to this mesh.</li>
+					<li>The current mesh to be used is stored in the "CurrentSubMesh" field.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="CurrentSubMesh" />
+				<code class="CodeDecl prettyprint">public unsigned int CurrentSubMesh;</code>
+				<ul>
+					<li>The index of the current mesh data to use in the "SubMeshes" collection.</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="Transform" />
+				<code class="CodeDecl prettyprint">public <a href="../Higher Math/TransformObject.html">TransformObject</a> Transform;</code>
+				<ul>
+					<li>The position, rotation, and scale of this instance.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Operators</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Functions</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Constructors</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Functions</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<div class="TextSection">
+			<h2>Usage</h2>
+			<ul>
+				<li>This class is the main way to pass mesh data to the <a href="Material.html">Material</a> class for rendering.</li>
+				<li>It combines the vertex/index data (modeled in object space) with a <a href="../Higher Math/TransformObject.html">TransformObject</a> instance describing it in world space.</li>
+			</ul>
+		</div>
+		</body>
+</html>
