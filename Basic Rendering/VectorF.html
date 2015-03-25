@@ -1,0 +1,259 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>Class: VectorF</title>
+		<link type="text/cs" rel="stylesheet" href="../MainCSS.css" />
+		<script src="../google-code-prettify/run_prettify.js"></script>
+	</head>
+
+	<body>
+
+		<h1>VectorF</h1>
+		<p>An OpenGL float vector value -- either "float", "vec2", "vec3", or "vec4".</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Metadata</h2>
+		<p>Located in "Rendering/Basic Rendering/GLVectors.h". Has a .cpp file in the same location. Part of the <a href="../Basic Rendering.html">Basic Rendering</a> system.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Declaration</h2>
+        <pre class="CodeSample CodeDecl prettyprint">
+typedef GLVector&lt;float, Vector2f, Vector3f, Vector4f,
+                 "float", "vec2", "vec3", "vec4"&gt; VectorF;</pre>
+
+		<br class="SectionDivider" />
+
+		<h2>Sub-types</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Constants</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Fields</h2>
+		<p>None.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Fields</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="size" />
+				<code class="CodeDecl prettyprint">private unsigned int size;</code>
+				<ul>
+					<li>The number of components in this vector.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="values[4]" />
+				<code class="CodeDecl prettyprint">private float values[4];</code>
+				<ul>
+					<li>This vector's components.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Operators</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="operator+" />
+				<code class="CodeDecl prettyprint">public VectorF operator+(const VectorF&amp; other) const;</code>
+				<ul>
+					<li>Adds the given vector to this one.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="operator-" />
+				<code class="CodeDecl prettyprint">public VectorF operator-(const VectorF&amp; other) const;</code>
+				<ul>
+					<li>Subtracts the given vector from this one.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="operator*" />
+				<code class="CodeDecl prettyprint">public VectorF operator*(const VectorF&amp; other) const;</code>
+				<ul>
+					<li>Performs component-wise multiplication of this vector and the given one.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="operator/" />
+				<code class="CodeDecl prettyprint">public VectorF operator/(const VectorF&amp; other) const;</code>
+				<ul>
+					<li>Performs component-wise division of this vector by the given one.</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="operator==" />
+				<code class="CodeDecl prettyprint">public bool operator==(const VectorF&amp; other) const;</code>
+				<ul>
+					<li>Compares this vector's values to the given one.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="operator!=" />
+				<code class="CodeDecl prettyprint">public bool operator!=(const VectorF&amp; other) const;</code>
+				<ul>
+					<li>Compares this vector's values to the given one.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Static Functions</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="GetGLSLType" />
+				<code class="CodeDecl prettyprint">public std::string GetGLSLType(unsigned int nComponents);</code>
+				<ul>
+					<li>Gets the name of the GLSL variable type to store a float vector with the given number of components.</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Constructors</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="DefaultConstructor" />
+				<code class="CodeDecl prettyprint">public VectorF(void);</code>
+				<ul>
+					<li>Creates an invalid GL vector of size 0.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="ConstructorFloat" />
+				<code class="CodeDecl prettyprint">public VectorF(float value);</code>
+				<ul>
+					<li>Creates a 1-dimensional float vector.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="ConstructorVector2f" />
+				<code class="CodeDecl prettyprint">public VectorF(Vector2f value);</code>
+				<ul>
+					<li>Creates a 2-dimensional float vector.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="ConstructorVector3f" />
+				<code class="CodeDecl prettyprint">public VectorF(Vector3f value);</code>
+				<ul>
+					<li>Creates a 3-dimensional float vector.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="ConstructorVector4f" />
+				<code class="CodeDecl prettyprint">public VectorF(Vector4f value);</code>
+				<ul>
+					<li>Creates a 4-dimensional float vector.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="ConstructorArray" />
+				<code class="CodeDecl prettyprint">public VectorF(unsigned int nComponents, float* values);</code>
+				<ul>
+					<li>Creates a vector from the given array of floats.</li>
+					<li>Must be between 1 and 4 floats!</li>
+				</ul>
+			</li>
+		</ul>
+
+		<br class="SectionDivider" />
+
+		<h2>Member Functions</h2>
+		<ul class="DeclarationList">
+			<li>
+				<a name="GetSize" />
+				<code class="CodeDecl prettyprint">public unsigned int GetSize(void) const;</code>
+				<ul>
+					<li>Gets the number of components this vector has.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GetValueConst" />
+				<code class="CodeDecl prettyprint">public const float* GetValue(void) const;</code>
+				<ul>
+					<li>Gets a pointer to this vector's components.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="GetValue" />
+				<code class="CodeDecl prettyprint">public float* GetValue(void);</code>
+				<ul>
+					<li>Gets a pointer to this vector's components.</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="SetValueFloat" />
+				<code class="CodeDecl prettyprint">public void SetValue(float value);</code>
+				<ul>
+					<li>Sets this vector to have the given 1D vector value.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="SetValueVec2" />
+				<code class="CodeDecl prettyprint">public void SetValue(Vector2f newVal);</code>
+				<ul>
+					<li>Sets this vector to have the given 2D vector value.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="SetValueVec3" />
+				<code class="CodeDecl prettyprint">public void SetValue(Vector3f newVal);</code>
+				<ul>
+					<li>Sets this vector to have the given 3D vector value.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="SetValueVec4" />
+				<code class="CodeDecl prettyprint">public void SetValue(Vector4f newVal);</code>
+				<ul>
+					<li>Sets this vector to have the given 4D vector value.</li>
+				</ul>
+			</li>
+			<li>
+				<a name="SetValueArray" />
+				<code class="CodeDecl prettyprint">public void SetValue(unsigned int nComponents, float* newVal);</code>
+				<ul>
+					<li>Sets this vector to have the given component values.</li>
+					<li>Must have between 1 and 4 components!</li>
+				</ul>
+			</li>
+		</ul>
+		<ul class="DeclarationList">
+			<li>
+				<a name="GetGLSLType" />
+				<code class="CodeDecl prettyprint">public std::string GetGLSLType(void) const;</code>
+				<ul>
+					<li>Gets the name of the GLSL variable type to store this vector.</li>
+				</ul>
+			</li>
+		</ul>
+
+        <br class="SectionDivider" />
+        <br class="SectionDivider" />
+
+		<div class="TextSection">
+			<h2>Usage</h2>
+			<ul>
+				<li>This is used for representing OpenGL floating-point vectors, which can have anywhere from 1 to 4 components.</li>
+				<li>Along with <a href="VectorI.html">VectorI</a>, it is defined with the "GLVector" template class in "GLVectors.h".</li>
+			</ul>
+		</div>
+		</body>
+</html>

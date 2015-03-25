@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+
+	<head>
+		<title>File: Vertices.h</title>
+		<link type="text/cs" rel="stylesheet" href="../MainCSS.css" />
+		<script src="../google-code-prettify/run_prettify.js"></script>
+	</head>
+
+	<body>
+
+		<h1>Vertices.h</h1>
+		<p>
+            Defines several basic, useful types of vertices. Each one has a basic constructor and a
+            static "GetVertexAttributes()" method that returns a
+            <a href="RenderIOAttributes.html">RenderIOAttributes</a> instance representing the vertex data.
+        </p>
+
+		<br class="SectionDivider" />
+
+		<h2>Metadata</h2>
+		<p>Has a .cpp file in the same location. Part of the <a href="../Basic Rendering.html">Basic Rendering</a> system.</p>
+
+		<br class="SectionDivider" />
+
+		<h2>Vertex Types</h2>
+        <ul class="DeclarationList">
+            <li>
+                <a name="VertexPos" />
+                <code class="CodeDecl prettyprint">struct VertexPos;</code>
+                <ul>
+                    <li>Has a Vector3f "Pos" representing position.</li>
+                </ul>
+            </li>
+            <li>
+                <a name="VertexPosColor" />
+                <code class="CodeDecl prettyprint">struct VertexPosColor;</code>
+                <ul>
+                    <li>
+                        Has a Vector3f "Pos" (representing position) and a Vector3f "Col"
+                        (representing color), in that order.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a name="VertexPosUV" />
+                <code class="CodeDecl prettyprint">struct VertexPosUV;</code>
+                <ul>
+                    <li>
+                        Has a Vector3f "Pos" (representing position) and a Vector2f "UV"
+                        (representing texture coordinates), in that order.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a name="VertexPosNormal" />
+                <code class="CodeDecl prettyprint">struct VertexPosNormal;</code>
+                <ul>
+                    <li>
+                        Has a Vector3f "Pos" (representing position) and a Vector3f "Normal"
+                        (representing surface normal), in that order.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a name="VertexPosUVNormal" />
+                <code class="CodeDecl prettyprint">struct VertexPosUVNormal;</code>
+                <ul>
+                    <li>
+                        Has a Vector3f "Pos" (representing position), a Vector2f "UV"
+                        (representing texture coordinates), and a Vector3f "Normal" (representing
+                        surface normal), in that order.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a name="VertexPosUVNormalColor" />
+                <code class="CodeDecl prettyprint">struct VertexPosUVNormalColor;</code>
+                <ul>
+                    <li>
+                        Has a Vector3f "Pos" (representing position), a Vector2f "UV"
+                        (representing texture coordinates), a Vector3f "Normal" (representing
+                        surface normal), and a Vector3f "Col" (representing color), in that order.
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+		</body>
+</html>
