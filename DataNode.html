@@ -1,0 +1,248 @@
+﻿ <!DOCTYPE html>
+ <html>
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="author" content="William Manning">
+        <title>System: DataNode</title>
+        <link type="text/css" rel="stylesheet" href="MainCSS.css" />
+        <script src="google-code-prettify/run_prettify.js"></script>
+    </head>
+
+    <body>
+
+        <h1>"DataNode" system</h1>
+
+        <p>
+            Provides an extremely flexible, extendable way to create shaders without having to write any code.
+            The outputs of each shader are defined with a Directed Acyclic Graph (or DAG), a tree-like structure
+            of shader operations plugging into other shader operations. This type of system is used in many
+            professional game engines to allow designers to create materials without having to write code or
+            do complex lighting math.
+        </p>
+
+        <div class="ImageWithCaption">
+            <img src="Unreal 4 Example.jpg" />
+            <p><a href="https://docs.unrealengine.com/latest/INT/Engine/Rendering/Materials/IntroductionToMaterials/index.html">Unreal Engine 4</a>'s DAG material editor.</p>
+        </div>
+
+        <br class="SectionDivider" />
+
+        <h2>Metadata</h2>
+        <p>
+            Located in "Rendering/Data Nodes". Builds off of the <a href="Basic Rendering.html">Basic Rendering</a>,
+            <a href="Serialization.html">Serialization</a>, and <a href="Textures.html">Textures</a> systems.
+        </p>
+
+        <br class="SectionDivider" />
+
+        <div class="TextSection">
+            <h2>Classes/files</h2>
+            <ul>
+                <li>
+                    <a href="Data Nodes/DataNode.html">DataNode.h</a>
+                    <ul>
+                        <li>The base class for a node.</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Data Nodes/DataNode.html">DataLine.h</a>
+                    <ul>
+                        <li>An input into a DataNode.</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Data Nodes/DataNodes.html">DataNodes</a>
+                    <ul>
+                        <li>A quick description of every DataNode subclass.</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Data Nodes/GeoShaderData.html">GeoShaderData</a>
+                    <ul>
+                        <li>
+                            All the information needed to describe a geometry shader
+                            so that it works well with the system.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Data Nodes/SerializedMaterial.html">SerializedMaterial</a>
+                    <ul>
+                        <li>All the information needed to describe a DataNode material.</li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="Data Nodes/ShaderGenerator.html">ShaderGenerator</a>
+                    <ul>
+                        <li>
+                            Generates vertex, fragment, and geometry shaders for a
+                            DataNode material.
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <br class="SectionDivider" />
+        <br class="SectionDivider" />
+        <br class="SectionDivider" />
+
+        <div class="TextSection">
+
+            <h2>Concept</h2>
+
+            <p>
+                The “DataNode” system provides a framework for high-level shader creation.
+                It is extremely flexible and extensible, and similar shader creation systems are used in many
+                professional engines. While this system does not yet have a GUI application for non-programmers
+                to make use of it, it is designed to easily support the creation of such a GUI. It also supports
+                serialization (meaning these materials can be saved to/loaded from a file).
+            </p>
+            <p>
+                The basic idea of the system is that the shader programmer creates a “Directed, Acyclic Graph”,
+                or DAG (something similar to a tree structure) that describes each shader output as some operation
+                that may itself use the outputs of other operations as its inputs.
+            </p>
+            <p>
+                For example, the screenshot above is Unreal Engine 4's material editor, which implements this
+                same concept with a beautiful UI. The material shown has a diffuse texture’s RGB values plugged into the “BaseColor”
+                output, constant values plugged into the “Metallic” and “Roughness” outputs, and a normal map texture
+                plugged into the “Normal” output. Finally, there is a “TexCoord” node representing the mesh’s UV
+                coordinates that gets plugged in to both textures.
+            </p>
+            <p>
+                One important difference between Unreal’s (and others) system and Manbil’s system is that Manbil
+                doesn’t use high-level inputs like “BaseColor” or “Metallic” -- you plug your DataNodes into the
+                actual vertex shader and fragment shader outputs, giving you total control over the behavior of
+                the material. However, when working on a project of your own, it would be a good idea to create
+                such a higher-level interface for these nodes to plug into. It would make things much easier for
+                your artists -- they shouldn’t be expected to do all the lighting math themselves every time they
+                make a material! There is already a system in Manbil that creates this kind of higher-level
+                interface -- the <a href="GPU Particles.html">GPU Particles</a> system -- which you can use as an
+                example of how to create such an interface yourself.
+            </p>
+            <p>
+                Another way this system can be extended is by defining your own node types, allowing you to create
+                custom operations. The <a href="Water.html">Water</a> system shows an example of this ability,
+                providing a special node that calculates water ripples and outputs the height of any given position
+                on the water’s surfaceas well as its surface normal.
+            </p>
+            <p>
+                Another difference between this system and others like it is that you can still write a geometry
+                shader to go between the vertex and fragment shaders. However, there is no higher-level DAG system
+                for this; the geometry shaders are still written as text (albeit with some accompanying meta-data
+                about its outputs so that it works nicely with the DataNode system).
+            </p>
+
+            <h2>Implementation</h2>
+
+            <p>
+                Nodes are instances of the <a href="Data Nodes/DataNode.html">DataNode</a> class. The class itself
+                is abstract, and a large number of child classes are already provided, representing all the different
+                atomic operations that can be done in a shader (plus a few useful operations that are slightly more
+                complex). Every DataNode uses some number of inputs and exposes some number of outputs (often just
+                one). All input/output values are floating-point vectors with between 1 and 4 components (referred
+                to as the “size” of theinput/output).
+            </p>
+            <p>
+                DataNode instances each have a unique name. This name must be a valid GLSL variable (basically the
+                same naming rules as any C-like language), as it’s used when generating shader code to give variables
+                unique names. The node’s name is given in the constructor; if an empty string is passed, a default
+                unique name is auto-generated. There’s no reason not to always auto-generate the names unless you
+                want to browse the generated source of your shaders for debugging.
+            </p>
+            <p>
+                Because DataNodes are guaranteed to have unique names, a static function is provided for getting a
+                pointer to any DataNode instance via its name: <code>DataNode::GetNode(std::string name)</code>. Additionally,
+                for this reason, nodes cannot be copied, so the DataNode system expects nodes to always be stored in
+                instances of the std::shared_ptr class, which automatically handles heap-allocated memory for you.
+                For simplicity, the shared_ptr type is typedef-ed as <code>DataNode::Ptr</code>.
+            </p>
+            <p>
+                Inputs into a node are represented as instances of the “DataLine” class. Data lines can actually
+                be one of two things:
+                <ul>
+                    <li>
+                        The output of some DataNode, specified with the node’s name and the 0-based index of which
+                        output to use
+                    </li>
+                    <li>A constant vector value</li>
+                </ul>
+            </p>
+            <p>
+                The DataLine class exposes quite a variety of constructors for convenience. Many nodes only expose
+                one output, so by default the DataLine constructor will assume output 0 of a node is being used.
+                Thanks to C++’s aggressive implicit conversion rules, the syntax for creating either type of DataLine
+                is quite flexible -- for example, you can assign a DataNode pointer to a DataLine, and it interprets
+                this as setting it to use the first output (index 0) of that node.You can similarly directly set
+                it to a float, Vector2f, Vector3f, or Vector4f.
+            </p>
+            <p>
+                The DataNode system is fully serializable (using the “Serialization” system), meaning you can quite
+                easily read/write a DataNode material from/to a file. DataNode child classes require some simple
+                reflection information in order to implement their serialization -- namely, they have to associate
+                a string containing their type name with a “factory” function that creates a dummy instance to be
+                filled in later with data. This reflection information is created fairly simply by requiring every
+                class that inherits from DataNode to call two macros (described below). These macros fill some static
+                data structures upon program start-up that provides the necessary information.
+            </p>
+            <p>
+                Finally, the actual material output data can be stored in a
+                <a href="Data Nodes/SerializedMaterial.html">SerializedMaterial</a> struct, and the actual Material
+                object is generated by passing a SerializedMaterial into the
+                <a href="Data Nodes/ShaderGenerator.html">ShaderGenerator</a> class’s <code>GenerateMaterial()</code>
+                method.
+            </p>
+
+            <h2>Code</h2>
+
+            <p>
+                Going back to the Unreal 4 example again:
+            </p>
+
+            <img src="Unreal 4 Example.jpg" />
+
+            <p>
+                The way you could write this with Manbil’s DataNode system would be as follows:
+            </p>
+
+            <div class="CodeSample">
+                <pre class="prettyprint">
+#include “Rendering/Data Nodes/DataNodes.hpp”
+...
+//Metallic and roughness are just constants.
+DataLine metallic = 0.3f;
+DataLine roughness = 0.25f;
+//Normal and diffuse are read in from textures and used as outputs in the fragment shader.
+//For the sake of this example, let’s say that the UV coordinate is the 3rd fragment shader input.
+//There is a singleton DataNode called “FragmentInputNode” that just outputs the fragment shader’s inputs for us to use.
+DataLine fragUV(FragmentInputNode::GetInstance(), 2);
+//”TextureSample2DNode” is a DataNode representing a 2D texture uniform parameter.
+//It has 6 outputs: Red, Green, Blue, Alpha, RGB, and RGBA.
+DataNode::Ptr diffuseSampler(new TextureSample2DNode(fragUV, “u_diffuseSampler”, “diffuseNode”)),
+              normalSampler(new TextureSample2DNode(fragUV, “u_normalSampler”, “normalNode”));
+//Instead of memorizing which index corresponds to which output, you can just call “TextureSample2DNode::GetOutputIndex()”.
+DataLine diffuseRGB(diffuseSampler, TextureSample2DNode::GetOutputIndex(CO_AllColorChannels)),
+         normalRGB(normalSampler, TextureSample2DNode::GetOutputIndex(CO_AllColorChannels));
+//[now plug those inputs into the material outputs]
+                </pre>
+            </div>
+
+            <p>
+                Let’s say we wanted to expose a vec3 uniform parameter “u_tint” that tints the diffuse color:
+            </p>
+
+            <div class="CodeSample">
+                <pre class="prettyprint">
+DataNode::Ptr tintUniform(new ParamNode(3, “u_tint”));
+DataNode::Ptr finalDiffuse(new MultiplyNode(tintUniform, diffuseRGB, "finalDiffuseNode"));
+//[now use “finalDiffuse” as the diffuse color instead of “diffuseRGB”]
+                </pre>
+            </div>
+
+        </div>
+
+    </body>
+
+ </html>
