@@ -72,22 +72,28 @@ public:
     
 protected:
 
+    //Window settings.
     virtual sf::VideoMode GetModeToUse(unsigned int windowW, unsigned int windowH) override;
     virtual std::string GetWindowTitle(void) override;
     virtual sf::Uint32 GetSFStyleFlags(void) override;
+    virtual sf::ContextSettings GenerateContext(void) override;
 
+    //Init and cleanup.
     virtual void InitializeWorld(void) override;
     virtual void OnWorldEnd(void) override;
 
+    //Events.
     virtual void OnInitializeError(std::string errorMsg) override;
     virtual void OnWindowResized(unsigned int newWidth, unsigned int newHeight) override;
 
+    //Main logic.
     virtual void UpdateWorld(float elapsedSeconds) override;
     virtual void RenderOpenGL(float elapsedSeconds) override;
 
 private:
 
     //TODO: declare world data here.
+
     Vector2u windowSize;
 };
 </pre>
@@ -101,8 +107,7 @@ private:
 
 
 MyGameWorld::MyGameWorld(void)
-    : windowSize(800, 600),
-      SFMLOpenGLWorld(800, 600, sf::ContextSettings())
+    : windowSize(800, 600), SFMLOpenGLWorld(800, 600)
 {
 }
 
@@ -122,6 +127,11 @@ sf::Uint32 MyGameWorld::GetSFStyleFlags(void)
 {
     //Change this to change the properties of the window.
     return sf::Style::Titlebar | sf::Style::Resize | sf::Style::Close;
+}
+sf::ContextSettings MyGameWorld::GenerateContext(void)
+{
+    //Change this to change the rendering context used by the window.
+    return sf::ContextSettings(16, 0, 0, 4, 1);
 }
 
 void MyGameWorld::InitializeWorld(void)
