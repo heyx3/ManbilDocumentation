@@ -29,7 +29,7 @@
                 </li>
                 <li>
                     Test the engine's functionality by pressing F5 or selecting <b>Debug>Start Debugging</b>
-                    along the top of the window to run some simple 3D worlds.
+                    along the top of the window to run a simple 3D worlds.
                 </li>
                 <li>
                     The world should display a rotating cube against a grey background. The camera
@@ -94,7 +94,7 @@ private:
 
     //TODO: declare world data here.
 
-    Vector2u windowSize;
+    Viewport windowView;
 };
 </pre>
                 </li>
@@ -106,8 +106,12 @@ private:
 #include "MyGameWorld.h"
 
 
+const int startingWidth = 800,
+          startingHeight = 600;
+
 MyGameWorld::MyGameWorld(void)
-    : windowSize(800, 600), SFMLOpenGLWorld(800, 600)
+    : windowView(0, 0, startingWidth, startingHeight),
+      SFMLOpenGLWorld(startingWidth, startingHeight)
 {
 }
 
@@ -161,8 +165,7 @@ void MyGameWorld::RenderOpenGL(float elapsedSeconds)
     //Modify these constructors to change various aspects of how rendering is done.
     ScreenClearer(true, true, false, Vector4f(0.2, 0.2, 0.9f, 0.0f)).ClearScreen();
     RenderingState(RenderingState::C_NONE).EnableState();
-
-    glViewport(0, 0, windowSize.x, windowSize.y);
+    windowView.Use();
 
     //TODO: Render code here.
 }
@@ -175,8 +178,8 @@ void MyGameWorld::OnInitializeError(std::string errorMsg)
 }
 void MyGameWorld::OnWindowResized(unsigned int newWidth, unsigned int newHeight)
 {
-    windowSize.x = newWidth;
-    windowSize.y = newHeight;
+    windowView.XSize = newWidth;
+    windowView.YSize = newHeight;
 }
 </pre>
                 </li>
