@@ -318,6 +318,8 @@
             <p>
                 The engine comes with quite a few simple worlds that each demonstrate one or two important systems.
                 These worlds are heavily-commented and complement the explanations on each system's doc page.
+                Check out the main() function in "main.cpp" to run the different worlds.
+                It is recommended to explore these example worlds in the order they are listed here.
             </p>
             <ul class="TextSectionList">
                 <li>
@@ -330,6 +332,7 @@
                         </li>
                         <li>The cube's surface is colored based on its world position.</li>
                         <li>Use WASD/EQ to move the camera and the mouse to rotate it.</li>
+                        <li>Use the space bar to toggle camera rotation.</li>
                     </ul>
                 </li>
                 <li>
@@ -341,21 +344,92 @@
                             <a href="DataNode.html">DataNode</a> systems.
                         </li>
                         <li>Use WASD/EQ to move the camera and the mouse to rotate it.</li>
+                        <li>Use the space bar to toggle camera rotation.</li>
                     </ul>
                 </li>
                 <li>
                     <strong>WaterWorld</strong>
                     <ul class="TextSectionList">
-                        <li>A game world that shows a rippling water surface and a skybox.</li>
+                        <li>A game world that displays a rippling water surface and a skybox.</li>
                         <li>
                             Showcases some more complex uses of the <a href="Textures.html">Textures</a>
-                            system as well as the <a href="Water.html">Water</a> system.
+                            system as well as the <a href="Water.html">Water</a> system, which is an example
+                            of how to extend the <a href="DataNode.html">DataNode</a> system.
                         </li>
                         <li>Use WASD/EQ to move the camera and the mouse to rotate it.</li>
+                        <li>Use the space bar to toggle camera rotation.</li>
                         <li>
                             Left-click to add a randomized ripple to the water, spreading outward from the
                             camera's position.
                         </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>TerrainWorld</strong>
+                    <ul class="TextSectionList">
+                        <li>
+                            A world that uses the <a href="Higher Math/Terrain.html">Terrain</a> class to
+                            generate and render a terrain at different levels of detail.
+                        </li>
+                        <li>Use WASD/EQ to move the camera and the mouse to rotate it.</li>
+                        <li>Use the space bar to toggle camera rotation.</li>
+                        <li>Use the left/right arrow keys to change LoD levels for the terrain.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>SerializationWorld</strong>
+                    <ul class="TextSectionList">
+                        <li>
+                            A world that shows a simple mesh whose geometry and shaders are serialized
+                            to/from a file. Shows the <a href="Serialization.html">Serialization</a> system.
+                        </li>
+                        <li>Use WASD/EQ to move the camera and the mouse to rotate it.</li>
+                        <li>Use the space bar to toggle camera rotation.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>GUIWorld</strong>
+                    <ul class="TextSectionList">
+                        <li>
+                            A world that creates a simple GUI interface.
+                            Showcases the <a href="GUI.html">GUI</a> system.
+                        </li>
+                        <li>Use WASD to pan the GUI panel around the screen, and E/Q to scale it.</li>
+                        <li>Use the mouse to interact with the panel.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>EditorGUIWorld</strong>
+                    <ul class="TextSectionList">
+                        <li>
+                            A world that creates a simple editor panel.
+                            Showcases the <a href="Editor.html">Editor</a> system.
+                        </li>
+                        <li>Use the mouse and keyboard to interact with the panel.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>AssetImporterWorld</strong>
+                    <ul class="TextSectionList">
+                        <li>
+                            Shows how to use the AssImp library with Manbil by using it to load a mesh.
+                        </li>
+                        <li>Use WASD/EQ to move the camera and the mouse to rotate it.</li>
+                        <li>Use the space bar to toggle camera rotation.</li>
+                        <li>Use the arrow keys and shift/ctrl to rotate the mesh.</li>
+                        <li>Use the RF and CV keys to move the mesh along its forward and sideways axis, respectively.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>NoiseGenWorld</strong>
+                    <ul class="TextSectionList">
+                        <li>
+                            Generate noise into a texture using the <a href="NoiseGeneration.html">Noise Generation</a>
+                            system.
+                        </li>
+                        <li>Press Space to re-generate the noise with a new seed.</li>
+                        <li>Press Enter to convert the noise into a normalmap.</li>
+                        <li>Use the left/right arrow keys to change the strength of the generated normalmap.</li>
                     </ul>
                 </li>
             </ul>
@@ -376,21 +450,28 @@
                     <strong>Voxels</strong>
                     <ul class="TextSectionList">
                         <li>A basic voxel engine with one type of block.</li>
+                        <li>Stored in the "Project_VoxelToy" branch of the repo.</li>
                         <li>
                             Uses an unorthodox method for rendering the voxel faces:
                             <ul>
                                 <li>Each face (top, bottom, left, right, front, back) is a different render pass.</li>
                                 <li>
-                                    Each pass uses the same material, but changes a "coroutine" uniform
+                                    Each pass uses the same material, but changes a "coroutine" shader parameter
                                     (essentially a function pointer) to tell the material which face to
                                     render in that pass.
                                 </li>
                                 <li>
-                                    The vertices are stored as individual points, and a geometry shader
-                                    turns each point into a face based on the coroutine's current value.
-                                    The geometry shader doesn't render a point's face if that face is
-                                    obscured (information about which faces are obscured is passed in as
-                                    vertex attributes).
+                                    The voxel mesh is stored as one vertex for each voxel,
+                                    and the geometry shader turns each vertex into a quad based on the coroutine.
+                                    <ul>
+                                        <li>
+                                            The geometry shader doesn't render a point into a quad
+                                            if that face of the voxel is obscured.
+                                        </li>
+                                        <li>
+                                            Information about which faces are obscured is stored in the vertex data.
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                         </li>
@@ -403,47 +484,35 @@
                     <strong>TwoTriangles</strong>
                     <ul class="TextSectionList">
                         <li>Inspired by <a href="shadertoy.com">ShaderToy</a>.</li>
+                        <li>Stored in the "Project_TwoTriangles" branch of the repo.</li>
                         <li>
                             Provides an offline version of the ShaderToy tool, plus some extra features
                             that ShaderToy doesn't have, such as a movable camera and a less limited form
                             of GLSL.
                         </li>
+                        <li>Refer to the readme in that branch for more information.</li>
                         <li>
-                            Check out ShaderToy to see what this world does. Refer to
-                            "Quad World Shader Constants.txt" for the names of the parameters you can use
-                            in your fragment shaders.
+                            Use WASD/EQ to move the camera, the mouse to rotate the camera,
+                            and spacebar to toggle camera control.
                         </li>
-                        <li>
-                            Use WASD/EQ to move the camera, the mouse to rotate the camera, and spacebar to
-                            toggle camera control.
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <strong>Planet Sim</strong>
-                    <ul class="TextSectionList">
-                        <li>A game world that generates a planet mesh.</li>
-                        <li>The mesh is generated like a cubemap: six different faces, projected onto a sphere.</li>
-                        <li>
-                            The planet isn't perfect; it has seams around the edges of each "face" of the
-                            cubemap.
-                        </li>
-                        <li>Use WASD/EQ to move the camera and the mouse to rotate it.</li>
                     </ul>
                 </li>
                 <li>
                     <strong>Old Ones</strong>
                     <ul class="TextSectionList">
-                        <li>The most complex demo; used as an example of the engine's capabilities.</li>
+                        <li>The most complex demo; used as an example of the framework's capabilities.</li>
+                        <li>Stored in the "Project_Manbil-Demo" branch of the repo.</li>
                         <li>
-                            Combines a normal rendered city with a distance-raymarched fractal shape that
-                            flies around the sky unnaturally, like an alien being that can move in more than
-                            three dimensions.
+                            Combines a normal rendered city with a distance-raymarched fractal shape,
+                            like an alien being that can move in more than three dimensions.
+                            Refer to the "TwoTriangles" project to learn more about raymarched shapes.
                         </li>
                         <li>
-                            Automatically detects and uses an Oculus Rift if one is plugged in, set to
-                            Extended Mode, and positioned off the right edge of the actual computer monitor
-                            in the display settings.
+                            After a while, a window appears with tweak-able attributes of the fractal.
+                        </li>
+                        <li>
+                            There is a directional light that casts shadows onto the scene,
+                            and the fractal itself casts shadows too!
                         </li>
                     </ul>
                 </li>

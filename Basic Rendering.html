@@ -176,7 +176,7 @@
                represents a surface normal vector).
             </p>
             <p>
-                If you only set vertices when creating a mesh (and assuming you are using a normal triangle list instead
+                If all you do is set these vertices when creating the mesh (and assuming you are using a normal triangle list instead
                 of a triangle <em>strip</em>, described below), then OpenGL interprets each group of three vertices in
                 sequence to be a single triangle. However, this is often an inefficient way to create meshes; you
                 would have many duplicate vertices wherever multiple triangles shared the same vertex! For this reason,
@@ -188,13 +188,11 @@
                 For example, if you were to create a simple rectangle, you'd need to create two triangles, each representing
                 half the rectangle. Without indices, you'd need 6 vertices -- 3 for each of the two triangles. However,
                 with indices, you only need four vertices -- one for each corner of the rectangle -- and then 6 indices
-                to specify the actual triangles. While obviously the difference between storing 4 and 6 vertices is negligible,
-                and you still need all those indices, keep in mind that a) real meshes can have thousands of vertices,
-                and b) those vertices can have quite a few floats, while indices are just a single unsigned int each. In the end,
-                it's virtually always more efficient to use indices.
+                to specify the actual triangles. When dealing with big meshes containing tens of thousands of vertices,
+                this results in huge memory savings.
             </p>
             <p>
-                As mentioned before, there is an alternative to triangle lists known as a "triangle strips". This
+                As mentioned above, there is an alternative to triangle lists known as a "triangle strips". This
                 alternative storage method is perfectly valid, but it is usually not that much more efficient than indexed
                 triangle lists, and it is beyond the scope of this page. Feel free to refer to the OpenGL documentation or
                 one of the many <a href="http://en.wikipedia.org/wiki/Triangle_strip">explanations</a> available online
@@ -210,8 +208,8 @@
             </p>
             <p>
                 When setting vertex data with the MeshData class, you will need to specify how the data will be used.
-                This provides a hint to OpenGL on how to best optimize the data's location in GPU memory; it does
-                <em>not</em> have any impact on the data beyond performance/optimization tips for the graphics driver.
+                This provides a hint to OpenGL on how to best optimize the data's location in GPU memory.
+                It does <em>not</em> have any impact on the data beyond performance/optimization tips for the graphics driver.
                 The three options are <code class="prettyprint">MeshData::BUF_STATIC</code> (the most common option:
                 the vertex data will never need to be modified later),
                 <code class="prettyprint">MeshData::BUF_DYNAMIC</code> (the data will be modified fairly regularly),
@@ -221,12 +219,12 @@
             <h3>Creating a Material</h3>
             <p>
                 As mentioned above, "material" is the common term for a GPU program that renders triangles into pixels
-                on the screen. This process of rendering triangles is referred to as the "graphics pipeline".
+                on the screen. This process of rendering triangles is sometimes referred to as the "graphics pipeline".
                 Materials generally have at least two "shaders" -- individual programs written by the programmer that
                 add important functionality to the rendering pipeline.
                 The first shader in the pipeline is the "vertex" shader, which takes in all the individual vertices
-                being rendered and converts them from "object" space (the space they were modeled in, where they're
-                centered around the origin) into "screen space" (a cube region from {-1, -1, -1} to {1, 1, 1} --
+                being rendered and converts them from "object" or "model" space (the space they were modeled in, where they're
+                generally centered around the origin) into "screen space" (a cube region from {-1, -1, -1} to {1, 1, 1} --
                 outside this range, the vertices are not visible on the screen).
             </p>
             <p>
@@ -259,13 +257,13 @@ void main()
     //    3D transform matrices are given a fourth row/column, and 3D points
     //    are given a fourth component (with the default value 1.0). This extra
     //    component is called the "homogenous" component.
-    //Constructors in shaders are incredibly flexible -- we can specify
+    //Constructors in shaders are very flexible -- we can pass
     //    a vec3 for the first three arguments (xyz) and a float for the fourth (w).
     vec4 homogPos = vec4(position, 1.0);
     
     //Output the transformed position to a special OpenGL keyword that expects
     //    the vec4 screen-space position.
-    //In this engine, matrices are premultiplied -- keep in mind that order matters
+    //In Manbil, matrices are premultiplied -- keep in mind that order matters
     //    with matrix multiplication.
     gl_Position = transformMat * homogPos;
 }
@@ -275,7 +273,7 @@ void main()
             <p>
                 After the vertex shader, the GPU creates each triangle from the vertices/indices and
                 draws all the pixels on the screen that that triangle covers. The pixels' color is determined by a
-                "fragment shader". Here is an example of a simple fragment shader that just colors every triangle red:
+                "fragment shader". Here is an example of a simple fragment shader that just colors every pixel red:
                 <div class="CodeSample">
                     <pre class="prettyprint">
 //Still using OpenGL version 4.0.
@@ -296,7 +294,7 @@ void main()
             <p>
                 Every material should have a vertex and a fragment shader. There are several other shaders,
                 including tesselation and geometry shaders, but they are not often used (and tesselation shaders aren't
-                currently supported in this rendering system). Whereas vertex shaders operate on individual vertices,
+                currently implemented on any level of Manbil). Whereas vertex shaders operate on individual vertices,
                 the geometry shader (which runs after the vertex shader) operates on whole shapes, outputting new shapes in
                 their place (for example, you can pass in vertices as individual points instead of a triangle list, then
                 in the geometry shader expand each point to a square "billboard" that always faces the player).
