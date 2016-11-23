@@ -66,17 +66,10 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="Basic Rendering/MeshData.html">MeshData</a>
+                    <a href="Basic Rendering/Mesh.html">Mesh</a>
                     <ul>
                         <li>Represents a set of vertices and (optionally) indices.</li>
                         <li>Also optionally stores a copy of the vertex/index data on the CPU for easy access.</li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="Basic Rendering/Mesh.html">Mesh</a>
-                    <ul>
-                        <li>An object with one or more MeshData "submeshes", as well as a <a href="Higher Math/TransformObject.html">Transform</a>.</li>
-                        <li>Only one submesh is active at a time.</li>
                     </ul>
                 </li>
                 <li>
@@ -201,19 +194,19 @@
 
             <h3>How to Create Meshes</h3>
             <p>
-                In Manbil, vertex/index data is stored in the <a href="Basic Rendering/MeshData.html">MeshData</a> class. Along
+                In Manbil, vertex/index data is stored in the <a href="Basic Rendering/Mesh.html">Mesh</a> class. Along
                 with that data, the class stores which type of primitive the vertices represent (the option we've
                 been talking about is <code class="prettyprint">PrimitiveTypes::PT_TRINANGLE_LIST</code>) and, optionally,
                 a CPU-side copy of that vertex/index data in case you plan to read back the data often.
             </p>
             <p>
-                When setting vertex data with the MeshData class, you will need to specify how the data will be used.
+                When setting vertex data with the Mesh class, you will need to specify how the data will be used.
                 This provides a hint to OpenGL on how to best optimize the data's location in GPU memory.
                 It does <em>not</em> have any impact on the data beyond performance/optimization tips for the graphics driver.
-                The three options are <code class="prettyprint">MeshData::BUF_STATIC</code> (the most common option:
+                The three options are <code class="prettyprint">Mesh::BUF_STATIC</code> (the most common option:
                 the vertex data will never need to be modified later),
-                <code class="prettyprint">MeshData::BUF_DYNAMIC</code> (the data will be modified fairly regularly),
-                and <code class="prettyprint">MeshData::BUF_STREAM</code> (the data will be modified nearly every frame).
+                <code class="prettyprint">Mesh::BUF_DYNAMIC</code> (the data will be modified fairly regularly),
+                and <code class="prettyprint">Mesh::BUF_STREAM</code> (the data will be modified nearly every frame).
             </p>
 
             <h3>Creating a Material</h3>
@@ -316,10 +309,11 @@ void main()
                         when creating the material.</li>
                 </ul>
                 Once created, you can get various information about the material (blend mode, uniforms, vertex
-                attributes, etc.) as well as change the blend mode. To render with the material, simply call one of
-                the "<code class="prettyprint">Render()</code>" overloads. They all take in a
+                attributes, etc.) as well as change the blend mode. To render with the material, simply call
+                the "<code class="prettyprint">Material::Render()</code>" function. It takes in a
                 <a href="Basic Rendering/RenderInfo.html">RenderInfo</a> instance, a set of values to use for the
-                uniform parameters, and one or more meshes to render.
+                uniform parameters, one or more meshes to render, and the <a href="Higher Math/Transform.html">Transform</a>
+                of that mesh.
             </p>
         </div>
 

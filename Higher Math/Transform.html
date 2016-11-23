@@ -11,18 +11,18 @@
 
 	<body>
 
-		<h1>TransformObject</h1>
+		<h1>Transform</h1>
 		<p>An object with a position, orientation, and scale. The X axis is left/right, Y axis is forward/back, and Z axis is up/down.</p>
 
 		<br class="SectionDivider" />
 
 		<h2>Metadata</h2>
-		<p>Located in "Math/Higher Math/TransformObject.h". Has a .cpp file in the same location. Part of the <a href="../Higher Math.html">Higher Math</a> system.</p>
+		<p>Located in "Math/Higher Math/Transform.h". Has a .cpp file in the same location. Part of the <a href="../Higher Math.html">Higher Math</a> system.</p>
 
 		<br class="SectionDivider" />
 
 		<h2>Declaration</h2>
-		<code class="CodeDecl prettyprint">class TransformObject;</code>
+		<code class="CodeDecl prettyprint">class Transform;</code>
 		<p />
 
 		<br class="SectionDivider" />
@@ -119,25 +119,25 @@
 		<ul class="DeclarationList">
 			<li>
 				<a name="DefaultConstructor" />
-				<code class="CodeDecl prettyprint">public TransformObject(void);</code>
+				<code class="CodeDecl prettyprint">public Transform(void);</code>
 				<ul>
 					<li>Creates an instance positioned at the origin, un-rotated and un-scaled.</li>
 				</ul>
 			</li>
 			<li>
 				<a name="EulerAngleConstructor" />
-				<code class="CodeDecl prettyprint">public TransformObject(Vector3f position, Vector3f eulerAngles = Vector3f(),<br />
+				<code class="CodeDecl prettyprint">public Transform(Vector3f position, Vector3f eulerAngles = Vector3f(),<br />
 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;Vector3f scale = Vector3f(1.0f, 1.0f, 1.0f));</code>
 				<ul>
-					<li>Creates a TransformObject with the given position, rotation, and scale.</li>
+					<li>Creates a Transform with the given position, rotation, and scale.</li>
 				</ul>
 			</li>
 			<li>
 				<a name="QuaternionConstructor" />
-				<code class="CodeDecl prettyprint">public TransformObject(Vector3f position, Quaternion rot = <a href="../Lower Math/Quaternion.html">Quaternion</a>(),<br />
+				<code class="CodeDecl prettyprint">public Transform(Vector3f position, Quaternion rot = <a href="../Lower Math/Quaternion.html">Quaternion</a>(),<br />
 &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;Vector3f scale = Vector3f(1.0f, 1.0f, 1.0f));</code>
 				<ul>
-					<li>Creates a TransformObject with the given position, rotation, and scale.</li>
+					<li>Creates a Transform with the given position, rotation, and scale.</li>
 				</ul>
 			</li>
 		</ul>
@@ -179,7 +179,7 @@
 //If for some weird reason you wanted to get an object's forward vector<br />
 //&emsp;&emsp; without using "GetForward()", you could use this:<br />
 <a href="../Lower Math/Quaternion.html">Quaternion</a> rot = obj.GetRotation();<br />
-Vector3f forward = rot.Rotated(TransformObject::Forward());
+Vector3f forward = rot.Rotated(Transform::Forward());
 					</code></div></li>
 				</ul>
 			</li>
